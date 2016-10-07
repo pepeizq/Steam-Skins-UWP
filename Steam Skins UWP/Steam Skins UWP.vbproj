@@ -133,6 +133,10 @@
     <Content Include="Assets\NewStoreLogo.scale-400.png" />
     <Content Include="Assets\patreon.png" />
     <Content Include="Assets\paypal.png" />
+    <Content Include="Assets\Skins\air1.PNG" />
+    <Content Include="Assets\Skins\air2.PNG" />
+    <Content Include="Assets\Skins\air3.PNG" />
+    <Content Include="Assets\Skins\air4.PNG" />
     <Content Include="Assets\Skins\compact1.PNG" />
     <Content Include="Assets\Skins\compact2.PNG" />
     <Content Include="Assets\Skins\compact3.PNG" />

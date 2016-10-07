@@ -1,7 +1,9 @@
 ﻿Imports System.IO.Compression
+Imports Windows.Data.Xml.Dom
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
+Imports Windows.UI.Notifications
 
 Module Descarga
 
@@ -51,28 +53,46 @@ Module Descarga
 
     Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
 
-        Try
+        'Try
 
-            Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
-                For Each archivo As ZipArchiveEntry In archivoZip.Entries
-                    If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
-                        Dim nombreArchivo As String = archivo.FullName
+        If Directory.Exists(ubicacionSteam.Path + "\" + nombreSkin) Then
+            Directory.Delete(ubicacionSteam.Path + "\" + nombreSkin, True)
+        End If
 
-                        If nombreArchivo.IndexOf("/") = (nombreArchivo.Length - 1) Then
-                            nombreArchivo = nombreArchivo.Remove(nombreArchivo.Length - 1, 1)
-                        End If
+        Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
+            For Each archivo As ZipArchiveEntry In archivoZip.Entries
+                If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
+                    Dim nombreArchivo As String = archivo.FullName
 
-                        If Not nombreArchivo.IndexOf(".") = (nombreArchivo.Length - 4) Then
+                    If nombreArchivo.IndexOf("/") = (nombreArchivo.Length - 1) Then
+                        nombreArchivo = nombreArchivo.Remove(nombreArchivo.Length - 1, 1)
+                    End If
+
+                    If nombreArchivo.Contains("-master") Then
+                        nombreArchivo = nombreArchivo.Replace("-master", Nothing)
+                    End If
+
+                    If Not nombreArchivo.Contains(".") Then
+                        If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
                             Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
+                        End If
+                    Else
+                        If nombreArchivo.Contains("/.") = True Then
+                            If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
+                                Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
+                            End If
                         Else
-                            archivo.ExtractToFile(ubicacionSteam.Path + "\" + nombreArchivo)
+                            If Not File.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
+                                archivo.ExtractToFile(ubicacionSteam.Path + "\" + nombreArchivo)
+                            End If
                         End If
                     End If
-                Next
-            End Using
-        Catch ex As Exception
-            fallo1 = True
-        End Try
+                End If
+            Next
+        End Using
+        'Catch ex As Exception
+        '    fallo1 = True
+        'End Try
 
     End Sub
 
@@ -91,6 +111,28 @@ Module Descarga
         Else
             textBlockInforme.Text = recursos.GetString("Descarga Fallo 1")
         End If
+
+        Try
+            Dim notificador As ToastNotifier = ToastNotificationManager.CreateToastNotifier()
+            Dim xml As XmlDocument = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText02)
+            Dim nodosTexto As XmlNodeList = xml.GetElementsByTagName("text")
+
+            nodosTexto.Item(0).AppendChild(xml.CreateTextNode(nombreSkin))
+            nodosTexto.Item(1).AppendChild(xml.CreateTextNode(textBlockInforme.Text))
+
+            Dim nodosImagen As XmlNodeList = xml.GetElementsByTagName("image")
+            nodosImagen.Item(0).Attributes.GetNamedItem("src").NodeValue = "Assets/Square44x44Logo.scale-400.png"
+
+            Dim tostadaNodo As IXmlNode = xml.SelectSingleNode("/toast")
+            Dim audio As XmlElement = xml.CreateElement("audio")
+            audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS")
+
+            Dim tostada As ToastNotification = New ToastNotification(xml)
+            tostada.ExpirationTime = DateTime.Now.AddSeconds(4)
+            notificador.Show(tostada)
+        Catch ex As Exception
+
+        End Try
 
         progressInforme.Visibility = Visibility.Collapsed
         progressInforme.IsActive = False

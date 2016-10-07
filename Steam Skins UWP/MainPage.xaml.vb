@@ -8,7 +8,7 @@ Imports Windows.UI
 Public NotInheritable Class MainPage
     Inherits Page
 
-    Dim skinCompact, skinPixelVision2, skinPressure2, skinThreshold As Skins
+    Dim skinAir, skinCompact, skinPixelVision2, skinPressure2, skinThreshold As Skins
 
     Private Sub Page_Loading(sender As FrameworkElement, args As Object)
 
@@ -30,6 +30,10 @@ Public NotInheritable Class MainPage
         buttonContactarTexto.Text = recursos.GetString("Boton Contactar")
         buttonWebTexto.Text = recursos.GetString("Boton Web")
         textBlockPublicidad.Text = recursos.GetString("Publicidad")
+
+        buttonDescargaTextoAir.Text = recursos.GetString("Boton Descarga")
+        tbScreenshotsAir.Text = recursos.GetString("Capturas")
+        textBlockCreadoAir.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoCompact.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsCompact.Text = recursos.GetString("Capturas")
@@ -94,6 +98,7 @@ Public NotInheritable Class MainPage
         End Try
 
         If Not carpetaComprobar Is Nothing Then
+            buttonDescargaAir.IsEnabled = True
             buttonDescargaCompact.IsEnabled = True
             buttonDescargaPixelVision2.IsEnabled = True
             buttonDescargaPressure2.IsEnabled = True
@@ -119,6 +124,58 @@ Public NotInheritable Class MainPage
         imageCapturaExpandida.Source = imagen.Source
 
     End Sub
+
+    'SKINAIR-----------------------------------------------------------------------------
+
+    Private Async Sub buttonDescargaAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAir.Click
+
+        skinAir = New Skins("Air-for-Steam",
+                                  New Uri("https://github.com/Outsetini/Air-for-Steam/archive/master.zip"),
+                                  buttonDescargaAir,
+                                  textBlockInformeAir,
+                                  progressInformeAir)
+
+        Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
+        Descarga.Iniciar(skinAir, carpetaSteam, buttonRutaSteam)
+
+    End Sub
+
+    Private Async Sub buttonWebAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonWebAir.Click
+
+        Await Launcher.LaunchUriAsync(New Uri("http://airforsteam.com"))
+
+    End Sub
+
+    Private Async Sub buttonPatreonAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonPatreonAir.Click
+
+        Await Launcher.LaunchUriAsync(New Uri("https://www.patreon.com/inhibitor"))
+
+    End Sub
+
+    Private Sub buttonImagePreview1Air_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview1Air.Click
+
+        AmpliarCaptura(imagePreview1Air)
+
+    End Sub
+
+    Private Sub buttonImagePreview2Air_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview2Air.Click
+
+        AmpliarCaptura(imagePreview2Air)
+
+    End Sub
+
+    Private Sub buttonImagePreview3Air_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview3Air.Click
+
+        AmpliarCaptura(imagePreview3Air)
+
+    End Sub
+
+    Private Sub buttonImagePreview4Air_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview4Air.Click
+
+        AmpliarCaptura(imagePreview4Air)
+
+    End Sub
+
 
     'SKINCOMPACT-----------------------------------------------------------------------------
 
@@ -165,7 +222,7 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    'SKINPRESSURE2-----------------------------------------------------------------------------
+    'SKINPIXELVISION2-----------------------------------------------------------------------------
 
     Private Async Sub buttonDescargaPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPixelVision2.Click
 
@@ -271,7 +328,7 @@ Public NotInheritable Class MainPage
 
     Private Async Sub buttonDescargaThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaThreshold.Click
 
-        skinThreshold = New Skins("Threshold",
+        skinThreshold = New Skins("Threshold-Skin",
                                   New Uri("https://github.com/Edgarware/Threshold-Skin/archive/master.zip"),
                                   buttonDescargaThreshold,
                                   textBlockInformeThreshold,
