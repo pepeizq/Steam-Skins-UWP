@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="Steam_Skins_UWP.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Steam_Skins_UWP"
+    RequestedTheme="Light">
+
+</Application>
