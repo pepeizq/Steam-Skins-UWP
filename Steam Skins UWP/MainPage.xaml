@@ -66,7 +66,7 @@
                 </Button>
             </Grid>
 
-            <Pivot x:Name="pivotSkins" Grid.Row="1">
+            <Pivot x:Name="pivotSkins" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,10,0,0">
                 <PivotItem Header="Air">
                     <Grid Margin="0,10">
                         <Grid.RowDefinitions>
@@ -149,6 +149,88 @@
 
                     </Grid>
                 </PivotItem>
+                <PivotItem Header="Air Classic">
+                    <Grid Margin="0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonDescargaAirClassic" Grid.Column="0" Padding="10" Background="Transparent" IsEnabled="False">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="buttonDescargaTextoAirClassic"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock x:Name="textBlockInformeAirClassic" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeAirClassic" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoAirClassic" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
+                            <Button x:Name="buttonWebAirClassic" Grid.Column="5" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Web"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="buttonPatreonAirClassic" Grid.Column="7" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Patreon"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <TextBlock x:Name="tbScreenshotsAirClassic" Grid.Row="1" Margin="0,20,0,0"/>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1AirClassic" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview1AirClassic" Source="Assets/Skins/airclassic1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2AirClassic" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview2AirClassic" Source="Assets/Skins/airclassic2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3AirClassic" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview3AirClassic" Source="Assets/Skins/airclassic3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4AirClassic" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview4AirClassic" Source="Assets/Skins/airclassic4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </PivotItem>
                 <PivotItem Header="Compact">
                     <Grid Margin="0,10">
                         <Grid.RowDefinitions>
@@ -217,6 +299,252 @@
                                 <Button x:Name="buttonImagePreview4Compact" Grid.Column="3" Background="Transparent" Padding="0">
                                     <Button.Content>
                                         <Image x:Name="imagePreview4Compact" Source="Assets/Skins/compact4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </PivotItem>
+                <PivotItem Header="Invert">
+                    <Grid Margin="0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonDescargaInvert" Grid.Column="0" Padding="10" Background="Transparent" IsEnabled="False">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="buttonDescargaTextoInvert"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock x:Name="textBlockInformeInvert" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeInvert" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoInvert" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Ultimate Luki" VerticalAlignment="Center"/>
+                            <Button x:Name="buttonWebInvert" Grid.Column="5" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Web"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="buttonPaypalInvert" Grid.Column="6" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Image Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Paypal"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <TextBlock x:Name="tbScreenshotsInvert" Grid.Row="1" Margin="0,20,0,0"/>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Invert" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview1Invert" Source="Assets/Skins/invert1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Invert" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview2Invert" Source="Assets/Skins/invert2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Invert" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview3Invert" Source="Assets/Skins/invert3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Invert" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview4Invert" Source="Assets/Skins/invert4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </PivotItem>
+                <PivotItem Header="Metro">
+                    <Grid Margin="0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonDescargaMetro" Grid.Column="0" Padding="10" Background="Transparent" IsEnabled="False">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="buttonDescargaTextoMetro"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock x:Name="textBlockInformeMetro" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeMetro" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoMetro" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Dom Minischetti" VerticalAlignment="Center"/>
+                            <Button x:Name="buttonWebMetro" Grid.Column="5" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Web"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="buttonPaypalMetro" Grid.Column="6" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Image Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Paypal"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="buttonPatreonMetro" Grid.Column="7" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Patreon"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <TextBlock x:Name="tbScreenshotsMetro" Grid.Row="1" Margin="0,20,0,0"/>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Metro" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview1Metro" Source="Assets/Skins/metro1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Metro" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview2Metro" Source="Assets/Skins/metro2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Metro" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview3Metro" Source="Assets/Skins/metro3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Metro" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview4Metro" Source="Assets/Skins/metro4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                </PivotItem>
+                <PivotItem Header="Minimal">
+                    <Grid Margin="0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonDescargaMinimal" Grid.Column="0" Padding="10" Background="Transparent" IsEnabled="False">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="buttonDescargaTextoMinimal"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock x:Name="textBlockInformeMinimal" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeMinimal" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoMinimal" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="lusito" VerticalAlignment="Center"/>
+                            <Button x:Name="buttonWebMinimal" Grid.Column="5" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Web"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <TextBlock x:Name="tbScreenshotsMinimal" Grid.Row="1" Margin="0,20,0,0"/>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Minimal" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview1Minimal" Source="Assets/Skins/mini1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Minimal" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview2Minimal" Source="Assets/Skins/mini2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Minimal" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview3Minimal" Source="Assets/Skins/mini3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Minimal" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview4Minimal" Source="Assets/Skins/mini4.PNG" />
                                     </Button.Content>
                                 </Button>
                             </Grid>
@@ -298,6 +626,81 @@
                                 </Button>
                             </Grid>
                         </ScrollViewer>
+                    </Grid>
+                </PivotItem>
+                <PivotItem Header="Plexed">
+                    <Grid Margin="0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="buttonDescargaPlexed" Grid.Column="0" Padding="10" Background="Transparent" IsEnabled="False">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="buttonDescargaTextoPlexed"/>
+                                </StackPanel>
+                            </Button>
+                            <TextBlock x:Name="textBlockInformePlexed" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformePlexed" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoPlexed" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Fusionfan45" VerticalAlignment="Center"/>
+                            <Button x:Name="buttonWebPlexed" Grid.Column="5" Padding="10" Background="Transparent">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="Web"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+
+                        <TextBlock x:Name="tbScreenshotsPlexed" Grid.Row="1" Margin="0,20,0,0"/>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Plexed" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview1Plexed" Source="Assets/Skins/plexed1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Plexed" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview2Plexed" Source="Assets/Skins/plexed2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Plexed" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview3Plexed" Source="Assets/Skins/plexed3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Plexed" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <Image x:Name="imagePreview4Plexed" Source="Assets/Skins/plexed4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
                     </Grid>
                 </PivotItem>
                 <PivotItem Header="Pressure²">

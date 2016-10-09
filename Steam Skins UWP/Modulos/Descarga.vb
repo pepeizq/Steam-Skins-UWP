@@ -53,46 +53,79 @@ Module Descarga
 
     Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
 
-        'Try
+        Try
+            If Directory.Exists(ubicacionSteam.Path + "\" + nombreSkin) Then
+                Directory.Delete(ubicacionSteam.Path + "\" + nombreSkin, True)
+            End If
 
-        If Directory.Exists(ubicacionSteam.Path + "\" + nombreSkin) Then
-            Directory.Delete(ubicacionSteam.Path + "\" + nombreSkin, True)
-        End If
+            Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
+                For Each archivo As ZipArchiveEntry In archivoZip.Entries
+                    If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
+                        Dim nombreArchivo As String = archivo.FullName
 
-        Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
-            For Each archivo As ZipArchiveEntry In archivoZip.Entries
-                If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
-                    Dim nombreArchivo As String = archivo.FullName
-
-                    If nombreArchivo.IndexOf("/") = (nombreArchivo.Length - 1) Then
-                        nombreArchivo = nombreArchivo.Remove(nombreArchivo.Length - 1, 1)
-                    End If
-
-                    If nombreArchivo.Contains("-master") Then
-                        nombreArchivo = nombreArchivo.Replace("-master", Nothing)
-                    End If
-
-                    If Not nombreArchivo.Contains(".") Then
-                        If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                            Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
+                        If nombreArchivo.Contains("-master") Then
+                            nombreArchivo = nombreArchivo.Replace("-master", Nothing)
                         End If
-                    Else
-                        If nombreArchivo.Contains("/.") = True Then
+
+                        '-------------------------------------------------
+
+                        If nombreArchivo.Contains("Metro for Steam") Then
+                            Dim int As Integer = nombreArchivo.IndexOf("Metro for Steam")
+                            Dim temp As String = nombreArchivo.Remove(0, int)
+                            Dim int2 As Integer = temp.IndexOf("/")
+
+                            If Not int2 = -1 Then
+                                nombreArchivo = nombreArchivo.Remove(int, int2 - int)
+                                nombreArchivo = nombreArchivo.Insert(int, nombreSkin)
+                            End If
+                        End If
+
+                        If nombreArchivo.Contains("Minimal Steam UI V3") Then
+                            nombreArchivo = nombreArchivo.Replace("Minimal Steam UI V3", nombreSkin)
+                        End If
+
+                        If nombreArchivo.Contains("Plexed") Then
+                            Dim int As Integer = nombreArchivo.IndexOf("Plexed")
+                            Dim temp As String = nombreArchivo.Remove(0, int)
+                            Dim int2 As Integer = temp.IndexOf("/")
+
+                            If Not int2 = -1 Then
+                                nombreArchivo = nombreArchivo.Remove(int, int2 - int)
+                                nombreArchivo = nombreArchivo.Insert(int, nombreSkin)
+                            End If
+                        End If
+
+                        If nombreArchivo.Contains("Threshold-Skin") Then
+                            nombreArchivo = nombreArchivo.Replace("Threshold-Skin", nombreSkin)
+                        End If
+
+                        '-------------------------------------------------
+
+                        If Not nombreArchivo.Contains(".") Then
                             If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
                                 Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
                             End If
                         Else
-                            If Not File.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                                archivo.ExtractToFile(ubicacionSteam.Path + "\" + nombreArchivo)
+                            If nombreArchivo.Contains("/.") = True Then
+                                If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
+                                    Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
+                                End If
+                            Else
+                                If Not File.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
+                                    If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
+                                        Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreSkin)
+                                    End If
+
+                                    archivo.ExtractToFile(ubicacionSteam.Path + "\" + nombreArchivo)
+                                End If
                             End If
                         End If
                     End If
-                End If
-            Next
-        End Using
-        'Catch ex As Exception
-        '    fallo1 = True
-        'End Try
+                Next
+            End Using
+        Catch ex As Exception
+            fallo1 = True
+        End Try
 
     End Sub
 

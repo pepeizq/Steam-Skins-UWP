@@ -114,6 +114,7 @@
     <Compile Include="MainPage.xaml.vb">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\Descarga.vb" />
     <Compile Include="Modulos\MessageBox.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -137,14 +138,34 @@
     <Content Include="Assets\Skins\air2.PNG" />
     <Content Include="Assets\Skins\air3.PNG" />
     <Content Include="Assets\Skins\air4.PNG" />
+    <Content Include="Assets\Skins\airclassic1.PNG" />
+    <Content Include="Assets\Skins\airclassic2.PNG" />
+    <Content Include="Assets\Skins\airclassic3.PNG" />
+    <Content Include="Assets\Skins\airclassic4.PNG" />
     <Content Include="Assets\Skins\compact1.PNG" />
     <Content Include="Assets\Skins\compact2.PNG" />
     <Content Include="Assets\Skins\compact3.PNG" />
     <Content Include="Assets\Skins\compact4.PNG" />
+    <Content Include="Assets\Skins\invert1.PNG" />
+    <Content Include="Assets\Skins\invert2.PNG" />
+    <Content Include="Assets\Skins\invert3.PNG" />
+    <Content Include="Assets\Skins\invert4.PNG" />
+    <Content Include="Assets\Skins\metro1.PNG" />
+    <Content Include="Assets\Skins\metro2.PNG" />
+    <Content Include="Assets\Skins\metro3.PNG" />
+    <Content Include="Assets\Skins\metro4.PNG" />
+    <Content Include="Assets\Skins\mini1.PNG" />
+    <Content Include="Assets\Skins\mini2.PNG" />
+    <Content Include="Assets\Skins\mini3.PNG" />
+    <Content Include="Assets\Skins\mini4.PNG" />
     <Content Include="Assets\Skins\pixel1.png" />
     <Content Include="Assets\Skins\pixel2.PNG" />
     <Content Include="Assets\Skins\pixel3.png" />
     <Content Include="Assets\Skins\pixel4.png" />
+    <Content Include="Assets\Skins\plexed1.PNG" />
+    <Content Include="Assets\Skins\plexed2.PNG" />
+    <Content Include="Assets\Skins\plexed3.PNG" />
+    <Content Include="Assets\Skins\plexed4.PNG" />
     <Content Include="Assets\Skins\pre1.PNG" />
     <Content Include="Assets\Skins\pre2.PNG" />
     <Content Include="Assets\Skins\pre3.PNG" />

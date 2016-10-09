@@ -1,1 +1,1 @@
-C:\Users\pepei\documents\visual studio 2015\Projects\Steam Skins UWP\Steam Skins UWP\AppPackages\Steam Skins UWP_0.3.0.0\Steam Skins UWP_0.3.0.0_x86_x64.appxbundle
+C:\Users\pepei\documents\visual studio 2015\Projects\Steam Skins UWP\Steam Skins UWP\AppPackages\Steam Skins UWP_0.5.0.0\Steam Skins UWP_0.5.0.0_x86_x64.appxbundle
