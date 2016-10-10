@@ -10,44 +10,63 @@ Module Descarga
     Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
     Dim WithEvents backgroundWorker As BackgroundWorker
     Dim nombreSkin As String
-    Dim botonDescarga, botonRutaSteam As Button
+    Dim botonRutaSteam As Button
+    Dim listaBotonesDescarga As List(Of Button)
+
     Dim textBlockInforme As TextBlock
     Dim progressInforme As ProgressRing
+    Dim listaOpciones As List(Of String)
+    Dim gridOpciones As Grid
+
     Dim ficheroDestino As StorageFile
     Dim ubicacionSteam As StorageFolder
     Dim fallo1 As Boolean = False
 
-    Public Async Sub Iniciar(skin As Skins, steam As StorageFolder, rutaSteam As Button)
+    Public Async Sub Iniciar(skin As Skins, steam As StorageFolder, rutaSteam As Button, listaBotones As List(Of Button))
 
-        botonDescarga = skin.botonDescarga
-        botonDescarga.IsEnabled = False
-
-        botonRutaSteam = rutaSteam
-        botonRutaSteam.IsEnabled = False
-
-        textBlockInforme = skin.textBlockInforme
-        textBlockInforme.Text = recursos.GetString("Descarga Iniciar")
-
-        progressInforme = skin.progressInforme
-        progressInforme.Visibility = Visibility.Visible
-        progressInforme.IsActive = True
-
-        nombreSkin = skin.titulo
-
-        ficheroDestino = Await KnownFolders.PicturesLibrary.CreateFileAsync(nombreSkin, CreationCollisionOption.ReplaceExisting)
-        Dim descargador As BackgroundDownloader = New BackgroundDownloader
-        Dim descarga As DownloadOperation = descargador.CreateDownload(skin.enlace, ficheroDestino)
-
-        Await descarga.StartAsync
-
-        ubicacionSteam = steam
-
-        StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
-        StorageApplicationPermissions.FutureAccessList.Add(ubicacionSteam)
-
-        textBlockInforme.Text = recursos.GetString("Descarga Extraer")
         backgroundWorker = New BackgroundWorker
-        backgroundWorker.RunWorkerAsync()
+
+        If backgroundWorker.IsBusy = False Then
+            listaBotonesDescarga = listaBotones
+
+            For Each boton As Button In listaBotonesDescarga
+                boton.IsEnabled = False
+            Next
+
+            botonRutaSteam = rutaSteam
+            botonRutaSteam.IsEnabled = False
+
+            textBlockInforme = skin.textBlockInforme
+            textBlockInforme.Text = recursos.GetString("Descarga Iniciar")
+
+            progressInforme = skin.progressInforme
+            progressInforme.Visibility = Visibility.Visible
+            progressInforme.IsActive = True
+
+            listaOpciones = skin.opciones
+            gridOpciones = skin.opcionesGrid
+
+            If Not gridOpciones Is Nothing Then
+                gridOpciones.IsHitTestVisible = False
+            End If
+
+            nombreSkin = skin.titulo
+
+            ficheroDestino = Await KnownFolders.PicturesLibrary.CreateFileAsync(nombreSkin, CreationCollisionOption.ReplaceExisting)
+            Dim descargador As BackgroundDownloader = New BackgroundDownloader
+            Dim descarga As DownloadOperation = descargador.CreateDownload(skin.enlace, ficheroDestino)
+
+            Await descarga.StartAsync
+
+            ubicacionSteam = steam
+
+            StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
+            StorageApplicationPermissions.FutureAccessList.Add(ubicacionSteam)
+
+            textBlockInforme.Text = recursos.GetString("Descarga Extraer")
+
+            backgroundWorker.RunWorkerAsync()
+        End If
 
     End Sub
 
@@ -68,6 +87,14 @@ Module Descarga
                         End If
 
                         '-------------------------------------------------
+
+                        If nombreArchivo.Contains("Air-for-Steam") Then
+                            nombreArchivo = nombreArchivo.Replace("Air-for-Steam", nombreSkin)
+                        End If
+
+                        If nombreArchivo.Contains("Compact/Steam/skins/Compact") Then
+                            nombreArchivo = nombreArchivo.Replace("Compact/Steam/skins/Compact", nombreSkin)
+                        End If
 
                         If nombreArchivo.Contains("Metro for Steam") Then
                             Dim int As Integer = nombreArchivo.IndexOf("Metro for Steam")
@@ -131,6 +158,18 @@ Module Descarga
 
     Private Async Sub backgroundWorker_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles backgroundWorker.RunWorkerCompleted
 
+        If nombreSkin = "Air" Then
+            Opciones.Air(listaOpciones, ubicacionSteam.Path)
+        ElseIf nombreSkin = "Air-Classic" Then
+            Opciones.AirClassic(listaOpciones, ubicacionSteam.Path)
+        ElseIf nombreSkin = "Metro" Then
+            Opciones.Metro(listaOpciones, ubicacionSteam.Path)
+        ElseIf nombreSkin = "Minimal" Then
+            Opciones.Minimal(listaOpciones, ubicacionSteam.Path)
+        ElseIf nombreSkin = "Threshold" Then
+            Opciones.Threshold(listaOpciones, ubicacionSteam.Path)
+        End If
+
         Await ficheroDestino.DeleteAsync()
 
         'Try
@@ -167,10 +206,17 @@ Module Descarga
 
         End Try
 
+        If Not gridOpciones Is Nothing Then
+            gridOpciones.IsHitTestVisible = True
+        End If
+
         progressInforme.Visibility = Visibility.Collapsed
         progressInforme.IsActive = False
 
-        botonDescarga.IsEnabled = True
+        For Each boton As Button In listaBotonesDescarga
+            boton.IsEnabled = True
+        Next
+
         botonRutaSteam.IsEnabled = True
 
     End Sub

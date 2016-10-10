@@ -22,17 +22,6 @@
         End Set
     End Property
 
-    Public _botonDescarga As Button
-
-    Public Property botonDescarga As Button
-        Get
-            Return _botonDescarga
-        End Get
-        Set(ByVal value As Button)
-            _botonDescarga = value
-        End Set
-    End Property
-
     Public _textBlockInforme As TextBlock
 
     Public Property textBlockInforme As TextBlock
@@ -55,11 +44,34 @@
         End Set
     End Property
 
-    Public Sub New(ByVal titulo As String, ByVal enlace As Uri, ByVal botonDescarga As Button, ByVal textBlockInforme As TextBlock, ByVal progressInforme As ProgressRing)
+    Public _opciones As List(Of String)
+
+    Public Property opciones As List(Of String)
+        Get
+            Return _opciones
+        End Get
+        Set(ByVal value As List(Of String))
+            _opciones = value
+        End Set
+    End Property
+
+    Public _opcionesGrid As Grid
+
+    Public Property opcionesGrid As Grid
+        Get
+            Return _opcionesGrid
+        End Get
+        Set(ByVal value As Grid)
+            _opcionesGrid = value
+        End Set
+    End Property
+
+    Public Sub New(ByVal titulo As String, ByVal enlace As Uri, ByVal textBlockInforme As TextBlock, ByVal progressInforme As ProgressRing, ByVal opciones As List(Of String), ByVal opcionesGrid As Grid)
         _titulo = titulo
         _enlace = enlace
-        _botonDescarga = botonDescarga
         _textBlockInforme = textBlockInforme
         _progressInforme = progressInforme
+        _opciones = opciones
+        _opcionesGrid = opcionesGrid
     End Sub
 End Class

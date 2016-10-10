@@ -159,6 +159,9 @@
   <data name="Descarga Iniciar" xml:space="preserve">
     <value>Descargando Apariencia</value>
   </data>
+  <data name="Opciones" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
   <data name="Publicidad" xml:space="preserve">
     <value>Publicidad</value>
   </data>

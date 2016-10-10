@@ -9,6 +9,7 @@ Public NotInheritable Class MainPage
     Inherits Page
 
     Dim skinAir, skinAirClassic, skinCompact, skinInvert, skinMetro, skinMinimal, skinPixelVision2, skinPlexed, skinPressure2, skinThreshold As Skins
+    Dim listaBotonesDescarga As List(Of Button)
 
     Private Sub Page_Loading(sender As FrameworkElement, args As Object)
 
@@ -21,6 +22,20 @@ Public NotInheritable Class MainPage
 
         '----------------------------------------------
 
+        listaBotonesDescarga = New List(Of Button)
+        listaBotonesDescarga.Add(buttonDescargaAir)
+        listaBotonesDescarga.Add(buttonDescargaAirClassic)
+        listaBotonesDescarga.Add(buttonDescargaCompact)
+        listaBotonesDescarga.Add(buttonDescargaInvert)
+        listaBotonesDescarga.Add(buttonDescargaMetro)
+        listaBotonesDescarga.Add(buttonDescargaMinimal)
+        listaBotonesDescarga.Add(buttonDescargaPixelVision2)
+        listaBotonesDescarga.Add(buttonDescargaPlexed)
+        listaBotonesDescarga.Add(buttonDescargaPressure2)
+        listaBotonesDescarga.Add(buttonDescargaThreshold)
+
+        '----------------------------------------------
+
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
         buttonRutaSteamTexto.Text = recursos.GetString("Boton Ruta Steam 1")
@@ -29,14 +44,15 @@ Public NotInheritable Class MainPage
         buttonCompartirTexto.Text = recursos.GetString("Boton Compartir")
         buttonContactarTexto.Text = recursos.GetString("Boton Contactar")
         buttonWebTexto.Text = recursos.GetString("Boton Web")
-        textBlockPublicidad.Text = recursos.GetString("Publicidad")
 
         buttonDescargaTextoAir.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsAir.Text = recursos.GetString("Capturas")
+        tbOpcionesAir.Text = recursos.GetString("Opciones")
         textBlockCreadoAir.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoAirClassic.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsAirClassic.Text = recursos.GetString("Capturas")
+        tbOpcionesAirClassic.Text = recursos.GetString("Opciones")
         textBlockCreadoAirClassic.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoCompact.Text = recursos.GetString("Boton Descarga")
@@ -49,10 +65,12 @@ Public NotInheritable Class MainPage
 
         buttonDescargaTextoMetro.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsMetro.Text = recursos.GetString("Capturas")
+        tbOpcionesMetro.Text = recursos.GetString("Opciones")
         textBlockCreadoMetro.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoMinimal.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsMinimal.Text = recursos.GetString("Capturas")
+        tbOpcionesMinimal.Text = recursos.GetString("Opciones")
         textBlockCreadoMinimal.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoPixelVision2.Text = recursos.GetString("Boton Descarga")
@@ -69,6 +87,7 @@ Public NotInheritable Class MainPage
 
         buttonDescargaTextoThreshold.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsThreshold.Text = recursos.GetString("Capturas")
+        tbOpcionesThreshold.Text = recursos.GetString("Opciones")
         textBlockCreadoThreshold.Text = recursos.GetString("Creado Por")
 
         '----------------------------------------------
@@ -154,14 +173,23 @@ Public NotInheritable Class MainPage
 
     Private Async Sub buttonDescargaAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAir.Click
 
-        skinAir = New Skins("Air-for-Steam",
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionTheme As ComboBoxItem = comboBoxOpcionAirTheme.SelectedValue
+        listaOpciones.Add(opcionTheme.Content.ToString)
+
+        Dim opcionColor As ComboBoxItem = comboBoxOpcionAirColor.SelectedValue
+        listaOpciones.Add(opcionColor.Content.ToString)
+
+        skinAir = New Skins("Air",
                                   New Uri("https://github.com/Outsetini/Air-for-Steam/archive/master.zip"),
-                                  buttonDescargaAir,
                                   textBlockInformeAir,
-                                  progressInformeAir)
+                                  progressInformeAir,
+                                  listaOpciones,
+                                  gridOpcionesAir)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAir, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinAir, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -205,14 +233,26 @@ Public NotInheritable Class MainPage
 
     Private Async Sub buttonDescargaAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAirClassic.Click
 
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionColor As ComboBoxItem = comboBoxOpcionAirClassicColor.SelectedValue
+        listaOpciones.Add(opcionColor.Content.ToString)
+
+        Dim opcionGameDetails As ComboBoxItem = comboBoxOpcionAirClassicGamesDetails.SelectedValue
+        listaOpciones.Add(opcionGameDetails.Content.ToString)
+
+        Dim opcionBackground As ComboBoxItem = comboBoxOpcionAirClassicBackground.SelectedValue
+        listaOpciones.Add(opcionBackground.Content.ToString)
+
         skinAirClassic = New Skins("Air-Classic",
                                   New Uri("https://github.com/Outsetini/Air-Classic/archive/master.zip"),
-                                  buttonDescargaAirClassic,
                                   textBlockInformeAirClassic,
-                                  progressInformeAirClassic)
+                                  progressInformeAirClassic,
+                                  listaOpciones,
+                                  gridOpcionesAirClassic)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -258,12 +298,12 @@ Public NotInheritable Class MainPage
 
         skinCompact = New Skins("Compact",
                                   New Uri("https://github.com/badanka/Compact/archive/master.zip"),
-                                  buttonDescargaCompact,
                                   textBlockInformeCompact,
-                                  progressInformeCompact)
+                                  progressInformeCompact,
+                                  Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinCompact, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinCompact, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -320,12 +360,12 @@ Public NotInheritable Class MainPage
 
         skinInvert = New Skins("Invert",
                                   New Uri(temp2),
-                                  buttonDescargaInvert,
                                   textBlockInformeInvert,
-                                  progressInformeInvert)
+                                  progressInformeInvert,
+                                  Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinInvert, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinInvert, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -371,6 +411,11 @@ Public NotInheritable Class MainPage
 
         buttonDescargaMetro.IsEnabled = False
 
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionColor As ComboBoxItem = comboBoxOpcionMetroColor.SelectedValue
+        listaOpciones.Add(opcionColor.Content.ToString)
+
         Dim html As String = Await Decompiladores.HttpClient(New Uri("http://www.metroforsteam.com"))
 
         Dim temp, temp2 As String
@@ -390,12 +435,13 @@ Public NotInheritable Class MainPage
 
         skinMetro = New Skins("Metro",
                                   New Uri(temp2),
-                                  buttonDescargaMetro,
                                   textBlockInformeMetro,
-                                  progressInformeMetro)
+                                  progressInformeMetro,
+                                  listaOpciones,
+                                  gridOpcionesMetro)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMetro, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinMetro, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -447,6 +493,11 @@ Public NotInheritable Class MainPage
 
         buttonDescargaMinimal.IsEnabled = False
 
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionColor As ComboBoxItem = comboBoxOpcionMinimalColor.SelectedValue
+        listaOpciones.Add(opcionColor.Content.ToString)
+
         Dim html As String = Await Decompiladores.HttpClient(New Uri("http://gamebanana.com/guis/download/27756"))
 
         Dim temp, temp2 As String
@@ -464,12 +515,13 @@ Public NotInheritable Class MainPage
 
         skinMinimal = New Skins("Minimal",
                                   New Uri(temp2),
-                                  buttonDescargaMinimal,
                                   textBlockInformeMinimal,
-                                  progressInformeMinimal)
+                                  progressInformeMinimal,
+                                  listaOpciones,
+                                  gridOpcionesMinimal)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMinimal, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinMinimal, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -509,12 +561,12 @@ Public NotInheritable Class MainPage
 
         skinPixelVision2 = New Skins("PixelVision2",
                                   New Uri("https://github.com/somini/Pixelvision2/archive/master.zip"),
-                                  buttonDescargaPixelVision2,
                                   textBlockInformePixelVision2,
-                                  progressInformePixelVision2)
+                                  progressInformePixelVision2,
+                                  Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -571,12 +623,12 @@ Public NotInheritable Class MainPage
 
         skinPlexed = New Skins("Plexed",
                                   New Uri(temp2),
-                                  buttonDescargaPlexed,
                                   textBlockInformePlexed,
-                                  progressInformePlexed)
+                                  progressInformePlexed,
+                                  Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPlexed, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinPlexed, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -616,12 +668,12 @@ Public NotInheritable Class MainPage
 
         skinPressure2 = New Skins("Pressure2",
                                   New Uri("https://github.com/DirtDiglett/Pressure2/archive/master.zip"),
-                                  buttonDescargaPressure2,
                                   textBlockInformePressure2,
-                                  progressInformePressure2)
+                                  progressInformePressure2,
+                                  Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPressure2, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinPressure2, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 
@@ -671,14 +723,20 @@ Public NotInheritable Class MainPage
 
     Private Async Sub buttonDescargaThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaThreshold.Click
 
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionColor As ComboBoxItem = comboBoxOpcionThresholdColor.SelectedValue
+        listaOpciones.Add(opcionColor.Content.ToString)
+
         skinThreshold = New Skins("Threshold",
                                   New Uri("https://github.com/Edgarware/Threshold-Skin/archive/master.zip"),
-                                  buttonDescargaThreshold,
                                   textBlockInformeThreshold,
-                                  progressInformeThreshold)
+                                  progressInformeThreshold,
+                                  listaOpciones,
+                                  gridOpcionesThreshold)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinThreshold, carpetaSteam, buttonRutaSteam)
+        Descarga.Iniciar(skinThreshold, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
 
     End Sub
 

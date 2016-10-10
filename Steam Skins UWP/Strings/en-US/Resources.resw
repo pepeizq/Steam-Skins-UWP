@@ -159,6 +159,9 @@
   <data name="Descarga Iniciar" xml:space="preserve">
     <value>Downloading Skin</value>
   </data>
+  <data name="Opciones" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="Publicidad" xml:space="preserve">
     <value>Ads</value>
   </data>

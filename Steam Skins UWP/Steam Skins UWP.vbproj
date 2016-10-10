@@ -117,6 +117,7 @@
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\Descarga.vb" />
     <Compile Include="Modulos\MessageBox.vb" />
+    <Compile Include="Modulos\Opciones.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>
