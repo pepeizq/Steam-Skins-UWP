@@ -929,9 +929,33 @@
                         <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                             <TextBlock x:Name="tbScreenshotsPressure2" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesPressure2" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesPressure2" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Grid Uninstalled Transparency:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionPressure2GridTransparent" Grid.Column="1" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="Yes" />
+                                    <ComboBoxItem Content="No" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Overlay Background:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionPressure2OverlayBackground" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="Yes" />
+                                    <ComboBoxItem Content="No" />
+                                </ComboBox>
+                            </Grid>
                         </Grid>
 
                         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
@@ -1022,6 +1046,10 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
@@ -1032,6 +1060,16 @@
                                     <ComboBoxItem Content="Orange" />
                                     <ComboBoxItem Content="Purple" />
                                     <ComboBoxItem Content="Red" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Outlines:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionThresholdOutlines" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="No" />
+                                    <ComboBoxItem Content="Yes" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="4" Text="Colored Titlebar:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionThresholdColoredTitlebar" Grid.Column="5" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="No" />
+                                    <ComboBoxItem Content="Yes" />
                                 </ComboBox>
                             </Grid>
                         </Grid>

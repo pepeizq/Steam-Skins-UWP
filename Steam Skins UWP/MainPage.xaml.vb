@@ -83,6 +83,7 @@ Public NotInheritable Class MainPage
 
         buttonDescargaTextoPressure2.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsPressure2.Text = recursos.GetString("Capturas")
+        tbOpcionesPressure2.Text = recursos.GetString("Opciones")
         textBlockCreadoPressure2.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoThreshold.Text = recursos.GetString("Boton Descarga")
@@ -666,11 +667,20 @@ Public NotInheritable Class MainPage
 
     Private Async Sub buttonDescargaPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPressure2.Click
 
+        Dim listaOpciones As New List(Of String)
+
+        Dim opcionGridTransparent As ComboBoxItem = comboBoxOpcionPressure2GridTransparent.SelectedValue
+        listaOpciones.Add(opcionGridTransparent.Content.ToString)
+
+        Dim opcionOverlayBackground As ComboBoxItem = comboBoxOpcionPressure2OverlayBackground.SelectedValue
+        listaOpciones.Add(opcionOverlayBackground.Content.ToString)
+
         skinPressure2 = New Skins("Pressure2",
                                   New Uri("https://github.com/DirtDiglett/Pressure2/archive/master.zip"),
                                   textBlockInformePressure2,
                                   progressInformePressure2,
-                                  Nothing, Nothing)
+                                  listaOpciones,
+                                  gridOpcionesPressure2)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
         Descarga.Iniciar(skinPressure2, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
@@ -727,6 +737,12 @@ Public NotInheritable Class MainPage
 
         Dim opcionColor As ComboBoxItem = comboBoxOpcionThresholdColor.SelectedValue
         listaOpciones.Add(opcionColor.Content.ToString)
+
+        Dim opcionOutlines As ComboBoxItem = comboBoxOpcionThresholdOutlines.SelectedValue
+        listaOpciones.Add(opcionOutlines.Content.ToString)
+
+        Dim opcionTitlebar As ComboBoxItem = comboBoxOpcionThresholdColoredTitlebar.SelectedValue
+        listaOpciones.Add(opcionTitlebar.Content.ToString)
 
         skinThreshold = New Skins("Threshold",
                                   New Uri("https://github.com/Edgarware/Threshold-Skin/archive/master.zip"),

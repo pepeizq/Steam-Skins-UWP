@@ -166,6 +166,8 @@ Module Descarga
             Opciones.Metro(listaOpciones, ubicacionSteam.Path)
         ElseIf nombreSkin = "Minimal" Then
             Opciones.Minimal(listaOpciones, ubicacionSteam.Path)
+        ElseIf nombreSkin = "Pressure2" Then
+            Opciones.Pressure2(listaOpciones, ubicacionSteam.Path)
         ElseIf nombreSkin = "Threshold" Then
             Opciones.Threshold(listaOpciones, ubicacionSteam.Path)
         End If

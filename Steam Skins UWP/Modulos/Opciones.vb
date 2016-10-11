@@ -141,6 +141,38 @@
 
     '-------------------------------------------------------------------------
 
+    Dim WithEvents backgroundWorkerPressure2 As BackgroundWorker
+
+    Public Sub Pressure2(lista As List(Of String), steam As String)
+
+        listaOpciones = lista
+        ubicacionSteam = steam
+
+        backgroundWorkerPressure2 = New BackgroundWorker
+        backgroundWorkerPressure2.RunWorkerAsync()
+
+    End Sub
+
+    Private Sub backgroundWorkerPressure2_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorkerPressure2.DoWork
+
+        Dim contenidoConfig As String = File.ReadAllText(ubicacionSteam + "\Pressure2\config.ini")
+
+        If listaOpciones(0) = "No" Then
+            contenidoConfig = contenidoConfig.Replace("include " + ChrW(34) + "includes/tweaks/grid/transparent.styles", "//include " + ChrW(34) + "includes/tweaks/grid/transparent.styles")
+            contenidoConfig = contenidoConfig.Replace("//include " + ChrW(34) + "includes/tweaks/grid/not-transparent.styles", "include " + ChrW(34) + "includes/tweaks/grid/not-transparent.styles")
+        End If
+
+        If listaOpciones(1) = "No" Then
+            contenidoConfig = contenidoConfig.Replace("include " + ChrW(34) + "includes/tweaks/gamebackgroundoverlay/enable.styles", "//include " + ChrW(34) + "includes/tweaks/gamebackgroundoverlay/enable.styles")
+            contenidoConfig = contenidoConfig.Replace("//include " + ChrW(34) + "includes/tweaks/gamebackgroundoverlay/disable.styles", "include " + ChrW(34) + "includes/tweaks/gamebackgroundoverlay/disable.styles")
+        End If
+
+        File.WriteAllText(ubicacionSteam + "\Pressure2\config.ini", contenidoConfig)
+
+    End Sub
+
+    '-------------------------------------------------------------------------
+
     Dim WithEvents backgroundWorkerThreshold As BackgroundWorker
 
     Public Sub Threshold(lista As List(Of String), steam As String)
@@ -160,6 +192,14 @@
         If Not listaOpciones(0) = Nothing Then
             contenidoConfig = contenidoConfig.Replace("include " + ChrW(34) + "resource/styles/colors/cobalt.styles", "//include " + ChrW(34) + "resource/styles/colors/cobalt.styles")
             contenidoConfig = contenidoConfig.Replace("//include " + ChrW(34) + "resource/styles/colors/" + listaOpciones(0).ToLower + ".styles", "include " + ChrW(34) + "resource/styles/colors/" + listaOpciones(0).ToLower + ".styles")
+        End If
+
+        If listaOpciones(1) = "Yes" Then
+            contenidoConfig = contenidoConfig.Replace("include " + ChrW(34) + "resource/styles/colors/no_outline.styles", "//include " + ChrW(34) + "resource/styles/colors/no_outline.styles")
+        End If
+
+        If listaOpciones(2) = "Yes" Then
+            contenidoConfig = contenidoConfig.Replace("include " + ChrW(34) + "resource/styles/colors/titlebar_black.styles", "//include " + ChrW(34) + "resource/styles/colors/titlebar_black.styles")
         End If
 
         File.WriteAllText(ubicacionSteam + "\Threshold\config.ini", contenidoConfig)
