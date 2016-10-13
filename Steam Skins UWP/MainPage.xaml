@@ -1116,6 +1116,10 @@
                 <WebView x:Name="webViewContact" Source="https://pepeizqapps.com/contact/" />
             </Grid>
 
+            <Grid x:Name="gridWeb" Margin="10" Grid.Row="1" Visibility="Collapsed">
+                <WebView x:Name="webViewWeb" Source="https://pepeizqapps.com/" />
+            </Grid>
+
             <Grid x:Name="gridCaptura" Margin="10" Grid.Row="1" Visibility="Collapsed">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Image x:Name="imageCapturaExpandida" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" />

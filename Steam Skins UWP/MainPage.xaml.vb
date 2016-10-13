@@ -817,8 +817,10 @@ Public NotInheritable Class MainPage
 
     Private Sub buttonContactar_Click(sender As Object, e As RoutedEventArgs) Handles buttonContactar.Click
 
+        gridWeb.Visibility = Visibility.Collapsed
         gridWebContacto.Visibility = Visibility.Visible
         pivotSkins.Visibility = Visibility.Collapsed
+        gridCaptura.Visibility = Visibility.Collapsed
 
         buttonVolver.Visibility = Visibility.Visible
         buttonRutaSteam.Visibility = Visibility.Collapsed
@@ -829,6 +831,7 @@ Public NotInheritable Class MainPage
 
     Private Sub buttonVolver_Click(sender As Object, e As RoutedEventArgs) Handles buttonVolver.Click
 
+        gridWeb.Visibility = Visibility.Collapsed
         gridWebContacto.Visibility = Visibility.Collapsed
         pivotSkins.Visibility = Visibility.Visible
         gridCaptura.Visibility = Visibility.Collapsed
@@ -840,9 +843,15 @@ Public NotInheritable Class MainPage
 
     'WEB-----------------------------------------------------------------------------
 
-    Private Async Sub buttonWeb_Click(sender As Object, e As RoutedEventArgs) Handles buttonWeb.Click
+    Private Sub buttonWeb_Click(sender As Object, e As RoutedEventArgs) Handles buttonWeb.Click
 
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/"))
+        gridWeb.Visibility = Visibility.Visible
+        gridWebContacto.Visibility = Visibility.Collapsed
+        pivotSkins.Visibility = Visibility.Collapsed
+        gridCaptura.Visibility = Visibility.Collapsed
+
+        buttonVolver.Visibility = Visibility.Visible
+        buttonRutaSteam.Visibility = Visibility.Collapsed
 
     End Sub
 
