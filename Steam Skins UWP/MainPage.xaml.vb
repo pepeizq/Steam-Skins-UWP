@@ -1,7 +1,7 @@
-﻿Imports Windows.ApplicationModel.DataTransfer
+﻿Imports Microsoft.Toolkit.Uwp.UI.Controls
+Imports Windows.ApplicationModel.DataTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
-Imports Windows.Storage.Pickers
 Imports Windows.System
 Imports Windows.UI
 
@@ -11,7 +11,7 @@ Public NotInheritable Class MainPage
     Dim skinAir, skinAirClassic, skinCompact, skinInvert, skinMetro, skinMinimal, skinPixelVision2, skinPlexed, skinPressure2, skinThreshold As Skins
     Dim listaBotonesDescarga As List(Of Button)
 
-    Private Sub Page_Loading(sender As FrameworkElement, args As Object)
+    Private Async Sub Page_Loaded(sender As FrameworkElement, args As Object)
 
         Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
 
@@ -38,12 +38,19 @@ Public NotInheritable Class MainPage
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
-        buttonRutaSteamTexto.Text = recursos.GetString("Boton Ruta Steam 1")
+        menuItemSkins.Label = recursos.GetString("Skins")
+        menuItemConfig.Label = recursos.GetString("Boton Configuracion")
+        menuItemVote.Label = recursos.GetString("Boton Votar")
+        menuItemShare.Label = recursos.GetString("Boton Compartir")
+        menuItemContact.Label = recursos.GetString("Boton Contactar")
+        menuItemWeb.Label = recursos.GetString("Boton Web")
+
+        tbConfig.Text = recursos.GetString("Boton Configuracion")
+        tbSteamConfigInstruccionesCliente.Text = recursos.GetString("Texto Steam Config Cliente")
+        buttonSteamConfigPathTexto.Text = recursos.GetString("Boton Añadir")
+        tbSteamConfigPath.Text = recursos.GetString("Texto Steam No Config")
+
         buttonVolverTexto.Text = recursos.GetString("Boton Volver")
-        buttonVotacionesTexto.Text = recursos.GetString("Boton Votar")
-        buttonCompartirTexto.Text = recursos.GetString("Boton Compartir")
-        buttonContactarTexto.Text = recursos.GetString("Boton Contactar")
-        buttonWebTexto.Text = recursos.GetString("Boton Web")
 
         buttonDescargaTextoAir.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsAir.Text = recursos.GetString("Capturas")
@@ -93,84 +100,162 @@ Public NotInheritable Class MainPage
 
         '----------------------------------------------
 
-        ComprobacionRutaSteam()
+        Steam.ArranqueCliente(tbSteamConfigPath, buttonSteamConfigPathTexto, False)
 
-        Dim seleccion As Random = New Random
-        Dim resultadoRandom As Integer = seleccion.Next(0, pivotSkins.Items.Count)
-        pivotSkins.SelectedIndex = resultadoRandom
-
-    End Sub
-
-    'RUTASTEAM-----------------------------------------------------------------------------
-
-    Private Async Sub buttonRutaSteam_Click(sender As Object, e As RoutedEventArgs) Handles buttonRutaSteam.Click
+        Dim carpeta As StorageFolder = Nothing
 
         Try
-            Dim picker As FolderPicker = New FolderPicker()
-
-            picker.FileTypeFilter.Add("*")
-            picker.ViewMode = PickerViewMode.List
-
-            Dim carpeta As StorageFolder = Await picker.PickSingleFolderAsync()
-
-            If carpeta.Path.Contains("skins") Then
-                StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteam", carpeta)
-                ComprobacionRutaSteam()
-            Else
-                Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-                MessageBox.EnseñarMensaje(recursos.GetString("Seleccion Carpeta Fallo 1"))
-            End If
-
+            carpeta = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
         Catch ex As Exception
 
         End Try
 
+        If Not carpeta Is Nothing Then
+            GridVisibilidad(gridSkins)
+            GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
+
+            For Each boton As Button In listaBotonesDescarga
+                boton.IsEnabled = True
+            Next
+        Else
+            GridVisibilidad(gridConfig)
+        End If
+
+        '----------------------------------------------
+
+        Dim coleccion As HamburgerMenuItemCollection = hamburgerMaestro.ItemsSource
+        hamburgerMaestro.ItemsSource = Nothing
+        hamburgerMaestro.ItemsSource = coleccion
+
+        Dim coleccionOpciones As HamburgerMenuItemCollection = hamburgerMaestro.OptionsItemsSource
+        hamburgerMaestro.OptionsItemsSource = Nothing
+        hamburgerMaestro.OptionsItemsSource = coleccionOpciones
+
     End Sub
 
-    Private Async Sub ComprobacionRutaSteam()
+    '-----------------------------------------------------------------------------
 
-        Dim carpetaComprobar As StorageFolder = Nothing
+    Public Sub GridVisibilidad(grid As Grid)
 
-        Try
-            carpetaComprobar = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Catch ex As Exception
+        gridSkins.Visibility = Visibility.Collapsed
+        gridConfig.Visibility = Visibility.Collapsed
+        gridWebContacto.Visibility = Visibility.Collapsed
+        gridWeb.Visibility = Visibility.Collapsed
+        gridCaptura.Visibility = Visibility.Collapsed
 
-        End Try
+        grid.Visibility = Visibility.Visible
 
-        If Not carpetaComprobar Is Nothing Then
-            buttonDescargaAir.IsEnabled = True
-            buttonDescargaAirClassic.IsEnabled = True
-            buttonDescargaCompact.IsEnabled = True
-            buttonDescargaInvert.IsEnabled = True
-            buttonDescargaMetro.IsEnabled = True
-            buttonDescargaMinimal.IsEnabled = True
-            buttonDescargaPixelVision2.IsEnabled = True
-            buttonDescargaPlexed.IsEnabled = True
-            buttonDescargaPressure2.IsEnabled = True
-            buttonDescargaThreshold.IsEnabled = True
+    End Sub
 
-            Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+    Private Sub buttonSteamConfigPath_Click(sender As Object, e As RoutedEventArgs) Handles buttonSteamConfigPath.Click
 
-            buttonRutaSteamTexto.Text = recursos.GetString("Boton Ruta Steam 2")
+        Steam.ArranqueCliente(tbSteamConfigPath, buttonSteamConfigPathTexto, True)
+
+    End Sub
+
+
+    Private Sub hamburgerMaestro_ItemClick(sender As Object, e As ItemClickEventArgs) Handles hamburgerMaestro.ItemClick
+
+        Dim menuItem As HamburgerMenuGlyphItem = TryCast(e.ClickedItem, HamburgerMenuGlyphItem)
+
+        If menuItem.Tag = 1 Then
+            GridVisibilidad(gridSkins)
         End If
 
     End Sub
 
-    'AMPLIARCAPTURA-----------------------------------------------------------------------------
+    Private Async Sub hamburgerMaestro_OptionsItemClick(sender As Object, e As ItemClickEventArgs) Handles hamburgerMaestro.OptionsItemClick
+
+        Dim menuItem As HamburgerMenuGlyphItem = TryCast(e.ClickedItem, HamburgerMenuGlyphItem)
+
+        If menuItem.Tag = 99 Then
+            GridVisibilidad(gridConfig)
+        ElseIf menuItem.Tag = 100 Then
+            Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
+        ElseIf menuItem.Tag = 101 Then
+            Dim datos As DataTransferManager = DataTransferManager.GetForCurrentView()
+            AddHandler datos.DataRequested, AddressOf MainPage_DataRequested
+            DataTransferManager.ShowShareUI()
+        ElseIf menuItem.Tag = 102 Then
+            GridVisibilidad(gridWebContacto)
+        ElseIf menuItem.Tag = 103 Then
+            GridVisibilidad(gridWeb)
+        End If
+
+    End Sub
+
+    Private Sub MainPage_DataRequested(sender As DataTransferManager, e As DataRequestedEventArgs)
+
+        Dim request As DataRequest = e.Request
+        request.Data.SetText("Steam Skins")
+        request.Data.Properties.Title = "Steam Skins"
+        request.Data.Properties.Description = "Change the skin of Steam"
+
+    End Sub
+
+    '-----------------------------------------------------------------------------
 
     Private Sub AmpliarCaptura(imagen As Image)
 
-        pivotSkins.Visibility = Visibility.Collapsed
-        gridCaptura.Visibility = Visibility.Visible
-
-        buttonVolver.Visibility = Visibility.Visible
-        buttonRutaSteam.Visibility = Visibility.Collapsed
-
+        GridVisibilidad(gridCaptura)
         imageCapturaExpandida.Source = imagen.Source
 
     End Sub
 
+    Private Sub buttonVolver_Click(sender As Object, e As RoutedEventArgs) Handles buttonVolver.Click
+
+        GridVisibilidad(gridSkins)
+
+    End Sub
+
+    Private Sub GridSkinVisibilidad(grid As Grid, button As Button)
+
+        buttonSeleccionAir.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionAir.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionAirClassic.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionAirClassic.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionCompact.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionCompact.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionInvert.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionInvert.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionMetro.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionMetro.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionMinimal.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionMinimal.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionPixelVision2.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionPixelVision2.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionPlexed.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionPlexed.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionPressure2.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionPressure2.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        buttonSeleccionThreshold.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        buttonSeleccionThreshold.BorderBrush = New SolidColorBrush(Colors.Transparent)
+
+        button.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#bfbfbf"))
+        button.BorderBrush = New SolidColorBrush(Colors.Black)
+
+        gridSkinAir.Visibility = Visibility.Collapsed
+        gridSkinAirClassic.Visibility = Visibility.Collapsed
+        gridSkinCompact.Visibility = Visibility.Collapsed
+        gridSkinInvert.Visibility = Visibility.Collapsed
+        gridSkinMetro.Visibility = Visibility.Collapsed
+        gridSkinMinimal.Visibility = Visibility.Collapsed
+        gridSkinPixelVision2.Visibility = Visibility.Collapsed
+        gridSkinPlexed.Visibility = Visibility.Collapsed
+        gridSkinPressure2.Visibility = Visibility.Collapsed
+        gridSkinThreshold.Visibility = Visibility.Collapsed
+
+        grid.Visibility = Visibility.Visible
+
+    End Sub
+
     'SKINAIR-----------------------------------------------------------------------------
+
+    Private Sub buttonSeleccionAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionAir.Click
+
+        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
+
+    End Sub
 
     Private Async Sub buttonDescargaAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAir.Click
 
@@ -190,7 +275,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesAir)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAir, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinAir, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -232,6 +317,12 @@ Public NotInheritable Class MainPage
 
     'SKINAIRCLASSIC-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionAirClassic.Click
+
+        GridSkinVisibilidad(gridSkinAirClassic, buttonSeleccionAirClassic)
+
+    End Sub
+
     Private Async Sub buttonDescargaAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAirClassic.Click
 
         Dim listaOpciones As New List(Of String)
@@ -253,7 +344,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesAirClassic)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -295,6 +386,12 @@ Public NotInheritable Class MainPage
 
     'SKINCOMPACT-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionCompact_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionCompact.Click
+
+        GridSkinVisibilidad(gridSkinCompact, buttonSeleccionCompact)
+
+    End Sub
+
     Private Async Sub buttonDescargaCompact_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaCompact.Click
 
         skinCompact = New Skins("Compact",
@@ -304,7 +401,7 @@ Public NotInheritable Class MainPage
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinCompact, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinCompact, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -340,6 +437,12 @@ Public NotInheritable Class MainPage
 
     'SKININVERT-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionInvert_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionInvert.Click
+
+        GridSkinVisibilidad(gridSkinInvert, buttonSeleccionInvert)
+
+    End Sub
+
     Private Async Sub buttonDescargaInvert_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaInvert.Click
 
         buttonDescargaInvert.IsEnabled = False
@@ -366,7 +469,7 @@ Public NotInheritable Class MainPage
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinInvert, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinInvert, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -408,6 +511,12 @@ Public NotInheritable Class MainPage
 
     'SKINMETRO-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionMetro_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMetro.Click
+
+        GridSkinVisibilidad(gridSkinMetro, buttonSeleccionMetro)
+
+    End Sub
+
     Private Async Sub buttonDescargaMetro_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaMetro.Click
 
         buttonDescargaMetro.IsEnabled = False
@@ -442,7 +551,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesMetro)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMetro, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinMetro, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -490,6 +599,12 @@ Public NotInheritable Class MainPage
 
     'SKINMINIMAL-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionMinimal_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMinimal.Click
+
+        GridSkinVisibilidad(gridSkinMinimal, buttonSeleccionMinimal)
+
+    End Sub
+
     Private Async Sub buttonDescargaMinimal_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaMinimal.Click
 
         buttonDescargaMinimal.IsEnabled = False
@@ -522,7 +637,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesMinimal)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMinimal, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinMinimal, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -558,6 +673,12 @@ Public NotInheritable Class MainPage
 
     'SKINPIXELVISION2-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPixelVision2.Click
+
+        GridSkinVisibilidad(gridSkinPixelVision2, buttonSeleccionPixelVision2)
+
+    End Sub
+
     Private Async Sub buttonDescargaPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPixelVision2.Click
 
         skinPixelVision2 = New Skins("PixelVision2",
@@ -567,7 +688,7 @@ Public NotInheritable Class MainPage
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -603,6 +724,12 @@ Public NotInheritable Class MainPage
 
     'SKINPLEXED-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPlexed.Click
+
+        GridSkinVisibilidad(gridSkinPlexed, buttonSeleccionPlexed)
+
+    End Sub
+
     Private Async Sub buttonDescargaPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPlexed.Click
 
         buttonDescargaPlexed.IsEnabled = False
@@ -629,7 +756,7 @@ Public NotInheritable Class MainPage
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPlexed, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinPlexed, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -665,6 +792,12 @@ Public NotInheritable Class MainPage
 
     'SKINPRESSURE2-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPressure2.Click
+
+        GridSkinVisibilidad(gridSkinPressure2, buttonSeleccionPressure2)
+
+    End Sub
+
     Private Async Sub buttonDescargaPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPressure2.Click
 
         Dim listaOpciones As New List(Of String)
@@ -683,7 +816,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesPressure2)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPressure2, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinPressure2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -731,6 +864,12 @@ Public NotInheritable Class MainPage
 
     'SKINTHRESHOLD-----------------------------------------------------------------------------
 
+    Private Sub buttonSeleccionThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionThreshold.Click
+
+        GridSkinVisibilidad(gridSkinThreshold, buttonSeleccionThreshold)
+
+    End Sub
+
     Private Async Sub buttonDescargaThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaThreshold.Click
 
         Dim listaOpciones As New List(Of String)
@@ -752,7 +891,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesThreshold)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinThreshold, carpetaSteam, buttonRutaSteam, listaBotonesDescarga)
+        Descarga.Iniciar(skinThreshold, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -786,74 +925,6 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    'VOTAR-----------------------------------------------------------------------------
-
-    Private Async Sub buttonVotaciones_Click(sender As Object, e As RoutedEventArgs) Handles buttonVotaciones.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
-
-    End Sub
-
-    'COMPARTIR-----------------------------------------------------------------------------
-
-    Private Sub buttonCompartir_Click(sender As Object, e As RoutedEventArgs) Handles buttonCompartir.Click
-
-        Dim datos As DataTransferManager = DataTransferManager.GetForCurrentView()
-        AddHandler datos.DataRequested, AddressOf MainPage_DataRequested
-        DataTransferManager.ShowShareUI()
-
-    End Sub
-
-    Private Sub MainPage_DataRequested(sender As DataTransferManager, e As DataRequestedEventArgs)
-
-        Dim request As DataRequest = e.Request
-        request.Data.SetText("Steam Skins")
-        request.Data.Properties.Title = "Steam Skins"
-        request.Data.Properties.Description = "Change the skin of Steam"
-
-    End Sub
-
-    'CONTACTAR-----------------------------------------------------------------------------
-
-    Private Sub buttonContactar_Click(sender As Object, e As RoutedEventArgs) Handles buttonContactar.Click
-
-        gridWeb.Visibility = Visibility.Collapsed
-        gridWebContacto.Visibility = Visibility.Visible
-        pivotSkins.Visibility = Visibility.Collapsed
-        gridCaptura.Visibility = Visibility.Collapsed
-
-        buttonVolver.Visibility = Visibility.Visible
-        buttonRutaSteam.Visibility = Visibility.Collapsed
-
-    End Sub
-
-    'VOLVER-----------------------------------------------------------------------------
-
-    Private Sub buttonVolver_Click(sender As Object, e As RoutedEventArgs) Handles buttonVolver.Click
-
-        gridWeb.Visibility = Visibility.Collapsed
-        gridWebContacto.Visibility = Visibility.Collapsed
-        pivotSkins.Visibility = Visibility.Visible
-        gridCaptura.Visibility = Visibility.Collapsed
-
-        buttonVolver.Visibility = Visibility.Collapsed
-        buttonRutaSteam.Visibility = Visibility.Visible
-
-    End Sub
-
-    'WEB-----------------------------------------------------------------------------
-
-    Private Sub buttonWeb_Click(sender As Object, e As RoutedEventArgs) Handles buttonWeb.Click
-
-        gridWeb.Visibility = Visibility.Visible
-        gridWebContacto.Visibility = Visibility.Collapsed
-        pivotSkins.Visibility = Visibility.Collapsed
-        gridCaptura.Visibility = Visibility.Collapsed
-
-        buttonVolver.Visibility = Visibility.Visible
-        buttonRutaSteam.Visibility = Visibility.Collapsed
-
-    End Sub
 
 
 End Class

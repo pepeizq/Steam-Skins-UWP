@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Steam Skins UWP_StoreKey.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>41CC99C4B08FEA224F625C167EB51A5E3E7E5F18</PackageCertificateThumbprint>
@@ -116,8 +116,9 @@
     </Compile>
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\Descarga.vb" />
-    <Compile Include="Modulos\MessageBox.vb" />
+    <Compile Include="Modulos\Notificaciones.vb" />
     <Compile Include="Modulos\Opciones.vb" />
+    <Compile Include="Modulos\Steam.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>

@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Boton Añadir" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Boton Cambiar" xml:space="preserve">
+    <value>Change</value>
+  </data>
   <data name="Boton Compartir" xml:space="preserve">
     <value>Share</value>
+  </data>
+  <data name="Boton Configuracion" xml:space="preserve">
+    <value>Configuration</value>
   </data>
   <data name="Boton Contactar" xml:space="preserve">
     <value>Contact</value>
@@ -162,10 +171,13 @@
   <data name="Opciones" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="Publicidad" xml:space="preserve">
-    <value>Ads</value>
+  <data name="Skins" xml:space="preserve">
+    <value>Skins</value>
   </data>
-  <data name="Seleccion Carpeta Fallo 1" xml:space="preserve">
-    <value>Select the subfolder skins from Steam</value>
+  <data name="Texto Steam Config Cliente" xml:space="preserve">
+    <value>Add the folder where Steam is installed, example: C:\Steam</value>
+  </data>
+  <data name="Texto Steam No Config" xml:space="preserve">
+    <value>No folder added</value>
   </data>
 </root>

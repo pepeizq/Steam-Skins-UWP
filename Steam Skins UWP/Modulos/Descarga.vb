@@ -1,9 +1,7 @@
 ﻿Imports System.IO.Compression
-Imports Windows.Data.Xml.Dom
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
-Imports Windows.UI.Notifications
 
 Module Descarga
 
@@ -58,7 +56,11 @@ Module Descarga
 
             Await descarga.StartAsync
 
-            ubicacionSteam = steam
+            ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\skins")
+
+            If ubicacionSteam Is Nothing Then
+                ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\Skins")
+            End If
 
             StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
             StorageApplicationPermissions.FutureAccessList.Add(ubicacionSteam)
@@ -186,27 +188,7 @@ Module Descarga
             textBlockInforme.Text = recursos.GetString("Descarga Fallo 1")
         End If
 
-        Try
-            Dim notificador As ToastNotifier = ToastNotificationManager.CreateToastNotifier()
-            Dim xml As XmlDocument = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText02)
-            Dim nodosTexto As XmlNodeList = xml.GetElementsByTagName("text")
-
-            nodosTexto.Item(0).AppendChild(xml.CreateTextNode(nombreSkin))
-            nodosTexto.Item(1).AppendChild(xml.CreateTextNode(textBlockInforme.Text))
-
-            Dim nodosImagen As XmlNodeList = xml.GetElementsByTagName("image")
-            nodosImagen.Item(0).Attributes.GetNamedItem("src").NodeValue = "Assets/Square44x44Logo.scale-400.png"
-
-            Dim tostadaNodo As IXmlNode = xml.SelectSingleNode("/toast")
-            Dim audio As XmlElement = xml.CreateElement("audio")
-            audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS")
-
-            Dim tostada As ToastNotification = New ToastNotification(xml)
-            tostada.ExpirationTime = DateTime.Now.AddSeconds(4)
-            notificador.Show(tostada)
-        Catch ex As Exception
-
-        End Try
+        Toast("Steam Skins", textBlockInforme.Text)
 
         If Not gridOpciones Is Nothing Then
             gridOpciones.IsHitTestVisible = True
