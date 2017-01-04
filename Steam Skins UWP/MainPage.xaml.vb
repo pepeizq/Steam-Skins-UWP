@@ -100,7 +100,7 @@ Public NotInheritable Class MainPage
 
         '----------------------------------------------
 
-        Steam.ArranqueCliente(tbSteamConfigPath, buttonSteamConfigPathTexto, False)
+        Detector.Steam(tbSteamConfigPath, buttonSteamConfigPathTexto, False)
 
         Dim carpeta As StorageFolder = Nothing
 
@@ -147,9 +147,28 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    Private Sub buttonSteamConfigPath_Click(sender As Object, e As RoutedEventArgs) Handles buttonSteamConfigPath.Click
+    Private Async Sub buttonSteamConfigPath_Click(sender As Object, e As RoutedEventArgs) Handles buttonSteamConfigPath.Click
 
-        Steam.ArranqueCliente(tbSteamConfigPath, buttonSteamConfigPathTexto, True)
+        Detector.Steam(tbSteamConfigPath, buttonSteamConfigPathTexto, True)
+
+        Dim carpeta As StorageFolder = Nothing
+
+        Try
+            carpeta = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
+        Catch ex As Exception
+
+        End Try
+
+        If Not carpeta Is Nothing Then
+            GridVisibilidad(gridSkins)
+            GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
+
+            For Each boton As Button In listaBotonesDescarga
+                boton.IsEnabled = True
+            Next
+        Else
+            GridVisibilidad(gridConfig)
+        End If
 
     End Sub
 
@@ -160,6 +179,7 @@ Public NotInheritable Class MainPage
 
         If menuItem.Tag = 1 Then
             GridVisibilidad(gridSkins)
+            GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
         End If
 
     End Sub
@@ -195,7 +215,7 @@ Public NotInheritable Class MainPage
 
     '-----------------------------------------------------------------------------
 
-    Private Sub AmpliarCaptura(imagen As Image)
+    Private Sub AmpliarCaptura(imagen As ImageEx)
 
         GridVisibilidad(gridCaptura)
         imageCapturaExpandida.Source = imagen.Source

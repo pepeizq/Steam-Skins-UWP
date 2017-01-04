@@ -118,7 +118,7 @@
     <Compile Include="Modulos\Descarga.vb" />
     <Compile Include="Modulos\Notificaciones.vb" />
     <Compile Include="Modulos\Opciones.vb" />
-    <Compile Include="Modulos\Steam.vb" />
+    <Compile Include="Modulos\Detector.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>

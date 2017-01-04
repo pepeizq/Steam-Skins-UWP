@@ -2,9 +2,9 @@
 Imports Windows.Storage.AccessCache
 Imports Windows.Storage.Pickers
 
-Module Steam
+Module Detector
 
-    Public Async Sub ArranqueCliente(tbConfigPath As TextBlock, buttonConfigPath As TextBlock, picker As Boolean)
+    Public Async Sub Steam(tbConfigPath As TextBlock, buttonConfigPath As TextBlock, picker As Boolean)
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
         Dim carpeta As StorageFolder = Nothing

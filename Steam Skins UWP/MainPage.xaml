@@ -16,7 +16,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Column="0" Margin="4" Source="{Binding Glyph}" Stretch="UniformToFill" />
+                <controls:ImageEx Grid.Column="0" Margin="10" Source="{Binding Glyph}" Stretch="UniformToFill" />
                 <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="16" Text="{x:Bind Label}" Margin="10,0,0,0" />
             </Grid>
         </DataTemplate>
@@ -116,7 +116,7 @@
                                 </Button>
                                 <Button x:Name="buttonPatreonAir" Grid.Column="6" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Patreon"/>
                                     </StackPanel>
                                 </Button>
@@ -178,25 +178,25 @@
 
                                     <Button x:Name="buttonImagePreview1Air" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Air" Source="Assets/Skins/air1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Air" Source="Assets/Skins/air1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Air" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Air" Source="Assets/Skins/air2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Air" Source="Assets/Skins/air2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Air" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Air" Source="Assets/Skins/air3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Air" Source="Assets/Skins/air3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Air" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Air" Source="Assets/Skins/air4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Air" Source="Assets/Skins/air4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -238,7 +238,7 @@
                                 </Button>
                                 <Button x:Name="buttonPatreonAirClassic" Grid.Column="6" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Patreon"/>
                                     </StackPanel>
                                 </Button>
@@ -307,25 +307,25 @@
 
                                     <Button x:Name="buttonImagePreview1AirClassic" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1AirClassic" Source="Assets/Skins/airclassic1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1AirClassic" Source="Assets/Skins/airclassic1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2AirClassic" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2AirClassic" Source="Assets/Skins/airclassic2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2AirClassic" Source="Assets/Skins/airclassic2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3AirClassic" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3AirClassic" Source="Assets/Skins/airclassic3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3AirClassic" Source="Assets/Skins/airclassic3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4AirClassic" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4AirClassic" Source="Assets/Skins/airclassic4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4AirClassic" Source="Assets/Skins/airclassic4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -385,25 +385,25 @@
 
                                     <Button x:Name="buttonImagePreview1Compact" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Compact" Source="Assets/Skins/compact1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Compact" Source="Assets/Skins/compact1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Compact" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Compact" Source="Assets/Skins/compact2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Compact" Source="Assets/Skins/compact2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Compact" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Compact" Source="Assets/Skins/compact3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Compact" Source="Assets/Skins/compact3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Compact" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Compact" Source="Assets/Skins/compact4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Compact" Source="Assets/Skins/compact4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -445,7 +445,7 @@
                                 </Button>
                                 <Button x:Name="buttonPaypalInvert" Grid.Column="6" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Paypal"/>
                                     </StackPanel>
                                 </Button>
@@ -470,25 +470,25 @@
 
                                     <Button x:Name="buttonImagePreview1Invert" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Invert" Source="Assets/Skins/invert1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Invert" Source="Assets/Skins/invert1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Invert" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Invert" Source="Assets/Skins/invert2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Invert" Source="Assets/Skins/invert2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Invert" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Invert" Source="Assets/Skins/invert3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Invert" Source="Assets/Skins/invert3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Invert" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Invert" Source="Assets/Skins/invert4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Invert" Source="Assets/Skins/invert4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -531,13 +531,13 @@
                                 </Button>
                                 <Button x:Name="buttonPaypalMetro" Grid.Column="6" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Paypal"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="buttonPatreonMetro" Grid.Column="7" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Patreon"/>
                                     </StackPanel>
                                 </Button>
@@ -587,25 +587,25 @@
 
                                     <Button x:Name="buttonImagePreview1Metro" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Metro" Source="Assets/Skins/metro1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Metro" Source="Assets/Skins/metro1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Metro" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Metro" Source="Assets/Skins/metro2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Metro" Source="Assets/Skins/metro2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Metro" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Metro" Source="Assets/Skins/metro3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Metro" Source="Assets/Skins/metro3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Metro" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Metro" Source="Assets/Skins/metro4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Metro" Source="Assets/Skins/metro4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -684,25 +684,25 @@
 
                                     <Button x:Name="buttonImagePreview1Minimal" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Minimal" Source="Assets/Skins/mini1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Minimal" Source="Assets/Skins/mini1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Minimal" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Minimal" Source="Assets/Skins/mini2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Minimal" Source="Assets/Skins/mini2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Minimal" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Minimal" Source="Assets/Skins/mini3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Minimal" Source="Assets/Skins/mini3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Minimal" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Minimal" Source="Assets/Skins/mini4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Minimal" Source="Assets/Skins/mini4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -764,25 +764,25 @@
 
                                     <Button x:Name="buttonImagePreview1PixelVision2" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1PixelVision2" Source="Assets/Skins/pixel1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1PixelVision2" Source="Assets/Skins/pixel1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2PixelVision2" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2PixelVision2" Source="Assets/Skins/pixel2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2PixelVision2" Source="Assets/Skins/pixel2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3PixelVision2" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3PixelVision2" Source="Assets/Skins/pixel3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3PixelVision2" Source="Assets/Skins/pixel3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4PixelVision2" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4PixelVision2" Source="Assets/Skins/pixel4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4PixelVision2" Source="Assets/Skins/pixel4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -842,25 +842,25 @@
 
                                     <Button x:Name="buttonImagePreview1Plexed" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Plexed" Source="Assets/Skins/plexed1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Plexed" Source="Assets/Skins/plexed1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Plexed" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Plexed" Source="Assets/Skins/plexed2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Plexed" Source="Assets/Skins/plexed2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Plexed" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Plexed" Source="Assets/Skins/plexed3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Plexed" Source="Assets/Skins/plexed3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Plexed" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Plexed" Source="Assets/Skins/plexed4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Plexed" Source="Assets/Skins/plexed4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -903,13 +903,13 @@
                                 </Button>
                                 <Button x:Name="buttonPaypalPressure2" Grid.Column="6" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Paypal"/>
                                     </StackPanel>
                                 </Button>
                                 <Button x:Name="buttonPatreonPressure2" Grid.Column="7" Padding="10" Background="Transparent">
                                     <StackPanel Orientation="Horizontal" >
-                                        <Image Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
                                         <TextBlock Text="Patreon"/>
                                     </StackPanel>
                                 </Button>
@@ -958,25 +958,25 @@
 
                                     <Button x:Name="buttonImagePreview1Pressure2" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Pressure2" Source="Assets/Skins/pre1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Pressure2" Source="Assets/Skins/pre1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Pressure2" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Pressure2" Source="Assets/Skins/pre2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Pressure2" Source="Assets/Skins/pre2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Pressure2" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Pressure2" Source="Assets/Skins/pre3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Pressure2" Source="Assets/Skins/pre3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Pressure2" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Pressure2" Source="Assets/Skins/pre4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Pressure2" Source="Assets/Skins/pre4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
@@ -1072,31 +1072,30 @@
 
                                     <Button x:Name="buttonImagePreview1Threshold" Grid.Column="0" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview1Threshold" Source="Assets/Skins/thr1.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview1Threshold" Source="Assets/Skins/thr1.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview2Threshold" Grid.Column="1" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview2Threshold" Source="Assets/Skins/thr2.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview2Threshold" Source="Assets/Skins/thr2.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview3Threshold" Grid.Column="2" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview3Threshold" Source="Assets/Skins/thr3.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview3Threshold" Source="Assets/Skins/thr3.PNG" />
                                         </Button.Content>
                                     </Button>
 
                                     <Button x:Name="buttonImagePreview4Threshold" Grid.Column="3" Background="Transparent" Padding="0">
                                         <Button.Content>
-                                            <Image x:Name="imagePreview4Threshold" Source="Assets/Skins/thr4.PNG" />
+                                            <controls:ImageEx x:Name="imagePreview4Threshold" Source="Assets/Skins/thr4.PNG" />
                                         </Button.Content>
                                     </Button>
                                 </Grid>
                             </ScrollViewer>
                         </Grid>
-
                     </Grid>
                     
                     <Grid x:Name="gridConfig" Visibility="Collapsed">
