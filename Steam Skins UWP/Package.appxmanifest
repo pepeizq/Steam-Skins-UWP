@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="0.10.2.0" />
+  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="0.11.0.0" />
   <mp:PhoneIdentity PhoneProductId="d6d1ec95-7026-4623-a3b4-f582b1899f03" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Steam Skins</DisplayName>
     <PublisherDisplayName>pepeizq</PublisherDisplayName>
-    <Logo>Assets\NewStoreLogo.png</Logo>
+    <Logo>assets\Store\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
@@ -15,14 +15,16 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Steam_Skins_UWP.App">
-      <uap:VisualElements DisplayName="Steam Skins" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="https://pepeizqapps.com" BackgroundColor="#00bebe">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" ShortName="Steam Skins">
+      <uap:VisualElements DisplayName="Steam Skins" Square150x150Logo="assets\Medium\Medium150x150Logo.png" Square44x44Logo="assets\AppList\AppList.png" Description="https://pepeizqapps.com" BackgroundColor="darkCyan">
+        <uap:DefaultTile Wide310x150Logo="assets\Wide\Wide310x150Logo.png" Square310x310Logo="assets\Large\Large310x310Logo.png" Square71x71Logo="assets\Small\Small71x71Logo.png" ShortName="Steam Skins">
           <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#00bebe" />
+        <uap:SplashScreen Image="assets\SplashScreen\SplashScreen.png" BackgroundColor="darkCyan" />
+        <uap:LockScreen BadgeLogo="assets\Badge\Badge.png" Notification="badge" />
       </uap:VisualElements>
     </Application>
   </Applications>
