@@ -50,20 +50,22 @@ Module Descarga
 
             nombreSkin = skin.titulo
 
-            ficheroDestino = Await KnownFolders.PicturesLibrary.CreateFileAsync(nombreSkin, CreationCollisionOption.ReplaceExisting)
-            Dim descargador As BackgroundDownloader = New BackgroundDownloader
-            Dim descarga As DownloadOperation = descargador.CreateDownload(skin.enlace, ficheroDestino)
-
-            Await descarga.StartAsync
-
             ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\skins")
 
             If ubicacionSteam Is Nothing Then
                 ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\Skins")
             End If
 
-            StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
             StorageApplicationPermissions.FutureAccessList.Add(ubicacionSteam)
+
+            ficheroDestino = Await steam.CreateFileAsync(nombreSkin, CreationCollisionOption.ReplaceExisting)
+
+            StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
+
+            Dim descargador As BackgroundDownloader = New BackgroundDownloader
+            Dim descarga As DownloadOperation = descargador.CreateDownload(skin.enlace, ficheroDestino)
+
+            Await descarga.StartAsync
 
             textBlockInforme.Text = recursos.GetString("Descarga Extraer")
 
