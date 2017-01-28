@@ -38,12 +38,14 @@ Public NotInheritable Class MainPage
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
-        menuItemSkins.Label = recursos.GetString("Skins")
-        menuItemConfig.Label = recursos.GetString("Boton Configuracion")
-        menuItemVote.Label = recursos.GetString("Boton Votar")
-        menuItemShare.Label = recursos.GetString("Boton Compartir")
-        menuItemContact.Label = recursos.GetString("Boton Contactar")
-        menuItemWeb.Label = recursos.GetString("Boton Web")
+        botonPrincipal.Label = recursos.GetString("Skins")
+        botonConfig.Label = recursos.GetString("Boton Configuracion")
+        botonVotar.Label = recursos.GetString("Boton Votar")
+        botonCompartir.Label = recursos.GetString("Boton Compartir")
+        botonContacto.Label = recursos.GetString("Boton Contactar")
+        botonMasApps.Label = recursos.GetString("Boton Web")
+
+        commadBarTop.DefaultLabelPosition = CommandBarDefaultLabelPosition.Right
 
         tbConfig.Text = recursos.GetString("Boton Configuracion")
         tbSteamConfigInstruccionesCliente.Text = recursos.GetString("Texto Steam Config Cliente")
@@ -121,16 +123,6 @@ Public NotInheritable Class MainPage
             GridVisibilidad(gridConfig)
         End If
 
-        '----------------------------------------------
-
-        Dim coleccion As HamburgerMenuItemCollection = hamburgerMaestro.ItemsSource
-        hamburgerMaestro.ItemsSource = Nothing
-        hamburgerMaestro.ItemsSource = coleccion
-
-        Dim coleccionOpciones As HamburgerMenuItemCollection = hamburgerMaestro.OptionsItemsSource
-        hamburgerMaestro.OptionsItemsSource = Nothing
-        hamburgerMaestro.OptionsItemsSource = coleccionOpciones
-
     End Sub
 
     '-----------------------------------------------------------------------------
@@ -172,46 +164,54 @@ Public NotInheritable Class MainPage
 
     End Sub
 
+    Private Sub botonPrincipal_Click(sender As Object, e As RoutedEventArgs) Handles botonPrincipal.Click
 
-    Private Sub hamburgerMaestro_ItemClick(sender As Object, e As ItemClickEventArgs) Handles hamburgerMaestro.ItemClick
-
-        Dim menuItem As HamburgerMenuGlyphItem = TryCast(e.ClickedItem, HamburgerMenuGlyphItem)
-
-        If menuItem.Tag = 1 Then
-            GridVisibilidad(gridSkins)
-            GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
-        End If
+        GridVisibilidad(gridSkins)
+        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
 
     End Sub
 
-    Private Async Sub hamburgerMaestro_OptionsItemClick(sender As Object, e As ItemClickEventArgs) Handles hamburgerMaestro.OptionsItemClick
+    Private Sub botonConfig_Click(sender As Object, e As RoutedEventArgs) Handles botonConfig.Click
 
-        Dim menuItem As HamburgerMenuGlyphItem = TryCast(e.ClickedItem, HamburgerMenuGlyphItem)
+        GridVisibilidad(gridConfig)
 
-        If menuItem.Tag = 99 Then
-            GridVisibilidad(gridConfig)
-        ElseIf menuItem.Tag = 100 Then
-            Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
-        ElseIf menuItem.Tag = 101 Then
-            Dim datos As DataTransferManager = DataTransferManager.GetForCurrentView()
-            AddHandler datos.DataRequested, AddressOf MainPage_DataRequested
-            DataTransferManager.ShowShareUI()
-        ElseIf menuItem.Tag = 102 Then
-            GridVisibilidad(gridWebContacto)
-        ElseIf menuItem.Tag = 103 Then
-            GridVisibilidad(gridWeb)
-        End If
+    End Sub
+
+    Private Async Sub botonVotar_Click(sender As Object, e As RoutedEventArgs) Handles botonVotar.Click
+
+        Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
+
+    End Sub
+
+    Private Sub botonCompartir_Click(sender As Object, e As RoutedEventArgs) Handles botonCompartir.Click
+
+        Dim datos As DataTransferManager = DataTransferManager.GetForCurrentView()
+        AddHandler datos.DataRequested, AddressOf MainPage_DataRequested
+        DataTransferManager.ShowShareUI()
 
     End Sub
 
     Private Sub MainPage_DataRequested(sender As DataTransferManager, e As DataRequestedEventArgs)
 
         Dim request As DataRequest = e.Request
-        request.Data.SetText("Steam Skins")
+        request.Data.SetText("Download: https://www.microsoft.com/store/apps/9nblggh55b7f")
         request.Data.Properties.Title = "Steam Skins"
         request.Data.Properties.Description = "Change the skin of Steam"
 
     End Sub
+
+    Private Sub botonContacto_Click(sender As Object, e As RoutedEventArgs) Handles botonContacto.Click
+
+        GridVisibilidad(gridWebContacto)
+
+    End Sub
+
+    Private Sub botonMasApps_Click(sender As Object, e As RoutedEventArgs) Handles botonMasApps.Click
+
+        GridVisibilidad(gridWeb)
+
+    End Sub
+
 
     '-----------------------------------------------------------------------------
 
