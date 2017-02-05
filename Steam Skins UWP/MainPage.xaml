@@ -53,7 +53,7 @@
                     <Button x:Name="buttonSeleccionMetro" Content="Metro" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
                     <Button x:Name="buttonSeleccionMinimal" Content="Minimal" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
                     <Button x:Name="buttonSeleccionPixelVision2" Content="PixelVision²" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
-                    <Button x:Name="buttonSeleccionPlexed" Content="Plexed" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
+                    <!--<Button x:Name="buttonSeleccionPlexed" Content="Plexed" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>-->
                     <Button x:Name="buttonSeleccionPressure2" Content="Pressure²" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
                     <Button x:Name="buttonSeleccionThreshold" Content="Threshold" Width="160" Margin="0,5" Padding="5" Background="#FFE4E4E4"/>
 
@@ -767,7 +767,7 @@
                         </Grid>
                     </ScrollViewer>
                 </Grid>
-                <Grid x:Name="gridSkinPlexed" Grid.Column="1" Padding="20,0,0,0" Visibility="Collapsed">
+                <!--<Grid x:Name="gridSkinPlexed" Grid.Column="1" Padding="20,0,0,0" Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -844,7 +844,7 @@
                             </Button>
                         </Grid>
                     </ScrollViewer>
-                </Grid>
+                </Grid>-->
                 <Grid x:Name="gridSkinPressure2" Grid.Column="1" Padding="20,0,0,0" Visibility="Collapsed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

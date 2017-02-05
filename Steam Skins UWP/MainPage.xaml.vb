@@ -30,7 +30,7 @@ Public NotInheritable Class MainPage
         listaBotonesDescarga.Add(buttonDescargaMetro)
         listaBotonesDescarga.Add(buttonDescargaMinimal)
         listaBotonesDescarga.Add(buttonDescargaPixelVision2)
-        listaBotonesDescarga.Add(buttonDescargaPlexed)
+        'listaBotonesDescarga.Add(buttonDescargaPlexed)
         listaBotonesDescarga.Add(buttonDescargaPressure2)
         listaBotonesDescarga.Add(buttonDescargaThreshold)
 
@@ -86,9 +86,9 @@ Public NotInheritable Class MainPage
         tbScreenshotsPixelVision2.Text = recursos.GetString("Capturas")
         textBlockCreadoPixelVision2.Text = recursos.GetString("Creado Por")
 
-        buttonDescargaTextoPlexed.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsPlexed.Text = recursos.GetString("Capturas")
-        textBlockCreadoPlexed.Text = recursos.GetString("Creado Por")
+        'buttonDescargaTextoPlexed.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsPlexed.Text = recursos.GetString("Capturas")
+        'textBlockCreadoPlexed.Text = recursos.GetString("Creado Por")
 
         buttonDescargaTextoPressure2.Text = recursos.GetString("Boton Descarga")
         tbScreenshotsPressure2.Text = recursos.GetString("Capturas")
@@ -244,8 +244,8 @@ Public NotInheritable Class MainPage
         buttonSeleccionMinimal.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionPixelVision2.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
         buttonSeleccionPixelVision2.BorderBrush = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionPlexed.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
-        buttonSeleccionPlexed.BorderBrush = New SolidColorBrush(Colors.Transparent)
+        'buttonSeleccionPlexed.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
+        'buttonSeleccionPlexed.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionPressure2.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
         buttonSeleccionPressure2.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionThreshold.Background = New SolidColorBrush(Microsoft.Toolkit.Uwp.ColorHelper.ToColor("#e3e3e3"))
@@ -261,7 +261,7 @@ Public NotInheritable Class MainPage
         gridSkinMetro.Visibility = Visibility.Collapsed
         gridSkinMinimal.Visibility = Visibility.Collapsed
         gridSkinPixelVision2.Visibility = Visibility.Collapsed
-        gridSkinPlexed.Visibility = Visibility.Collapsed
+        'gridSkinPlexed.Visibility = Visibility.Collapsed
         gridSkinPressure2.Visibility = Visibility.Collapsed
         gridSkinThreshold.Visibility = Visibility.Collapsed
 
@@ -742,73 +742,73 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    'SKINPLEXED-----------------------------------------------------------------------------
+    ''SKINPLEXED-----------------------------------------------------------------------------
 
-    Private Sub buttonSeleccionPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPlexed.Click
+    'Private Sub buttonSeleccionPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPlexed.Click
 
-        GridSkinVisibilidad(gridSkinPlexed, buttonSeleccionPlexed)
+    '    GridSkinVisibilidad(gridSkinPlexed, buttonSeleccionPlexed)
 
-    End Sub
+    'End Sub
 
-    Private Async Sub buttonDescargaPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPlexed.Click
+    'Private Async Sub buttonDescargaPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPlexed.Click
 
-        buttonDescargaPlexed.IsEnabled = False
+    '    buttonDescargaPlexed.IsEnabled = False
 
-        Dim html As String = Await Decompiladores.HttpClient(New Uri("http://gamebanana.com/guis/download/30097"))
+    '    Dim html As String = Await Decompiladores.HttpClient(New Uri("http://gamebanana.com/guis/download/30097"))
 
-        Dim temp, temp2 As String
-        Dim int, int2 As Integer
+    '    Dim temp, temp2 As String
+    '    Dim int, int2 As Integer
 
-        If Not html = Nothing Then
-            int = html.IndexOf(".zip")
-            temp = html.Remove(int + 4, html.Length - (int + 4))
+    '    If Not html = Nothing Then
+    '        int = html.IndexOf(".zip")
+    '        temp = html.Remove(int + 4, html.Length - (int + 4))
 
-            int2 = temp.LastIndexOf("http://")
-            temp2 = temp.Remove(0, int2)
-        Else
-            temp2 = Nothing
-        End If
+    '        int2 = temp.LastIndexOf("http://")
+    '        temp2 = temp.Remove(0, int2)
+    '    Else
+    '        temp2 = Nothing
+    '    End If
 
-        skinPlexed = New Skins("Plexed",
-                                  New Uri(temp2),
-                                  textBlockInformePlexed,
-                                  progressInformePlexed,
-                                  Nothing, Nothing)
+    '    skinPlexed = New Skins("Plexed",
+    '                              New Uri(temp2),
+    '                              textBlockInformePlexed,
+    '                              progressInformePlexed,
+    '                              Nothing, Nothing)
 
-        Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPlexed, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+    '    Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
+    '    Descarga.Iniciar(skinPlexed, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
-    End Sub
+    'End Sub
 
-    Private Async Sub buttonWebPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonWebPlexed.Click
+    'Private Async Sub buttonWebPlexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonWebPlexed.Click
 
-        Await Launcher.LaunchUriAsync(New Uri("http://steamcommunity.com/groups/PlexedSkin"))
+    '    Await Launcher.LaunchUriAsync(New Uri("http://steamcommunity.com/groups/PlexedSkin"))
 
-    End Sub
+    'End Sub
 
-    Private Sub buttonImagePreview1Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview1Plexed.Click
+    'Private Sub buttonImagePreview1Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview1Plexed.Click
 
-        AmpliarCaptura(imagePreview1Plexed)
+    '    AmpliarCaptura(imagePreview1Plexed)
 
-    End Sub
+    'End Sub
 
-    Private Sub buttonImagePreview2Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview2Plexed.Click
+    'Private Sub buttonImagePreview2Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview2Plexed.Click
 
-        AmpliarCaptura(imagePreview2Plexed)
+    '    AmpliarCaptura(imagePreview2Plexed)
 
-    End Sub
+    'End Sub
 
-    Private Sub buttonImagePreview3Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview3Plexed.Click
+    'Private Sub buttonImagePreview3Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview3Plexed.Click
 
-        AmpliarCaptura(imagePreview3Plexed)
+    '    AmpliarCaptura(imagePreview3Plexed)
 
-    End Sub
+    'End Sub
 
-    Private Sub buttonImagePreview4Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview4Plexed.Click
+    'Private Sub buttonImagePreview4Plexed_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview4Plexed.Click
 
-        AmpliarCaptura(imagePreview4Plexed)
+    '    AmpliarCaptura(imagePreview4Plexed)
 
-    End Sub
+    'End Sub
 
     'SKINPRESSURE2-----------------------------------------------------------------------------
 
