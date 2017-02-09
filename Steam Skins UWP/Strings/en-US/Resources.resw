@@ -168,6 +168,9 @@
   <data name="Descarga Iniciar" xml:space="preserve">
     <value>Downloading Skin</value>
   </data>
+  <data name="Donar" xml:space="preserve">
+    <value>Donate</value>
+  </data>
   <data name="Opciones" xml:space="preserve">
     <value>Options</value>
   </data>

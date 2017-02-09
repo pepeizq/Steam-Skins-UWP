@@ -30,6 +30,8 @@
                     </AppBarButton.Icon>
                 </AppBarButton>
                 <AppBarSeparator/>
+                <AppBarButton x:Name="botonDonar" Icon="Contact"/>
+                <AppBarSeparator/>
                 <AppBarButton x:Name="botonContacto" Icon="Contact"/>
                 <AppBarButton x:Name="botonMasApps" Icon="World"/>
             </CommandBar.SecondaryCommands>

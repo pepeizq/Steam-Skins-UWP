@@ -168,6 +168,9 @@
   <data name="Descarga Iniciar" xml:space="preserve">
     <value>Descargando Apariencia</value>
   </data>
+  <data name="Donar" xml:space="preserve">
+    <value>Donar</value>
+  </data>
   <data name="Opciones" xml:space="preserve">
     <value>Opciones</value>
   </data>
