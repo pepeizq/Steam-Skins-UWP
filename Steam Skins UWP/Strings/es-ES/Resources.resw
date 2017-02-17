@@ -183,4 +183,7 @@
   <data name="Texto Steam No Config" xml:space="preserve">
     <value>No se ha añadido una carpeta</value>
   </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Enseñar últimas noticias de @pepeizqapps</value>
+  </data>
 </root>
