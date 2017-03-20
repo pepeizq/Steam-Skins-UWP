@@ -126,7 +126,7 @@
   <data name="Boton Compartir" xml:space="preserve">
     <value>Share</value>
   </data>
-  <data name="Boton Configuracion" xml:space="preserve">
+  <data name="Boton Config" xml:space="preserve">
     <value>Configuration</value>
   </data>
   <data name="Boton Contactar" xml:space="preserve">
@@ -134,6 +134,9 @@
   </data>
   <data name="Boton Descarga" xml:space="preserve">
     <value>Download &amp; Install</value>
+  </data>
+  <data name="Boton Inicio" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="Boton Ruta Steam 1" xml:space="preserve">
     <value>Select the subfolder skins from Steam</value>
@@ -153,6 +156,9 @@
   <data name="Capturas" xml:space="preserve">
     <value>Screenshots (click to expand)</value>
   </data>
+  <data name="Consejo Config" xml:space="preserve">
+    <value>Before adding skins you must have the app configured</value>
+  </data>
   <data name="Creado Por" xml:space="preserve">
     <value>Created by</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="Descarga Fallo 1" xml:space="preserve">
     <value>Error Extracting the Skin</value>
+  </data>
+  <data name="Descarga Fallo 2" xml:space="preserve">
+    <value>Error deleting old skin folder, close Steam</value>
   </data>
   <data name="Descarga Final" xml:space="preserve">
     <value>Skin Installed</value>
@@ -171,8 +180,14 @@
   <data name="Donar" xml:space="preserve">
     <value>Donate</value>
   </data>
+  <data name="Grid Arranque" xml:space="preserve">
+    <value>Select window where start</value>
+  </data>
   <data name="Opciones" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="RSS" xml:space="preserve">
+    <value>Latest News</value>
   </data>
   <data name="Skins" xml:space="preserve">
     <value>Skins</value>
@@ -182,8 +197,5 @@
   </data>
   <data name="Texto Steam No Config" xml:space="preserve">
     <value>No folder added</value>
-  </data>
-  <data name="Twitter" xml:space="preserve">
-    <value>Show latest news from @pepeizqapps</value>
   </data>
 </root>

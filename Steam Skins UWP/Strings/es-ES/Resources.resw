@@ -126,7 +126,7 @@
   <data name="Boton Compartir" xml:space="preserve">
     <value>Compartir</value>
   </data>
-  <data name="Boton Configuracion" xml:space="preserve">
+  <data name="Boton Config" xml:space="preserve">
     <value>Configuración</value>
   </data>
   <data name="Boton Contactar" xml:space="preserve">
@@ -134,6 +134,9 @@
   </data>
   <data name="Boton Descarga" xml:space="preserve">
     <value>Descargar e Instalar</value>
+  </data>
+  <data name="Boton Inicio" xml:space="preserve">
+    <value>Inicio</value>
   </data>
   <data name="Boton Ruta Steam 1" xml:space="preserve">
     <value>Selecciona la subcarpeta skins de Steam</value>
@@ -153,6 +156,9 @@
   <data name="Capturas" xml:space="preserve">
     <value>Capturas de Pantalla (clickea para expandir)</value>
   </data>
+  <data name="Consejo Config" xml:space="preserve">
+    <value>Antes de añadir apariencias debes tener configurada la app</value>
+  </data>
   <data name="Creado Por" xml:space="preserve">
     <value>Creada por</value>
   </data>
@@ -161,6 +167,9 @@
   </data>
   <data name="Descarga Fallo 1" xml:space="preserve">
     <value>Error Extrayendo la Apariencia</value>
+  </data>
+  <data name="Descarga Fallo 2" xml:space="preserve">
+    <value>Error borrando antigua carpeta de Apariencia, cierra Steam</value>
   </data>
   <data name="Descarga Final" xml:space="preserve">
     <value>Apariencia Instalada</value>
@@ -171,8 +180,14 @@
   <data name="Donar" xml:space="preserve">
     <value>Donar</value>
   </data>
+  <data name="Grid Arranque" xml:space="preserve">
+    <value>Elige ventana donde arrancar</value>
+  </data>
   <data name="Opciones" xml:space="preserve">
     <value>Opciones</value>
+  </data>
+  <data name="RSS" xml:space="preserve">
+    <value>Últimas Noticias</value>
   </data>
   <data name="Skins" xml:space="preserve">
     <value>Apariencias</value>
@@ -182,8 +197,5 @@
   </data>
   <data name="Texto Steam No Config" xml:space="preserve">
     <value>No se ha añadido una carpeta</value>
-  </data>
-  <data name="Twitter" xml:space="preserve">
-    <value>Enseñar últimas noticias de @pepeizqapps</value>
   </data>
 </root>

@@ -19,6 +19,7 @@ Module Descarga
     Dim ficheroDestino As StorageFile
     Dim ubicacionSteam As StorageFolder
     Dim fallo1 As Boolean = False
+    Dim fallo2 As Boolean = False
 
     Public Async Sub Iniciar(skin As Skins, steam As StorageFolder, rutaSteam As Button, listaBotones As List(Of Button))
 
@@ -80,7 +81,11 @@ Module Descarga
             If Directory.Exists(ubicacionSteam.Path + "\" + nombreSkin) Then
                 Directory.Delete(ubicacionSteam.Path + "\" + nombreSkin, True)
             End If
+        Catch ex As Exception
+            fallo2 = True
+        End Try
 
+        Try
             Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
                 For Each archivo As ZipArchiveEntry In archivoZip.Entries
                     If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
@@ -184,10 +189,16 @@ Module Descarga
 
         'End Try
 
-        If fallo1 = False Then
-            textBlockInforme.Text = recursos.GetString("Descarga Final")
-        Else
+        If fallo1 = True Then
             textBlockInforme.Text = recursos.GetString("Descarga Fallo 1")
+        End If
+
+        If fallo2 = True Then
+            textBlockInforme.Text = recursos.GetString("Descarga Fallo 2")
+        End If
+
+        If fallo1 = False And fallo2 = False Then
+            textBlockInforme.Text = recursos.GetString("Descarga Final")
         End If
 
         Toast("Steam Skins", textBlockInforme.Text)
