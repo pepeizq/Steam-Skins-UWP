@@ -193,7 +193,7 @@
             </Grid.ColumnDefinitions>
 
             <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                <StackPanel x:Name="spListaSkins" VerticalAlignment="Top" Padding="0,15,0,0">
+                <StackPanel VerticalAlignment="Top" Padding="0,15,0,0">
                     <Button x:Name="buttonSeleccionAir" Content="Air" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
                     <Button x:Name="buttonSeleccionAirClassic" Content="Air Classic" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
                     <Button x:Name="buttonSeleccionCompact" Content="Compact" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
