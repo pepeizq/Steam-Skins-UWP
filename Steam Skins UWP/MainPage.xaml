@@ -7,46 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Loaded="Page_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.TopAppBar>
-        <CommandBar x:Name="commadBarTop" Foreground="White" HorizontalContentAlignment="Center">
-            <CommandBar.Background>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="CadetBlue" Offset="0.5" />
-                    <GradientStop Color="CadetBlue" Offset="1.0" />
-                </LinearGradientBrush>
-            </CommandBar.Background>
-
-            <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="botonInicio" Foreground="White">
-                    <AppBarButton.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="5,0,10,0"/>
-                            <TextBlock x:Name="botonInicioTexto" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </AppBarButton.Content>
-                </AppBarButton>
-                <AppBarSeparator Foreground="White" VerticalAlignment="Center"/>
-                <AppBarButton x:Name="botonApariencias" Foreground="White">
-                    <AppBarButton.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <controls:ImageEx Margin="5,0,10,0" Source="Assets\steam_logo.png" Width="20" Height="20"/>
-                            <TextBlock x:Name="botonAparienciasTexto" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </AppBarButton.Content>
-                </AppBarButton>
-                <AppBarSeparator Foreground="White" VerticalAlignment="Center"/>
-                <AppBarButton x:Name="botonConfig" Foreground="White">
-                    <AppBarButton.Content>
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Setting" Margin="5,0,10,0"/>
-                            <TextBlock x:Name="botonConfigTexto" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </AppBarButton.Content>
-                </AppBarButton>
-            </CommandBar.PrimaryCommands>
-        </CommandBar>
-    </Page.TopAppBar>
-
     <Page.Resources>
         <DataTemplate x:Key="FeedRSS">
             <Grid Tag="{Binding Enlace}" Margin="1">
@@ -55,1159 +15,1280 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="#FFF0F0F0">
-        <Grid x:Name="gridInicio">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <Grid Grid.Column="0" Padding="80,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <Grid x:Name="gridTopAcrilico" Grid.Row="0" Height="32"/>
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <SolidColorBrush Color="DarkCyan" Opacity="0.6"/>
+            </Grid.Background>
 
-                <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,50,0,0" HorizontalAlignment="Left">
-                    <Button x:Name="botonInicioVotar" Padding="10" Background="CadetBlue" Foreground="White" Width="200" Margin="0,0,0,20" >
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Like" Margin="0,0,10,0"/>
-                                <TextBlock x:Name="botonInicioVotarTexto" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonInicioCompartir" Padding="10" Background="CadetBlue" Foreground="White" Width="200" Margin="0,0,0,20" >
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <FontIcon Glyph="&#59181;" Margin="0,0,10,0"/>
-                                <TextBlock x:Name="botonInicioCompartirTexto" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonInicioContacto" Padding="10" Background="CadetBlue" Foreground="White" Width="200" Margin="0,0,0,20" >
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Contact" Margin="0,0,10,0"/>
-                                <TextBlock x:Name="botonInicioContactoTexto" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-
-                <StackPanel Grid.Row="1" Orientation="Vertical" Padding="0,0,0,50" HorizontalAlignment="Left">
-                    <Button x:Name="botonInicioMasApps" Padding="10" Background="CadetBlue" Foreground="White" Width="200">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="botonInicioMasAppsTexto" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <StackPanel x:Name="spMasApps" Orientation="Vertical" Width="200" Margin="0,5,0,0">
-                        <Button x:Name="botonAppSteamTiles" Padding="10" Background="dimGray" Foreground="White" Width="200" Margin="0,0,0,5" HorizontalContentAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                    <TextBlock Text="Steam Games Tiles" Foreground="White" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="botonAppSteamDeals" Padding="10" Background="darkOliveGreen" Foreground="White" Width="200" Margin="0,0,0,5" HorizontalContentAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                    <TextBlock Text="Steam Deals" Foreground="White" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="botonAppSteamCategories" Padding="10" Background="darkBlue" Foreground="White" Width="200" Margin="0,0,0,5" HorizontalContentAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                    <TextBlock Text="Steam Categories" Foreground="White" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="botonAppSteamBridge" Padding="10" Background="darkMagenta" Foreground="White" Width="200" Margin="0,0,0,5" HorizontalContentAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                    <TextBlock Text="Steam Bridge" Foreground="White" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
-
-            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" Padding="10" Background="CadetBlue">
-                    <controls:ImageEx Source="Assets\rss_logo.png" Width="24" Height="24" HorizontalAlignment="Left"/>
-                    <TextBlock x:Name="tbRSS" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White"/>
-                </StackPanel>
-                <ListView x:Name="lvRSSUpdates" IsItemClickEnabled="True" ItemTemplate="{StaticResource FeedRSS}" BorderThickness="1,0,1,1" BorderBrush="CadetBlue"/>
-            </StackPanel>
-
-            <Grid Grid.Column="2" Padding="80,50">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0" VerticalAlignment="Top">
-                    <Grid HorizontalAlignment="Right">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <SymbolIcon Grid.Column="0" Symbol="Important" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="tbConsejoConfig" Grid.Column="1" TextWrapping="Wrap"/>
-                    </Grid>
-                </Grid>
-
-                <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" MaxWidth="400">
-                    <Grid Padding="10" Background="CadetBlue">
-                        <TextBlock x:Name="tbInicioGrid" Foreground="White" HorizontalAlignment="Center" TextWrapping="Wrap" Padding="10,0"/>
-                    </Grid>
-                    <ComboBox x:Name="cbArranque" HorizontalAlignment="Stretch">
-                        <ComboBoxItem x:Name="cbItemArranqueInicio"/>
-                        <ComboBoxItem x:Name="cbItemArranqueApariencias"/>
-                        <ComboBoxItem x:Name="cbItemArranqueConfig"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Grid.Row="2" Orientation="Vertical" VerticalAlignment="Bottom">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,10">
-                        <Button x:Name="botonSocialTwitter" Padding="10" Background="#1DA1F2" Margin="5,0,0,0">
-                            <Button.Content>
-                                <controls:ImageEx Source="Assets\social_twitter.png" Width="30" Height="30"/>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="botonSocialGitHub" Padding="10" Background="#181717" Margin="5,0,0,0">
-                            <Button.Content>
-                                <controls:ImageEx Source="Assets\social_github.png" Width="30" Height="30"/>
-                            </Button.Content>
-                        </Button>
-                        <Button x:Name="botonSocialPaypal" Padding="10" Background="#00457C" Margin="5,0,0,0">
-                            <Button.Content>
-                                <controls:ImageEx Source="Assets\social_paypal.png" Width="30" Height="30"/>
-                            </Button.Content>
-                        </Button>
-                    </StackPanel>
-                    <TextBlock x:Name="tbVersionApp" HorizontalAlignment="Right" TextWrapping="Wrap"/>
-                    <TextBlock x:Name="tbVersionWindows" HorizontalAlignment="Right" TextWrapping="Wrap"/>
-                </StackPanel>
-            </Grid>
+            <TextBlock x:Name="tbTitulo" Foreground="White" Margin="65,0,0,0" VerticalAlignment="Center" FontSize="13"/>
         </Grid>
-
-        <Grid x:Name="gridSkins" Visibility="Collapsed" Background="CadetBlue">
+        <Grid Grid.Row="1" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
-                <StackPanel VerticalAlignment="Top" Padding="0,15,0,0">
-                    <Button x:Name="buttonSeleccionAir" Content="Air" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionAirClassic" Content="Air Classic" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionCompact" Content="Compact" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionInvert" Content="Invert" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionMetro" Content="Metro" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionMinimal" Content="Minimal" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionPixelVision2" Content="PixelVision²" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionPressure2" Content="Pressure²" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                    <Button x:Name="buttonSeleccionThreshold" Content="Threshold" Width="160" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" BorderThickness="5,0,0,0" Foreground="White"/>
-                </StackPanel> 
-            </ScrollViewer>
-
-            <Grid Grid.Column="1" Background="#FFF0F0F0" Padding="20,15,10,5">
-                <Grid x:Name="gridSkinAir" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaAir" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoAir"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeAir" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeAir" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoAir" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebAir" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPatreonAir" Grid.Column="6" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Patreon"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsAir" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesAir" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesAir" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Theme:" Margin="0,10,10,10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionAirTheme" Grid.Column="1" VerticalAlignment="Center" Width="100" SelectedIndex="0">
-                                <ComboBoxItem Content="Light" />
-                                <ComboBoxItem Content="Dark" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="2" Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionAirColor" Grid.Column="3" VerticalAlignment="Center" Width="120" SelectedIndex="0">
-                                <ComboBoxItem Content="Sky" />
-                                <ComboBoxItem Content="Sea" />
-                                <ComboBoxItem Content="Breeze" />
-                                <ComboBoxItem Content="Slate" />
-                                <ComboBoxItem Content="Truffle" />
-                                <ComboBoxItem Content="Gunmetal" />
-                                <ComboBoxItem Content="Silver" />
-                                <ComboBoxItem Content="Grass" />
-                                <ComboBoxItem Content="Rose" />
-                                <ComboBoxItem Content="Cinnabar" />
-                                <ComboBoxItem Content="Lavender" />
-                                <ComboBoxItem Content="Lilac" />
-                                <ComboBoxItem Content="Deeppurple" />
-                                <ComboBoxItem Content="Steamblue" />
-                                <ComboBoxItem Content="Youtubered" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Air" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Air" Source="Assets/Skins/air1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Air" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Air" Source="Assets/Skins/air2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Air" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Air" Source="Assets/Skins/air3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Air" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Air" Source="Assets/Skins/air4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinAirClassic" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaAirClassic" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoAirClassic"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeAirClassic" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeAirClassic" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoAirClassic" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebAirClassic" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPatreonAirClassic" Grid.Column="6" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Patreon"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsAirClassic" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesAirClassic" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesAirClassic" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionAirClassicColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                <ComboBoxItem Content="Blue" />
-                                <ComboBoxItem Content="Bubblegum" />
-                                <ComboBoxItem Content="Cinnamon" />
-                                <ComboBoxItem Content="Green" />
-                                <ComboBoxItem Content="Happyorange" />
-                                <ComboBoxItem Content="Navy" />
-                                <ComboBoxItem Content="Night" />
-                                <ComboBoxItem Content="Orange" />
-                                <ComboBoxItem Content="Padawan" />
-                                <ComboBoxItem Content="Royal" />
-                                <ComboBoxItem Content="Silver" />
-                                <ComboBoxItem Content="Teal" />
-                                <ComboBoxItem Content="Watermelon" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="2" Text="Games Details:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionAirClassicGamesDetails" Grid.Column="3" VerticalAlignment="Center" Width="120" SelectedIndex="0">
-                                <ComboBoxItem Content="Steamblue" />
-                                <ComboBoxItem Content="Colorized" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="4" Text="Background:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionAirClassicBackground" Grid.Column="5" VerticalAlignment="Center" Width="100" SelectedIndex="0">
-                                <ComboBoxItem Content="None" />
-                                <ComboBoxItem Content="Noise" />
-                                <ComboBoxItem Content="Dots" />
-                                <ComboBoxItem Content="Ribbon" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1AirClassic" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1AirClassic" Source="Assets/Skins/airclassic1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2AirClassic" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2AirClassic" Source="Assets/Skins/airclassic2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3AirClassic" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3AirClassic" Source="Assets/Skins/airclassic3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4AirClassic" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4AirClassic" Source="Assets/Skins/airclassic4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinCompact" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaCompact" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoCompact"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeCompact" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeCompact" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoCompact" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="badanka" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebCompact" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsCompact" Grid.Column="0" VerticalAlignment="Center"/>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Compact" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Compact" Source="Assets/Skins/compact1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Compact" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Compact" Source="Assets/Skins/compact2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Compact" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Compact" Source="Assets/Skins/compact3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Compact" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Compact" Source="Assets/Skins/compact4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinInvert" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaInvert" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoInvert"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeInvert" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeInvert" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoInvert" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Ultimate Luki" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebInvert" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPaypalInvert" Grid.Column="6" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Paypal"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsInvert" Grid.Column="0" VerticalAlignment="Center"/>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Invert" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Invert" Source="Assets/Skins/invert1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Invert" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Invert" Source="Assets/Skins/invert2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Invert" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Invert" Source="Assets/Skins/invert3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Invert" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Invert" Source="Assets/Skins/invert4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinMetro" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaMetro" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoMetro"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeMetro" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeMetro" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoMetro" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Dom Minischetti" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebMetro" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPaypalMetro" Grid.Column="6" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Paypal"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPatreonMetro" Grid.Column="7" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Patreon"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsMetro" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesMetro" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesMetro" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionMetroColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                <ComboBoxItem Content="Blue" />
-                                <ComboBoxItem Content="Cyan" />
-                                <ComboBoxItem Content="Dark Blue" />
-                                <ComboBoxItem Content="Dark Cyan" />
-                                <ComboBoxItem Content="Dark Green" />
-                                <ComboBoxItem Content="Green" />
-                                <ComboBoxItem Content="Orange" />
-                                <ComboBoxItem Content="Pink" />
-                                <ComboBoxItem Content="Purple" />
-                                <ComboBoxItem Content="Red" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Metro" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Metro" Source="Assets/Skins/metro1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Metro" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Metro" Source="Assets/Skins/metro2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Metro" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Metro" Source="Assets/Skins/metro3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Metro" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Metro" Source="Assets/Skins/metro4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinMinimal" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaMinimal" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoMinimal"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeMinimal" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeMinimal" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoMinimal" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="lusito" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebMinimal" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsMinimal" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesMinimal" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesMinimal" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionMinimalColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                <ComboBoxItem Content="Black" />
-                                <ComboBoxItem Content="Blue" />
-                                <ComboBoxItem Content="Green" />
-                                <ComboBoxItem Content="Red" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Minimal" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Minimal" Source="Assets/Skins/mini1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Minimal" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Minimal" Source="Assets/Skins/mini2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Minimal" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Minimal" Source="Assets/Skins/mini3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Minimal" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Minimal" Source="Assets/Skins/mini4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinPixelVision2" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaPixelVision2" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoPixelVision2"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformePixelVision2" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformePixelVision2" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoPixelVision2" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="somini" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebPixelVision2" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsPixelVision2" Grid.Column="0" VerticalAlignment="Center"/>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1PixelVision2" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1PixelVision2" Source="Assets/Skins/pixel1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2PixelVision2" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2PixelVision2" Source="Assets/Skins/pixel2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3PixelVision2" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3PixelVision2" Source="Assets/Skins/pixel3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4PixelVision2" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4PixelVision2" Source="Assets/Skins/pixel4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-                <Grid x:Name="gridSkinPressure2" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaPressure2" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoPressure2"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformePressure2" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformePressure2" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoPressure2" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Dirt Diglett" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebPressure2" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPaypalPressure2" Grid.Column="6" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Paypal"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="buttonPatreonPressure2" Grid.Column="7" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Patreon"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsPressure2" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesPressure2" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesPressure2" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Grid Uninstalled Transparency:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionPressure2GridTransparent" Grid.Column="1" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                <ComboBoxItem Content="Yes" />
-                                <ComboBoxItem Content="No" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="2" Text="Overlay Background:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionPressure2OverlayBackground" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                <ComboBoxItem Content="Yes" />
-                                <ComboBoxItem Content="No" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Pressure2" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Pressure2" Source="Assets/Skins/pre1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Pressure2" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Pressure2" Source="Assets/Skins/pre2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Pressure2" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Pressure2" Source="Assets/Skins/pre3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Pressure2" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Pressure2" Source="Assets/Skins/pre4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-
-                </Grid>
-                <Grid x:Name="gridSkinThreshold" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Button x:Name="buttonDescargaThreshold" Grid.Column="0" Padding="10" Background="#FFE4E4E4" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="buttonDescargaTextoThreshold"/>
-                            </StackPanel>
-                        </Button>
-                        <TextBlock x:Name="textBlockInformeThreshold" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                        <ProgressRing x:Name="progressInformeThreshold" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
-                        <TextBlock x:Name="textBlockCreadoThreshold" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Edgarware" VerticalAlignment="Center"/>
-                        <Button x:Name="buttonWebThreshold" Grid.Column="5" Padding="10" Background="Transparent">
-                            <StackPanel Orientation="Horizontal" >
-                                <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" />
-                                <TextBlock Text="Web"/>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-
-                    <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="tbScreenshotsThreshold" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbOpcionesThreshold" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
-                        <AppBarSeparator Grid.Column="2"/>
-                        <Grid x:Name="gridOpcionesThreshold" Grid.Column="3">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionThresholdColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                <ComboBoxItem Content="Cobalt" />
-                                <ComboBoxItem Content="Cyan" />
-                                <ComboBoxItem Content="Green" />
-                                <ComboBoxItem Content="Orange" />
-                                <ComboBoxItem Content="Purple" />
-                                <ComboBoxItem Content="Red" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="2" Text="Outlines:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionThresholdOutlines" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                <ComboBoxItem Content="No" />
-                                <ComboBoxItem Content="Yes" />
-                            </ComboBox>
-                            <TextBlock Grid.Column="4" Text="Colored Titlebar:" Margin="10" VerticalAlignment="Center"/>
-                            <ComboBox x:Name="comboBoxOpcionThresholdColoredTitlebar" Grid.Column="5" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                <ComboBoxItem Content="No" />
-                                <ComboBoxItem Content="Yes" />
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-
-                    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
-                        <Grid Padding="0,0,0,10" Margin="0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="buttonImagePreview1Threshold" Grid.Column="0" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview1Threshold" Source="Assets/Skins/thr1.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview2Threshold" Grid.Column="1" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview2Threshold" Source="Assets/Skins/thr2.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview3Threshold" Grid.Column="2" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview3Threshold" Source="Assets/Skins/thr3.PNG" />
-                                </Button.Content>
-                            </Button>
-
-                            <Button x:Name="buttonImagePreview4Threshold" Grid.Column="3" Background="Transparent" Padding="0">
-                                <Button.Content>
-                                    <controls:ImageEx x:Name="imagePreview4Threshold" Source="Assets/Skins/thr4.PNG" />
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </ScrollViewer>
-                </Grid>
-            </Grid>            
-        </Grid>
-
-        <StackPanel x:Name="gridConfig" Visibility="Collapsed" Padding="20">
-            <TextBlock x:Name="tbConfig" FontSize="23" Margin="5,0,0,15"/>
-            <Border BorderThickness="0,1,0,0" BorderBrush="Black" Margin="0,0,0,25" Width="300" HorizontalAlignment="Left"/>
-
-            <TextBlock x:Name="tbSteamConfigInstruccionesCliente" Margin="5" TextWrapping="Wrap" />
-            <Grid Margin="5,5,5,15">
+            <Grid x:Name="gridMenuAcrilico" Grid.Column="0"/>
+            <Grid x:Name="gridMenu" Grid.Column="0">
+                <Grid.Background>
+                    <SolidColorBrush Color="DarkCyan" Opacity="0.6"/>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <Button x:Name="botonApariencias" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonAparienciasTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <Image Source="Assets\steam_logo.png" Width="26" Height="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonConfig" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonConfigTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE713;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Orientation="Vertical">
+                    <Button x:Name="botonVotar" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonVotarTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonMasApps" Foreground="White" Background="Transparent" Padding="15">
+                        <ToolTipService.ToolTip>
+                            <TextBlock x:Name="botonMasAppsTexto" FontSize="16"/>
+                        </ToolTipService.ToolTip>
+
+                        <Button.Content>
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE712;" FontSize="26" HorizontalAlignment="Center"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="gridApariencias" Grid.Column="1">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+                
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="buttonSteamConfigPath" Grid.Column="0" Padding="10" Background="#FFE4E4E4" Margin="0,5" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal" >
-                        <SymbolIcon Symbol="Add" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="buttonSteamConfigPathTexto"/>
-                    </StackPanel>
-                </Button>
-                <AppBarSeparator Grid.Column="1" VerticalAlignment="Center" />
-                <TextBlock x:Name="tbSteamConfigPath" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <controls:DropShadowPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Background="CadetBlue">
+                            <Button x:Name="buttonSeleccionAir" Content="Air" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionAirClassic" Content="Air Classic" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionCompact" Content="Compact" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionInvert" Content="Invert" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionMetro" Content="Metro" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionMinimal" Content="Minimal" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionPixelVision2" Content="PixelVision²" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionPressure2" Content="Pressure²" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                            <Button x:Name="buttonSeleccionThreshold" Content="Threshold" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </controls:DropShadowPanel> 
+                
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid x:Name="gridSkinAir" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaAir" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoAir" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel> 
+                                
+                            <TextBlock x:Name="textBlockInformeAir" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeAir" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoAir" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebAir" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="6" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPatreonAir" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Patreon" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>                                
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsAir" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesAir" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesAir" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Theme:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionAirTheme" Grid.Column="1" VerticalAlignment="Center" Width="100" SelectedIndex="0">
+                                    <ComboBoxItem Content="Light" />
+                                    <ComboBoxItem Content="Dark" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionAirColor" Grid.Column="3" VerticalAlignment="Center" Width="120" SelectedIndex="0">
+                                    <ComboBoxItem Content="Sky" />
+                                    <ComboBoxItem Content="Sea" />
+                                    <ComboBoxItem Content="Breeze" />
+                                    <ComboBoxItem Content="Slate" />
+                                    <ComboBoxItem Content="Truffle" />
+                                    <ComboBoxItem Content="Gunmetal" />
+                                    <ComboBoxItem Content="Silver" />
+                                    <ComboBoxItem Content="Grass" />
+                                    <ComboBoxItem Content="Rose" />
+                                    <ComboBoxItem Content="Cinnabar" />
+                                    <ComboBoxItem Content="Lavender" />
+                                    <ComboBoxItem Content="Lilac" />
+                                    <ComboBoxItem Content="Deeppurple" />
+                                    <ComboBoxItem Content="Steamblue" />
+                                    <ComboBoxItem Content="Youtubered" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Air" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Air" Source="Assets/Skins/air1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Air" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Air" Source="Assets/Skins/air2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Air" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Air" Source="Assets/Skins/air3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Air" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Air" Source="Assets/Skins/air4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinAirClassic" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaAirClassic" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoAirClassic" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeAirClassic" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeAirClassic" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoAirClassic" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
+                            
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebAirClassic" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="6" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPatreonAirClassic" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Patreon" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsAirClassic" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesAirClassic" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesAirClassic" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionAirClassicColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                    <ComboBoxItem Content="Blue" />
+                                    <ComboBoxItem Content="Bubblegum" />
+                                    <ComboBoxItem Content="Cinnamon" />
+                                    <ComboBoxItem Content="Green" />
+                                    <ComboBoxItem Content="Happyorange" />
+                                    <ComboBoxItem Content="Navy" />
+                                    <ComboBoxItem Content="Night" />
+                                    <ComboBoxItem Content="Orange" />
+                                    <ComboBoxItem Content="Padawan" />
+                                    <ComboBoxItem Content="Royal" />
+                                    <ComboBoxItem Content="Silver" />
+                                    <ComboBoxItem Content="Teal" />
+                                    <ComboBoxItem Content="Watermelon" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Games Details:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionAirClassicGamesDetails" Grid.Column="3" VerticalAlignment="Center" Width="120" SelectedIndex="0">
+                                    <ComboBoxItem Content="Steamblue" />
+                                    <ComboBoxItem Content="Colorized" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="4" Text="Background:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionAirClassicBackground" Grid.Column="5" VerticalAlignment="Center" Width="100" SelectedIndex="0">
+                                    <ComboBoxItem Content="None" />
+                                    <ComboBoxItem Content="Noise" />
+                                    <ComboBoxItem Content="Dots" />
+                                    <ComboBoxItem Content="Ribbon" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1AirClassic" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1AirClassic" Source="Assets/Skins/airclassic1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2AirClassic" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2AirClassic" Source="Assets/Skins/airclassic2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3AirClassic" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3AirClassic" Source="Assets/Skins/airclassic3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4AirClassic" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4AirClassic" Source="Assets/Skins/airclassic4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinCompact" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaCompact" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoCompact" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeCompact" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeCompact" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoCompact" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="badanka" VerticalAlignment="Center"/>
+                            
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebCompact" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsCompact" Grid.Column="0" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Compact" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Compact" Source="Assets/Skins/compact1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Compact" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Compact" Source="Assets/Skins/compact2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Compact" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Compact" Source="Assets/Skins/compact3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Compact" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Compact" Source="Assets/Skins/compact4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinInvert" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaInvert" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoInvert" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeInvert" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeInvert" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoInvert" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Ultimate Luki" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebInvert" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="6" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPaypalInvert" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Paypal" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsInvert" Grid.Column="0" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Invert" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Invert" Source="Assets/Skins/invert1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Invert" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Invert" Source="Assets/Skins/invert2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Invert" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Invert" Source="Assets/Skins/invert3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Invert" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Invert" Source="Assets/Skins/invert4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinMetro" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaMetro" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoMetro" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeMetro" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeMetro" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoMetro" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Dom Minischetti" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebMetro" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="6" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPaypalMetro" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Paypal" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="7" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPatreonMetro" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Patreon" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsMetro" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesMetro" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesMetro" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionMetroColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                    <ComboBoxItem Content="Blue" />
+                                    <ComboBoxItem Content="Cyan" />
+                                    <ComboBoxItem Content="Dark Blue" />
+                                    <ComboBoxItem Content="Dark Cyan" />
+                                    <ComboBoxItem Content="Dark Green" />
+                                    <ComboBoxItem Content="Green" />
+                                    <ComboBoxItem Content="Orange" />
+                                    <ComboBoxItem Content="Pink" />
+                                    <ComboBoxItem Content="Purple" />
+                                    <ComboBoxItem Content="Red" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Metro" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Metro" Source="Assets/Skins/metro1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Metro" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Metro" Source="Assets/Skins/metro2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Metro" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Metro" Source="Assets/Skins/metro3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Metro" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Metro" Source="Assets/Skins/metro4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinMinimal" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaMinimal" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoMinimal" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeMinimal" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeMinimal" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoMinimal" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="lusito" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebMinimal" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsMinimal" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesMinimal" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesMinimal" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionMinimalColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                    <ComboBoxItem Content="Black" />
+                                    <ComboBoxItem Content="Blue" />
+                                    <ComboBoxItem Content="Green" />
+                                    <ComboBoxItem Content="Red" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Minimal" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Minimal" Source="Assets/Skins/mini1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Minimal" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Minimal" Source="Assets/Skins/mini2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Minimal" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Minimal" Source="Assets/Skins/mini3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Minimal" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Minimal" Source="Assets/Skins/mini4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinPixelVision2" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaPixelVision2" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoPixelVision2" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformePixelVision2" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformePixelVision2" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoPixelVision2" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="somini" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebPixelVision2" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsPixelVision2" Grid.Column="0" VerticalAlignment="Center"/>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1PixelVision2" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1PixelVision2" Source="Assets/Skins/pixel1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2PixelVision2" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2PixelVision2" Source="Assets/Skins/pixel2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3PixelVision2" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3PixelVision2" Source="Assets/Skins/pixel3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4PixelVision2" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4PixelVision2" Source="Assets/Skins/pixel4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid x:Name="gridSkinPressure2" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaPressure2" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoPressure2" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformePressure2" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformePressure2" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoPressure2" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Dirt Diglett" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebPressure2" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+
+                            <controls:DropShadowPanel Grid.Column="6" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPaypalPressure2" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Paypal" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel> 
+                               
+                            <controls:DropShadowPanel Grid.Column="7" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5" Margin="5,0,0,0">
+                                <Button x:Name="buttonPatreonPressure2" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Patreon" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsPressure2" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesPressure2" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesPressure2" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Grid Uninstalled Transparency:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionPressure2GridTransparent" Grid.Column="1" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="Yes" />
+                                    <ComboBoxItem Content="No" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Overlay Background:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionPressure2OverlayBackground" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="Yes" />
+                                    <ComboBoxItem Content="No" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Pressure2" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Pressure2" Source="Assets/Skins/pre1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Pressure2" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Pressure2" Source="Assets/Skins/pre2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Pressure2" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Pressure2" Source="Assets/Skins/pre3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Pressure2" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Pressure2" Source="Assets/Skins/pre4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+
+                    </Grid>
+                    <Grid x:Name="gridSkinThreshold" Visibility="Collapsed">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonDescargaThreshold" Padding="10" Background="CadetBlue" IsEnabled="False">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="buttonDescargaTextoThreshold" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                            
+                            <TextBlock x:Name="textBlockInformeThreshold" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
+                            <ProgressRing x:Name="progressInformeThreshold" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            <TextBlock x:Name="textBlockCreadoThreshold" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Edgarware" VerticalAlignment="Center"/>
+
+                            <controls:DropShadowPanel Grid.Column="5" VerticalAlignment="Center" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                                <Button x:Name="buttonWebThreshold" Padding="10" Background="CadetBlue">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock Text="Web" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
+                            </controls:DropShadowPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="5,10,0,0" Height="44">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="tbScreenshotsThreshold" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="tbOpcionesThreshold" Grid.Column="1" Margin="10,10,0,10" VerticalAlignment="Center"/>
+                            <AppBarSeparator Grid.Column="2"/>
+                            <Grid x:Name="gridOpcionesThreshold" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionThresholdColor" Grid.Column="1" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                    <ComboBoxItem Content="Cobalt" />
+                                    <ComboBoxItem Content="Cyan" />
+                                    <ComboBoxItem Content="Green" />
+                                    <ComboBoxItem Content="Orange" />
+                                    <ComboBoxItem Content="Purple" />
+                                    <ComboBoxItem Content="Red" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="2" Text="Outlines:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionThresholdOutlines" Grid.Column="3" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="No" />
+                                    <ComboBoxItem Content="Yes" />
+                                </ComboBox>
+                                <TextBlock Grid.Column="4" Text="Colored Titlebar:" Margin="10" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="comboBoxOpcionThresholdColoredTitlebar" Grid.Column="5" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                    <ComboBoxItem Content="No" />
+                                    <ComboBoxItem Content="Yes" />
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalAlignment="Top">
+                            <Grid Padding="0,0,0,10" Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="buttonImagePreview1Threshold" Grid.Column="0" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview1Threshold" Source="Assets/Skins/thr1.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview2Threshold" Grid.Column="1" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview2Threshold" Source="Assets/Skins/thr2.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview3Threshold" Grid.Column="2" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview3Threshold" Source="Assets/Skins/thr3.PNG" />
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="buttonImagePreview4Threshold" Grid.Column="3" Background="Transparent" Padding="0">
+                                    <Button.Content>
+                                        <controls:ImageEx x:Name="imagePreview4Threshold" Source="Assets/Skins/thr4.PNG" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
             </Grid>
-        </StackPanel>
 
-        <Grid x:Name="gridWeb" Visibility="Collapsed" Padding="5">
-            <WebView x:Name="webViewWeb" Source="https://pepeizqapps.com/" />
-        </Grid>
+            <Grid x:Name="gridConfig" Grid.Column="1" Visibility="Collapsed">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
 
-        <Grid x:Name="gridCaptura" Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Button x:Name="buttonVolver" Grid.Row="0" Padding="10" Background="#FFE4E4E4" Margin="0,0,0,10">
-                <StackPanel Orientation="Horizontal" >
-                    <SymbolIcon Symbol="Back" Margin="0,0,10,0" VerticalAlignment="Center" />
-                    <TextBlock x:Name="buttonVolverTexto"/>
+                <controls:DropShadowPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                    <StackPanel Background="CadetBlue">
+                        <Button x:Name="botonConfigApariencias" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Width="200">
+                            <TextBlock x:Name="botonConfigAparienciasTexto" Foreground="White"/>
+                        </Button>
+                    </StackPanel>
+                </controls:DropShadowPanel>
+
+                <Grid x:Name="gridConfigApariencias" Grid.Column="1" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="tbSteamConfigInstruccionesCliente" Grid.Row="0" Margin="5" TextWrapping="Wrap"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:DropShadowPanel Grid.Column="0" Margin="5,10" Color="Black" BlurRadius="4" ShadowOpacity="0.5" 
+                                                  OffsetZ="5">
+                            <Button x:Name="buttonSteamConfigPath" Padding="15,10" Background="CadetBlue">
+                                <StackPanel Orientation="Horizontal" >
+                                    <SymbolIcon Symbol="Add" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                    <TextBlock x:Name="buttonSteamConfigPathTexto" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                        </controls:DropShadowPanel> 
+                            
+                        <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="tbSteamConfigPath" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                </Grid>                                 
+            </Grid>
+         
+            <Grid x:Name="gridCaptura" Grid.Column="1" Visibility="Collapsed">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <controls:DropShadowPanel Grid.Row="0" Margin="10" Color="Black"
+                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
+                    <Button x:Name="buttonVolver" Padding="15,10" Background="CadetBlue">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Back" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                            <TextBlock x:Name="buttonVolverTexto" Foreground="White"/>
+                        </StackPanel>
+                    </Button>
+                </controls:DropShadowPanel>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Padding="10">
+                        <controls:ImageEx x:Name="imageCapturaExpandida" Stretch="UniformToFill" />
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+
+            <Popup x:Name="popupMasApps" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="176">
+                <Popup.ChildTransitions>
+                    <TransitionCollection>
+                        <PaneThemeTransition Edge="Left"/>
+                    </TransitionCollection>
+                </Popup.ChildTransitions>
+
+                <StackPanel Orientation="Vertical" Width="200" Background="DimGray">
+                    <Button x:Name="botonAppSteamTiles" Padding="10" Background="dimGray" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock Text="Steam Tiles" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonAppSteamDeals" Padding="10" Background="darkOliveGreen" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock Text="Steam Deals" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonAppSteamCategories" Padding="10" Background="darkBlue" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock Text="Steam Categories" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button x:Name="botonAppSteamBridge" Padding="10" Background="darkMagenta" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock Text="Steam Bridge" Foreground="White" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
                 </StackPanel>
-            </Button>
-            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-                <controls:ImageEx x:Name="imageCapturaExpandida" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill" />
-            </ScrollViewer>
+            </Popup>
+
         </Grid>
-      
     </Grid>
 </Page>

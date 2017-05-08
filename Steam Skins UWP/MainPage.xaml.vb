@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.Toolkit.Uwp.Helpers
 Imports Microsoft.Toolkit.Uwp.UI.Controls
-Imports Windows.ApplicationModel.DataTransfer
+Imports Windows.ApplicationModel.Core
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
 Imports Windows.System
@@ -14,14 +14,19 @@ Public NotInheritable Class MainPage
 
     Private Sub Page_Loaded(sender As FrameworkElement, args As Object)
 
-        Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
+        'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "es-ES"
+        'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US"
 
-        barra.BackgroundColor = Colors.DarkCyan
-        barra.ForegroundColor = Colors.White
-        barra.InactiveForegroundColor = Colors.White
-        barra.ButtonBackgroundColor = Colors.DarkCyan
+        Acrilico.Generar(gridTopAcrilico)
+        Acrilico.Generar(gridMenuAcrilico)
+
+        Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
+        barra.ButtonBackgroundColor = Colors.Transparent
         barra.ButtonForegroundColor = Colors.White
-        barra.ButtonInactiveForegroundColor = Colors.White
+        barra.ButtonPressedBackgroundColor = Colors.DarkCyan
+        barra.ButtonInactiveBackgroundColor = Colors.Transparent
+        Dim coreBarra As CoreApplicationViewTitleBar = CoreApplication.GetCurrentView.TitleBar
+        coreBarra.ExtendViewIntoTitleBar = True
 
         '----------------------------------------------
 
@@ -41,20 +46,12 @@ Public NotInheritable Class MainPage
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
-        botonInicioTexto.Text = recursos.GetString("Boton Inicio")
         botonAparienciasTexto.Text = recursos.GetString("Skins")
         botonConfigTexto.Text = recursos.GetString("Boton Config")
+        botonVotarTexto.Text = recursos.GetString("Boton Votar")
+        botonMasAppsTexto.Text = recursos.GetString("Boton Web")
 
-        commadBarTop.DefaultLabelPosition = CommandBarDefaultLabelPosition.Right
-
-        botonInicioVotarTexto.Text = recursos.GetString("Boton Votar")
-        botonInicioCompartirTexto.Text = recursos.GetString("Boton Compartir")
-        botonInicioContactoTexto.Text = recursos.GetString("Boton Contactar")
-        botonInicioMasAppsTexto.Text = recursos.GetString("Boton Web")
-
-        tbRSS.Text = recursos.GetString("RSS")
-
-        tbConfig.Text = recursos.GetString("Boton Config")
+        botonConfigAparienciasTexto.Text = recursos.GetString("Skins")
         tbSteamConfigInstruccionesCliente.Text = recursos.GetString("Texto Steam Config Cliente")
         buttonSteamConfigPathTexto.Text = recursos.GetString("Boton Añadir")
         tbSteamConfigPath.Text = recursos.GetString("Texto Steam No Config")
@@ -105,130 +102,63 @@ Public NotInheritable Class MainPage
 
         '----------------------------------------------
 
-        tbConsejoConfig.Text = recursos.GetString("Consejo Config")
-        tbInicioGrid.Text = recursos.GetString("Grid Arranque")
-
-        cbItemArranqueInicio.Content = recursos.GetString("Boton Inicio")
-        cbItemArranqueApariencias.Content = recursos.GetString("Skins")
-        cbItemArranqueConfig.Content = recursos.GetString("Boton Config")
-
-        If ApplicationData.Current.LocalSettings.Values("cbarranque") = Nothing Then
-            cbArranque.SelectedIndex = 0
-            ApplicationData.Current.LocalSettings.Values("cbarranque") = "0"
-        Else
-            cbArranque.SelectedIndex = ApplicationData.Current.LocalSettings.Values("cbarranque")
-
-            If cbArranque.SelectedIndex = 0 Then
-                GridVisibilidad(gridInicio, botonInicio, Nothing)
-            ElseIf cbArranque.SelectedIndex = 1 Then
-                GridVisibilidad(gridSkins, botonApariencias, Nothing)
-                GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
-            ElseIf cbArranque.SelectedIndex = 2 Then
-                GridVisibilidad(Nothing, botonConfig, gridConfig)
-            Else
-                GridVisibilidad(gridInicio, botonInicio, Nothing)
-            End If
-        End If
-
-        tbVersionApp.Text = "App " + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString
-        tbVersionWindows.Text = "Windows " + SystemInformation.OperatingSystemVersion.Major.ToString + "." + SystemInformation.OperatingSystemVersion.Minor.ToString + "." + SystemInformation.OperatingSystemVersion.Build.ToString + "." + SystemInformation.OperatingSystemVersion.Revision.ToString
-
-        '--------------------------------------------------------
-
-        Try
-            RSS.Generar()
-        Catch ex As Exception
-
-        End Try
-
         Detector.Steam(False)
+        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
+        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
 
     End Sub
 
     '-----------------------------------------------------------------------------
 
-    Public Sub GridVisibilidad(grid As Grid, boton As AppBarButton, sp As StackPanel)
+    Public Sub GridVisibilidad(grid As Grid, boton As Button, seccion As String)
 
-        gridInicio.Visibility = Visibility.Collapsed
-        gridSkins.Visibility = Visibility.Collapsed
+        tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - " + seccion
+
+        gridApariencias.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
-        gridWeb.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
 
-        If Not sp Is Nothing Then
-            sp.Visibility = Visibility.Visible
-        Else
-            grid.Visibility = Visibility.Visible
-        End If
+        grid.Visibility = Visibility.Visible
 
-        botonInicio.BorderBrush = New SolidColorBrush(Colors.Transparent)
-        botonInicio.BorderThickness = New Thickness(0, 0, 0, 0)
-        botonApariencias.BorderBrush = New SolidColorBrush(Colors.Transparent)
-        botonApariencias.BorderThickness = New Thickness(0, 0, 0, 0)
-        botonConfig.BorderBrush = New SolidColorBrush(Colors.Transparent)
-        botonConfig.BorderThickness = New Thickness(0, 0, 0, 0)
+        botonApariencias.Background = New SolidColorBrush(Colors.Transparent)
+        botonConfig.Background = New SolidColorBrush(Colors.Transparent)
 
         If Not boton Is Nothing Then
-            boton.BorderBrush = New SolidColorBrush(Colors.White)
-            boton.BorderThickness = New Thickness(0, 2, 0, 0)
+            boton.Background = New SolidColorBrush(Colors.CadetBlue)
         End If
 
     End Sub
 
-    Private Sub BotonInicio_Click(sender As Object, e As RoutedEventArgs) Handles botonInicio.Click
+    Private Sub BotonApariencias_Click(sender As Object, e As RoutedEventArgs) Handles botonApariencias.Click
 
-        GridVisibilidad(gridInicio, botonInicio, Nothing)
-
-    End Sub
-
-    Private Sub BotonTilesSteam_Click(sender As Object, e As RoutedEventArgs) Handles botonApariencias.Click
-
-        GridVisibilidad(gridSkins, botonApariencias, Nothing)
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
         GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
 
     End Sub
 
     Private Sub BotonConfig_Click(sender As Object, e As RoutedEventArgs) Handles botonConfig.Click
 
-        GridVisibilidad(Nothing, botonConfig, gridConfig)
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        GridVisibilidad(gridConfig, botonConfig, recursos.GetString("Boton Config"))
+        GridVisibilidadConfig(gridConfigApariencias, botonConfigApariencias)
 
     End Sub
 
-    Private Async Sub BotonInicioVotar_Click(sender As Object, e As RoutedEventArgs) Handles botonInicioVotar.Click
+    Private Async Sub BotonVotar_Click(sender As Object, e As RoutedEventArgs) Handles botonVotar.Click
 
         Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
 
     End Sub
 
-    Private Sub BotonInicioCompartir_Click(sender As Object, e As RoutedEventArgs) Handles botonInicioCompartir.Click
+    Private Sub BotonMasApps_Click(sender As Object, e As RoutedEventArgs) Handles botonMasApps.Click
 
-        Dim datos As DataTransferManager = DataTransferManager.GetForCurrentView()
-        AddHandler datos.DataRequested, AddressOf MainPage_DataRequested
-        DataTransferManager.ShowShareUI()
-
-    End Sub
-
-    Private Sub MainPage_DataRequested(sender As DataTransferManager, e As DataRequestedEventArgs)
-
-        Dim request As DataRequest = e.Request
-        request.Data.SetText("Download: https://www.microsoft.com/store/apps/9nblggh55b7f")
-        request.Data.Properties.Title = "Steam Skins"
-        request.Data.Properties.Description = "Change the skin of Steam"
-
-    End Sub
-
-    Private Sub BotonInicioContacto_Click(sender As Object, e As RoutedEventArgs) Handles botonInicioContacto.Click
-
-        GridVisibilidad(gridWeb, Nothing, Nothing)
-
-    End Sub
-
-    Private Sub BotonInicioMasApps_Click(sender As Object, e As RoutedEventArgs) Handles botonInicioMasApps.Click
-
-        If spMasApps.Visibility = Visibility.Visible Then
-            spMasApps.Visibility = Visibility.Collapsed
+        If popupMasApps.IsOpen = True Then
+            botonMasApps.Background = New SolidColorBrush(Colors.Transparent)
+            popupMasApps.IsOpen = False
         Else
-            spMasApps.Visibility = Visibility.Visible
+            botonMasApps.Background = New SolidColorBrush(Colors.CadetBlue)
+            popupMasApps.IsOpen = True
         End If
 
     End Sub
@@ -257,38 +187,7 @@ Public NotInheritable Class MainPage
 
     End Sub
 
-    Private Async Sub LvRSSUpdates_ItemClick(sender As Object, e As ItemClickEventArgs) Handles lvRSSUpdates.ItemClick
-
-        Dim feed As FeedRSS = e.ClickedItem
-        Await Launcher.LaunchUriAsync(feed.Enlace)
-
-    End Sub
-
-    Private Sub CbArranque_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbArranque.SelectionChanged
-
-        ApplicationData.Current.LocalSettings.Values("cbarranque") = cbArranque.SelectedIndex
-
-    End Sub
-
-    Private Async Sub BotonSocialTwitter_Click(sender As Object, e As RoutedEventArgs) Handles botonSocialTwitter.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://twitter.com/pepeizqapps"))
-
-    End Sub
-
-    Private Async Sub BotonSocialGitHub_Click(sender As Object, e As RoutedEventArgs) Handles botonSocialGitHub.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://github.com/pepeizq"))
-
-    End Sub
-
-    Private Async Sub BotonSocialPaypal_Click(sender As Object, e As RoutedEventArgs) Handles botonSocialPaypal.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://paypal.me/pepeizq/1"))
-
-    End Sub
-
-    '-----------------------------------------------------------------------------
+    'SKINS-----------------------------------------------------------------------------
 
     Private Async Sub ButtonSteamConfigPath_Click(sender As Object, e As RoutedEventArgs) Handles buttonSteamConfigPath.Click
 
@@ -302,15 +201,17 @@ Public NotInheritable Class MainPage
 
         End Try
 
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+
         If Not carpeta Is Nothing Then
-            GridVisibilidad(gridSkins, botonApariencias, Nothing)
+            GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
             GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
 
             For Each boton As Button In listaBotonesDescarga
                 boton.IsEnabled = True
             Next
         Else
-            GridVisibilidad(Nothing, botonConfig, gridConfig)
+            GridVisibilidad(gridConfig, botonConfig, recursos.GetString("Boton Config"))
         End If
 
     End Sub
@@ -319,40 +220,32 @@ Public NotInheritable Class MainPage
 
     Private Sub AmpliarCaptura(imagen As ImageEx)
 
-        GridVisibilidad(gridCaptura, Nothing, Nothing)
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        GridVisibilidad(gridCaptura, Nothing, recursos.GetString("Captura"))
         imageCapturaExpandida.Source = imagen.Source
 
     End Sub
 
     Private Sub ButtonVolver_Click(sender As Object, e As RoutedEventArgs) Handles buttonVolver.Click
 
-        GridVisibilidad(gridSkins, botonApariencias, Nothing)
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
 
     End Sub
 
     Private Sub GridSkinVisibilidad(grid As Grid, boton As Button)
 
         buttonSeleccionAir.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionAir.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionAirClassic.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionAirClassic.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionCompact.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionCompact.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionInvert.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionInvert.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionMetro.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionMetro.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionMinimal.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionMinimal.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionPixelVision2.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionPixelVision2.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionPressure2.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionPressure2.BorderBrush = New SolidColorBrush(Colors.Transparent)
         buttonSeleccionThreshold.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionThreshold.BorderBrush = New SolidColorBrush(Colors.Transparent)
 
         boton.Background = New SolidColorBrush(Colors.DarkCyan)
-        boton.BorderBrush = New SolidColorBrush(Colors.White)
 
         gridSkinAir.Visibility = Visibility.Collapsed
         gridSkinAirClassic.Visibility = Visibility.Collapsed
@@ -365,6 +258,20 @@ Public NotInheritable Class MainPage
         gridSkinThreshold.Visibility = Visibility.Collapsed
 
         grid.Visibility = Visibility.Visible
+
+    End Sub
+
+    'CONFIG--------------------------------------------------------------
+
+    Private Sub GridVisibilidadConfig(grid As Grid, boton As Button)
+
+        gridConfigApariencias.Visibility = Visibility.Collapsed
+
+        grid.Visibility = Visibility.Visible
+
+        botonConfigApariencias.Background = New SolidColorBrush(Colors.Transparent)
+
+        boton.Background = New SolidColorBrush(Colors.DarkCyan)
 
     End Sub
 
