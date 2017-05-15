@@ -123,6 +123,9 @@
   <data name="Boton Cambiar" xml:space="preserve">
     <value>Cambiar</value>
   </data>
+  <data name="Boton Codigo Fuente" xml:space="preserve">
+    <value>Código Fuente</value>
+  </data>
   <data name="Boton Compartir" xml:space="preserve">
     <value>Compartir</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="Boton Contactar" xml:space="preserve">
     <value>Contactar</value>
+  </data>
+  <data name="Boton Cosas" xml:space="preserve">
+    <value>Más Cosas</value>
   </data>
   <data name="Boton Descarga" xml:space="preserve">
     <value>Descargar e Instalar</value>
@@ -152,6 +158,9 @@
   </data>
   <data name="Boton Web" xml:space="preserve">
     <value>Más Apps</value>
+  </data>
+  <data name="Captura" xml:space="preserve">
+    <value>Captura de Pantalla</value>
   </data>
   <data name="Capturas" xml:space="preserve">
     <value>Capturas de Pantalla (clickea para expandir)</value>

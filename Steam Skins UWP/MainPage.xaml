@@ -76,9 +76,9 @@
                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" FontSize="26" HorizontalAlignment="Center"/>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="botonMasApps" Foreground="White" Background="Transparent" Padding="15">
+                    <Button x:Name="botonMasCosas" Foreground="White" Background="Transparent" Padding="15">
                         <ToolTipService.ToolTip>
-                            <TextBlock x:Name="botonMasAppsTexto" FontSize="16"/>
+                            <TextBlock x:Name="botonMasCosasTexto" FontSize="16"/>
                         </ToolTipService.ToolTip>
 
                         <Button.Content>
@@ -1246,43 +1246,35 @@
                 </Grid>
             </Grid>
 
-            <Popup x:Name="popupMasApps" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="176">
+            <Popup x:Name="popupMasCosas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="132">
                 <Popup.ChildTransitions>
                     <TransitionCollection>
                         <PaneThemeTransition Edge="Left"/>
                     </TransitionCollection>
                 </Popup.ChildTransitions>
 
-                <StackPanel Orientation="Vertical" Width="200" Background="DimGray">
-                    <Button x:Name="botonAppSteamTiles" Padding="10" Background="dimGray" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Vertical" Width="200" Background="CadetBlue">
+                    <Button x:Name="botonMasApps" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                <TextBlock Text="Steam Tiles" Foreground="White" VerticalAlignment="Center"/>
+                                <controls:ImageEx Source="Assets\social_pepeizq.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock x:Name="botonMasAppsTexto" Foreground="White" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="botonAppSteamDeals" Padding="10" Background="darkOliveGreen" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                    <Button x:Name="botonContactar" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
                                 <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                <TextBlock Text="Steam Deals" Foreground="White" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="botonContactarTexto" Foreground="White" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
-                    <Button x:Name="botonAppSteamCategories" Padding="10" Background="darkBlue" Foreground="White" Width="200" HorizontalContentAlignment="Left">
+                    <Button x:Name="botonCodigoFuente" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                <TextBlock Text="Steam Categories" Foreground="White" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonAppSteamBridge" Padding="10" Background="darkMagenta" Foreground="White" Width="200" HorizontalContentAlignment="Left">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\steam_logo.png" Margin="0,0,10,0" Width="20" Height="20"/>
-                                <TextBlock Text="Steam Bridge" Foreground="White" VerticalAlignment="Center"/>
+                                <controls:ImageEx Source="Assets\social_github.png" Margin="0,0,10,0" Width="20" Height="20"/>
+                                <TextBlock x:Name="botonCodigoFuenteTexto" Foreground="White" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button.Content>
                     </Button>
