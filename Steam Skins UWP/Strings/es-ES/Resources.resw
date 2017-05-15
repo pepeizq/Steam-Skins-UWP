@@ -132,9 +132,6 @@
   <data name="Boton Config" xml:space="preserve">
     <value>Configuración</value>
   </data>
-  <data name="Boton Contactar" xml:space="preserve">
-    <value>Contactar</value>
-  </data>
   <data name="Boton Cosas" xml:space="preserve">
     <value>Más Cosas</value>
   </data>
@@ -143,6 +140,9 @@
   </data>
   <data name="Boton Inicio" xml:space="preserve">
     <value>Inicio</value>
+  </data>
+  <data name="Boton Reportar" xml:space="preserve">
+    <value>Informa de un Fallo</value>
   </data>
   <data name="Boton Ruta Steam 1" xml:space="preserve">
     <value>Selecciona la subcarpeta skins de Steam</value>
