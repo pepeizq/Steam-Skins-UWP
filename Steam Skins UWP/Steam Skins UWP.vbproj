@@ -224,6 +224,7 @@
     <Content Include="Assets\Small\Small71x71Logo.scale-150.png" />
     <Content Include="Assets\Small\Small71x71Logo.scale-200.png" />
     <Content Include="Assets\Small\Small71x71Logo.scale-400.png" />
+    <Content Include="Assets\social_contacto.png" />
     <Content Include="Assets\social_feedback.png" />
     <Content Include="Assets\social_github.png" />
     <Content Include="Assets\social_pepeizq.png" />
