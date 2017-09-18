@@ -5,142 +5,214 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Loaded="Page_Loaded" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
-    <Grid>
+    <Grid Background="{StaticResource ColorGridPrincipal}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="gridTopAcrilico" Grid.Row="0" Height="32"/>
-        <Grid Grid.Row="0">
-            <Grid.Background>
-                <SolidColorBrush Color="DarkCyan" Opacity="0.6"/>
-            </Grid.Background>
-
-            <TextBlock x:Name="tbTitulo" Foreground="White" Margin="65,0,0,0" VerticalAlignment="Center" FontSize="13"/>
+        <Grid x:Name="gridTitulo" Grid.Row="0" Background="{StaticResource GridTituloBackground}">
+            <TextBlock x:Name="tbTitulo" Margin="50,0,0,0" FontSize="13" Foreground="White" VerticalAlignment="Center"/>
         </Grid>
-        <Grid Grid.Row="1" Background="Transparent">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <Grid x:Name="gridMenuAcrilico" Grid.Column="0"/>
-            <Grid x:Name="gridMenu" Grid.Column="0">
-                <Grid.Background>
-                    <SolidColorBrush Color="DarkCyan" Opacity="0.6"/>
-                </Grid.Background>
+        <NavigationView x:Name="nvPrincipal" Grid.Row="1" Loaded="Nv_Loaded" ItemInvoked="Nv_ItemInvoked"
+                        OpenPaneLength="200" AlwaysShowHeader="False" IsSettingsVisible="False">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+            <Grid Padding="10">
+                <Grid.Transitions>
+                    <TransitionCollection>
+                        <EdgeUIThemeTransition Edge="Bottom"/>
+                    </TransitionCollection>
+                </Grid.Transitions>
 
-                <StackPanel Grid.Row="0" Orientation="Vertical">
-                    <Button x:Name="botonApariencias" Foreground="White" Background="Transparent" Padding="15">
-                        <ToolTipService.ToolTip>
-                            <TextBlock x:Name="botonAparienciasTexto" FontSize="16"/>
-                        </ToolTipService.ToolTip>
-
-                        <Button.Content>
-                            <Image Source="Assets\steam_logo.png" Width="26" Height="26" HorizontalAlignment="Center"/>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonConfig" Foreground="White" Background="Transparent" Padding="15">
-                        <ToolTipService.ToolTip>
-                            <TextBlock x:Name="botonConfigTexto" FontSize="16"/>
-                        </ToolTipService.ToolTip>
-
-                        <Button.Content>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE713;" FontSize="26" HorizontalAlignment="Center"/>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Vertical">
-                    <Button x:Name="botonVotar" Foreground="White" Background="Transparent" Padding="15">
-                        <ToolTipService.ToolTip>
-                            <TextBlock x:Name="botonVotarTexto" FontSize="16"/>
-                        </ToolTipService.ToolTip>
-
-                        <Button.Content>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" FontSize="26" HorizontalAlignment="Center"/>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonMasCosas" Foreground="White" Background="Transparent" Padding="15">
-                        <ToolTipService.ToolTip>
-                            <TextBlock x:Name="botonMasCosasTexto" FontSize="16"/>
-                        </ToolTipService.ToolTip>
-
-                        <Button.Content>
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE712;" FontSize="26" HorizontalAlignment="Center"/>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-            </Grid>
-
-            <Grid x:Name="gridApariencias" Grid.Column="1">
                 <Grid.Background>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <GradientStop Color="#FFE4E4E4" Offset="0.5" />
                         <GradientStop Color="#FFBFBFBF" Offset="1.0" />
                     </LinearGradientBrush>
                 </Grid.Background>
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
 
-                <controls:DropShadowPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Color="Black"
-                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Background="CadetBlue">
-                            <Button x:Name="buttonSeleccionAir" Content="Air" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionAirClassic" Content="Air Classic" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionCompact" Content="Compact" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionInvert" Content="Invert" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionMetro" Content="Metro" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionMinimal" Content="Minimal" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionPixelVision2" Content="PixelVision²" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionPressure2" Content="Pressure²" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                            <Button x:Name="buttonSeleccionThreshold" Content="Threshold" Width="200" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Foreground="White"/>
-                        </StackPanel>
-                    </ScrollViewer>
-                </controls:DropShadowPanel> 
-                
-                <Grid Grid.Column="1" Margin="10">
-                    <Grid x:Name="gridSkinAir" Visibility="Collapsed">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                <Grid x:Name="gridApariencias" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0">
+                    <ListView x:Name="lvApariencias" Grid.Row="0" IsItemClickEnabled="True" IsEnabled="False"
+                                  ItemClick="LvAparienciasItemClick" HorizontalAlignment="Center">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Background="Transparent" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+
+                        <ListViewItem x:Name="botonAparienciaAir" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                            <StackPanel Orientation="Horizontal" Tag="0">
+                                <TextBlock Text="Air" Foreground="White"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+
+                    <Grid Grid.Row="1" Padding="0,10">
+                        <controls:DropShadowPanel x:Name="panelMensajeApariencias" Color="IndianRed" 
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  BlurRadius="4" ShadowOpacity="1" OffsetZ="5">
+                            <Grid Padding="10" Background="IndianRed">
+                                <TextBlock x:Name="tbMensajeApariencias" x:Uid="MessageSkins" TextWrapping="Wrap" Foreground="White"/>
+                            </Grid>
+                        </controls:DropShadowPanel>
+
+                        <Grid x:Name="gridAparienciaAir" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Padding="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ListView x:Name="lvAparienciaAir1" Grid.Column="0" IsItemClickEnabled="True"
+                                          ItemClick="LvAparienciaAir1ItemClick">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Background="Transparent" Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+
+                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                        <StackPanel Orientation="Horizontal" Tag="0">
+                                            <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                            <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <TextBlock x:Name="tbInformeAir" Margin="10" VerticalAlignment="Center"/>
+                                    <ProgressRing x:Name="prInformeAir" Margin="10" Visibility="Collapsed"/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Grid> 
+                </Grid>
+
+                <Grid x:Name="gridCaptura" Visibility="Collapsed">
+
+                </Grid>
+
+                <Grid x:Name="gridConfig" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Uid="Skins2" Margin="10,5" FontSize="16"/>
+                            <Rectangle HorizontalAlignment="Left" Fill="Black" Height="1" Margin="5" Width="400"/>
+
+                            <TextBlock x:Uid="ConfigSkinsMessage" Margin="10,5" TextWrapping="Wrap"/>
+                            <Grid Margin="10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <controls:DropShadowPanel Grid.Column="0" Margin="0,10" Color="Black" BlurRadius="4" ShadowOpacity="0.5" 
+                                                  OffsetZ="5">
+                                    <Button x:Name="botonSteamRuta" Padding="15,10" Background="CadetBlue">
+                                        <StackPanel Orientation="Horizontal" >
+                                            <SymbolIcon Symbol="NewFolder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                            <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
+                                        </StackPanel>
+                                    </Button>
+                                </controls:DropShadowPanel>
+
+                                <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="tbSteamRuta" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <TextBlock x:Uid="ConfigSkinsWay" Margin="10,25,10,5" TextWrapping="Wrap"/>
+                            <ComboBox x:Name="cbConfigMetodo" Margin="10,5">
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                            </ComboBox> 
+                        </StackPanel> 
+                    </ScrollViewer> 
+                </Grid>
+
+                <Grid x:Name="gridMasCosas" Visibility="Collapsed">
+                    <ScrollViewer>
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <controls:DropShadowPanel Grid.Column="0" Color="Black"
-                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
-                                <Button x:Name="buttonDescargaAir" Padding="10" Background="CadetBlue" IsEnabled="False">
-                                    <StackPanel Orientation="Horizontal" >
-                                        <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                        <TextBlock x:Name="buttonDescargaTextoAir" Foreground="White"/>
+                            <ListView Grid.Column="0" IsItemClickEnabled="True" ItemClick="LvMasCosasItemClick">
+                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                    <StackPanel Orientation="Horizontal" Tag="0">
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" Foreground="White" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="VoteApp" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
-                                </Button>
-                            </controls:DropShadowPanel> 
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}" Margin="0,0,0,20">
+                                    <StackPanel Orientation="Horizontal" Tag="1">
+                                        <controls:ImageEx Source="Assets\MasCosas\pepeizq.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="OtherApps" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                    <StackPanel Orientation="Horizontal" Tag="2">
+                                        <controls:ImageEx Source="Assets\MasCosas\contacto.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="Contact" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}" Margin="0,0,0,20">
+                                    <StackPanel Orientation="Horizontal" Tag="3">
+                                        <controls:ImageEx Source="Assets\MasCosas\feedback.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="ReportBug" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                    <StackPanel Orientation="Horizontal" Tag="4">
+                                        <controls:ImageEx Source="Assets\MasCosas\poeditor.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="HelpTranslate" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                    <StackPanel Orientation="Horizontal" Tag="5">
+                                        <controls:ImageEx Source="Assets\MasCosas\github.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="SourceCode" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                    <StackPanel Orientation="Horizontal" Tag="6">
+                                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE76E;" Foreground="White" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                                        <TextBlock x:Uid="ThanksTo" Foreground="White" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                            </ListView>
+
+                            <WebView x:Name="wvMasCosas" Grid.Column="1" Margin="10,0,0,0"/>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </Grid> 
+        </NavigationView> 
+
+        <Grid Grid.Row="1" Background="Transparent" Visibility="Collapsed">
+            
+            <Grid Grid.Column="1">
+                 
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid>
+                        <Grid Grid.Row="0">
+
+
                                 
-                            <TextBlock x:Name="textBlockInformeAir" Grid.Column="1" Margin="10" VerticalAlignment="Center"/>
-                            <ProgressRing x:Name="progressInformeAir" Grid.Column="2" Margin="10" HorizontalAlignment="Left" Visibility="Collapsed"/>
+                            
                             <TextBlock x:Name="textBlockCreadoAir" Grid.Column="3" Margin="10" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="4" Margin="-5,10,10,10" Text="Inhibitor" VerticalAlignment="Center"/>
 
@@ -1152,65 +1224,9 @@
                 </Grid>
             </Grid>
 
-            <Grid x:Name="gridConfig" Grid.Column="1" Visibility="Collapsed">
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
-                    </LinearGradientBrush>
-                </Grid.Background>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <controls:DropShadowPanel Grid.Column="0" Margin="10" VerticalAlignment="Top" Color="Black"
-                                                  BlurRadius="4" ShadowOpacity="0.5" OffsetZ="5">
-                    <StackPanel Background="CadetBlue">
-                        <Button x:Name="botonConfigApariencias" Padding="10,15" Background="Transparent" HorizontalContentAlignment="Left" Width="200">
-                            <TextBlock x:Name="botonConfigAparienciasTexto" Foreground="White"/>
-                        </Button>
-                    </StackPanel>
-                </controls:DropShadowPanel>
-
-                <Grid x:Name="gridConfigApariencias" Grid.Column="1" Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Name="tbSteamConfigInstruccionesCliente" Grid.Row="0" Margin="5" TextWrapping="Wrap"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <controls:DropShadowPanel Grid.Column="0" Margin="5,10" Color="Black" BlurRadius="4" ShadowOpacity="0.5" 
-                                                  OffsetZ="5">
-                            <Button x:Name="buttonSteamConfigPath" Padding="15,10" Background="CadetBlue">
-                                <StackPanel Orientation="Horizontal" >
-                                    <SymbolIcon Symbol="Add" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                    <TextBlock x:Name="buttonSteamConfigPathTexto" Foreground="White"/>
-                                </StackPanel>
-                            </Button>
-                        </controls:DropShadowPanel> 
-                            
-                        <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
-                        <TextBlock x:Name="tbSteamConfigPath" Grid.Column="2" Margin="10,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
-                </Grid>                                 
-            </Grid>
          
-            <Grid x:Name="gridCaptura" Grid.Column="1" Visibility="Collapsed">
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
-                    </LinearGradientBrush>
-                </Grid.Background>
+            <Grid Grid.Column="1" Visibility="Collapsed">
+
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -1238,48 +1254,7 @@
                 </Grid>
             </Grid>
 
-            <Popup x:Name="popupMasCosas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                <Popup.ChildTransitions>
-                    <TransitionCollection>
-                        <PaneThemeTransition Edge="Left"/>
-                    </TransitionCollection>
-                </Popup.ChildTransitions>
-
-                <StackPanel x:Name="spMasCosas" Orientation="Vertical" Width="200" Background="CadetBlue">
-                    <Button x:Name="botonMasApps" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\social_pepeizq.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
-                                <TextBlock x:Name="botonMasAppsTexto" Foreground="White" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonContacto" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\social_contacto.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
-                                <TextBlock x:Name="botonContactoTexto" Foreground="White" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonReportar" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\social_feedback.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
-                                <TextBlock x:Name="botonReportarTexto" Foreground="White" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                    <Button x:Name="botonCodigoFuente" Padding="10" Foreground="White" Width="200" HorizontalContentAlignment="Left">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <controls:ImageEx Source="Assets\social_github.png" Margin="0,0,10,0" Width="20" Height="20" IsCacheEnabled="True"/>
-                                <TextBlock x:Name="botonCodigoFuenteTexto" Foreground="White" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-            </Popup>
+            
         </Grid>
     </Grid>
 </Page>

@@ -1,187 +1,247 @@
 ﻿Imports System.IO.Compression
+Imports Microsoft.Toolkit.Uwp.Helpers
+Imports SharpCompress.Readers
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
 
 Module Descarga
 
-    Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-    Dim WithEvents backgroundWorker As BackgroundWorker
-    Dim nombreSkin As String
-    Dim botonRutaSteam As Button
-    Dim listaBotonesDescarga As List(Of Button)
+    Dim WithEvents Bw As BackgroundWorker
 
-    Dim textBlockInforme As TextBlock
-    Dim progressInforme As ProgressRing
-    Dim listaOpciones As List(Of String)
-    Dim gridOpciones As Grid
+    Public Async Sub Iniciar(apariencia As Apariencia)
 
-    Dim ficheroDestino As StorageFile
-    Dim ubicacionSteam As StorageFolder
-    Dim fallo1 As Boolean = False
-    Dim fallo2 As Boolean = False
+        Dim carpetaSteam As StorageFolder = Nothing
 
-    Public Async Sub Iniciar(skin As Skins, steam As StorageFolder, rutaSteam As Button, listaBotones As List(Of Button))
+        Try
+            carpetaSteam = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
+        Catch ex As Exception
 
-        backgroundWorker = New BackgroundWorker
+        End Try
 
-        If backgroundWorker.IsBusy = False Then
-            listaBotonesDescarga = listaBotones
+        If Not apariencia Is Nothing Then
+            If Not carpetaSteam Is Nothing Then
+                Bw = New BackgroundWorker With {
+                    .WorkerSupportsCancellation = True
+                }
 
-            For Each boton As Button In listaBotonesDescarga
-                boton.IsEnabled = False
-            Next
+                If Bw.IsBusy = False Then
+                    EstadoControles(False, apariencia)
 
-            botonRutaSteam = rutaSteam
-            botonRutaSteam.IsEnabled = False
+                    Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
-            textBlockInforme = skin.textBlockInforme
-            textBlockInforme.Text = recursos.GetString("Descarga Iniciar")
+                    apariencia.Informe.Text = recursos.GetString("Downloading")
+                    apariencia.Progreso.Visibility = Visibility.Visible
+                    apariencia.Progreso.IsActive = True
 
-            progressInforme = skin.progressInforme
-            progressInforme.Visibility = Visibility.Visible
-            progressInforme.IsActive = True
+                    Dim carpetaSteamSkins As StorageFolder = Nothing
 
-            listaOpciones = skin.opciones
-            gridOpciones = skin.opcionesGrid
+                    Try
+                        carpetaSteamSkins = Await StorageFolder.GetFolderFromPathAsync(carpetaSteam.Path + "\skins")
+                    Catch ex As Exception
 
-            If Not gridOpciones Is Nothing Then
-                gridOpciones.IsHitTestVisible = False
+                    End Try
+
+                    If carpetaSteamSkins Is Nothing Then
+                        Try
+                            carpetaSteamSkins = Await StorageFolder.GetFolderFromPathAsync(carpetaSteam.Path + "\Skins")
+                        Catch ex As Exception
+
+                        End Try
+                    End If
+
+                    If Not carpetaSteamSkins Is Nothing Then
+                        StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteamSkins", carpetaSteamSkins)
+
+                        Dim ficheroApariencia As StorageFile = Await carpetaSteamSkins.CreateFileAsync(apariencia.Titulo, CreationCollisionOption.ReplaceExisting)
+                        StorageApplicationPermissions.FutureAccessList.AddOrReplace(apariencia.Titulo, ficheroApariencia)
+
+                        Dim descargador As BackgroundDownloader = New BackgroundDownloader
+                        Dim descarga As DownloadOperation = descargador.CreateDownload(apariencia.Enlace, ficheroApariencia)
+                        Await descarga.StartAsync
+
+                        apariencia.Informe.Text = recursos.GetString("Extracting")
+
+                        Bw.RunWorkerAsync(apariencia)
+                    Else
+                        Toast(recursos.GetString("Error1"), "0x1")
+                        Bw.CancelAsync()
+                        EstadoControles(True, apariencia)
+                    End If
+                End If
             End If
-
-            nombreSkin = skin.titulo
-
-            ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\skins")
-
-            If ubicacionSteam Is Nothing Then
-                ubicacionSteam = Await StorageFolder.GetFolderFromPathAsync(steam.Path + "\Skins")
-            End If
-
-            StorageApplicationPermissions.FutureAccessList.Add(ubicacionSteam)
-
-            ficheroDestino = Await steam.CreateFileAsync(nombreSkin, CreationCollisionOption.ReplaceExisting)
-
-            StorageApplicationPermissions.FutureAccessList.Add(ficheroDestino)
-
-            Dim descargador As BackgroundDownloader = New BackgroundDownloader
-            Dim descarga As DownloadOperation = descargador.CreateDownload(skin.enlace, ficheroDestino)
-
-            Await descarga.StartAsync
-
-            textBlockInforme.Text = recursos.GetString("Descarga Extraer")
-
-            backgroundWorker.RunWorkerAsync()
         End If
 
     End Sub
 
-    Private Sub backgroundWorker_DoWork(sender As Object, e As DoWorkEventArgs) Handles backgroundWorker.DoWork
+    Private Async Sub Bw_DoWork(sender As Object, e As DoWorkEventArgs) Handles Bw.DoWork
+
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+
+        Dim carpetaSteam As StorageFolder = Nothing
 
         Try
-            If Directory.Exists(ubicacionSteam.Path + "\" + nombreSkin) Then
-                Directory.Delete(ubicacionSteam.Path + "\" + nombreSkin, True)
-            End If
+            carpetaSteam = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteamSkins")
         Catch ex As Exception
-            fallo2 = True
+
         End Try
 
-        Try
-            Using archivoZip As ZipArchive = ZipFile.Open(ficheroDestino.Path, ZipArchiveMode.Read)
-                For Each archivo As ZipArchiveEntry In archivoZip.Entries
-                    If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
-                        Dim nombreArchivo As String = archivo.FullName
+        Dim apariencia As Apariencia = e.Argument
 
-                        If nombreArchivo.Contains("-master") Then
-                            nombreArchivo = nombreArchivo.Replace("-master", Nothing)
-                        End If
+        If Not apariencia Is Nothing Then
+            If Not carpetaSteam Is Nothing Then
+                Try
+                    If Directory.Exists(carpetaSteam.Path + "\" + apariencia.Titulo) Then
+                        Directory.Delete(carpetaSteam.Path + "\" + apariencia.Titulo, True)
+                    End If
+                Catch ex As Exception
+                    Toast(recursos.GetString("Error2"), "0x2")
+                    Bw.CancelAsync()
+                    EstadoControles(True, apariencia)
+                End Try
 
-                        '-------------------------------------------------
+                Dim ficheroApariencia As StorageFile = Nothing
 
-                        If nombreArchivo.Contains("Air-for-Steam") Then
-                            nombreArchivo = nombreArchivo.Replace("Air-for-Steam", nombreSkin)
-                        End If
+                Try
+                    ficheroApariencia = Await StorageApplicationPermissions.FutureAccessList.GetFileAsync(apariencia.Titulo)
+                Catch ex As Exception
 
-                        If nombreArchivo.Contains("Compact/Steam/skins/Compact") Then
-                            nombreArchivo = nombreArchivo.Replace("Compact/Steam/skins/Compact", nombreSkin)
-                        End If
+                End Try
 
-                        If nombreArchivo.Contains("Metro for Steam") Then
-                            Dim int As Integer = nombreArchivo.IndexOf("Metro for Steam")
-                            Dim temp As String = nombreArchivo.Remove(0, int)
-                            Dim int2 As Integer = temp.IndexOf("/")
+                If Not ficheroApariencia Is Nothing Then
+                    Dim helper As LocalObjectStorageHelper = New LocalObjectStorageHelper
+                    Dim metodo As String = 0
 
-                            If Not int2 = -1 Then
-                                nombreArchivo = nombreArchivo.Remove(int, int2 - int)
-                                nombreArchivo = nombreArchivo.Insert(int, nombreSkin)
-                            End If
-                        End If
+                    If Await helper.FileExistsAsync("metodo") = True Then
+                        metodo = Await helper.ReadFileAsync(Of String)("metodo")
+                    End If
 
-                        If nombreArchivo.Contains("Minimal Steam UI V3") Then
-                            nombreArchivo = nombreArchivo.Replace("Minimal Steam UI V3", nombreSkin)
-                        End If
+                    If metodo = 0 Then
+                        Using archivoZip As ZipArchive = ZipFile.Open(ficheroApariencia.Path, ZipArchiveMode.Read)
+                            For Each archivo As ZipArchiveEntry In archivoZip.Entries
+                                If Not archivo.FullName.EndsWith(".url", StringComparison.OrdinalIgnoreCase) Then
+                                    Dim nombreArchivo As String = archivo.FullName
 
-                        If nombreArchivo.Contains("Plexed") Then
-                            Dim int As Integer = nombreArchivo.IndexOf("Plexed")
-                            Dim temp As String = nombreArchivo.Remove(0, int)
-                            Dim int2 As Integer = temp.IndexOf("/")
-
-                            If Not int2 = -1 Then
-                                nombreArchivo = nombreArchivo.Remove(int, int2 - int)
-                                nombreArchivo = nombreArchivo.Insert(int, nombreSkin)
-                            End If
-                        End If
-
-                        If nombreArchivo.Contains("Threshold-Skin") Then
-                            nombreArchivo = nombreArchivo.Replace("Threshold-Skin", nombreSkin)
-                        End If
-
-                        '-------------------------------------------------
-
-                        If Not nombreArchivo.Contains(".") Then
-                            If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                                Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
-                            End If
-                        Else
-                            If nombreArchivo.Contains("/.") = True Then
-                                If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                                    Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreArchivo)
-                                End If
-                            Else
-                                If Not File.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                                    If Not Directory.Exists(ubicacionSteam.Path + "\" + nombreArchivo) Then
-                                        Directory.CreateDirectory(ubicacionSteam.Path + "\" + nombreSkin)
+                                    If nombreArchivo.Contains("-master") Then
+                                        nombreArchivo = nombreArchivo.Replace("-master", Nothing)
                                     End If
 
-                                    archivo.ExtractToFile(ubicacionSteam.Path + "\" + nombreArchivo)
+                                    '-------------------------------------------------
+
+                                    If nombreArchivo.Contains("Air-for-Steam") Then
+                                        nombreArchivo = nombreArchivo.Replace("Air-for-Steam", apariencia.Titulo)
+                                    End If
+
+                                    If nombreArchivo.Contains("Compact/Steam/skins/Compact") Then
+                                        nombreArchivo = nombreArchivo.Replace("Compact/Steam/skins/Compact", apariencia.Titulo)
+                                    End If
+
+                                    If nombreArchivo.Contains("Metro for Steam") Then
+                                        Dim int As Integer = nombreArchivo.IndexOf("Metro for Steam")
+                                        Dim temp As String = nombreArchivo.Remove(0, int)
+                                        Dim int2 As Integer = temp.IndexOf("/")
+
+                                        If Not int2 = -1 Then
+                                            nombreArchivo = nombreArchivo.Remove(int, int2 - int)
+                                            nombreArchivo = nombreArchivo.Insert(int, apariencia.Titulo)
+                                        End If
+                                    End If
+
+                                    If nombreArchivo.Contains("Minimal Steam UI V3") Then
+                                        nombreArchivo = nombreArchivo.Replace("Minimal Steam UI V3", apariencia.Titulo)
+                                    End If
+
+                                    If nombreArchivo.Contains("Threshold-Skin") Then
+                                        nombreArchivo = nombreArchivo.Replace("Threshold-Skin", apariencia.Titulo)
+                                    End If
+
+                                    '-------------------------------------------------
+
+                                    nombreArchivo = nombreArchivo.Replace("/", "\")
+
+                                    If Not nombreArchivo.Contains(".") Then
+                                        If Not Directory.Exists(carpetaSteam.Path + "\" + nombreArchivo) Then
+                                            Try
+                                                Directory.CreateDirectory(carpetaSteam.Path + "\" + nombreArchivo)
+                                            Catch ex As Exception
+
+                                            End Try
+                                        End If
+                                    Else
+                                        If nombreArchivo.Contains("/.") = True Then
+                                            If Not Directory.Exists(carpetaSteam.Path + "\" + nombreArchivo) Then
+                                                Try
+                                                    Directory.CreateDirectory(carpetaSteam.Path + "\" + nombreArchivo)
+                                                Catch ex As Exception
+
+                                                End Try
+                                            End If
+                                        Else
+                                            If Not File.Exists(carpetaSteam.Path + "\" + nombreArchivo) Then
+                                                If Not Directory.Exists(carpetaSteam.Path + "\" + nombreArchivo) Then
+                                                    Try
+                                                        Directory.CreateDirectory(carpetaSteam.Path + "\" + nombreArchivo)
+                                                    Catch ex As Exception
+
+                                                    End Try
+                                                End If
+
+                                                Try
+                                                    archivo.ExtractToFile(carpetaSteam.Path + "\" + nombreArchivo)
+                                                Catch ex As Exception
+
+                                                End Try
+                                            End If
+                                        End If
+                                    End If
                                 End If
-                            End If
-                        End If
+                            Next
+                        End Using
+
+                    ElseIf metodo = 1 Then
+
+                        Dim rstream As Streams.IRandomAccessStream = Await ficheroApariencia.OpenReadAsync
+                        Using stream As Stream = rstream.AsStreamForRead
+                            Dim lector As IReader = ReaderFactory.Open(stream)
+
+                            Dim opciones As New ExtractionOptions With {
+                                .ExtractFullPath = True,
+                                .Overwrite = True
+                            }
+
+                            While lector.MoveToNextEntry = True
+                                Try
+                                    lector.WriteEntryToDirectory(carpetaSteam.Path, opciones)
+                                Catch ex As Exception
+
+                                End Try
+                            End While
+                        End Using
                     End If
-                Next
-            End Using
-        Catch ex As Exception
-            fallo1 = True
-        End Try
+
+                    e.Result = apariencia
+                End If
+            End If
+        End If
 
     End Sub
 
-    Private Async Sub backgroundWorker_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles backgroundWorker.RunWorkerCompleted
+    Private Async Sub Bw_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles Bw.RunWorkerCompleted
 
-        If nombreSkin = "Air" Then
-            Opciones.Air(listaOpciones, ubicacionSteam.Path)
-        ElseIf nombreSkin = "Air-Classic" Then
-            Opciones.AirClassic(listaOpciones, ubicacionSteam.Path)
-        ElseIf nombreSkin = "Metro" Then
-            Opciones.Metro(listaOpciones, ubicacionSteam.Path)
-        ElseIf nombreSkin = "Minimal" Then
-            Opciones.Minimal(listaOpciones, ubicacionSteam.Path)
-        ElseIf nombreSkin = "Pressure2" Then
-            Opciones.Pressure2(listaOpciones, ubicacionSteam.Path)
-        ElseIf nombreSkin = "Threshold" Then
-            Opciones.Threshold(listaOpciones, ubicacionSteam.Path)
-        End If
+        'If nombreSkin = "Air" Then
+        '    Opciones.Air(listaOpciones, ubicacionSteam.Path)
+        'ElseIf nombreSkin = "Air-Classic" Then
+        '    Opciones.AirClassic(listaOpciones, ubicacionSteam.Path)
+        'ElseIf nombreSkin = "Metro" Then
+        '    Opciones.Metro(listaOpciones, ubicacionSteam.Path)
+        'ElseIf nombreSkin = "Minimal" Then
+        '    Opciones.Minimal(listaOpciones, ubicacionSteam.Path)
+        'ElseIf nombreSkin = "Pressure2" Then
+        '    Opciones.Pressure2(listaOpciones, ubicacionSteam.Path)
+        'ElseIf nombreSkin = "Threshold" Then
+        '    Opciones.Threshold(listaOpciones, ubicacionSteam.Path)
+        'End If
 
-        Await ficheroDestino.DeleteAsync()
 
         'Try
         '    Await Launcher.LaunchUriAsync(New Uri("steam://ExitSteam"))
@@ -189,32 +249,72 @@ Module Descarga
 
         'End Try
 
-        If fallo1 = True Then
-            textBlockInforme.Text = recursos.GetString("Descarga Fallo 1")
+        'If fallo1 = True Then
+        '    textBlockInforme.Text = recursos.GetString("Descarga Fallo 1")
+        'End If
+
+        'If fallo2 = True Then
+        '    textBlockInforme.Text = recursos.GetString("Descarga Fallo 2")
+        'End If
+
+        'If fallo1 = False And fallo2 = False Then
+        '    textBlockInforme.Text = recursos.GetString("Descarga Final")
+        'End If
+
+        'Toast("Steam Skins", textBlockInforme.Text)
+
+        Dim apariencia As Apariencia = e.Result
+        Dim ficheroApariencia As StorageFile = Nothing
+
+        Try
+            ficheroApariencia = Await StorageApplicationPermissions.FutureAccessList.GetFileAsync(apariencia.Titulo)
+        Catch ex As Exception
+
+        End Try
+
+        If Not ficheroApariencia Is Nothing Then
+            Await ficheroApariencia.DeleteAsync()
         End If
 
-        If fallo2 = True Then
-            textBlockInforme.Text = recursos.GetString("Descarga Fallo 2")
+        Dim carpetaSteam As StorageFolder = Nothing
+
+        Try
+            carpetaSteam = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteamSkins")
+        Catch ex As Exception
+
+        End Try
+
+        If Not carpetaSteam Is Nothing Then
+            If Not apariencia Is Nothing Then
+                If apariencia.Titulo = "Air" Then
+                    Dim carpeta As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(carpetaSteam.Path + "Air-for-Steam-master")
+                    Await carpeta.RenameAsync("Air")
+                End If
+
+                EstadoControles(True, apariencia)
+            End If
         End If
 
-        If fallo1 = False And fallo2 = False Then
-            textBlockInforme.Text = recursos.GetString("Descarga Final")
+    End Sub
+
+    Private Sub EstadoControles(estado As Boolean, apariencia As Apariencia)
+
+        Dim frame As Frame = Window.Current.Content
+        Dim pagina As Page = frame.Content
+
+        Dim botonSteam As Button = pagina.FindName("botonSteamRuta")
+        botonSteam.IsEnabled = estado
+
+        Dim lvAir As ListView = pagina.FindName("lvAparienciaAir1")
+        lvAir.IsEnabled = estado
+
+        If estado = True Then
+            If Not apariencia Is Nothing Then
+                apariencia.Informe.Text = String.Empty
+                apariencia.Progreso.Visibility = Visibility.Collapsed
+                apariencia.Progreso.IsActive = False
+            End If
         End If
-
-        Toast("Steam Skins", textBlockInforme.Text)
-
-        If Not gridOpciones Is Nothing Then
-            gridOpciones.IsHitTestVisible = True
-        End If
-
-        progressInforme.Visibility = Visibility.Collapsed
-        progressInforme.IsActive = False
-
-        For Each boton As Button In listaBotonesDescarga
-            boton.IsEnabled = True
-        Next
-
-        botonRutaSteam.IsEnabled = True
 
     End Sub
 

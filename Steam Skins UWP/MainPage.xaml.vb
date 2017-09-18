@@ -10,203 +10,197 @@ Imports Windows.UI
 Public NotInheritable Class MainPage
     Inherits Page
 
-    Dim skinAir, skinAirClassic, skinCompact, skinInvert, skinMetro, skinMinimal, skinPixelVision2, skinPressure2, skinThreshold As Skins
-    Dim listaBotonesDescarga As List(Of Button)
+    Dim skinAir, skinAirClassic, skinCompact, skinInvert, skinMetro, skinMinimal, skinPixelVision2, skinPressure2, skinThreshold As Apariencia
 
-    Private Sub Page_Loaded(sender As FrameworkElement, args As Object)
+    Private Sub Nv_Loaded(sender As Object, e As RoutedEventArgs)
+
+        Dim recursos As New Resources.ResourceLoader()
+
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Skins"), New SymbolIcon(Symbol.Home), 0))
+        nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), New SymbolIcon(Symbol.Setting), 1))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("MoreThings"), New SymbolIcon(Symbol.More), 2))
+
+    End Sub
+
+    Private Sub Nv_ItemInvoked(sender As NavigationView, args As NavigationViewItemInvokedEventArgs)
+
+        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+
+        Dim item As TextBlock = args.InvokedItem
+
+        If item.Text = recursos.GetString("Skins") Then
+            GridVisibilidad(gridApariencias, item.Text)
+        ElseIf item.Text = recursos.GetString("Config") Then
+            GridVisibilidad(gridConfig, item.Text)
+        ElseIf item.Text = recursos.GetString("MoreThings") Then
+            GridVisibilidad(gridMasCosas, item.Text)
+        End If
+
+    End Sub
+
+    Private Async Sub Page_Loaded(sender As FrameworkElement, args As Object)
 
         'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "es-ES"
         'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US"
 
-        Acrilico.Generar(gridTopAcrilico)
-        Acrilico.Generar(gridMenuAcrilico)
+        Dim coreBarra As CoreApplicationViewTitleBar = CoreApplication.GetCurrentView.TitleBar
+        coreBarra.ExtendViewIntoTitleBar = True
 
         Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
         barra.ButtonBackgroundColor = Colors.Transparent
         barra.ButtonForegroundColor = Colors.White
-        barra.ButtonPressedBackgroundColor = Colors.DarkCyan
         barra.ButtonInactiveBackgroundColor = Colors.Transparent
-        Dim coreBarra As CoreApplicationViewTitleBar = CoreApplication.GetCurrentView.TitleBar
-        coreBarra.ExtendViewIntoTitleBar = True
 
-        '----------------------------------------------
-
-        listaBotonesDescarga = New List(Of Button) From {
-            buttonDescargaAir,
-            buttonDescargaAirClassic,
-            buttonDescargaCompact,
-            buttonDescargaInvert,
-            buttonDescargaMetro,
-            buttonDescargaMinimal,
-            buttonDescargaPixelVision2,
-            buttonDescargaPressure2,
-            buttonDescargaThreshold
-        }
-
-        '----------------------------------------------
+        '--------------------------------------------------------
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
-        botonAparienciasTexto.Text = recursos.GetString("Skins")
-        botonConfigTexto.Text = recursos.GetString("Boton Config")
-        botonVotarTexto.Text = recursos.GetString("Boton Votar")
-        botonMasCosasTexto.Text = recursos.GetString("Boton Cosas")
+        GridVisibilidad(gridApariencias, recursos.GetString("Skins"))
+        nvPrincipal.IsPaneOpen = False
+        Detector.Steam(False)
 
-        botonMasAppsTexto.Text = recursos.GetString("Boton Web")
-        botonContactoTexto.Text = recursos.GetString("Boton Contacto")
-        botonReportarTexto.Text = recursos.GetString("Boton Reportar")
-        botonCodigoFuenteTexto.Text = recursos.GetString("Boton Codigo Fuente")
+        Dim helper As LocalObjectStorageHelper = New LocalObjectStorageHelper
 
-        botonConfigAparienciasTexto.Text = recursos.GetString("Skins")
-        tbSteamConfigInstruccionesCliente.Text = recursos.GetString("Texto Steam Config Cliente")
-        buttonSteamConfigPathTexto.Text = recursos.GetString("Boton Añadir")
-        tbSteamConfigPath.Text = recursos.GetString("Texto Steam No Config")
+        If Await helper.FileExistsAsync("metodo") = True Then
+            cbConfigMetodo.SelectedIndex = Await helper.ReadFileAsync(Of String)("metodo")
+        Else
+            cbConfigMetodo.SelectedIndex = 0
+        End If
 
-        buttonVolverTexto.Text = recursos.GetString("Boton Volver")
-
-        buttonDescargaTextoAir.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsAir.Text = recursos.GetString("Capturas")
-        tbOpcionesAir.Text = recursos.GetString("Opciones")
-        textBlockCreadoAir.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoAirClassic.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsAirClassic.Text = recursos.GetString("Capturas")
-        tbOpcionesAirClassic.Text = recursos.GetString("Opciones")
-        textBlockCreadoAirClassic.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoCompact.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsCompact.Text = recursos.GetString("Capturas")
-        textBlockCreadoCompact.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoInvert.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsInvert.Text = recursos.GetString("Capturas")
-        textBlockCreadoInvert.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoMetro.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsMetro.Text = recursos.GetString("Capturas")
-        tbOpcionesMetro.Text = recursos.GetString("Opciones")
-        textBlockCreadoMetro.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoMinimal.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsMinimal.Text = recursos.GetString("Capturas")
-        tbOpcionesMinimal.Text = recursos.GetString("Opciones")
-        textBlockCreadoMinimal.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoPixelVision2.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsPixelVision2.Text = recursos.GetString("Capturas")
-        textBlockCreadoPixelVision2.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoPressure2.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsPressure2.Text = recursos.GetString("Capturas")
-        tbOpcionesPressure2.Text = recursos.GetString("Opciones")
-        textBlockCreadoPressure2.Text = recursos.GetString("Creado Por")
-
-        buttonDescargaTextoThreshold.Text = recursos.GetString("Boton Descarga")
-        tbScreenshotsThreshold.Text = recursos.GetString("Capturas")
-        tbOpcionesThreshold.Text = recursos.GetString("Opciones")
-        textBlockCreadoThreshold.Text = recursos.GetString("Creado Por")
 
         '----------------------------------------------
 
-        Detector.Steam(False)
-        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
-        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
+        'botonAparienciasTexto.Text = recursos.GetString("Skins")
+        'botonConfigTexto.Text = recursos.GetString("Boton Config")
+        'botonVotarTexto.Text = recursos.GetString("Boton Votar")
+        'botonMasCosasTexto.Text = recursos.GetString("Boton Cosas")
+
+        'botonMasAppsTexto.Text = recursos.GetString("Boton Web")
+        'botonContactoTexto.Text = recursos.GetString("Boton Contacto")
+        'botonReportarTexto.Text = recursos.GetString("Boton Reportar")
+        'botonCodigoFuenteTexto.Text = recursos.GetString("Boton Codigo Fuente")
+
+        'botonConfigAparienciasTexto.Text = recursos.GetString("Skins")
+        'tbSteamConfigInstruccionesCliente.Text = recursos.GetString("Texto Steam Config Cliente")
+        'buttonSteamConfigPathTexto.Text = recursos.GetString("Boton Añadir")
+        'tbSteamConfigPath.Text = recursos.GetString("Texto Steam No Config")
+
+        'buttonVolverTexto.Text = recursos.GetString("Boton Volver")
+
+        'buttonDescargaTextoAir.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsAir.Text = recursos.GetString("Capturas")
+        'tbOpcionesAir.Text = recursos.GetString("Opciones")
+        'textBlockCreadoAir.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoAirClassic.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsAirClassic.Text = recursos.GetString("Capturas")
+        'tbOpcionesAirClassic.Text = recursos.GetString("Opciones")
+        'textBlockCreadoAirClassic.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoCompact.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsCompact.Text = recursos.GetString("Capturas")
+        'textBlockCreadoCompact.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoInvert.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsInvert.Text = recursos.GetString("Capturas")
+        'textBlockCreadoInvert.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoMetro.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsMetro.Text = recursos.GetString("Capturas")
+        'tbOpcionesMetro.Text = recursos.GetString("Opciones")
+        'textBlockCreadoMetro.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoMinimal.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsMinimal.Text = recursos.GetString("Capturas")
+        'tbOpcionesMinimal.Text = recursos.GetString("Opciones")
+        'textBlockCreadoMinimal.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoPixelVision2.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsPixelVision2.Text = recursos.GetString("Capturas")
+        'textBlockCreadoPixelVision2.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoPressure2.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsPressure2.Text = recursos.GetString("Capturas")
+        'tbOpcionesPressure2.Text = recursos.GetString("Opciones")
+        'textBlockCreadoPressure2.Text = recursos.GetString("Creado Por")
+
+        'buttonDescargaTextoThreshold.Text = recursos.GetString("Boton Descarga")
+        'tbScreenshotsThreshold.Text = recursos.GetString("Capturas")
+        'tbOpcionesThreshold.Text = recursos.GetString("Opciones")
+        'textBlockCreadoThreshold.Text = recursos.GetString("Creado Por")
 
     End Sub
 
-    '-----------------------------------------------------------------------------
+    Public Sub GridVisibilidad(grid As Grid, tag As String)
 
-    Public Sub GridVisibilidad(grid As Grid, boton As Button, seccion As String)
-
-        tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - " + seccion
+        tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - " + tag
 
         gridApariencias.Visibility = Visibility.Collapsed
-        gridConfig.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
+        gridConfig.Visibility = Visibility.Collapsed
+        gridMasCosas.Visibility = Visibility.Collapsed
 
         grid.Visibility = Visibility.Visible
-
-        botonApariencias.Background = New SolidColorBrush(Colors.Transparent)
-        botonConfig.Background = New SolidColorBrush(Colors.Transparent)
-
-        If Not boton Is Nothing Then
-            boton.Background = New SolidColorBrush(Colors.CadetBlue)
-        End If
-
-    End Sub
-
-    Private Sub BotonApariencias_Click(sender As Object, e As RoutedEventArgs) Handles botonApariencias.Click
-
-        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
-        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
-
-    End Sub
-
-    Private Sub BotonConfig_Click(sender As Object, e As RoutedEventArgs) Handles botonConfig.Click
-
-        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-        GridVisibilidad(gridConfig, botonConfig, recursos.GetString("Boton Config"))
-        GridVisibilidadConfig(gridConfigApariencias, botonConfigApariencias)
-
-    End Sub
-
-    Private Async Sub BotonVotar_Click(sender As Object, e As RoutedEventArgs) Handles botonVotar.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
-
-    End Sub
-
-    Private Sub BotonMasCosas_Click(sender As Object, e As RoutedEventArgs) Handles botonMasCosas.Click
-
-        If popupMasCosas.IsOpen = True Then
-            botonMasCosas.Background = New SolidColorBrush(Colors.Transparent)
-            popupMasCosas.IsOpen = False
-        Else
-            botonMasCosas.Background = New SolidColorBrush(Colors.CadetBlue)
-            popupMasCosas.IsOpen = True
-        End If
-
-    End Sub
-
-    Private Sub PopupMasCosas_LayoutUpdated(sender As Object, e As Object) Handles popupMasCosas.LayoutUpdated
-
-        popupMasCosas.Height = spMasCosas.ActualHeight
-
-    End Sub
-
-    Private Async Sub BotonMasApps_Click(sender As Object, e As RoutedEventArgs) Handles botonMasApps.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/"))
-
-    End Sub
-
-    Private Async Sub BotonContacto_Click(sender As Object, e As RoutedEventArgs) Handles botonContacto.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/contact/"))
-
-    End Sub
-
-    Private Async Sub BotonReportar_Click(sender As Object, e As RoutedEventArgs) Handles botonReportar.Click
-
-        If StoreServicesFeedbackLauncher.IsSupported = True Then
-            Dim ejecutador As StoreServicesFeedbackLauncher = StoreServicesFeedbackLauncher.GetDefault()
-            Await ejecutador.LaunchAsync()
-        Else
-            Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/contact/"))
-        End If
-
-    End Sub
-
-    Private Async Sub BotonCodigoFuente_Click(sender As Object, e As RoutedEventArgs) Handles botonCodigoFuente.Click
-
-        Await Launcher.LaunchUriAsync(New Uri("https://github.com/pepeizq/Steam-Skins-UWP"))
 
     End Sub
 
     'SKINS-----------------------------------------------------------------------------
 
-    Private Async Sub ButtonSteamConfigPath_Click(sender As Object, e As RoutedEventArgs) Handles buttonSteamConfigPath.Click
+    Private Sub LvAparienciasItemClick(sender As Object, args As ItemClickEventArgs)
+
+        If panelMensajeApariencias.Visibility = Visibility.Visible Then
+            panelMensajeApariencias.Visibility = Visibility.Collapsed
+        End If
+
+        botonAparienciaAir.Background = New SolidColorBrush(Colors.CadetBlue)
+
+        gridAparienciaAir.Visibility = Visibility.Collapsed
+
+        Dim sp As StackPanel = args.ClickedItem
+
+        If sp.Tag.ToString = 0 Then
+
+            botonAparienciaAir.Background = New SolidColorBrush(Colors.DarkCyan)
+            gridAparienciaAir.Visibility = Visibility.Visible
+
+        End If
+
+    End Sub
+
+    'SKINAIR-----------------------------------------------------------------------------
+
+    Private Sub LvAparienciaAir1ItemClick(sender As Object, args As ItemClickEventArgs)
+
+        Dim helper As LocalObjectStorageHelper = New LocalObjectStorageHelper
+        Dim sp As StackPanel = args.ClickedItem
+
+        If sp.Tag.ToString = 0 Then
+
+            Dim listaOpciones As New List(Of String)
+
+            Dim opcionTheme As ComboBoxItem = comboBoxOpcionAirTheme.SelectedValue
+            listaOpciones.Add(opcionTheme.Content.ToString)
+
+            Dim opcionColor As ComboBoxItem = comboBoxOpcionAirColor.SelectedValue
+            listaOpciones.Add(opcionColor.Content.ToString)
+
+            Dim apariencia As Apariencia = New Apariencia("Air",
+                                                    New Uri("https://github.com/Outsetini/Air-for-Steam/archive/master.zip"),
+                                                    tbInformeAir,
+                                                    prInformeAir,
+                                                    listaOpciones,
+                                                    gridOpcionesAir)
+
+            Descarga.Iniciar(apariencia)
+
+        End If
+
+    End Sub
+
+    'CONFIG-----------------------------------------------------------------------------
+
+    Private Async Sub BotonSteamRuta_Click(sender As Object, e As RoutedEventArgs) Handles botonSteamRuta.Click
 
         Detector.Steam(True)
 
@@ -221,15 +215,22 @@ Public NotInheritable Class MainPage
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
 
         If Not carpeta Is Nothing Then
-            GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
-            GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
+            'GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
+            'GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
 
-            For Each boton As Button In listaBotonesDescarga
-                boton.IsEnabled = True
-            Next
+            'For Each boton As Button In listaBotonesDescarga
+            '    boton.IsEnabled = True
+            'Next
         Else
-            GridVisibilidad(gridConfig, botonConfig, recursos.GetString("Boton Config"))
+            'GridVisibilidad(gridConfig, botonConfig, recursos.GetString("Boton Config"))
         End If
+
+    End Sub
+
+    Private Async Sub CbConfigMetodo_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbConfigMetodo.SelectionChanged
+
+        Dim helper As LocalObjectStorageHelper = New LocalObjectStorageHelper
+        Await helper.SaveFileAsync(Of String)("metodo", cbConfigMetodo.SelectedIndex)
 
     End Sub
 
@@ -238,7 +239,7 @@ Public NotInheritable Class MainPage
     Private Sub AmpliarCaptura(imagen As ImageEx)
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-        GridVisibilidad(gridCaptura, Nothing, recursos.GetString("Captura"))
+        'GridVisibilidad(gridCaptura, Nothing, recursos.GetString("Captura"))
         imageCapturaExpandida.Source = imagen.Source
 
     End Sub
@@ -246,81 +247,12 @@ Public NotInheritable Class MainPage
     Private Sub ButtonVolver_Click(sender As Object, e As RoutedEventArgs) Handles buttonVolver.Click
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
-        GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
+        'GridVisibilidad(gridApariencias, botonApariencias, recursos.GetString("Skins"))
 
     End Sub
 
-    Private Sub GridSkinVisibilidad(grid As Grid, boton As Button)
 
-        buttonSeleccionAir.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionAirClassic.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionCompact.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionInvert.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionMetro.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionMinimal.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionPixelVision2.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionPressure2.Background = New SolidColorBrush(Colors.Transparent)
-        buttonSeleccionThreshold.Background = New SolidColorBrush(Colors.Transparent)
 
-        boton.Background = New SolidColorBrush(Colors.DarkCyan)
-
-        gridSkinAir.Visibility = Visibility.Collapsed
-        gridSkinAirClassic.Visibility = Visibility.Collapsed
-        gridSkinCompact.Visibility = Visibility.Collapsed
-        gridSkinInvert.Visibility = Visibility.Collapsed
-        gridSkinMetro.Visibility = Visibility.Collapsed
-        gridSkinMinimal.Visibility = Visibility.Collapsed
-        gridSkinPixelVision2.Visibility = Visibility.Collapsed
-        gridSkinPressure2.Visibility = Visibility.Collapsed
-        gridSkinThreshold.Visibility = Visibility.Collapsed
-
-        grid.Visibility = Visibility.Visible
-
-    End Sub
-
-    'CONFIG--------------------------------------------------------------
-
-    Private Sub GridVisibilidadConfig(grid As Grid, boton As Button)
-
-        gridConfigApariencias.Visibility = Visibility.Collapsed
-
-        grid.Visibility = Visibility.Visible
-
-        botonConfigApariencias.Background = New SolidColorBrush(Colors.Transparent)
-
-        boton.Background = New SolidColorBrush(Colors.DarkCyan)
-
-    End Sub
-
-    'SKINAIR-----------------------------------------------------------------------------
-
-    Private Sub ButtonSeleccionAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionAir.Click
-
-        GridSkinVisibilidad(gridSkinAir, buttonSeleccionAir)
-
-    End Sub
-
-    Private Async Sub ButtonDescargaAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAir.Click
-
-        Dim listaOpciones As New List(Of String)
-
-        Dim opcionTheme As ComboBoxItem = comboBoxOpcionAirTheme.SelectedValue
-        listaOpciones.Add(opcionTheme.Content.ToString)
-
-        Dim opcionColor As ComboBoxItem = comboBoxOpcionAirColor.SelectedValue
-        listaOpciones.Add(opcionColor.Content.ToString)
-
-        skinAir = New Skins("Air",
-                                  New Uri("https://github.com/Outsetini/Air-for-Steam/archive/master.zip"),
-                                  textBlockInformeAir,
-                                  progressInformeAir,
-                                  listaOpciones,
-                                  gridOpcionesAir)
-
-        Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAir, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
-
-    End Sub
 
     Private Async Sub ButtonWebAir_Click(sender As Object, e As RoutedEventArgs) Handles buttonWebAir.Click
 
@@ -360,11 +292,11 @@ Public NotInheritable Class MainPage
 
     'SKINAIRCLASSIC-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionAirClassic.Click
+    'Private Sub ButtonSeleccionAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionAirClassic.Click
 
-        GridSkinVisibilidad(gridSkinAirClassic, buttonSeleccionAirClassic)
+    '    GridSkinVisibilidad(gridSkinAirClassic, buttonSeleccionAirClassic)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaAirClassic_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaAirClassic.Click
 
@@ -379,7 +311,7 @@ Public NotInheritable Class MainPage
         Dim opcionBackground As ComboBoxItem = comboBoxOpcionAirClassicBackground.SelectedValue
         listaOpciones.Add(opcionBackground.Content.ToString)
 
-        skinAirClassic = New Skins("Air-Classic",
+        skinAirClassic = New Apariencia("Air-Classic",
                                   New Uri("https://github.com/Outsetini/Air-Classic/archive/master.zip"),
                                   textBlockInformeAirClassic,
                                   progressInformeAirClassic,
@@ -387,7 +319,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesAirClassic)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinAirClassic, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -429,22 +361,22 @@ Public NotInheritable Class MainPage
 
     'SKINCOMPACT-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionCompact_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionCompact.Click
+    'Private Sub ButtonSeleccionCompact_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionCompact.Click
 
-        GridSkinVisibilidad(gridSkinCompact, buttonSeleccionCompact)
+    '    GridSkinVisibilidad(gridSkinCompact, buttonSeleccionCompact)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaCompact_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaCompact.Click
 
-        skinCompact = New Skins("Compact",
+        skinCompact = New Apariencia("Compact",
                                   New Uri("https://github.com/badanka/Compact/archive/master.zip"),
                                   textBlockInformeCompact,
                                   progressInformeCompact,
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinCompact, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinCompact, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -480,11 +412,11 @@ Public NotInheritable Class MainPage
 
     'SKININVERT-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionInvert_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionInvert.Click
+    'Private Sub ButtonSeleccionInvert_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionInvert.Click
 
-        GridSkinVisibilidad(gridSkinInvert, buttonSeleccionInvert)
+    '    GridSkinVisibilidad(gridSkinInvert, buttonSeleccionInvert)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaInvert_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaInvert.Click
 
@@ -505,14 +437,14 @@ Public NotInheritable Class MainPage
             temp2 = Nothing
         End If
 
-        skinInvert = New Skins("Invert",
+        skinInvert = New Apariencia("Invert",
                                   New Uri(temp2),
                                   textBlockInformeInvert,
                                   progressInformeInvert,
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinInvert, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinInvert, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -554,11 +486,11 @@ Public NotInheritable Class MainPage
 
     'SKINMETRO-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionMetro_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMetro.Click
+    'Private Sub ButtonSeleccionMetro_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMetro.Click
 
-        GridSkinVisibilidad(gridSkinMetro, buttonSeleccionMetro)
+    '    GridSkinVisibilidad(gridSkinMetro, buttonSeleccionMetro)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaMetro_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaMetro.Click
 
@@ -586,7 +518,7 @@ Public NotInheritable Class MainPage
             temp2 = Nothing
         End If
 
-        skinMetro = New Skins("Metro",
+        skinMetro = New Apariencia("Metro",
                                   New Uri(temp2),
                                   textBlockInformeMetro,
                                   progressInformeMetro,
@@ -594,7 +526,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesMetro)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMetro, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinMetro, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -642,11 +574,11 @@ Public NotInheritable Class MainPage
 
     'SKINMINIMAL-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionMinimal_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMinimal.Click
+    'Private Sub ButtonSeleccionMinimal_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionMinimal.Click
 
-        GridSkinVisibilidad(gridSkinMinimal, buttonSeleccionMinimal)
+    '    GridSkinVisibilidad(gridSkinMinimal, buttonSeleccionMinimal)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaMinimal_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaMinimal.Click
 
@@ -672,7 +604,7 @@ Public NotInheritable Class MainPage
             temp2 = Nothing
         End If
 
-        skinMinimal = New Skins("Minimal",
+        skinMinimal = New Apariencia("Minimal",
                                   New Uri(temp2),
                                   textBlockInformeMinimal,
                                   progressInformeMinimal,
@@ -680,7 +612,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesMinimal)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinMinimal, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinMinimal, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -716,22 +648,22 @@ Public NotInheritable Class MainPage
 
     'SKINPIXELVISION2-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPixelVision2.Click
+    'Private Sub ButtonSeleccionPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPixelVision2.Click
 
-        GridSkinVisibilidad(gridSkinPixelVision2, buttonSeleccionPixelVision2)
+    '    GridSkinVisibilidad(gridSkinPixelVision2, buttonSeleccionPixelVision2)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaPixelVision2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPixelVision2.Click
 
-        skinPixelVision2 = New Skins("PixelVision2",
+        skinPixelVision2 = New Apariencia("PixelVision2",
                                   New Uri("https://github.com/somini/Pixelvision2/archive/master.zip"),
                                   textBlockInformePixelVision2,
                                   progressInformePixelVision2,
                                   Nothing, Nothing)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinPixelVision2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -767,11 +699,11 @@ Public NotInheritable Class MainPage
 
     'SKINPRESSURE2-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPressure2.Click
+    'Private Sub ButtonSeleccionPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionPressure2.Click
 
-        GridSkinVisibilidad(gridSkinPressure2, buttonSeleccionPressure2)
+    '    GridSkinVisibilidad(gridSkinPressure2, buttonSeleccionPressure2)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaPressure2_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaPressure2.Click
 
@@ -783,7 +715,7 @@ Public NotInheritable Class MainPage
         Dim opcionOverlayBackground As ComboBoxItem = comboBoxOpcionPressure2OverlayBackground.SelectedValue
         listaOpciones.Add(opcionOverlayBackground.Content.ToString)
 
-        skinPressure2 = New Skins("Pressure2",
+        skinPressure2 = New Apariencia("Pressure2",
                                   New Uri("https://github.com/DirtDiglett/Pressure2/archive/master.zip"),
                                   textBlockInformePressure2,
                                   progressInformePressure2,
@@ -791,7 +723,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesPressure2)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinPressure2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinPressure2, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -839,11 +771,11 @@ Public NotInheritable Class MainPage
 
     'SKINTHRESHOLD-----------------------------------------------------------------------------
 
-    Private Sub ButtonSeleccionThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionThreshold.Click
+    'Private Sub ButtonSeleccionThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonSeleccionThreshold.Click
 
-        GridSkinVisibilidad(gridSkinThreshold, buttonSeleccionThreshold)
+    '    GridSkinVisibilidad(gridSkinThreshold, buttonSeleccionThreshold)
 
-    End Sub
+    'End Sub
 
     Private Async Sub ButtonDescargaThreshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonDescargaThreshold.Click
 
@@ -858,7 +790,7 @@ Public NotInheritable Class MainPage
         Dim opcionTitlebar As ComboBoxItem = comboBoxOpcionThresholdColoredTitlebar.SelectedValue
         listaOpciones.Add(opcionTitlebar.Content.ToString)
 
-        skinThreshold = New Skins("Threshold",
+        skinThreshold = New Apariencia("Threshold",
                                   New Uri("https://github.com/Edgarware/Threshold-Skin/archive/master.zip"),
                                   textBlockInformeThreshold,
                                   progressInformeThreshold,
@@ -866,7 +798,7 @@ Public NotInheritable Class MainPage
                                   gridOpcionesThreshold)
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
-        Descarga.Iniciar(skinThreshold, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
+        'Descarga.Iniciar(skinThreshold, carpetaSteam, buttonSteamConfigPath, listaBotonesDescarga)
 
     End Sub
 
@@ -897,6 +829,49 @@ Public NotInheritable Class MainPage
     Private Sub ButtonImagePreview4Threshold_Click(sender As Object, e As RoutedEventArgs) Handles buttonImagePreview4Threshold.Click
 
         AmpliarCaptura(imagePreview4Threshold)
+
+    End Sub
+
+    'MASCOSAS-----------------------------------------
+
+    Private Async Sub LvMasCosasItemClick(sender As Object, args As ItemClickEventArgs)
+
+        Dim sp As StackPanel = args.ClickedItem
+
+        If sp.Tag.ToString = 0 Then
+
+            Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
+
+        ElseIf sp.Tag.ToString = 1 Then
+
+            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/"))
+
+        ElseIf sp.Tag.ToString = 2 Then
+
+            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/contact/"))
+
+        ElseIf sp.Tag.ToString = 3 Then
+
+            If StoreServicesFeedbackLauncher.IsSupported = True Then
+                Dim ejecutador As StoreServicesFeedbackLauncher = StoreServicesFeedbackLauncher.GetDefault()
+                Await ejecutador.LaunchAsync()
+            Else
+                wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/contact/"))
+            End If
+
+        ElseIf sp.Tag.ToString = 4 Then
+
+            wvMasCosas.Navigate(New Uri("https://poeditor.com/join/project/YaZAR0uIW4"))
+
+        ElseIf sp.Tag.ToString = 5 Then
+
+            wvMasCosas.Navigate(New Uri("https://github.com/pepeizq/Steam-Skins-UWP"))
+
+        ElseIf sp.Tag.ToString = 6 Then
+
+            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/thanks/"))
+
+        End If
 
     End Sub
 

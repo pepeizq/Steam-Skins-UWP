@@ -117,70 +117,97 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add.Text" xml:space="preserve">
-    <value>Add</value>
+  <data name="Boton Añadir" xml:space="preserve">
+    <value>Añadir</value>
   </data>
-  <data name="Change" xml:space="preserve">
-    <value>Change</value>
+  <data name="Boton Cambiar" xml:space="preserve">
+    <value>Cambiar</value>
   </data>
-  <data name="Config" xml:space="preserve">
-    <value>Configuration</value>
+  <data name="Boton Codigo Fuente" xml:space="preserve">
+    <value>Código Fuente</value>
   </data>
-  <data name="ConfigSkinsMessage.Text" xml:space="preserve">
-    <value>Add the folder where Steam is installed so the app can download and install skins (example: C:\Steam)</value>
+  <data name="Boton Compartir" xml:space="preserve">
+    <value>Compartir</value>
   </data>
-  <data name="ConfigSkinsWay.Text" xml:space="preserve">
-    <value>Given how Windows 10 operates the app incorporates two "ways" to add skins, if one gives you error try with the other</value>
+  <data name="Boton Config" xml:space="preserve">
+    <value>Configuración</value>
   </data>
-  <data name="Contact.Text" xml:space="preserve">
-    <value>Contact</value>
+  <data name="Boton Contacto" xml:space="preserve">
+    <value>Contactar</value>
   </data>
-  <data name="DownloadAndInstall.Text" xml:space="preserve">
-    <value>Download and Install</value>
+  <data name="Boton Cosas" xml:space="preserve">
+    <value>Más Cosas</value>
   </data>
-  <data name="Downloading" xml:space="preserve">
-    <value>Downloading</value>
+  <data name="Boton Descarga" xml:space="preserve">
+    <value>Descargar e Instalar</value>
   </data>
-  <data name="Error1" xml:space="preserve">
-    <value>Failed to access the subfolder skins</value>
+  <data name="Boton Inicio" xml:space="preserve">
+    <value>Inicio</value>
   </data>
-  <data name="Error2" xml:space="preserve">
-    <value>Unable to delete old folder from skin</value>
+  <data name="Boton Reportar" xml:space="preserve">
+    <value>Informa de un Fallo</value>
   </data>
-  <data name="Extracting" xml:space="preserve">
-    <value>Extracting</value>
+  <data name="Boton Ruta Steam 1" xml:space="preserve">
+    <value>Selecciona la subcarpeta skins de Steam</value>
   </data>
-  <data name="HelpTranslate.Text" xml:space="preserve">
-    <value>Help to Translate</value>
+  <data name="Boton Ruta Steam 2" xml:space="preserve">
+    <value>Cambia la subcarpeta skins de Steam</value>
   </data>
-  <data name="MessageSkins.Text" xml:space="preserve">
-    <value>Add your Steam folder in Configuration before you can add skins</value>
+  <data name="Boton Volver" xml:space="preserve">
+    <value>Volver</value>
   </data>
-  <data name="MessageSkinsReady" xml:space="preserve">
-    <value>Select an skin from the top bar</value>
+  <data name="Boton Votar" xml:space="preserve">
+    <value>Vota la App</value>
   </data>
-  <data name="MoreThings" xml:space="preserve">
-    <value>More Things</value>
+  <data name="Boton Web" xml:space="preserve">
+    <value>Más Apps</value>
   </data>
-  <data name="OtherApps.Text" xml:space="preserve">
-    <value>Other Apps</value>
+  <data name="Captura" xml:space="preserve">
+    <value>Captura de Pantalla</value>
   </data>
-  <data name="ReportBug.Text" xml:space="preserve">
-    <value>Report a Bug</value>
+  <data name="Capturas" xml:space="preserve">
+    <value>Capturas de Pantalla (clickea para expandir)</value>
+  </data>
+  <data name="Consejo Config" xml:space="preserve">
+    <value>Antes de añadir apariencias debes tener configurada la app</value>
+  </data>
+  <data name="Creado Por" xml:space="preserve">
+    <value>Creada por</value>
+  </data>
+  <data name="Descarga Extraer" xml:space="preserve">
+    <value>Extrayendo Apariencia</value>
+  </data>
+  <data name="Descarga Fallo 1" xml:space="preserve">
+    <value>Error Extrayendo la Apariencia</value>
+  </data>
+  <data name="Descarga Fallo 2" xml:space="preserve">
+    <value>Error borrando antigua carpeta de Apariencia, cierra Steam</value>
+  </data>
+  <data name="Descarga Final" xml:space="preserve">
+    <value>Apariencia Instalada</value>
+  </data>
+  <data name="Descarga Iniciar" xml:space="preserve">
+    <value>Descargando Apariencia</value>
+  </data>
+  <data name="Donar" xml:space="preserve">
+    <value>Donar</value>
+  </data>
+  <data name="Grid Arranque" xml:space="preserve">
+    <value>Elige ventana donde arrancar</value>
+  </data>
+  <data name="Opciones" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="RSS" xml:space="preserve">
+    <value>Últimas Noticias</value>
   </data>
   <data name="Skins" xml:space="preserve">
-    <value>Skins</value>
+    <value>Apariencias</value>
   </data>
-  <data name="Skins2.Text" xml:space="preserve">
-    <value>Skins</value>
+  <data name="Texto Steam Config Cliente" xml:space="preserve">
+    <value>Añade la carpeta donde Steam está instalado, ejemplo: C:\Steam</value>
   </data>
-  <data name="SourceCode.Text" xml:space="preserve">
-    <value>Source Code</value>
-  </data>
-  <data name="ThanksTo.Text" xml:space="preserve">
-    <value>Thanks to</value>
-  </data>
-  <data name="VoteApp.Text" xml:space="preserve">
-    <value>Vote the App</value>
+  <data name="Texto Steam No Config" xml:space="preserve">
+    <value>No se ha añadido una carpeta</value>
   </data>
 </root>

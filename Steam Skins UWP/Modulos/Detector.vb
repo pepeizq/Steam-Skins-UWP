@@ -9,8 +9,8 @@ Module Detector
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim tbConfigPath As TextBlock = pagina.FindName("tbSteamConfigPath")
-        Dim buttonConfigPath As TextBlock = pagina.FindName("buttonSteamConfigPathTexto")
+        Dim tbRuta As TextBlock = pagina.FindName("tbSteamRuta")
+        Dim botonRutaTexto As TextBlock = pagina.FindName("botonSteamRutaTexto")
 
         Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
         Dim carpeta As StorageFolder = Nothing
@@ -38,35 +38,14 @@ Module Detector
 
                 If Not ejecutable Is Nothing Then
                     StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteam", carpeta)
-                    tbConfigPath.Text = carpeta.Path
-                    buttonConfigPath.Text = recursos.GetString("Boton Cambiar")
+                    tbRuta.Text = carpeta.Path
+                    botonRutaTexto.Text = recursos.GetString("Change")
 
-                    Dim botonAir As Button = pagina.FindName("buttonDescargaAir")
-                    botonAir.IsEnabled = True
+                    Dim lvApariencias As ListView = pagina.FindName("lvApariencias")
+                    lvApariencias.IsEnabled = True
 
-                    Dim botonAirClassic As Button = pagina.FindName("buttonDescargaAirClassic")
-                    botonAirClassic.IsEnabled = True
-
-                    Dim botonCompact As Button = pagina.FindName("buttonDescargaCompact")
-                    botonCompact.IsEnabled = True
-
-                    Dim botonInvert As Button = pagina.FindName("buttonDescargaInvert")
-                    botonInvert.IsEnabled = True
-
-                    Dim botonMetro As Button = pagina.FindName("buttonDescargaMetro")
-                    botonMetro.IsEnabled = True
-
-                    Dim botonMinimal As Button = pagina.FindName("buttonDescargaMinimal")
-                    botonMinimal.IsEnabled = True
-
-                    Dim botonPixelVision2 As Button = pagina.FindName("buttonDescargaPixelVision2")
-                    botonPixelVision2.IsEnabled = True
-
-                    Dim botonPressure2 As Button = pagina.FindName("buttonDescargaPressure2")
-                    botonPressure2.IsEnabled = True
-
-                    Dim botonThreshold As Button = pagina.FindName("buttonDescargaThreshold")
-                    botonThreshold.IsEnabled = True
+                    Dim tbMensaje As TextBlock = pagina.FindName("tbMensajeApariencias")
+                    tbMensaje.Text = recursos.GetString("MessageSkinsReady")
                 End If
             End If
         Catch ex As Exception
