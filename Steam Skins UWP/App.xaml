@@ -12,8 +12,12 @@
         <SolidColorBrush x:Key="NavigationViewItemForeground" Color="White"/>
         <SolidColorBrush x:Key="NavigationViewItemForegroundPointerOver" Color="White"/>
         <SolidColorBrush x:Key="NavigationViewItemForegroundPressed" Color="White"/>
-        
+   
         <Color x:Key="ColorMaestro">DarkCyan</Color>
+
+        <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="Transparent"/>
+        <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="{StaticResource ColorMaestro}"/>
+        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ColorMaestro}"/>
 
         <SolidColorBrush x:Key="ColorGridPrincipal" Color="{StaticResource ColorMaestro}"/>
         <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource ColorMaestro}"/>
