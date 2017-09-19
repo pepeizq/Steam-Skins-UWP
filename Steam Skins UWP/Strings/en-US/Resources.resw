@@ -120,6 +120,9 @@
   <data name="Add.Text" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Back.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="Change" xml:space="preserve">
     <value>Change</value>
   </data>
@@ -135,23 +138,23 @@
   <data name="Contact.Text" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="DescriptionStore" xml:space="preserve">
+    <value>Change the appearance of Steam in a comfortable way, select the skin and the app will download and extract it.</value>
+  </data>
   <data name="DownloadAndInstall.Text" xml:space="preserve">
     <value>Download and Install</value>
   </data>
   <data name="Downloading" xml:space="preserve">
     <value>Downloading</value>
   </data>
-  <data name="Error1" xml:space="preserve">
-    <value>Failed to access the subfolder skins</value>
-  </data>
-  <data name="Error2" xml:space="preserve">
-    <value>Unable to delete old folder from skin</value>
-  </data>
   <data name="Extracting" xml:space="preserve">
     <value>Extracting</value>
   </data>
   <data name="HelpTranslate.Text" xml:space="preserve">
     <value>Help to Translate</value>
+  </data>
+  <data name="InstallCompleted" xml:space="preserve">
+    <value>Installation Completed</value>
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Add your Steam folder in Configuration before you can add skins</value>
@@ -165,8 +168,17 @@
   <data name="OtherApps.Text" xml:space="preserve">
     <value>Other Apps</value>
   </data>
+  <data name="Personalization.Text" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
   <data name="ReportBug.Text" xml:space="preserve">
     <value>Report a Bug</value>
+  </data>
+  <data name="Screenshot" xml:space="preserve">
+    <value>Screenshot</value>
+  </data>
+  <data name="Screenshots.Text" xml:space="preserve">
+    <value>Screenshots (click to expand)</value>
   </data>
   <data name="Skins" xml:space="preserve">
     <value>Skins</value>

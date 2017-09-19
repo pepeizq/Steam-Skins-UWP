@@ -12,7 +12,7 @@
         <SolidColorBrush x:Key="NavigationViewItemForeground" Color="White"/>
         <SolidColorBrush x:Key="NavigationViewItemForegroundPointerOver" Color="White"/>
         <SolidColorBrush x:Key="NavigationViewItemForegroundPressed" Color="White"/>
-
+        
         <Color x:Key="ColorMaestro">DarkCyan</Color>
 
         <SolidColorBrush x:Key="ColorGridPrincipal" Color="{StaticResource ColorMaestro}"/>
