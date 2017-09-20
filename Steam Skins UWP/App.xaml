@@ -17,6 +17,7 @@
 
         <SolidColorBrush x:Key="ListViewItemBackgroundSelected" Color="Transparent"/>
         <SolidColorBrush x:Key="ListViewItemBackgroundPointerOver" Color="{StaticResource ColorMaestro}"/>
+        <SolidColorBrush x:Key="ListViewItemForegroundPointerOver" Color="White"/>
         <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="{StaticResource ColorMaestro}"/>
 
         <SolidColorBrush x:Key="ColorGridPrincipal" Color="{StaticResource ColorMaestro}"/>
