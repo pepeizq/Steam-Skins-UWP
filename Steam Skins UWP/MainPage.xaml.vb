@@ -64,15 +64,6 @@ Public NotInheritable Class MainPage
             cbConfigMetodo.SelectedIndex = 0
         End If
 
-
-        '----------------------------------------------
-
-
-        'buttonDescargaTextoThreshold.Text = recursos.GetString("Boton Descarga")
-        'tbScreenshotsThreshold.Text = recursos.GetString("Capturas")
-        'tbOpcionesThreshold.Text = recursos.GetString("Opciones")
-        'textBlockCreadoThreshold.Text = recursos.GetString("Creado Por")
-
     End Sub
 
     Public Sub GridVisibilidad(grid As Grid, tag As String)

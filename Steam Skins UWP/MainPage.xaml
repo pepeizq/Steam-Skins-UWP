@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="gridTitulo" Grid.Row="0">
+        <Grid x:Name="gridTitulo" Grid.Row="0" Background="{StaticResource GridTituloBackground}">
             <TextBlock x:Name="tbTitulo" Margin="50,0,0,0" FontSize="13" Foreground="White" VerticalAlignment="Center"/>
         </Grid>
 
@@ -48,47 +48,47 @@
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
 
-                        <ListViewItem x:Name="botonAparienciaAir" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaAir" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="0">
                                 <TextBlock Text="Air" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaAirClassic" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaAirClassic" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="1">
                                 <TextBlock Text="Air Classic" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaCompact" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaCompact" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="2">
                                 <TextBlock Text="Compact" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaInvert" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaInvert" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="3">
                                 <TextBlock Text="Invert" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaMetro" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaMetro" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="4">
                                 <TextBlock Text="Metro" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaMinimal" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaMinimal" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="5">
                                 <TextBlock Text="Minimal" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaPixelVision2" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaPixelVision2" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="6">
                                 <TextBlock Text="PixelVision²" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaPressure2" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaPressure2" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="7">
                                 <TextBlock Text="Pressure²" Foreground="White"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem x:Name="botonAparienciaThreshold" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                        <ListViewItem x:Name="botonAparienciaThreshold" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                             <StackPanel Orientation="Horizontal" Tag="8">
                                 <TextBlock Text="Threshold" Foreground="White"/>
                             </StackPanel>
@@ -126,13 +126,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaAir" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaAir" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -153,13 +153,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -253,13 +253,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaAirClassic" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaAirClassic" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -280,13 +280,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -385,7 +385,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaCompact" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaCompact" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
@@ -406,7 +406,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
@@ -474,7 +474,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaInvert" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaInvert" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
@@ -495,13 +495,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
@@ -569,13 +569,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaMetro" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaMetro" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -596,19 +596,19 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="2">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -692,13 +692,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaMinimal" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaMinimal" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -719,7 +719,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
@@ -797,7 +797,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaPixelVision2" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaPixelVision2" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
@@ -818,7 +818,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
@@ -886,13 +886,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaPressure2" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaPressure2" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -913,19 +913,19 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="2">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -1006,13 +1006,13 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem x:Name="lvDescargaThreshold" Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvDescargaThreshold" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -1033,7 +1033,7 @@
                                         </ItemsPanelTemplate>
                                     </ListView.ItemsPanel>
 
-                                    <ListViewItem Background="{StaticResource ColorSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
                                         <StackPanel Orientation="Horizontal" Tag="0">
                                             <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock Text="Web" Foreground="White"/>
@@ -1141,15 +1141,12 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <controls:DropShadowPanel Grid.Column="0" Margin="0,10" Color="Black" BlurRadius="4" ShadowOpacity="0.5" 
-                                                  OffsetZ="5">
-                                    <Button x:Name="botonSteamRuta" Padding="15,10" Background="CadetBlue">
-                                        <StackPanel Orientation="Horizontal" >
-                                            <SymbolIcon Symbol="NewFolder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                            <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
-                                        </StackPanel>
-                                    </Button>
-                                </controls:DropShadowPanel>
+                                <Button x:Name="botonSteamRuta" Grid.Column="0" Padding="15,10" Background="{StaticResource BrushSecundario}">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <SymbolIcon Symbol="NewFolder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                        <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
+                                    </StackPanel>
+                                </Button>
 
                                 <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
                                 <TextBlock x:Name="tbSteamRuta" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center"/>
@@ -1173,43 +1170,43 @@
                             </Grid.ColumnDefinitions>
 
                             <ListView Grid.Column="0" IsItemClickEnabled="True" ItemClick="LvMasCosasItemClick">
-                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                <ListViewItem Background="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal" Tag="0">
                                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8E1;" Foreground="White" Margin="0,0,10,0" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="VoteApp" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}" Margin="0,0,0,20">
+                                <ListViewItem Background="{StaticResource BrushSecundario}" Margin="0,0,0,20">
                                     <StackPanel Orientation="Horizontal" Tag="1">
                                         <controls:ImageEx Source="Assets\MasCosas\pepeizq.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="OtherApps" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                <ListViewItem Background="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal" Tag="2">
                                         <controls:ImageEx Source="Assets\MasCosas\contacto.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="Contact" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}" Margin="0,0,0,20">
+                                <ListViewItem Background="{StaticResource BrushSecundario}" Margin="0,0,0,20">
                                     <StackPanel Orientation="Horizontal" Tag="3">
                                         <controls:ImageEx Source="Assets\MasCosas\feedback.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="ReportBug" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                <ListViewItem Background="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal" Tag="4">
                                         <controls:ImageEx Source="Assets\MasCosas\poeditor.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="HelpTranslate" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                <ListViewItem Background="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal" Tag="5">
                                         <controls:ImageEx Source="Assets\MasCosas\github.png" Margin="0,0,10,0" Width="15" Height="15" IsCacheEnabled="True" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="SourceCode" Foreground="White" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </ListViewItem>
-                                <ListViewItem Background="{StaticResource ColorSecundario}">
+                                <ListViewItem Background="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal" Tag="6">
                                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE76E;" Foreground="White" Margin="0,0,10,0" VerticalAlignment="Center"/>
                                         <TextBlock x:Uid="ThanksTo" Foreground="White" VerticalAlignment="Center"/>
