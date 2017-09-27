@@ -87,15 +87,15 @@ Public NotInheritable Class MainPage
             panelMensajeApariencias.Visibility = Visibility.Collapsed
         End If
 
-        botonAparienciaAir.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaAirClassic.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaCompact.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaInvert.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaMetro.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaMinimal.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaPixelVision2.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaPressure2.Background = New SolidColorBrush(Colors.CadetBlue)
-        botonAparienciaThreshold.Background = New SolidColorBrush(Colors.CadetBlue)
+        botonAparienciaAir.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaAirClassic.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaCompact.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaInvert.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaMetro.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaMinimal.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaPixelVision2.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaPressure2.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+        botonAparienciaThreshold.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
 
         gridAparienciaAir.Visibility = Visibility.Collapsed
         gridAparienciaAirClassic.Visibility = Visibility.Collapsed
@@ -111,47 +111,47 @@ Public NotInheritable Class MainPage
 
         If sp.Tag.ToString = 0 Then
 
-            botonAparienciaAir.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaAir.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaAir.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            botonAparienciaAirClassic.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaAirClassic.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaAirClassic.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 2 Then
 
-            botonAparienciaCompact.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaCompact.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaCompact.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 3 Then
 
-            botonAparienciaInvert.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaInvert.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaInvert.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 4 Then
 
-            botonAparienciaMetro.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaMetro.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaMetro.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 5 Then
 
-            botonAparienciaMinimal.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaMinimal.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaMinimal.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 6 Then
 
-            botonAparienciaPixelVision2.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaPixelVision2.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaPixelVision2.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 7 Then
 
-            botonAparienciaPressure2.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaPressure2.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaPressure2.Visibility = Visibility.Visible
 
         ElseIf sp.Tag.ToString = 8 Then
 
-            botonAparienciaThreshold.Background = New SolidColorBrush(Colors.DarkCyan)
+            botonAparienciaThreshold.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaThreshold.Visibility = Visibility.Visible
 
         End If
