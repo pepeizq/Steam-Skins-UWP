@@ -95,7 +95,7 @@
                         </ListViewItem>
                     </ListView>
 
-                    <Grid Grid.Row="1" Padding="0,10">
+                    <Grid Grid.Row="1" Padding="0,20,0,10">
                         <controls:DropShadowPanel x:Name="panelMensajeApariencias" Color="IndianRed" 
                                                   HorizontalAlignment="Center" VerticalAlignment="Center"
                                                   BlurRadius="4" ShadowOpacity="1" OffsetZ="5">
