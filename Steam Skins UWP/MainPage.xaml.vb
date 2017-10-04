@@ -68,7 +68,7 @@ Public NotInheritable Class MainPage
 
     Public Sub GridVisibilidad(grid As Grid, tag As String)
 
-        tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - " + tag
+        tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + tag
 
         gridApariencias.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
@@ -111,57 +111,57 @@ Public NotInheritable Class MainPage
 
         If sp.Tag.ToString = 0 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Air"
             botonAparienciaAir.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaAir.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Air"
 
         ElseIf sp.Tag.ToString = 1 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Air Classic"
             botonAparienciaAirClassic.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaAirClassic.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Air Classic"
 
         ElseIf sp.Tag.ToString = 2 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Compact"
             botonAparienciaCompact.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaCompact.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Compact"
 
         ElseIf sp.Tag.ToString = 3 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Invert"
             botonAparienciaInvert.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaInvert.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Invert"
 
         ElseIf sp.Tag.ToString = 4 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Metro"
             botonAparienciaMetro.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaMetro.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Metro"
 
         ElseIf sp.Tag.ToString = 5 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Minimal"
             botonAparienciaMinimal.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaMinimal.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Minimal"
 
         ElseIf sp.Tag.ToString = 6 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - PixelVision²"
             botonAparienciaPixelVision2.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaPixelVision2.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - PixelVision²"
 
         ElseIf sp.Tag.ToString = 7 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Pressure²"
             botonAparienciaPressure2.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaPressure2.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Pressure²"
 
         ElseIf sp.Tag.ToString = 8 Then
 
+            tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - Threshold"
             botonAparienciaThreshold.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
             gridAparienciaThreshold.Visibility = Visibility.Visible
-            tbTitulo.Text = "Steam Skins (" + SystemInformation.ApplicationVersion.Major.ToString + "." + SystemInformation.ApplicationVersion.Minor.ToString + "." + SystemInformation.ApplicationVersion.Build.ToString + "." + SystemInformation.ApplicationVersion.Revision.ToString + ") - Threshold"
 
         End If
 
