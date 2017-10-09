@@ -111,7 +111,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -132,7 +132,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionAir" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -159,7 +159,7 @@
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -168,33 +168,43 @@
                                 </ListView> 
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionAir" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Theme:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionAirTheme" VerticalAlignment="Center" Width="100" SelectedIndex="0">
-                                    <ComboBoxItem Content="Light" />
-                                    <ComboBoxItem Content="Dark" />
-                                </ComboBox>
-                                <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionAirColor" VerticalAlignment="Center" Width="120" SelectedIndex="0">
-                                    <ComboBoxItem Content="Sky" />
-                                    <ComboBoxItem Content="Sea" />
-                                    <ComboBoxItem Content="Breeze" />
-                                    <ComboBoxItem Content="Slate" />
-                                    <ComboBoxItem Content="Truffle" />
-                                    <ComboBoxItem Content="Gunmetal" />
-                                    <ComboBoxItem Content="Silver" />
-                                    <ComboBoxItem Content="Grass" />
-                                    <ComboBoxItem Content="Rose" />
-                                    <ComboBoxItem Content="Cinnabar" />
-                                    <ComboBoxItem Content="Lavender" />
-                                    <ComboBoxItem Content="Lilac" />
-                                    <ComboBoxItem Content="Deeppurple" />
-                                    <ComboBoxItem Content="Steamblue" />
-                                    <ComboBoxItem Content="Youtubered" />
-                                </ComboBox>
-                            </StackPanel>
+                            <Grid x:Name="gridPersonalizacionAir" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Theme:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionAirTheme" VerticalAlignment="Center" Width="100" SelectedIndex="0">
+                                        <ComboBoxItem Content="Light" />
+                                        <ComboBoxItem Content="Dark" />
+                                    </ComboBox>
+                                    <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionAirColor" VerticalAlignment="Center" Width="120" SelectedIndex="0">
+                                        <ComboBoxItem Content="Sky" />
+                                        <ComboBoxItem Content="Sea" />
+                                        <ComboBoxItem Content="Breeze" />
+                                        <ComboBoxItem Content="Slate" />
+                                        <ComboBoxItem Content="Truffle" />
+                                        <ComboBoxItem Content="Gunmetal" />
+                                        <ComboBoxItem Content="Silver" />
+                                        <ComboBoxItem Content="Grass" />
+                                        <ComboBoxItem Content="Rose" />
+                                        <ComboBoxItem Content="Cinnabar" />
+                                        <ComboBoxItem Content="Lavender" />
+                                        <ComboBoxItem Content="Lilac" />
+                                        <ComboBoxItem Content="Deeppurple" />
+                                        <ComboBoxItem Content="Steamblue" />
+                                        <ComboBoxItem Content="Youtubered" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -238,7 +248,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -259,7 +269,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionAirClassic" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -286,7 +296,7 @@
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -295,38 +305,48 @@
                                 </ListView>
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionAirClassic" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbAirClassicColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                    <ComboBoxItem Content="Blue" />
-                                    <ComboBoxItem Content="Bubblegum" />
-                                    <ComboBoxItem Content="Cinnamon" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Happyorange" />
-                                    <ComboBoxItem Content="Navy" />
-                                    <ComboBoxItem Content="Night" />
-                                    <ComboBoxItem Content="Orange" />
-                                    <ComboBoxItem Content="Padawan" />
-                                    <ComboBoxItem Content="Royal" />
-                                    <ComboBoxItem Content="Silver" />
-                                    <ComboBoxItem Content="Teal" />
-                                    <ComboBoxItem Content="Watermelon" />
-                                </ComboBox>
-                                <TextBlock Text="Games Details:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionAirClassicGamesDetails" VerticalAlignment="Center" Width="120" SelectedIndex="0">
-                                    <ComboBoxItem Content="Steamblue" />
-                                    <ComboBoxItem Content="Colorized" />
-                                </ComboBox>
-                                <TextBlock Text="Background:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionAirClassicBackground" VerticalAlignment="Center" Width="100" SelectedIndex="0">
-                                    <ComboBoxItem Content="None" />
-                                    <ComboBoxItem Content="Noise" />
-                                    <ComboBoxItem Content="Dots" />
-                                    <ComboBoxItem Content="Ribbon" />
-                                </ComboBox>
-                            </StackPanel>
-                            
-                            <Grid Grid.Row="2">
+                            <Grid x:Name="gridPersonalizacionAirClassic" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Color:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbAirClassicColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                        <ComboBoxItem Content="Blue" />
+                                        <ComboBoxItem Content="Bubblegum" />
+                                        <ComboBoxItem Content="Cinnamon" />
+                                        <ComboBoxItem Content="Green" />
+                                        <ComboBoxItem Content="Happyorange" />
+                                        <ComboBoxItem Content="Navy" />
+                                        <ComboBoxItem Content="Night" />
+                                        <ComboBoxItem Content="Orange" />
+                                        <ComboBoxItem Content="Padawan" />
+                                        <ComboBoxItem Content="Royal" />
+                                        <ComboBoxItem Content="Silver" />
+                                        <ComboBoxItem Content="Teal" />
+                                        <ComboBoxItem Content="Watermelon" />
+                                    </ComboBox>
+                                    <TextBlock Text="Games Details:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionAirClassicGamesDetails" VerticalAlignment="Center" Width="120" SelectedIndex="0">
+                                        <ComboBoxItem Content="Steamblue" />
+                                        <ComboBoxItem Content="Colorized" />
+                                    </ComboBox>
+                                    <TextBlock Text="Background:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionAirClassicBackground" VerticalAlignment="Center" Width="100" SelectedIndex="0">
+                                        <ComboBoxItem Content="None" />
+                                        <ComboBoxItem Content="Noise" />
+                                        <ComboBoxItem Content="Dots" />
+                                        <ComboBoxItem Content="Ribbon" />
+                                    </ComboBox>
+                                </StackPanel>                                                               
+                            </Grid>
+
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -501,7 +521,7 @@
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
@@ -554,7 +574,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -575,7 +595,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionMetro" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -602,13 +622,13 @@
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="2">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -617,23 +637,33 @@
                                 </ListView>
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionMetro" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionMetroColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                    <ComboBoxItem Content="Blue" />
-                                    <ComboBoxItem Content="Cyan" />
-                                    <ComboBoxItem Content="Dark Blue" />
-                                    <ComboBoxItem Content="Dark Cyan" />
-                                    <ComboBoxItem Content="Dark Green" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Orange" />
-                                    <ComboBoxItem Content="Pink" />
-                                    <ComboBoxItem Content="Purple" />
-                                    <ComboBoxItem Content="Red" />
-                                </ComboBox>
-                            </StackPanel>
+                            <Grid x:Name="gridPersonalizacionMetro" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Color:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionMetroColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                        <ComboBoxItem Content="Blue" />
+                                        <ComboBoxItem Content="Cyan" />
+                                        <ComboBoxItem Content="Dark Blue" />
+                                        <ComboBoxItem Content="Dark Cyan" />
+                                        <ComboBoxItem Content="Dark Green" />
+                                        <ComboBoxItem Content="Green" />
+                                        <ComboBoxItem Content="Orange" />
+                                        <ComboBoxItem Content="Pink" />
+                                        <ComboBoxItem Content="Purple" />
+                                        <ComboBoxItem Content="Red" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -677,7 +707,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -698,7 +728,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionMinimal" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -728,17 +758,27 @@
                                 </ListView>
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionMinimal" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionMinimalColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                    <ComboBoxItem Content="Black" />
-                                    <ComboBoxItem Content="Blue" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Red" />
-                                </ComboBox>
-                            </StackPanel>
+                            <Grid x:Name="gridPersonalizacionMinimal" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Color:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionMinimalColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                        <ComboBoxItem Content="Black" />
+                                        <ComboBoxItem Content="Blue" />
+                                        <ComboBoxItem Content="Green" />
+                                        <ComboBoxItem Content="Red" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                           
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -871,7 +911,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -892,7 +932,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionPressure2" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -919,13 +959,13 @@
                                             <TextBlock Text="Web" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <controls:ImageEx Source="Assets\paypal.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Paypal" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="2">
                                             <controls:ImageEx Source="Assets\patreon.png" Height="20" Width="20" Margin="0,0,10,0" VerticalAlignment="Center" IsCacheEnabled="True"/>
                                             <TextBlock Text="Patreon" Foreground="White"/>
@@ -934,20 +974,30 @@
                                 </ListView>
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionPressure2" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Grid Uninstalled Transparency:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionPressure2GridTransparent" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                    <ComboBoxItem Content="Yes" />
-                                    <ComboBoxItem Content="No" />
-                                </ComboBox>
-                                <TextBlock Text="Overlay Background:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionPressure2OverlayBackground" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                    <ComboBoxItem Content="Yes" />
-                                    <ComboBoxItem Content="No" />
-                                </ComboBox>
-                            </StackPanel>
+                            <Grid x:Name="gridPersonalizacionPressure2" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Grid Uninstalled Transparency:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionPressure2GridTransparent" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                        <ComboBoxItem Content="Yes" />
+                                        <ComboBoxItem Content="No" />
+                                    </ComboBox>
+                                    <TextBlock Text="Overlay Background:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionPressure2OverlayBackground" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                        <ComboBoxItem Content="Yes" />
+                                        <ComboBoxItem Content="No" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
@@ -991,7 +1041,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Padding="0,10">
+                            <Grid Grid.Row="0" Padding="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -1012,7 +1062,7 @@
                                             <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                         </StackPanel>
                                     </ListViewItem>
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
+                                    <ListViewItem x:Name="lvPersonalizacionThreshold" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
                                         <StackPanel Orientation="Horizontal" Tag="1">
                                             <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                             <TextBlock x:Uid="Personalization" Foreground="White"/>
@@ -1042,29 +1092,39 @@
                                 </ListView>
                             </Grid>
 
-                            <StackPanel x:Name="spPersonalizacionThreshold" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                                <TextBlock Text="Color:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionThresholdColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                    <ComboBoxItem Content="Cobalt" />
-                                    <ComboBoxItem Content="Cyan" />
-                                    <ComboBoxItem Content="Green" />
-                                    <ComboBoxItem Content="Orange" />
-                                    <ComboBoxItem Content="Purple" />
-                                    <ComboBoxItem Content="Red" />
-                                </ComboBox>
-                                <TextBlock Text="Outlines:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionThresholdOutlines" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                    <ComboBoxItem Content="No" />
-                                    <ComboBoxItem Content="Yes" />
-                                </ComboBox>
-                                <TextBlock Text="Colored Titlebar:" Margin="10" VerticalAlignment="Center"/>
-                                <ComboBox x:Name="cbOpcionThresholdColoredTitlebar" VerticalAlignment="Center" Width="80" SelectedIndex="0">
-                                    <ComboBoxItem Content="No" />
-                                    <ComboBoxItem Content="Yes" />
-                                </ComboBox>
-                            </StackPanel>
+                            <Grid x:Name="gridPersonalizacionThreshold" Grid.Row="1" Visibility="Collapsed">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid Grid.Row="2">
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="#e6ffff"/>
+                                    </StackPanel.Background>
+
+                                    <TextBlock Text="Color:" Margin="0,10,10,10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionThresholdColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
+                                        <ComboBoxItem Content="Cobalt" />
+                                        <ComboBoxItem Content="Cyan" />
+                                        <ComboBoxItem Content="Green" />
+                                        <ComboBoxItem Content="Orange" />
+                                        <ComboBoxItem Content="Purple" />
+                                        <ComboBoxItem Content="Red" />
+                                    </ComboBox>
+                                    <TextBlock Text="Outlines:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionThresholdOutlines" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                        <ComboBoxItem Content="No" />
+                                        <ComboBoxItem Content="Yes" />
+                                    </ComboBox>
+                                    <TextBlock Text="Colored Titlebar:" Margin="10" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="cbOpcionThresholdColoredTitlebar" VerticalAlignment="Center" Width="80" SelectedIndex="0">
+                                        <ComboBoxItem Content="No" />
+                                        <ComboBoxItem Content="Yes" />
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <Grid Grid.Row="2" Padding="0,10,0,0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>

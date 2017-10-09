@@ -207,8 +207,8 @@ Module Descarga
                 apariencia.Progreso.IsActive = False
             End If
 
-            If Not apariencia.OpcionesSp Is Nothing Then
-                apariencia.OpcionesSp.IsHitTestVisible = estado
+            If Not apariencia.OpcionesGrid Is Nothing Then
+                apariencia.OpcionesGrid.IsHitTestVisible = estado
             End If
         End If
 

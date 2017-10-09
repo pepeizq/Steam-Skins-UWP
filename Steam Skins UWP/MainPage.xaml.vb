@@ -4,6 +4,7 @@ Imports Microsoft.Toolkit.Uwp.UI.Controls
 Imports Windows.ApplicationModel.Core
 Imports Windows.System
 Imports Windows.UI
+Imports Windows.UI.Xaml.Media.Animation
 
 Public NotInheritable Class MainPage
     Inherits Page
@@ -186,17 +187,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Air",
                                                           New Uri("https://github.com/Outsetini/Air-for-Steam/archive/master.zip"),
                                                           tbInformeAir, prInformeAir,
-                                                          listaOpciones, spPersonalizacionAir)
+                                                          listaOpciones, gridPersonalizacionAir)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionAir.Visibility = Visibility.Collapsed Then
-                spPersonalizacionAir.Margin = New Thickness(lvDescargaAir.ActualWidth, 0, 0, 0)
-                spPersonalizacionAir.Visibility = Visibility.Visible
+            If gridPersonalizacionAir.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionAir.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionAir.Margin = New Thickness(lvDescargaAir.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionAir.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionAir)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionAir)
+                End If
             Else
-                spPersonalizacionAir.Visibility = Visibility.Collapsed
+                lvPersonalizacionAir.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionAir.Visibility = Visibility.Collapsed
             End If
 
         End If
@@ -264,17 +275,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Air-Classic",
                                                           New Uri("https://github.com/Outsetini/Air-Classic/archive/master.zip"),
                                                           tbInformeAirClassic, prInformeAirClassic,
-                                                          listaOpciones, spPersonalizacionAirClassic)
+                                                          listaOpciones, gridPersonalizacionAirClassic)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionAirClassic.Visibility = Visibility.Collapsed Then
-                spPersonalizacionAirClassic.Margin = New Thickness(lvDescargaAirClassic.ActualWidth, 0, 0, 0)
-                spPersonalizacionAirClassic.Visibility = Visibility.Visible
+            If gridPersonalizacionAirClassic.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionAirClassic.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionAirClassic.Margin = New Thickness(lvDescargaAirClassic.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionAirClassic.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionAirClassic)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionAirClassic)
+                End If
             Else
-                spPersonalizacionAirClassic.Visibility = Visibility.Collapsed
+                lvPersonalizacionAirClassic.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionAirClassic.Visibility = Visibility.Collapsed
             End If
 
         End If
@@ -379,7 +400,7 @@ Public NotInheritable Class MainPage
 
     Private Async Sub LvAparienciaInvert1ItemClick(sender As Object, args As ItemClickEventArgs)
 
-        lvAparienciaInvert1.isenabled = False
+        lvAparienciaInvert1.IsEnabled = False
 
         Dim html As String = Await Decompiladores.HttpClient(New Uri("http://gamebanana.com/guis/download/28814"))
 
@@ -457,7 +478,7 @@ Public NotInheritable Class MainPage
         Dim sp As StackPanel = args.ClickedItem
 
         If sp.Tag.ToString = 0 Then
-            lvAparienciaMetro1.isenabled = False
+            lvAparienciaMetro1.IsEnabled = False
 
             Dim listaOpciones As New List(Of String)
 
@@ -484,17 +505,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Metro",
                                                           New Uri(temp2),
                                                           tbInformeMetro, prInformeMetro,
-                                                          listaOpciones, spPersonalizacionMetro)
+                                                          listaOpciones, gridPersonalizacionMetro)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionMetro.Visibility = Visibility.Collapsed Then
-                spPersonalizacionMetro.Margin = New Thickness(lvDescargaMetro.ActualWidth, 0, 0, 0)
-                spPersonalizacionMetro.Visibility = Visibility.Visible
+            If gridPersonalizacionMetro.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionMetro.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionMetro.Margin = New Thickness(lvDescargaMetro.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionMetro.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionMetro)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionMetro)
+                End If
             Else
-                spPersonalizacionMetro.Visibility = Visibility.Collapsed
+                lvPersonalizacionMetro.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionMetro.Visibility = Visibility.Collapsed
             End If
 
         End If
@@ -552,7 +583,7 @@ Public NotInheritable Class MainPage
         Dim sp As StackPanel = args.ClickedItem
 
         If sp.Tag.ToString = 0 Then
-            lvAparienciaMinimal1.isenabled = False
+            lvAparienciaMinimal1.IsEnabled = False
 
             Dim listaOpciones As New List(Of String)
 
@@ -577,17 +608,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Minimal",
                                                           New Uri(temp2),
                                                           tbInformeMinimal, prInformeMinimal,
-                                                          listaOpciones, spPersonalizacionMinimal)
+                                                          listaOpciones, gridPersonalizacionMinimal)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionMinimal.Visibility = Visibility.Collapsed Then
-                spPersonalizacionMinimal.Margin = New Thickness(lvDescargaMinimal.ActualWidth, 0, 0, 0)
-                spPersonalizacionMinimal.Visibility = Visibility.Visible
+            If gridPersonalizacionMinimal.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionMinimal.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionMinimal.Margin = New Thickness(lvDescargaMinimal.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionMinimal.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionMinimal)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionMinimal)
+                End If
             Else
-                spPersonalizacionMinimal.Visibility = Visibility.Collapsed
+                lvPersonalizacionMinimal.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionMinimal.Visibility = Visibility.Collapsed
             End If
 
         End If
@@ -702,17 +743,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Pressure2",
                                                           New Uri("https://github.com/DirtDiglett/Pressure2/archive/master.zip"),
                                                           tbInformePressure2, prInformePressure2,
-                                                          listaOpciones, spPersonalizacionPressure2)
+                                                          listaOpciones, gridPersonalizacionPressure2)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionPressure2.Visibility = Visibility.Collapsed Then
-                spPersonalizacionPressure2.Margin = New Thickness(lvDescargaPressure2.ActualWidth, 0, 0, 0)
-                spPersonalizacionPressure2.Visibility = Visibility.Visible
+            If gridPersonalizacionPressure2.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionPressure2.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionPressure2.Margin = New Thickness(lvDescargaPressure2.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionPressure2.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionPressure2)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionPressure2)
+                End If
             Else
-                spPersonalizacionPressure2.Visibility = Visibility.Collapsed
+                lvPersonalizacionPressure2.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionPressure2.Visibility = Visibility.Collapsed
             End If
 
         End If
@@ -784,17 +835,27 @@ Public NotInheritable Class MainPage
             Dim apariencia As Apariencia = New Apariencia("Threshold",
                                                           New Uri("https://github.com/Edgarware/Threshold-Skin/archive/master.zip"),
                                                           tbInformeThreshold, prInformeThreshold,
-                                                          listaOpciones, spPersonalizacionThreshold)
+                                                          listaOpciones, gridPersonalizacionThreshold)
 
             Descarga.Iniciar(apariencia)
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            If spPersonalizacionThreshold.Visibility = Visibility.Collapsed Then
-                spPersonalizacionThreshold.Margin = New Thickness(lvDescargaThreshold.ActualWidth, 0, 0, 0)
-                spPersonalizacionThreshold.Visibility = Visibility.Visible
+            If gridPersonalizacionThreshold.Visibility = Visibility.Collapsed Then
+                lvPersonalizacionThreshold.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+                gridPersonalizacionThreshold.Margin = New Thickness(lvDescargaThreshold.ActualWidth + 5, 0, 0, 0)
+                gridPersonalizacionThreshold.Visibility = Visibility.Visible
+
+                ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("grid", lvPersonalizacionThreshold)
+
+                Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("grid")
+
+                If Not animacion Is Nothing Then
+                    animacion.TryStart(gridPersonalizacionThreshold)
+                End If
             Else
-                spPersonalizacionThreshold.Visibility = Visibility.Collapsed
+                lvPersonalizacionThreshold.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
+                gridPersonalizacionThreshold.Visibility = Visibility.Collapsed
             End If
 
         End If
