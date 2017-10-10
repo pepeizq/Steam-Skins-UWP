@@ -1274,7 +1274,15 @@
                                 </ListViewItem>
                             </ListView>
 
-                            <WebView x:Name="wvMasCosas" Grid.Column="1" Margin="10,0,0,0"/>
+                            <Grid Grid.Column="1" Margin="10,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <ProgressBar x:Name="pbMasCosas" Grid.Row="0" Foreground="{StaticResource BrushSecundario}" Visibility="Collapsed" Height="20" IsIndeterminate="True"/>
+                                <WebView x:Name="wvMasCosas" Grid.Row="1"/>
+                            </Grid>
                         </Grid>
                     </ScrollViewer>
                 </Grid>

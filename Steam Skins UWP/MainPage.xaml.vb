@@ -942,11 +942,11 @@ Public NotInheritable Class MainPage
 
         ElseIf sp.Tag.ToString = 1 Then
 
-            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/"))
+            NavegarMasCosas("https://pepeizqapps.com/")
 
         ElseIf sp.Tag.ToString = 2 Then
 
-            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/contact/"))
+            NavegarMasCosas("https://pepeizqapps.com/contact/")
 
         ElseIf sp.Tag.ToString = 3 Then
 
@@ -954,22 +954,36 @@ Public NotInheritable Class MainPage
                 Dim ejecutador As StoreServicesFeedbackLauncher = StoreServicesFeedbackLauncher.GetDefault()
                 Await ejecutador.LaunchAsync()
             Else
-                wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/contact/"))
+                NavegarMasCosas("https://pepeizqapps.com/contact/")
             End If
 
         ElseIf sp.Tag.ToString = 4 Then
 
-            wvMasCosas.Navigate(New Uri("https://poeditor.com/join/project/LcYHFvuAzA"))
+            NavegarMasCosas("https://poeditor.com/join/project/LcYHFvuAzA")
 
         ElseIf sp.Tag.ToString = 5 Then
 
-            wvMasCosas.Navigate(New Uri("https://github.com/pepeizq/Steam-Skins-UWP"))
+            NavegarMasCosas("https://github.com/pepeizq/Steam-Skins-UWP")
 
         ElseIf sp.Tag.ToString = 6 Then
 
-            wvMasCosas.Navigate(New Uri("https://pepeizqapps.com/thanks/"))
+            NavegarMasCosas("https://pepeizqapps.com/thanks/")
 
         End If
+
+    End Sub
+
+    Private Sub NavegarMasCosas(url As String)
+
+        pbMasCosas.Visibility = Visibility.Visible
+
+        wvMasCosas.Navigate(New Uri(url))
+
+    End Sub
+
+    Private Sub WvMasCosas_NavigationCompleted(sender As WebView, args As WebViewNavigationCompletedEventArgs) Handles wvMasCosas.NavigationCompleted
+
+        pbMasCosas.Visibility = Visibility.Collapsed
 
     End Sub
 
