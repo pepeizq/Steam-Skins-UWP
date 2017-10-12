@@ -162,11 +162,11 @@
   <data name="MessageSkinsReady" xml:space="preserve">
     <value>Selecciona una apariencia de la barra superior</value>
   </data>
+  <data name="MoreApps.Text" xml:space="preserve">
+    <value>Más Apps</value>
+  </data>
   <data name="MoreThings" xml:space="preserve">
     <value>Más Cosas</value>
-  </data>
-  <data name="OtherApps.Text" xml:space="preserve">
-    <value>Otras Apps</value>
   </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalización</value>
@@ -191,6 +191,9 @@
   </data>
   <data name="ThanksTo.Text" xml:space="preserve">
     <value>Agradecimientos</value>
+  </data>
+  <data name="Updates.Text" xml:space="preserve">
+    <value>Actualizaciones</value>
   </data>
   <data name="VoteApp.Text" xml:space="preserve">
     <value>Vota la App</value>
