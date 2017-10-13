@@ -66,6 +66,15 @@ Public NotInheritable Class MainPage
             cbConfigMetodo.SelectedIndex = 0
         End If
 
+        '--------------------------------------------------------
+
+        Dim transpariencia As New UISettings
+        Dim boolTranspariencia As Boolean = transpariencia.AdvancedEffectsEnabled
+
+        If boolTranspariencia = False Then
+            gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+        End If
+
     End Sub
 
     Public Sub GridVisibilidad(grid As Grid, tag As String)
