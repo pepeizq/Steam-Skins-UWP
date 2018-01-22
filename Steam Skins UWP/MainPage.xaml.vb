@@ -75,7 +75,7 @@ Public NotInheritable Class MainPage
             gridCaptura.Background = New SolidColorBrush(Colors.LightGray)
             gridConfig.Background = New SolidColorBrush(Colors.LightGray)
             gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
-            gridConfig.Background = New SolidColorBrush(Colors.LightGray)
+            gridMasCosas.Background = New SolidColorBrush(Colors.LightGray)
         End If
 
     End Sub
