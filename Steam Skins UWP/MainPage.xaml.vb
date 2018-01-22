@@ -72,7 +72,10 @@ Public NotInheritable Class MainPage
         Dim boolTranspariencia As Boolean = transpariencia.AdvancedEffectsEnabled
 
         If boolTranspariencia = False Then
+            gridCaptura.Background = New SolidColorBrush(Colors.LightGray)
+            gridConfig.Background = New SolidColorBrush(Colors.LightGray)
             gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+            gridConfig.Background = New SolidColorBrush(Colors.LightGray)
         End If
 
     End Sub
@@ -81,7 +84,6 @@ Public NotInheritable Class MainPage
 
         tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + tag
 
-        gridApariencias.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
         gridMasCosas.Visibility = Visibility.Collapsed
@@ -954,10 +956,6 @@ Public NotInheritable Class MainPage
 
             NavegarMasCosas(lvMasCosasMasApps, "https://pepeizqapps.com/")
 
-        ElseIf sp.Tag.ToString = 2 Then
-
-            NavegarMasCosas(lvMasCosasActualizaciones, "https://pepeizqapps.com/updates/")
-
         ElseIf sp.Tag.ToString = 3 Then
 
             NavegarMasCosas(lvMasCosasContacto, "https://pepeizqapps.com/contact/")
@@ -986,7 +984,6 @@ Public NotInheritable Class MainPage
     Private Sub NavegarMasCosas(lvItem As ListViewItem, url As String)
 
         lvMasCosasMasApps.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
-        lvMasCosasActualizaciones.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
         lvMasCosasContacto.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
         lvMasCosasReportarFallo.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))
         lvMasCosasTraduccion.Background = New SolidColorBrush(App.Current.Resources("ColorSecundario"))

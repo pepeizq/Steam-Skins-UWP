@@ -1,1 +1,1 @@
-E:\Proyectos\Steam Skins UWP\Steam Skins UWP\bin\x64\Release\Upload\Steam Skins UWP_1.1.3.0\Steam Skins UWP_1.1.3.0_x86_x64.appxbundle
+E:\Proyectos\Steam Skins UWP\Steam Skins UWP\bin\x64\Release\Upload\Steam Skins UWP_1.1.5.0\Steam Skins UWP_1.1.5.0_x86_x64.appxbundle
