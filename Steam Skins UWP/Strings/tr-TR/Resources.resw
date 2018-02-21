@@ -120,7 +120,7 @@
   <data name="Add.Text" xml:space="preserve">
     <value>Ekle</value>
   </data>
-  <data name="Back.Text" xml:space="preserve">
+  <data name="MoreThings_Back" xml:space="preserve">
     <value>Geri</value>
   </data>
   <data name="Change" xml:space="preserve">
@@ -133,9 +133,9 @@
     <value>Steam yüklediğin klasörü şeç ki uygulama görünümleri indirip yükleyebilsin (Örnek: C:\Steam)</value>
   </data>
   <data name="ConfigSkinsWay.Text" xml:space="preserve">
-    <value>Windows 10&apos;un nasıl çalıştığı göz önüne alındığında, uygulamanın görünümleri eklemek için iki &quot;yolu&quot; içermektedir; eğer bir hata verirse, diğeriyle deneyin.</value>
+    <value>Windows 10'un nasıl çalıştığı göz önüne alındığında, uygulamanın görünümleri eklemek için iki "yolu" içermektedir; eğer bir hata verirse, diğeriyle deneyin.</value>
   </data>
-  <data name="Contact.Text" xml:space="preserve">
+  <data name="MoreThings_Contact" xml:space="preserve">
     <value>İletişim</value>
   </data>
   <data name="DescriptionStore" xml:space="preserve">
@@ -150,7 +150,7 @@
   <data name="Extracting" xml:space="preserve">
     <value>Çıkartılıyor</value>
   </data>
-  <data name="HelpTranslate.Text" xml:space="preserve">
+  <data name="MoreThings_HelpTranslate" xml:space="preserve">
     <value>Çeviriye Yardım Et</value>
   </data>
   <data name="InstallCompleted" xml:space="preserve">
@@ -168,7 +168,7 @@
   <data name="Personalization.Text" xml:space="preserve">
     <value>Kişiselleştirme</value>
   </data>
-  <data name="ReportBug.Text" xml:space="preserve">
+  <data name="MoreThings_ReportBug" xml:space="preserve">
     <value>Hata bildir</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
@@ -183,20 +183,19 @@
   <data name="Skins2.Text" xml:space="preserve">
     <value>Görünümler</value>
   </data>
-  <data name="SourceCode.Text" xml:space="preserve">
+  <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Kaynak kodu</value>
   </data>
   <data name="ThanksTo.Text" xml:space="preserve">
     <value>Teşekkür Ederim:</value>
   </data>
-  <data name="VoteApp.Text" xml:space="preserve">
+  <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>Uygulamayı oyla</value>
   </data>
-  <data name="MoreApps.Text" xml:space="preserve">
+  <data name="MoreThings_MoreApps" xml:space="preserve">
     <value>Daha Fazla Uygulama</value>
   </data>
   <data name="Updates.Text" xml:space="preserve">
     <value>Güncellemeler</value>
   </data>
-
 </root>

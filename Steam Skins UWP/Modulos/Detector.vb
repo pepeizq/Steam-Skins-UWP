@@ -41,8 +41,8 @@ Module Detector
                     tbRuta.Text = carpeta.Path
                     botonRutaTexto.Text = recursos.GetString("Change")
 
-                    Dim lvApariencias As ListView = pagina.FindName("lvApariencias")
-                    lvApariencias.IsEnabled = True
+                    Dim gvApariencias As GridView = pagina.FindName("gvApariencias")
+                    gvApariencias.IsEnabled = True
 
                     Dim tbMensaje As TextBlock = pagina.FindName("tbMensajeApariencias")
                     tbMensaje.Text = recursos.GetString("MessageSkinsReady")

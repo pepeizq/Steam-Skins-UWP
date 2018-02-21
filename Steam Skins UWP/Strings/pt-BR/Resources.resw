@@ -120,7 +120,7 @@
   <data name="Add.Text" xml:space="preserve">
     <value>Adicionar</value>
   </data>
-  <data name="Back.Text" xml:space="preserve">
+  <data name="MoreThings_Back" xml:space="preserve">
     <value>Voltar</value>
   </data>
   <data name="Change" xml:space="preserve">
@@ -135,7 +135,7 @@
   <data name="ConfigSkinsWay.Text" xml:space="preserve">
     <value>Dada a maneira como o Windows 10 funciona, este app incorpora dois métodos para adicionar visuais. Se um der erro, tente o outro.</value>
   </data>
-  <data name="Contact.Text" xml:space="preserve">
+  <data name="MoreThings_Contact" xml:space="preserve">
     <value>Contato</value>
   </data>
   <data name="DescriptionStore" xml:space="preserve">
@@ -150,7 +150,7 @@
   <data name="Extracting" xml:space="preserve">
     <value>Extraindo</value>
   </data>
-  <data name="HelpTranslate.Text" xml:space="preserve">
+  <data name="MoreThings_HelpTranslate" xml:space="preserve">
     <value>Ajude a traduzir</value>
   </data>
   <data name="InstallCompleted" xml:space="preserve">
@@ -168,7 +168,7 @@
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalizar</value>
   </data>
-  <data name="ReportBug.Text" xml:space="preserve">
+  <data name="MoreThings_ReportBug" xml:space="preserve">
     <value>Relatar um bug</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
@@ -183,20 +183,19 @@
   <data name="Skins2.Text" xml:space="preserve">
     <value>Visuais</value>
   </data>
-  <data name="SourceCode.Text" xml:space="preserve">
+  <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Código fonte</value>
   </data>
   <data name="ThanksTo.Text" xml:space="preserve">
     <value>Agradecimentos</value>
   </data>
-  <data name="VoteApp.Text" xml:space="preserve">
+  <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>Avalie o app</value>
   </data>
-  <data name="MoreApps.Text" xml:space="preserve">
+  <data name="MoreThings_MoreApps" xml:space="preserve">
     <value>Mais apps</value>
   </data>
   <data name="Updates.Text" xml:space="preserve">
     <value>Atualizações</value>
   </data>
-
 </root>
