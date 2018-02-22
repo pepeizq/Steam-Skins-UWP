@@ -2,6 +2,7 @@
 Imports Windows.Storage
 Imports Windows.UI
 Imports Windows.UI.Core
+Imports Windows.UI.Xaml.Media.Animation
 
 Module Interfaz
 
@@ -238,6 +239,14 @@ Module Interfaz
 
         Dim gridAparienciaElegida As Grid = pagina.FindName("gridAparienciaElegida")
         gridAparienciaElegida.Visibility = Visibility.Visible
+
+        ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("apariencia", item)
+
+        Dim animacion As ConnectedAnimation = ConnectedAnimationService.GetForCurrentView().GetAnimation("apariencia")
+
+        If Not animacion Is Nothing Then
+            animacion.TryStart(gridAparienciaElegida)
+        End If
 
         Dim tbAparienciaSeleccionada As TextBlock = pagina.FindName("tbAparienciaSeleccionada")
         tbAparienciaSeleccionada.Text = apariencia.Titulo
