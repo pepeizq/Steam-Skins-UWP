@@ -133,7 +133,7 @@
     <value>Add the folder where Steam is installed so the app can download and install skins (example: C:\Steam)</value>
   </data>
   <data name="DescriptionStore" xml:space="preserve">
-    <value>Change the appearance of Steam in a comfortable way, select the skin and the app will download and extract it.</value>
+    <value>Change the appearance of Steam in a comfortable way.</value>
   </data>
   <data name="Donate.Text" xml:space="preserve">
     <value>Donate to its creator:</value>
