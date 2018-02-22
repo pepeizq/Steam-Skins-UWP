@@ -44,6 +44,16 @@ Module Interfaz
 
         '------------------------------------------------
 
+        Dim blueSteel As New Apariencia("Blue Steel", "https://gamebanana.com/dl/20283", "Blue Steel",
+                                        "https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gU9Q_xoI6qn8m_-QTAMVYqZk9Mn24pPmf_JMeWbpBB7tB1lJ9voLT3ewCF8&dispatch=5885d80a13c0db1f8e263663d3faee8dc3f308debf7330dd8d0b0a9f21afd7d3&rapidsState=Donation__DonationFlow___StateDonationLogin&rapidsStateSignature=99f4d0df56b1d7c5f803efd0556e52c65ab59680",
+                                        Nothing, "http://steamcommunity.com/groups/bluesteelskin",
+                                        Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
+                                        "Assets\Skins\blue1.PNG", "Assets\Skins\blue2.PNG", "Assets\Skins\blue3.PNG", "Assets\Skins\blue4.PNG")
+
+        gv.Items.Add(GenerarListadoItem(blueSteel))
+
+        '------------------------------------------------
+
         Dim compact As New Apariencia("Compact", "https://github.com/badanka/Compact/archive/master.zip", "Compact-master",
                                       Nothing, Nothing, "http://badanka.github.io/Compact/",
                                       Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
@@ -60,6 +70,15 @@ Module Interfaz
                                      "Assets\Skins\invert1.PNG", "Assets\Skins\invert2.PNG", "Assets\Skins\invert3.PNG", "Assets\Skins\invert4.PNG")
 
         gv.Items.Add(GenerarListadoItem(invert))
+
+        '------------------------------------------------
+
+        Dim flatGreen As New Apariencia("Flat Green", "https://github.com/jonnyboy0719/Flat-Green-Steam/archive/master.zip", "Flat-Green-Steam-master\OFGSremake",
+                                        Nothing, Nothing, "https://github.com/jonnyboy0719/Flat-Green-Steam/",
+                                        Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
+                                        "Assets\Skins\flat1.PNG", "Assets\Skins\flat2.PNG", "Assets\Skins\flat3.PNG", "Assets\Skins\flat4.PNG")
+
+        gv.Items.Add(GenerarListadoItem(flatGreen))
 
         '------------------------------------------------
 
@@ -100,6 +119,16 @@ Module Interfaz
                                         "Assets\Skins\pre1.PNG", "Assets\Skins\pre2.PNG", "Assets\Skins\pre3.PNG", "Assets\Skins\pre4.PNG")
 
         gv.Items.Add(GenerarListadoItem(pressure2))
+
+        '------------------------------------------------
+
+        Dim steam2013 As New Apariencia("Steam 2013", "https://gamebanana.com/dl/21134", "Steam2013",
+                                        "https://www.paypal.com/donate/?token=nyrcJMkXG5jZDPMwZoL3NalPOEbjFtBtCpMEHd3Dz4lRKcBs8VimWtppKQRpNwlJSvH_U0&country.x=FI&locale.x=",
+                                        Nothing, "https://gamebanana.com/guis/30190",
+                                        Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
+                                        "Assets\Skins\20131.PNG", "Assets\Skins\20132.PNG", "Assets\Skins\20133.PNG", "Assets\Skins\20134.PNG")
+
+        gv.Items.Add(GenerarListadoItem(steam2013))
 
         '------------------------------------------------
 
@@ -261,8 +290,11 @@ Module Interfaz
         Dim imagen4 As ImageEx = pagina.FindName("imagenApariencia4")
         imagen4.Source = apariencia.Imagen4
 
-        If Not apariencia.Opcion1 = Nothing Then
-            Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
+        Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
+
+        If apariencia.Opcion1 = Nothing Then
+            botonPersonalizacion.Visibility = Visibility.Collapsed
+        ElseIf Not apariencia.Opcion1 = Nothing Then
             botonPersonalizacion.Visibility = Visibility.Visible
 
             Dim menu As New MenuFlyout With {

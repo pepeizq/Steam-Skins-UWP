@@ -41,143 +41,37 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <controls:DropShadowPanel x:Name="panelMensajeApariencias" Grid.Row="0" Color="IndianRed" 
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <controls:DropShadowPanel x:Name="panelMensajeApariencias" Grid.Column="0" Color="IndianRed" 
                                                   HorizontalAlignment="Center" VerticalAlignment="Center"
                                                   BlurRadius="4" ShadowOpacity="1" OffsetZ="5" Margin="10">
-                        <Grid Padding="10" Background="IndianRed">
-                            <TextBlock x:Name="tbMensajeApariencias" x:Uid="MessageSkins" TextWrapping="Wrap" Foreground="White"/>
-                        </Grid>
-                    </controls:DropShadowPanel>
+                            <Grid Padding="10" Background="IndianRed">
+                                <TextBlock x:Name="tbMensajeApariencias" x:Uid="MessageSkins" TextWrapping="Wrap" Foreground="White"/>
+                            </Grid>
+                        </controls:DropShadowPanel>
 
-                    <GridView x:Name="gvApariencias" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                              IsItemClickEnabled="True" animations:ReorderGridAnimation.Duration="250" IsEnabled="False"/>
+                        <Button x:Name="botonTutorial" Grid.Column="1" Background="{StaticResource BrushSecundario}" Padding="10" VerticalAlignment="Center">
+                            <ToolTipService.ToolTip>
+                                <TextBlock x:Uid="Tutorial" FontSize="15"/>
+                            </ToolTipService.ToolTip>
 
-
-
-
-  
-
-                    <!--<Grid Grid.Row="1" Padding="0,20,0,10">
-                        
-
-
-
-                        <Grid x:Name="gridAparienciaMinimal" Visibility="Collapsed">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" Padding="0,10,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <ListView x:Name="lvAparienciaMinimal1" Grid.Column="0" IsItemClickEnabled="True"
-                                          ItemClick="LvAparienciaMinimal1ItemClick">
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Background="Transparent" Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-
-                                    <ListViewItem x:Name="lvDescargaMinimal" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
-                                        <StackPanel Orientation="Horizontal" Tag="0">
-                                            <SymbolIcon Symbol="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                            <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
-                                        </StackPanel>
-                                    </ListViewItem>
-                                    <ListViewItem x:Name="lvPersonalizacionMinimal" Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0" Margin="5,0,0,0">
-                                        <StackPanel Orientation="Horizontal" Tag="1">
-                                            <SymbolIcon Symbol="Edit" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                            <TextBlock x:Uid="Personalization" Foreground="White"/>
-                                        </StackPanel>
-                                    </ListViewItem>
-                                </ListView>
-
-                                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                    <TextBlock x:Name="tbInformeMinimal" Margin="10" VerticalAlignment="Center"/>
-                                    <ProgressRing x:Name="prInformeMinimal" Margin="10" Visibility="Collapsed"/>
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#59718;" VerticalAlignment="Center" Foreground="White"/>
                                 </StackPanel>
-
-                                <ListView x:Name="lvAparienciaMinimal2" Grid.Column="2" IsItemClickEnabled="True"
-                                          ItemClick="LvAparienciaMinimal2ItemClick" HorizontalAlignment="Right">
-                                    <ListView.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <StackPanel Background="Transparent" Orientation="Horizontal" />
-                                        </ItemsPanelTemplate>
-                                    </ListView.ItemsPanel>
-
-                                    <ListViewItem Background="{StaticResource BrushSecundario}" Padding="15" MinWidth="0">
-                                        <StackPanel Orientation="Horizontal" Tag="0">
-                                            <SymbolIcon Symbol="World" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                            <TextBlock Text="Web" Foreground="White"/>
-                                        </StackPanel>
-                                    </ListViewItem>
-                                </ListView>
-                            </Grid>
-
-                            <Grid x:Name="gridPersonalizacionMinimal" Grid.Row="1" Visibility="Collapsed">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <StackPanel Orientation="Horizontal" Grid.Column="0" Padding="10">
-                                    <StackPanel.Background>
-                                        <SolidColorBrush Color="#e6ffff"/>
-                                    </StackPanel.Background>
-
-                                    <TextBlock Text="Color:" Margin="0,10,10,10" VerticalAlignment="Center"/>
-                                    <ComboBox x:Name="cbOpcionMinimalColor" VerticalAlignment="Center" Width="140" SelectedIndex="0">
-                                        <ComboBoxItem Content="Black" />
-                                        <ComboBoxItem Content="Blue" />
-                                        <ComboBoxItem Content="Green" />
-                                        <ComboBoxItem Content="Red" />
-                                    </ComboBox>
-                                </StackPanel>
-                            </Grid>
-                           
-                            <Grid Grid.Row="2" Padding="0,10,0,0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBlock x:Uid="Screenshots" Grid.Row="0" HorizontalAlignment="Center" Margin="15"/>
-                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button x:Name="botonImagenMinimal1" Background="Transparent" Padding="0">
-                                            <Button.Content>
-                                                <controls:ImageEx x:Name="imagenMinimal1" Source="Assets/Skins/mini1.PNG" IsCacheEnabled="True"/>
-                                            </Button.Content>
-                                        </Button>
-
-                                        <Button x:Name="botonImagenMinimal2" Background="Transparent" Padding="0">
-                                            <Button.Content>
-                                                <controls:ImageEx x:Name="imagenMinimal2" Source="Assets/Skins/mini2.PNG" IsCacheEnabled="True"/>
-                                            </Button.Content>
-                                        </Button>
-
-                                        <Button x:Name="botonImagenMinimal3" Background="Transparent" Padding="0">
-                                            <Button.Content>
-                                                <controls:ImageEx x:Name="imagenMinimal3" Source="Assets/Skins/mini3.PNG" IsCacheEnabled="True"/>
-                                            </Button.Content>
-                                        </Button>
-
-                                        <Button x:Name="botonImagenMinimal4" Background="Transparent" Padding="0">
-                                            <Button.Content>
-                                                <controls:ImageEx x:Name="imagenMinimal4" Source="Assets/Skins/mini4.PNG" IsCacheEnabled="True"/>
-                                            </Button.Content>
-                                        </Button>
-                                    </StackPanel>
-                                </ScrollViewer>
-                            </Grid>
-                        </Grid>
-
-                    </Grid>--> 
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                   
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <GridView x:Name="gvApariencias" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                  IsItemClickEnabled="True" animations:ReorderGridAnimation.Duration="250" IsEnabled="False"/>
+                    </ScrollViewer>
                 </Grid>
 
                 <Grid x:Name="gridAparienciaElegida" Visibility="Collapsed">
@@ -238,16 +132,16 @@
 
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" MaxWidth="1000" Padding="0,0,0,20" Margin="20,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="botonImagenApariencia1" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="350" Height="200" Margin="0,0,10,0">
+                                    <Button x:Name="botonImagenApariencia1" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="550" Height="320" Margin="0,0,10,0">
                                         <controls:ImageEx x:Name="imagenApariencia1" IsCacheEnabled="True" Stretch="UniformToFill"/>
                                     </Button>
-                                    <Button x:Name="botonImagenApariencia2" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="350" Height="200" Margin="0,0,10,0">
+                                    <Button x:Name="botonImagenApariencia2" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="550" Height="320" Margin="0,0,10,0">
                                         <controls:ImageEx x:Name="imagenApariencia2" IsCacheEnabled="True" Stretch="UniformToFill"/>
                                     </Button>
-                                    <Button x:Name="botonImagenApariencia3" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="350" Height="200" Margin="0,0,10,0">
+                                    <Button x:Name="botonImagenApariencia3" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="550" Height="320" Margin="0,0,10,0">
                                         <controls:ImageEx x:Name="imagenApariencia3" IsCacheEnabled="True" Stretch="UniformToFill"/>
                                     </Button>
-                                    <Button x:Name="botonImagenApariencia4" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="350" Height="200" Margin="0,0,10,0">
+                                    <Button x:Name="botonImagenApariencia4" Padding="0" Background="Transparent" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Width="550" Height="320" Margin="0,0,10,0">
                                         <controls:ImageEx x:Name="imagenApariencia4" IsCacheEnabled="True" Stretch="UniformToFill"/>
                                     </Button>
                                 </StackPanel>
@@ -276,7 +170,7 @@
                         </Grid.ColumnDefinitions>
 
                         <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-                            <controls:ImageEx x:Name="imagenExpandida" Stretch="UniformToFill" IsCacheEnabled="True"/>
+                            <controls:ImageEx x:Name="imagenExpandida" Stretch="None" IsCacheEnabled="True"/>
                         </ScrollViewer>
                     </Grid>
                 </Grid>
@@ -299,7 +193,7 @@
                                 <StackPanel Orientation="Vertical" Padding="15">
                                     <TextBlock x:Uid="ConfigSkinsMessage" TextWrapping="Wrap"/>
 
-                                    <Grid Margin="0,15">
+                                    <Grid Margin="0,15,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
@@ -316,12 +210,6 @@
                                         <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
                                         <TextBlock x:Name="tbSteamRuta" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center"/>
                                     </Grid>
-
-                                    <TextBlock x:Uid="ConfigSkinsWay" TextWrapping="Wrap" Margin="0,25,0,0"/>
-                                    <ComboBox x:Name="cbConfigMetodo" Margin="0,10,0,5">
-                                        <ComboBoxItem Content="1"/>
-                                        <ComboBoxItem Content="2"/>
-                                    </ComboBox>
                                 </StackPanel> 
                             </StackPanel>                           
                         </StackPanel> 

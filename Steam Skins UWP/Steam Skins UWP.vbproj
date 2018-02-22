@@ -126,6 +126,7 @@
     </AppxManifest>
     <None Include="Steam Skins UWP_StoreKey.pfx" />
     <None Include="Steam Skins UWP_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\fr-FR\Resources.resw" />
     <PRIResource Include="Strings\tr-TR\Resources.resw" />
     <PRIResource Include="Strings\pt-BR\Resources.resw" />
     <PRIResource Include="Strings\es-ES\Resources.resw" />
@@ -189,6 +190,10 @@
     <Content Include="Assets\MasCosas\poeditor.png" />
     <Content Include="Assets\patreon.png" />
     <Content Include="Assets\paypal.png" />
+    <Content Include="Assets\Skins\20131.PNG" />
+    <Content Include="Assets\Skins\20132.PNG" />
+    <Content Include="Assets\Skins\20133.PNG" />
+    <Content Include="Assets\Skins\20134.PNG" />
     <Content Include="Assets\Skins\air1.PNG" />
     <Content Include="Assets\Skins\air2.PNG" />
     <Content Include="Assets\Skins\air3.PNG" />
@@ -197,10 +202,18 @@
     <Content Include="Assets\Skins\airclassic2.PNG" />
     <Content Include="Assets\Skins\airclassic3.PNG" />
     <Content Include="Assets\Skins\airclassic4.PNG" />
+    <Content Include="Assets\Skins\blue1.PNG" />
+    <Content Include="Assets\Skins\blue2.PNG" />
+    <Content Include="Assets\Skins\blue3.PNG" />
+    <Content Include="Assets\Skins\blue4.PNG" />
     <Content Include="Assets\Skins\compact1.PNG" />
     <Content Include="Assets\Skins\compact2.PNG" />
     <Content Include="Assets\Skins\compact3.PNG" />
     <Content Include="Assets\Skins\compact4.PNG" />
+    <Content Include="Assets\Skins\flat1.PNG" />
+    <Content Include="Assets\Skins\flat2.PNG" />
+    <Content Include="Assets\Skins\flat3.PNG" />
+    <Content Include="Assets\Skins\flat4.PNG" />
     <Content Include="Assets\Skins\invert1.PNG" />
     <Content Include="Assets\Skins\invert2.PNG" />
     <Content Include="Assets\Skins\invert3.PNG" />
@@ -209,10 +222,6 @@
     <Content Include="Assets\Skins\metro2.PNG" />
     <Content Include="Assets\Skins\metro3.PNG" />
     <Content Include="Assets\Skins\metro4.PNG" />
-    <Content Include="Assets\Skins\mini1.PNG" />
-    <Content Include="Assets\Skins\mini2.PNG" />
-    <Content Include="Assets\Skins\mini3.PNG" />
-    <Content Include="Assets\Skins\mini4.PNG" />
     <Content Include="Assets\Skins\pixel1.png" />
     <Content Include="Assets\Skins\pixel2.PNG" />
     <Content Include="Assets\Skins\pixel3.png" />
@@ -225,6 +234,7 @@
     <Content Include="Assets\Skins\thr2.PNG" />
     <Content Include="Assets\Skins\thr3.PNG" />
     <Content Include="Assets\Skins\thr4.PNG" />
+    <Content Include="Assets\tutorial.gif" />
     <Content Include="Assets\steam_logo.png" />
     <Content Include="My Project\Default.rd.xml" />
     <None Include="Package.StoreAssociation.xml" />

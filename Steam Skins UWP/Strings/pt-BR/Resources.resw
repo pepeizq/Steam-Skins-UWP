@@ -132,9 +132,6 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Adicione a pasta onde o Steam está instalado para que o app possa baixar e instalar visuais (exemplo: C:\Steam)</value>
   </data>
-  <data name="ConfigSkinsWay.Text" xml:space="preserve">
-    <value>Dada a maneira como o Windows 10 funciona, este app incorpora dois métodos para adicionar visuais. Se um der erro, tente o outro.</value>
-  </data>
   <data name="MoreThings_Contact" xml:space="preserve">
     <value>Contato</value>
   </data>
@@ -158,9 +155,6 @@
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Adicione a sua pasta de instalação do Steam nas Configurações para que você possa adicionar visuais</value>
-  </data>
-  <data name="MessageSkinsReady" xml:space="preserve">
-    <value>Selecione um dos visuais apresentados acima</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>Mais</value>

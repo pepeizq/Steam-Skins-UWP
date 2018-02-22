@@ -132,9 +132,6 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Steam yüklediğin klasörü şeç ki uygulama görünümleri indirip yükleyebilsin (Örnek: C:\Steam)</value>
   </data>
-  <data name="ConfigSkinsWay.Text" xml:space="preserve">
-    <value>Windows 10'un nasıl çalıştığı göz önüne alındığında, uygulamanın görünümleri eklemek için iki "yolu" içermektedir; eğer bir hata verirse, diğeriyle deneyin.</value>
-  </data>
   <data name="MoreThings_Contact" xml:space="preserve">
     <value>İletişim</value>
   </data>
@@ -158,9 +155,6 @@
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Görünümleri eklemek için ayarlar kısmından Steam klasörünü ekle</value>
-  </data>
-  <data name="MessageSkinsReady" xml:space="preserve">
-    <value>Üst çubuktan bir görünüm seç</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>Daha Fazlasi</value>

@@ -132,9 +132,6 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Add the folder where Steam is installed so the app can download and install skins (example: C:\Steam)</value>
   </data>
-  <data name="ConfigSkinsWay.Text" xml:space="preserve">
-    <value>Given how Windows 10 operates the app incorporates two "ways" to add skins, if one gives you error try with the other</value>
-  </data>
   <data name="DescriptionStore" xml:space="preserve">
     <value>Change the appearance of Steam in a comfortable way, select the skin and the app will download and extract it.</value>
   </data>
@@ -157,7 +154,7 @@
     <value>Add your Steam folder in Configuration before you can add skins</value>
   </data>
   <data name="MessageSkinsReady" xml:space="preserve">
-    <value>Select an skin from the top bar</value>
+    <value>Select an skin</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>More Things</value>
@@ -198,10 +195,7 @@
   <data name="Skins2.Text" xml:space="preserve">
     <value>Skins</value>
   </data>
-  <data name="ThanksTo.Text" xml:space="preserve">
-    <value>Thanks to</value>
-  </data>
-  <data name="Updates.Text" xml:space="preserve">
-    <value>Updates</value>
+  <data name="Tutorial.Text" xml:space="preserve">
+    <value>How to change the skin on Steam</value>
   </data>
 </root>
