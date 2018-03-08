@@ -13,13 +13,12 @@ Public NotInheritable Class MainPage
         nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Skins"), New SymbolIcon(Symbol.Home), 0))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
         nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), New SymbolIcon(Symbol.Setting), 1))
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("MoreThings"), New SymbolIcon(Symbol.More), 2))
 
     End Sub
 
     Private Sub Nv_ItemInvoked(sender As NavigationView, args As NavigationViewItemInvokedEventArgs)
 
-        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        Dim recursos As New Resources.ResourceLoader()
 
         Dim item As TextBlock = args.InvokedItem
 
@@ -27,15 +26,6 @@ Public NotInheritable Class MainPage
             GridVisibilidad(gridApariencias, item.Text)
         ElseIf item.Text = recursos.GetString("Config") Then
             GridVisibilidad(gridConfig, item.Text)
-        ElseIf item.Text = recursos.GetString("MoreThings") Then
-            GridVisibilidad(gridMasCosas, item.Text)
-
-            Dim sv As ScrollViewer = gridMasCosas.Children(0)
-            Dim gridRelleno As Grid = sv.Content
-            Dim sp As StackPanel = gridRelleno.Children(0)
-            Dim lv As ListView = sp.Children(0)
-
-            MasCosas.Navegar(lv, "2", "https://pepeizqapps.com/")
         End If
 
     End Sub
@@ -45,45 +35,15 @@ Public NotInheritable Class MainPage
         'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "es-ES"
         'Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US"
 
-        Dim coreBarra As CoreApplicationViewTitleBar = CoreApplication.GetCurrentView.TitleBar
-        coreBarra.ExtendViewIntoTitleBar = True
+        MasCosas.Generar()
 
-        Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
-        barra.ButtonBackgroundColor = Colors.Transparent
-        barra.ButtonForegroundColor = Colors.White
-        barra.ButtonInactiveBackgroundColor = Colors.Transparent
-
-        '--------------------------------------------------------
-
-        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        Dim recursos As New Resources.ResourceLoader()
 
         GridVisibilidad(gridApariencias, recursos.GetString("Skins"))
         nvPrincipal.IsPaneOpen = False
 
         Interfaz.GenerarListado(gvApariencias)
         Detector.Steam(False)
-        MasCosas.Generar()
-
-        '--------------------------------------------------------
-
-        AddHandler botonTutorial.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonTutorial.PointerExited, AddressOf UsuarioSaleBoton
-        AddHandler botonDescargaApariencia.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonDescargaApariencia.PointerExited, AddressOf UsuarioSaleBoton
-        AddHandler botonPersonalizacion.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonPersonalizacion.PointerExited, AddressOf UsuarioSaleBoton
-
-        AddHandler botonImagenApariencia1.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonImagenApariencia1.PointerExited, AddressOf UsuarioSaleBoton
-        AddHandler botonImagenApariencia2.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonImagenApariencia2.PointerExited, AddressOf UsuarioSaleBoton
-        AddHandler botonImagenApariencia3.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonImagenApariencia3.PointerExited, AddressOf UsuarioSaleBoton
-        AddHandler botonImagenApariencia4.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler botonImagenApariencia4.PointerExited, AddressOf UsuarioSaleBoton
-
-        AddHandler botonVolver.PointerEntered, AddressOf UsuarioSaleBoton
-        AddHandler botonVolver.PointerExited, AddressOf UsuarioSaleBoton
 
         '--------------------------------------------------------
 

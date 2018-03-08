@@ -184,11 +184,6 @@
     <Content Include="Assets\Logos\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-400.png" />
-    <Content Include="Assets\MasCosas\contacto.png" />
-    <Content Include="Assets\MasCosas\feedback.png" />
-    <Content Include="Assets\MasCosas\github.png" />
-    <Content Include="Assets\MasCosas\pepeizq.png" />
-    <Content Include="Assets\MasCosas\poeditor.png" />
     <Content Include="Assets\patreon.png" />
     <Content Include="Assets\paypal.png" />
     <Content Include="Assets\Skins\20131.PNG" />
@@ -238,6 +233,7 @@
     <Content Include="Assets\tutorial.gif" />
     <Content Include="Assets\steam_logo.png" />
     <Content Include="My Project\Default.rd.xml" />
+    <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +293,9 @@
   <ItemGroup>
     <PackageReference Include="DotNetZip">
       <Version>1.10.1</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.UWP">
+      <Version>4.7.0.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
