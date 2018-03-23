@@ -6,7 +6,6 @@
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:UI="using:Microsoft.Advertising.WinRT.UI"
     mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid Background="{StaticResource ColorGridPrincipal}">
@@ -23,7 +22,7 @@
 
             <TextBlock x:Name="tbTitulo" Grid.Column="0" Margin="50,0,0,0" FontSize="13" Foreground="White" VerticalAlignment="Center"/>
 
-            <Button x:Name="botonMasCosas" Grid.Column="1" BorderThickness="0" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
+            <Button x:Name="botonMasCosas" Grid.Column="1" BorderThickness="0" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}">
                 <Button.Content>
                     <FontIcon Glyph="&#57361;" FontFamily="Segoe MDL2 Assets" Foreground="White" Margin="10,5" FontSize="15"/>
                 </Button.Content>
@@ -90,10 +89,10 @@
                                   IsItemClickEnabled="True" animations:ReorderGridAnimation.Duration="250" IsEnabled="False"/>
                     </ScrollViewer>
 
-                    <Grid Grid.Row="2" Margin="0,10,0,0">
+                    <!--<Grid Grid.Row="2" Margin="0,10,0,0">
                         <UI:AdControl ApplicationId="9nblggh55b7f" AdUnitId="1100018753"
                                       HorizontalAlignment="Center" Height="90" VerticalAlignment="Center" Width="728" />
-                    </Grid>
+                    </Grid>-->
                 </Grid>
 
                 <Grid x:Name="gridAparienciaElegida" Visibility="Collapsed">

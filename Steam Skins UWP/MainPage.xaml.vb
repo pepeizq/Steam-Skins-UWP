@@ -1,5 +1,4 @@
 ﻿Imports Microsoft.Toolkit.Uwp.UI.Controls
-Imports Windows.ApplicationModel.Core
 Imports Windows.UI
 Imports Windows.UI.Core
 
