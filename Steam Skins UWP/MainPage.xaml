@@ -33,6 +33,12 @@
             </Button>
         </Grid>
 
+        <Popup x:Name="popupMasCosas" IsOpen="False">
+            <Grid>
+                <TextBlock Text="test"/>
+            </Grid>   
+        </Popup> 
+
         <NavigationView x:Name="nvPrincipal" Grid.Row="1" Loaded="Nv_Loaded" ItemInvoked="Nv_ItemInvoked"
                         OpenPaneLength="200" AlwaysShowHeader="False" IsSettingsVisible="False">
 
