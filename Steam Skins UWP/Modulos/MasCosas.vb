@@ -32,14 +32,6 @@ Module MasCosas
         Dim botonCosas As Button = pagina.FindName("botonMasCosas")
         botonCosas.Margin = New Thickness(0, 0, coreBarra.SystemOverlayRightInset + 200, 0)
 
-        Dim popup As Popup = pagina.FindName("popupMasCosas")
-        Dim transform As GeneralTransform = popup.TransformToVisual(botonCosas)
-        Dim puntos As Point = transform.TransformPoint(New Point(0, 0))
-
-        popup.HorizontalOffset = puntos.X
-        popup.VerticalOffset = puntos.Y
-        popup.IsOpen = True
-
         Dim menu As MenuFlyout = pagina.FindName("botonMasCosasMenu")
 
         Dim iconoVotar As New FontAwesome.UWP.FontAwesome With {
