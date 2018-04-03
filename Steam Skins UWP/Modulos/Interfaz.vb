@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Toolkit.Uwp.UI.Controls
+﻿Imports Microsoft.Toolkit.Uwp.UI.Animations
+Imports Microsoft.Toolkit.Uwp.UI.Controls
 Imports Windows.Storage
 Imports Windows.UI
 Imports Windows.UI.Core
@@ -215,11 +216,23 @@ Module Interfaz
 
     Private Sub UsuarioEntraBoton(sender As Object, e As PointerRoutedEventArgs)
 
+        Dim gvItem As GridViewItem = sender
+        Dim grid As Grid = gvItem.Content
+        Dim imagen As ImageEx = grid.Children(0)
+
+        imagen.Saturation(0).Start()
+
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
     End Sub
 
     Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
+
+        Dim gvItem As GridViewItem = sender
+        Dim grid As Grid = gvItem.Content
+        Dim imagen As ImageEx = grid.Children(0)
+
+        imagen.Saturation(1).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
 

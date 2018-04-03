@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Toolkit.Uwp.UI.Controls
+﻿Imports FontAwesome.UWP
+Imports Microsoft.Toolkit.Uwp.UI.Controls
 Imports Windows.UI
 Imports Windows.UI.Core
 
@@ -9,9 +10,10 @@ Public NotInheritable Class MainPage
 
         Dim recursos As New Resources.ResourceLoader()
 
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Skins"), New SymbolIcon(Symbol.Home), 0))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Skins"), FontAwesomeIcon.Home, 0))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Tutorial2"), FontAwesomeIcon.InfoCircle, 1))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), New SymbolIcon(Symbol.Setting), 1))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesomeIcon.Cog, 2))
 
     End Sub
 
@@ -21,11 +23,21 @@ Public NotInheritable Class MainPage
 
         Dim item As TextBlock = args.InvokedItem
 
-        If item.Text = recursos.GetString("Skins") Then
-            GridVisibilidad(gridApariencias, item.Text)
-        ElseIf item.Text = recursos.GetString("Config") Then
-            GridVisibilidad(gridConfig, item.Text)
+        If Not item Is Nothing Then
+            If item.Text = recursos.GetString("Skins") Then
+                GridVisibilidad(gridApariencias, item.Text)
+            ElseIf item.Text = recursos.GetString("Tutorial2") Then
+                GridVisibilidad(gridTutorial, item.Text)
+            ElseIf item.Text = recursos.GetString("Config") Then
+                GridVisibilidad(gridConfig, item.Text)
+            End If
         End If
+
+    End Sub
+
+    Private Sub Nv_ItemFlyout(sender As NavigationViewItem, args As TappedRoutedEventArgs)
+
+        FlyoutBase.ShowAttachedFlyout(sender)
 
     End Sub
 
@@ -66,13 +78,11 @@ Public NotInheritable Class MainPage
                                                                        gridCaptura.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfig.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfigSkins.Background = App.Current.Resources("GridTituloBackground")
-                                                                       gridMasCosas.Background = App.Current.Resources("GridAcrilico")
                                                                    Else
                                                                        gridAparienciaElegida.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridCaptura.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfig.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
-                                                                       gridMasCosas.Background = New SolidColorBrush(Colors.LightGray)
                                                                    End If
                                                                End Sub)
 
@@ -84,8 +94,8 @@ Public NotInheritable Class MainPage
 
         gridAparienciaElegida.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
+        gridTutorial.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
-        gridMasCosas.Visibility = Visibility.Collapsed
 
         grid.Visibility = Visibility.Visible
 
@@ -104,17 +114,6 @@ Public NotInheritable Class MainPage
     End Sub
 
     'SKINS-----------------------------------------------------------------------------
-
-    Private Sub BotonTutorial_Click(sender As Object, e As RoutedEventArgs) Handles botonTutorial.Click
-
-        Dim imagenTutorial As New ImageEx With {
-            .Source = "Assets\tutorial.gif",
-            .IsCacheEnabled = True
-        }
-
-        AmpliarCaptura(imagenTutorial)
-
-    End Sub
 
     Private Sub BotonDescargaApariencia_Click(sender As Object, e As RoutedEventArgs) Handles botonDescargaApariencia.Click
 

@@ -132,9 +132,6 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Add the folder where Steam is installed so the app can download and install skins (example: C:\Steam)</value>
   </data>
-  <data name="DescriptionStore" xml:space="preserve">
-    <value>Change the appearance of Steam in a comfortable way.</value>
-  </data>
   <data name="Donate.Text" xml:space="preserve">
     <value>Donate to its creator:</value>
   </data>
@@ -195,7 +192,16 @@
   <data name="Skins2.Text" xml:space="preserve">
     <value>Skins</value>
   </data>
+  <data name="StoreDescription" xml:space="preserve">
+    <value>Change the appearance of Steam in a comfortable way.</value>
+  </data>
+  <data name="StoreTags" xml:space="preserve">
+    <value>Steam;Skins</value>
+  </data>
   <data name="Tutorial.Text" xml:space="preserve">
     <value>How to change the skin on Steam</value>
+  </data>
+  <data name="Tutorial2" xml:space="preserve">
+    <value>Tutorial</value>
   </data>
 </root>

@@ -132,9 +132,6 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Añade la carpeta donde Steam está instalado para que la app pueda descargar e instalar las apariencias (ejemplo: C:\Steam)</value>
   </data>
-  <data name="DescriptionStore" xml:space="preserve">
-    <value>Cambia fácilmente la apariencia de Steam.</value>
-  </data>
   <data name="Donate.Text" xml:space="preserve">
     <value>Dona a su creador:</value>
   </data>
@@ -195,7 +192,16 @@
   <data name="Skins2.Text" xml:space="preserve">
     <value>Apariencias</value>
   </data>
+  <data name="StoreDescription" xml:space="preserve">
+    <value>Cambia fácilmente la apariencia de Steam.</value>
+  </data>
+  <data name="StoreTags" xml:space="preserve">
+    <value>Steam;Skins;Apariencias</value>
+  </data>
   <data name="Tutorial.Text" xml:space="preserve">
     <value>Como cambiar la apariencia en Steam</value>
+  </data>
+  <data name="Tutorial2" xml:space="preserve">
+    <value>Tutorial</value>
   </data>
 </root>

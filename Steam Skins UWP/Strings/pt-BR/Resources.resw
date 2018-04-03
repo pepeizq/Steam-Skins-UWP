@@ -135,7 +135,7 @@
   <data name="MoreThings_Contact" xml:space="preserve">
     <value>Contato</value>
   </data>
-  <data name="DescriptionStore" xml:space="preserve">
+  <data name="StoreDescription" xml:space="preserve">
     <value>Mude a aparência do Steam de forma confortável. Basta selecionar o visual e o app irá baixá-lo e extraí-lo para você.</value>
   </data>
   <data name="DownloadAndInstall.Text" xml:space="preserve">
@@ -180,16 +180,19 @@
   <data name="MoreThings_SourceCode" xml:space="preserve">
     <value>Código fonte</value>
   </data>
-  <data name="ThanksTo.Text" xml:space="preserve">
-    <value>Agradecimentos</value>
-  </data>
   <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>Avalie o app</value>
   </data>
   <data name="MoreThings_MoreApps" xml:space="preserve">
     <value>Mais apps</value>
   </data>
-  <data name="Updates.Text" xml:space="preserve">
-    <value>Atualizações</value>
+  <data name="Tutorial2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Tutorial.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="StoreTags" xml:space="preserve">
+    <value />
   </data>
 </root>
