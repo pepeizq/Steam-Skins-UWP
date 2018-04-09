@@ -5,6 +5,7 @@
     
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations" 
+    xmlns:fa="using:FontAwesome.UWP"
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -211,7 +212,7 @@
 
                                         <Button x:Name="botonSteamRuta" Grid.Column="0" Padding="15,10" Background="{StaticResource BrushSecundario}">
                                             <StackPanel Orientation="Horizontal" >
-                                                <SymbolIcon Symbol="NewFolder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                                <fa:FontAwesome Icon="Folder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                                 <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
                                             </StackPanel>
                                         </Button>

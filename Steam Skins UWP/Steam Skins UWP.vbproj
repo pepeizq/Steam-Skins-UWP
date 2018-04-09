@@ -230,8 +230,8 @@
     <Content Include="Assets\Skins\thr2.PNG" />
     <Content Include="Assets\Skins\thr3.PNG" />
     <Content Include="Assets\Skins\thr4.PNG" />
-    <Content Include="Assets\tutorial.gif" />
     <Content Include="Assets\steam_logo.png" />
+    <Content Include="Assets\tutorial.gif" />
     <Content Include="My Project\Default.rd.xml" />
     <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
