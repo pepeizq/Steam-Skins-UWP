@@ -1,5 +1,7 @@
 ﻿Imports FontAwesome.UWP
 Imports Microsoft.Toolkit.Uwp.UI.Controls
+Imports Windows.ApplicationModel.Store
+Imports Windows.Services.Store
 Imports Windows.UI
 Imports Windows.UI.Core
 
@@ -58,6 +60,24 @@ Public NotInheritable Class MainPage
 
         '--------------------------------------------------------
 
+        Dim licencia As LicenseInformation = Nothing
+
+        Try
+            licencia = CurrentApp.LicenseInformation
+        Catch ex As Exception
+
+        End Try
+
+        If Not licencia Is Nothing Then
+            If Not licencia.ProductLicenses("NoAds").IsActive Then
+                spAnuncio.Visibility = Visibility.Visible
+            End If
+        Else
+            spAnuncio.Visibility = Visibility.Visible
+        End If
+
+        '--------------------------------------------------------
+
         Dim transpariencia As New UISettings
         TransparienciaEfectosFinal(transpariencia.AdvancedEffectsEnabled)
         AddHandler transpariencia.AdvancedEffectsEnabledChanged, AddressOf TransparienciaEfectosCambia
@@ -110,6 +130,13 @@ Public NotInheritable Class MainPage
     Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
+
+    End Sub
+
+    Private Async Sub BotonAnuncios_Click(sender As Object, e As RoutedEventArgs) Handles botonAnuncios.Click
+
+        Dim contexto As StoreContext = StoreContext.GetDefault
+        Await contexto.RequestPurchaseAsync("9P87865B8ZSD")
 
     End Sub
 

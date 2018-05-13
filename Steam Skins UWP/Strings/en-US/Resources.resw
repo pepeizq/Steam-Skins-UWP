@@ -123,6 +123,9 @@
   <data name="Back.Text" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="ButtonRemoveAds.Text" xml:space="preserve">
+    <value>Remove Ads</value>
+  </data>
   <data name="Change" xml:space="preserve">
     <value>Change</value>
   </data>
