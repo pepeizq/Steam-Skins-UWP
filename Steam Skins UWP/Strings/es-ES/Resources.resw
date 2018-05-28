@@ -123,9 +123,6 @@
   <data name="Back.Text" xml:space="preserve">
     <value>Volver</value>
   </data>
-  <data name="ButtonRemoveAds.Text" xml:space="preserve">
-    <value>Quitar Anuncios</value>
-  </data>
   <data name="Change" xml:space="preserve">
     <value>Cambiar</value>
   </data>
@@ -149,6 +146,30 @@
   </data>
   <data name="InstallCompleted" xml:space="preserve">
     <value>Instalación Terminada</value>
+  </data>
+  <data name="Log.Text" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="LogFinishDecompression" xml:space="preserve">
+    <value>Terminada descompresión</value>
+  </data>
+  <data name="LogFinishDownload" xml:space="preserve">
+    <value>Terminada descarga</value>
+  </data>
+  <data name="LogFolderDelete" xml:space="preserve">
+    <value>Borrada carpeta previa</value>
+  </data>
+  <data name="LogFolderSteam1" xml:space="preserve">
+    <value>Carpeta de Steam detectada:</value>
+  </data>
+  <data name="LogFolderSteam2" xml:space="preserve">
+    <value>Carpeta de Steam no detectada</value>
+  </data>
+  <data name="LogStartDecompression" xml:space="preserve">
+    <value>Iniciada descompresión</value>
+  </data>
+  <data name="LogStartDownload" xml:space="preserve">
+    <value>Iniciada descarga</value>
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Añade tu carpeta de Steam en Configuración antes de poder añadir apariencias</value>
@@ -180,17 +201,14 @@
   <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>Vota la App</value>
   </data>
+  <data name="NoAdsButton.Text" xml:space="preserve">
+    <value>Comprar No Ads</value>
+  </data>
+  <data name="NoAdsMessage.Text" xml:space="preserve">
+    <value>Comprando el complemento No Ads no se mostrará esta pantalla y puedes empezar de inmediato la instalación de la apariencia</value>
+  </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalización</value>
-  </data>
-  <data name="RegistryAds" xml:space="preserve">
-    <value>segundos mostrando anuncio</value>
-  </data>
-  <data name="RegistryFolderSteam1" xml:space="preserve">
-    <value>Carpeta de Steam detectada:</value>
-  </data>
-  <data name="RegistryFolderSteam2" xml:space="preserve">
-    <value>Carpeta de Steam no detectada</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Captura de Pantalla</value>

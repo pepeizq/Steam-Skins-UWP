@@ -3,6 +3,7 @@ Imports Windows.ApplicationModel.Store
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
+Imports Windows.UI.Core
 Imports Windows.UI.Xaml.Documents
 
 Module Descarga
@@ -23,6 +24,14 @@ Module Descarga
 
         Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
         botonPersonalizacion.IsEnabled = estado
+
+        Dim prProgreso As ProgressRing = pagina.FindName("prProgreso")
+
+        If estado = False Then
+            prProgreso.Visibility = Visibility.Visible
+        Else
+            prProgreso.Visibility = Visibility.Collapsed
+        End If
 
     End Sub
 
@@ -57,27 +66,23 @@ Module Descarga
             Dim gridAparienciaElegida As Grid = pagina.FindName("gridAparienciaElegida")
             gridAparienciaElegida.Visibility = Visibility.Collapsed
 
-            Dim tbAnuncio As TextBlock = pagina.FindName("tbAnuncio")
+            Dim tbAnuncio As TextBlock = pagina.FindName("tbAnuncioContadorSegundos")
 
             Dim i As Integer = 30
             While i > 0
-                tbAnuncio.Inlines.Clear()
-                Dim mensaje As New Run With {
-                        .Text = i.ToString + " " + recursos.GetString("RegistryAds")
-                    }
-                tbAnuncio.Inlines.Add(mensaje)
-                tbAnuncio.Inlines.Add(New LineBreak)
+                tbAnuncio.Text = i.ToString
 
                 Await Task.Delay(1000)
 
                 i -= 1
             End While
 
-            tbAnuncio.Inlines.Clear()
-
             gridAparienciaElegida.Visibility = Visibility.Visible
             gridAnuncio.Visibility = Visibility.Collapsed
         End If
+
+        Dim botonRegistro As Button = pagina.FindName("botonRegistro")
+        botonRegistro.Visibility = Visibility.Visible
 
         If apariencia.Titulo = "Metro" Then
             Dim html As String = Await Decompiladores.HttpClient(New Uri(apariencia.EnlaceDescarga))
@@ -114,7 +119,10 @@ Module Descarga
 
         If Not apariencia Is Nothing Then
             If Not carpetaSteam Is Nothing Then
-                Await Task.Run(Function() TareaDescarga(apariencia))
+                Dim tbRegistro As TextBlock = pagina.FindName("tbRegistro")
+                tbRegistro.Inlines.Clear()
+
+                Await Task.Run(Function() TareaDescarga(apariencia, tbRegistro))
             End If
         End If
 
@@ -122,7 +130,7 @@ Module Descarga
 
     End Sub
 
-    Private Async Function TareaDescarga(apariencia As Apariencia) As Task
+    Private Async Function TareaDescarga(apariencia As Apariencia, tbRegistro As TextBlock) As Task
 
         Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
 
@@ -147,10 +155,13 @@ Module Descarga
         If Not carpetaSteamSkins Is Nothing Then
             StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteamSkins", carpetaSteamSkins)
 
-            'Dim mensaje As New Run With {
-            '    .Text = recursos.GetString("RegistryFolderSteam1") + " " + carpetaSteamSkins.Path
-            '}
-            'tbAnuncio.Inlines.Add(mensaje)
+            Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                  Dim mensaje As New Run With {
+                                                                                                                        .Text = recursos.GetString("LogFolderSteam1") + " " + carpetaSteamSkins.Path + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                    }
+                                                                                                                  tbRegistro.Inlines.Add(mensaje)
+                                                                                                              End Sub)
+
 
             Dim carpetaBorrar As StorageFolder = Nothing
 
@@ -163,8 +174,17 @@ Module Descarga
             If Not carpetaBorrar Is Nothing Then
                 Try
                     Await carpetaBorrar.DeleteAsync
+
+                    Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                          tbRegistro.Inlines.Add(New LineBreak)
+
+                                                                                                                          Dim mensaje As New Run With {
+                                                                                                                                .Text = recursos.GetString("LogFolderDelete") + " " + carpetaBorrar.Path + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                            }
+                                                                                                                          tbRegistro.Inlines.Add(mensaje)
+                                                                                                                      End Sub)
                 Catch ex As Exception
-                    Toast("Error 0x4", Nothing)
+
                 End Try
             End If
 
@@ -184,10 +204,35 @@ Module Descarga
                 descarga.Priority = BackgroundTransferPriority.High
                 Await descarga.StartAsync
 
+                Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                      tbRegistro.Inlines.Add(New LineBreak)
+
+                                                                                                                      Dim mensaje As New Run With {
+                                                                                                                          .Text = recursos.GetString("LogStartDownload") + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                      }
+                                                                                                                      tbRegistro.Inlines.Add(mensaje)
+                                                                                                                  End Sub)
+
                 Dim ficheroDescargado As IStorageFile = descarga.ResultFile
                 ficheroDescargado = Await StorageApplicationPermissions.FutureAccessList.GetFileAsync(apariencia.Titulo + ".zip")
 
                 If Not ficheroDescargado Is Nothing Then
+                    Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                          tbRegistro.Inlines.Add(New LineBreak)
+
+                                                                                                                          Dim mensaje As New Run With {
+                                                                                                                              .Text = recursos.GetString("LogFinishDownload") + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                          }
+                                                                                                                          tbRegistro.Inlines.Add(mensaje)
+
+                                                                                                                          tbRegistro.Inlines.Add(New LineBreak)
+
+                                                                                                                          Dim mensaje2 As New Run With {
+                                                                                                                              .Text = recursos.GetString("LogStartDecompression") + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                          }
+                                                                                                                          tbRegistro.Inlines.Add(mensaje2)
+                                                                                                                      End Sub)
+
                     Encoding.RegisterProvider(CodePagesEncodingProvider.Instance)
 
                     Try
@@ -246,14 +291,25 @@ Module Descarga
                         Next
                     End If
 
+                    Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                          tbRegistro.Inlines.Add(New LineBreak)
+
+                                                                                                                          Dim mensaje As New Run With {
+                                                                                                                              .Text = recursos.GetString("LogFinishDecompression") + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                          }
+                                                                                                                          tbRegistro.Inlines.Add(mensaje)
+                                                                                                                      End Sub)
+
                     Toast(recursos.GetString("InstallCompleted"), Nothing)
                 End If
             End If
         Else
-            'Dim mensaje As New Run With {
-            '    .Text = recursos.GetString("RegistryFolderSteam2")
-            '}
-            'tbAnuncio.Inlines.Add(mensaje)
+            Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
+                                                                                                                  Dim mensaje As New Run With {
+                                                                                                                      .Text = recursos.GetString("LogFolderSteam2") + " - " + DateTime.Now.ToString("hh:mm:ss")
+                                                                                                                  }
+                                                                                                                  tbRegistro.Inlines.Add(mensaje)
+                                                                                                              End Sub)
         End If
 
     End Function

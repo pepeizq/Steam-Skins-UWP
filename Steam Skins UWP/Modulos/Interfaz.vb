@@ -255,6 +255,9 @@ Module Interfaz
         Dim tbAparienciaSeleccionada As TextBlock = pagina.FindName("tbAparienciaSeleccionada")
         tbAparienciaSeleccionada.Text = apariencia.Titulo
 
+        Dim botonRegistro As Button = pagina.FindName("botonRegistro")
+        botonRegistro.Visibility = Visibility.Collapsed
+
         Dim mostrarDonacion As Boolean = False
 
         If Not apariencia.DonacionPaypal = Nothing Then

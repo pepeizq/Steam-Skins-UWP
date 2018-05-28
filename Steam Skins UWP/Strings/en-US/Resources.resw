@@ -123,9 +123,6 @@
   <data name="Back.Text" xml:space="preserve">
     <value>Back</value>
   </data>
-  <data name="ButtonRemoveAds.Text" xml:space="preserve">
-    <value>Remove Ads</value>
-  </data>
   <data name="Change" xml:space="preserve">
     <value>Change</value>
   </data>
@@ -149,6 +146,30 @@
   </data>
   <data name="InstallCompleted" xml:space="preserve">
     <value>Installation Completed</value>
+  </data>
+  <data name="Log.Text" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="LogFinishDecompression" xml:space="preserve">
+    <value>Completed decompression</value>
+  </data>
+  <data name="LogFinishDownload" xml:space="preserve">
+    <value>Completed download</value>
+  </data>
+  <data name="LogFolderDelete" xml:space="preserve">
+    <value>Deleted previous folder:</value>
+  </data>
+  <data name="LogFolderSteam1" xml:space="preserve">
+    <value>Steam folder detected: </value>
+  </data>
+  <data name="LogFolderSteam2" xml:space="preserve">
+    <value>Steam folder not detected</value>
+  </data>
+  <data name="LogStartDecompression" xml:space="preserve">
+    <value>Started decompression</value>
+  </data>
+  <data name="LogStartDownload" xml:space="preserve">
+    <value>Started download</value>
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Add your Steam folder in Configuration before you can add skins</value>
@@ -180,17 +201,14 @@
   <data name="MoreThings_VoteApp" xml:space="preserve">
     <value>Vote the App</value>
   </data>
+  <data name="NoAdsButton.Text" xml:space="preserve">
+    <value>Buy No Ads</value>
+  </data>
+  <data name="NoAdsMessage.Text" xml:space="preserve">
+    <value>Buying the No Ads plugin will not show this screen and you can immediately start the installation of the appearance</value>
+  </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
-  </data>
-  <data name="RegistryAds" xml:space="preserve">
-    <value>seconds showing ad</value>
-  </data>
-  <data name="RegistryFolderSteam1" xml:space="preserve">
-    <value>Steam folder detected: </value>
-  </data>
-  <data name="RegistryFolderSteam2" xml:space="preserve">
-    <value>Steam folder not detected</value>
   </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Screenshot</value>
