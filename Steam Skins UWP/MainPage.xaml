@@ -98,8 +98,6 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Button x:Name="botonDescargaApariencia" Grid.Column="0" Background="{StaticResource BrushSecundario}" Padding="15" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0">
@@ -115,17 +113,6 @@
                                         <TextBlock x:Uid="Personalization" Foreground="White"/>
                                     </StackPanel>
                                 </Button>
-
-                                <ProgressRing x:Name="prDescarga" Grid.Column="2" Margin="20,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{StaticResource BrushSecundario}" IsActive="True" Visibility="Collapsed"/>
-
-                                <StackPanel x:Name="spAnuncio" Grid.Column="3" Orientation="Horizontal">
-                                    <ads:AdControl AdUnitId="1100018753" Width="300" Height="50"/>
-                                    <Button x:Name="botonAnuncios" HorizontalAlignment="Center" Margin="15,0,0,0" Padding="15,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
-                                        <Button.Content>
-                                            <TextBlock x:Uid="ButtonRemoveAds" Foreground="White"/>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
                             </Grid>
 
                             <TextBlock x:Uid="Screenshots" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20"/>
@@ -150,6 +137,29 @@
                     </ScrollViewer> 
                 </Grid>
 
+                <Grid x:Name="gridAnuncio" Visibility="Collapsed">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Padding="20" Width="350">
+                            <StackPanel.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#FFE4E4E4" Offset="0.5" />
+                                    <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
+
+                            <StackPanel x:Name="spAnuncio" Orientation="Vertical">
+                                <ads:AdControl AdUnitId="1100018753" Width="300" Height="250" HorizontalAlignment="Center"/>
+                                <Button x:Name="botonAnuncios" HorizontalAlignment="Center" Margin="0,15" Padding="15,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
+                                    <Button.Content>
+                                        <TextBlock x:Uid="ButtonRemoveAds" Foreground="White"/>
+                                    </Button.Content>
+                                </Button>
+                                <TextBlock x:Name="tbAnuncio" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </StackPanel> 
+                    </ScrollViewer> 
+                </Grid>
+
                 <Grid x:Name="gridCaptura" Visibility="Collapsed" Padding="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -158,8 +168,8 @@
 
                     <Button x:Name="botonVolver" Grid.Row="0" Padding="15,10" Background="{StaticResource BrushSecundario}" Margin="0,0,0,10" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Back" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                            <TextBlock x:Uid="Back" Foreground="White"/>
+                            <fa:FontAwesome Icon="ArrowLeft" Margin="0,0,10,0" Foreground="White"/>
+                            <TextBlock x:Uid="Back" Foreground="White" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 

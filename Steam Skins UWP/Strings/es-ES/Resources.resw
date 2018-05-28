@@ -183,6 +183,15 @@
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalización</value>
   </data>
+  <data name="RegistryAds" xml:space="preserve">
+    <value>segundos mostrando anuncio</value>
+  </data>
+  <data name="RegistryFolderSteam1" xml:space="preserve">
+    <value>Carpeta de Steam detectada:</value>
+  </data>
+  <data name="RegistryFolderSteam2" xml:space="preserve">
+    <value>Carpeta de Steam no detectada</value>
+  </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Captura de Pantalla</value>
   </data>

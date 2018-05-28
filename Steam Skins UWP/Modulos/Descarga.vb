@@ -1,16 +1,83 @@
-﻿Imports System.IO.Compression
-Imports System.Text
-Imports Microsoft.Toolkit.Uwp.Helpers
+﻿Imports System.Text
+Imports Windows.ApplicationModel.Store
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
-Imports Windows.UI.Core
+Imports Windows.UI.Xaml.Documents
 
 Module Descarga
 
-    Dim WithEvents Bw As BackgroundWorker
+    Private Sub EstadoControles(estado As Boolean)
+
+        Dim frame As Frame = Window.Current.Content
+        Dim pagina As Page = frame.Content
+
+        Dim gvApariencias As GridView = pagina.FindName("gvApariencias")
+        gvApariencias.IsEnabled = estado
+
+        Dim botonSteam As Button = pagina.FindName("botonSteamRuta")
+        botonSteam.IsEnabled = estado
+
+        Dim botonDescarga As Button = pagina.FindName("botonDescargaApariencia")
+        botonDescarga.IsEnabled = estado
+
+        Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
+        botonPersonalizacion.IsEnabled = estado
+
+    End Sub
 
     Public Async Sub Iniciar(apariencia As Apariencia)
+
+        EstadoControles(False)
+
+        Dim recursos As New Resources.ResourceLoader
+
+        Dim frame As Frame = Window.Current.Content
+        Dim pagina As Page = frame.Content
+
+        Dim licencia As LicenseInformation = Nothing
+
+        Try
+            licencia = CurrentApp.LicenseInformation
+        Catch ex As Exception
+
+        End Try
+
+        Dim gridAnuncio As Grid = pagina.FindName("gridAnuncio")
+
+        If Not licencia Is Nothing Then
+            If Not licencia.ProductLicenses("NoAds").IsActive Then
+                gridAnuncio.Visibility = Visibility.Visible
+            End If
+        Else
+            gridAnuncio.Visibility = Visibility.Visible
+        End If
+
+        If gridAnuncio.Visibility = Visibility.Visible Then
+            Dim gridAparienciaElegida As Grid = pagina.FindName("gridAparienciaElegida")
+            gridAparienciaElegida.Visibility = Visibility.Collapsed
+
+            Dim tbAnuncio As TextBlock = pagina.FindName("tbAnuncio")
+
+            Dim i As Integer = 30
+            While i > 0
+                tbAnuncio.Inlines.Clear()
+                Dim mensaje As New Run With {
+                        .Text = i.ToString + " " + recursos.GetString("RegistryAds")
+                    }
+                tbAnuncio.Inlines.Add(mensaje)
+                tbAnuncio.Inlines.Add(New LineBreak)
+
+                Await Task.Delay(1000)
+
+                i -= 1
+            End While
+
+            tbAnuncio.Inlines.Clear()
+
+            gridAparienciaElegida.Visibility = Visibility.Visible
+            gridAnuncio.Visibility = Visibility.Collapsed
+        End If
 
         If apariencia.Titulo = "Metro" Then
             Dim html As String = Await Decompiladores.HttpClient(New Uri(apariencia.EnlaceDescarga))
@@ -47,45 +114,19 @@ Module Descarga
 
         If Not apariencia Is Nothing Then
             If Not carpetaSteam Is Nothing Then
-
-                Await Core.CoreApplication.GetCurrentView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
-                                                                                                                 TareaDescarga(apariencia, carpetaSteam)
-                                                                                                             End Sub)
+                Await Task.Run(Function() TareaDescarga(apariencia))
             End If
         End If
 
-    End Sub
-
-    Private Sub EstadoControles(estado As Boolean)
-
-        Dim frame As Frame = Window.Current.Content
-        Dim pagina As Page = frame.Content
-
-        Dim gvApariencias As GridView = pagina.FindName("gvApariencias")
-        gvApariencias.IsEnabled = estado
-
-        Dim botonSteam As Button = pagina.FindName("botonSteamRuta")
-        botonSteam.IsEnabled = estado
-
-        Dim botonDescarga As Button = pagina.FindName("botonDescargaApariencia")
-        botonDescarga.IsEnabled = estado
-
-        Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
-        botonPersonalizacion.IsEnabled = estado
-
-        Dim prDescarga As ProgressRing = pagina.FindName("prDescarga")
-
-        If estado = False Then
-            prDescarga.Visibility = Visibility.Visible
-        Else
-            prDescarga.Visibility = Visibility.Collapsed
-        End If
+        EstadoControles(True)
 
     End Sub
 
-    Private Async Sub TareaDescarga(apariencia As Apariencia, carpetaSteam As StorageFolder)
+    Private Async Function TareaDescarga(apariencia As Apariencia) As Task
 
-        EstadoControles(False)
+        Dim carpetaSteam As StorageFolder = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
+
+        Dim recursos As New Resources.ResourceLoader
 
         Dim carpetaSteamSkins As StorageFolder = Nothing
 
@@ -103,110 +144,119 @@ Module Descarga
             End Try
         End If
 
-        StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteamSkins", carpetaSteamSkins)
+        If Not carpetaSteamSkins Is Nothing Then
+            StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteamSkins", carpetaSteamSkins)
 
-        Dim carpetaBorrar As StorageFolder = Nothing
+            'Dim mensaje As New Run With {
+            '    .Text = recursos.GetString("RegistryFolderSteam1") + " " + carpetaSteamSkins.Path
+            '}
+            'tbAnuncio.Inlines.Add(mensaje)
 
-        Try
-            carpetaBorrar = Await StorageFolder.GetFolderFromPathAsync(carpetaSteamSkins.Path + "\" + apariencia.Titulo)
-        Catch ex As Exception
+            Dim carpetaBorrar As StorageFolder = Nothing
 
-        End Try
-
-        If Not carpetaBorrar Is Nothing Then
             Try
-                Await carpetaBorrar.DeleteAsync
+                carpetaBorrar = Await StorageFolder.GetFolderFromPathAsync(carpetaSteamSkins.Path + "\" + apariencia.Titulo)
             Catch ex As Exception
-                Toast("Error 0x4", Nothing)
+
             End Try
-        End If
 
-        Dim ficheroZip As IStorageFile = Nothing
-
-        Try
-            ficheroZip = Await ApplicationData.Current.LocalFolder.CreateFileAsync(apariencia.Titulo + ".zip", CreationCollisionOption.ReplaceExisting)
-        Catch ex As Exception
-
-        End Try
-
-        If Not ficheroZip Is Nothing Then
-            StorageApplicationPermissions.FutureAccessList.AddOrReplace(apariencia.Titulo + ".zip", ficheroZip)
-
-            Dim descargador As BackgroundDownloader = New BackgroundDownloader
-            Dim descarga As DownloadOperation = descargador.CreateDownload(New Uri(apariencia.EnlaceDescarga), ficheroZip)
-            descarga.Priority = BackgroundTransferPriority.High
-            Await descarga.StartAsync
-
-            Dim ficheroDescargado As IStorageFile = descarga.ResultFile
-            ficheroDescargado = Await StorageApplicationPermissions.FutureAccessList.GetFileAsync(apariencia.Titulo + ".zip")
-
-            If Not ficheroDescargado Is Nothing Then
-                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance)
-
+            If Not carpetaBorrar Is Nothing Then
                 Try
-                    Directory.Delete(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga, True)
+                    Await carpetaBorrar.DeleteAsync
                 Catch ex As Exception
-
+                    Toast("Error 0x4", Nothing)
                 End Try
-
-                Dim zip As New Ionic.Zip.ZipFile
-                zip = Ionic.Zip.ZipFile.Read(ficheroDescargado.Path)
-                zip.ExtractAll(ApplicationData.Current.LocalFolder.Path, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
-
-                Dim carpetaDescomprimida As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga)
-
-                If apariencia.Titulo = "Air" Then
-                    Opciones.Air(carpetaDescomprimida.Path)
-                ElseIf apariencia.Titulo = "Air Classic" Then
-                    Opciones.AirClassic(carpetaDescomprimida.Path)
-                ElseIf apariencia.Titulo = "Metro" Then
-                    Opciones.Metro(carpetaDescomprimida.Path)
-                ElseIf apariencia.Titulo = "Pressure2" Then
-                    Opciones.Pressure2(carpetaDescomprimida.Path)
-                ElseIf apariencia.Titulo = "Threshold" Then
-                    Opciones.Threshold(carpetaDescomprimida.Path)
-                End If
-
-                Dim carpetaFinal As StorageFolder = Await carpetaSteamSkins.CreateFolderAsync(apariencia.Titulo, CreationCollisionOption.ReplaceExisting)
-
-                Dim listaArchivos As IReadOnlyList(Of StorageFile) = Await carpetaDescomprimida.GetFilesAsync()
-
-                For Each archivo In listaArchivos
-                    Await archivo.CopyAsync(carpetaFinal)
-                Next
-
-                Dim listaCarpetas As IReadOnlyList(Of StorageFolder) = Await carpetaDescomprimida.GetFoldersAsync()
-
-                If listaCarpetas.Count > 0 Then
-                    For Each carpeta In listaCarpetas
-                        Dim listaCarpetas2 As IReadOnlyList(Of StorageFolder) = Await carpeta.GetFoldersAsync()
-
-                        If listaCarpetas2.Count > 0 Then
-                            For Each carpeta2 In listaCarpetas2
-                                Dim listaCarpetas3 As IReadOnlyList(Of StorageFolder) = Await carpeta2.GetFoldersAsync()
-
-                                If listaCarpetas3.Count > 0 Then
-                                    For Each carpeta3 In listaCarpetas3
-                                        MovimientoFichero(carpeta3, carpeta.Name + "\" + carpeta2.Name + "\", carpetaFinal)
-                                    Next
-                                End If
-
-                                MovimientoFichero(carpeta2, carpeta.Name + "\", carpetaFinal)
-                            Next
-                        End If
-
-                        MovimientoFichero(carpeta, Nothing, carpetaFinal)
-                    Next
-                End If
-
-                Dim recursos As New Resources.ResourceLoader
-                Toast(recursos.GetString("InstallCompleted"), Nothing)
             End If
+
+            Dim ficheroZip As IStorageFile = Nothing
+
+            Try
+                ficheroZip = Await ApplicationData.Current.LocalFolder.CreateFileAsync(apariencia.Titulo + ".zip", CreationCollisionOption.ReplaceExisting)
+            Catch ex As Exception
+
+            End Try
+
+            If Not ficheroZip Is Nothing Then
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace(apariencia.Titulo + ".zip", ficheroZip)
+
+                Dim descargador As New BackgroundDownloader
+                Dim descarga As DownloadOperation = descargador.CreateDownload(New Uri(apariencia.EnlaceDescarga), ficheroZip)
+                descarga.Priority = BackgroundTransferPriority.High
+                Await descarga.StartAsync
+
+                Dim ficheroDescargado As IStorageFile = descarga.ResultFile
+                ficheroDescargado = Await StorageApplicationPermissions.FutureAccessList.GetFileAsync(apariencia.Titulo + ".zip")
+
+                If Not ficheroDescargado Is Nothing Then
+                    Encoding.RegisterProvider(CodePagesEncodingProvider.Instance)
+
+                    Try
+                        Directory.Delete(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga, True)
+                    Catch ex As Exception
+
+                    End Try
+
+                    Dim zip As New Ionic.Zip.ZipFile
+                    zip = Ionic.Zip.ZipFile.Read(ficheroDescargado.Path)
+                    zip.ExtractAll(ApplicationData.Current.LocalFolder.Path, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
+
+                    Dim carpetaDescomprimida As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga)
+
+                    If apariencia.Titulo = "Air" Then
+                        Opciones.Air(carpetaDescomprimida.Path)
+                    ElseIf apariencia.Titulo = "Air Classic" Then
+                        Opciones.AirClassic(carpetaDescomprimida.Path)
+                    ElseIf apariencia.Titulo = "Metro" Then
+                        Opciones.Metro(carpetaDescomprimida.Path)
+                    ElseIf apariencia.Titulo = "Pressure2" Then
+                        Opciones.Pressure2(carpetaDescomprimida.Path)
+                    ElseIf apariencia.Titulo = "Threshold" Then
+                        Opciones.Threshold(carpetaDescomprimida.Path)
+                    End If
+
+                    Dim carpetaFinal As StorageFolder = Await carpetaSteamSkins.CreateFolderAsync(apariencia.Titulo, CreationCollisionOption.ReplaceExisting)
+
+                    Dim listaArchivos As IReadOnlyList(Of StorageFile) = Await carpetaDescomprimida.GetFilesAsync()
+
+                    For Each archivo In listaArchivos
+                        Await archivo.CopyAsync(carpetaFinal)
+                    Next
+
+                    Dim listaCarpetas As IReadOnlyList(Of StorageFolder) = Await carpetaDescomprimida.GetFoldersAsync()
+
+                    If listaCarpetas.Count > 0 Then
+                        For Each carpeta In listaCarpetas
+                            Dim listaCarpetas2 As IReadOnlyList(Of StorageFolder) = Await carpeta.GetFoldersAsync()
+
+                            If listaCarpetas2.Count > 0 Then
+                                For Each carpeta2 In listaCarpetas2
+                                    Dim listaCarpetas3 As IReadOnlyList(Of StorageFolder) = Await carpeta2.GetFoldersAsync()
+
+                                    If listaCarpetas3.Count > 0 Then
+                                        For Each carpeta3 In listaCarpetas3
+                                            MovimientoFichero(carpeta3, carpeta.Name + "\" + carpeta2.Name + "\", carpetaFinal)
+                                        Next
+                                    End If
+
+                                    MovimientoFichero(carpeta2, carpeta.Name + "\", carpetaFinal)
+                                Next
+                            End If
+
+                            MovimientoFichero(carpeta, Nothing, carpetaFinal)
+                        Next
+                    End If
+
+                    Toast(recursos.GetString("InstallCompleted"), Nothing)
+                End If
+            End If
+        Else
+            'Dim mensaje As New Run With {
+            '    .Text = recursos.GetString("RegistryFolderSteam2")
+            '}
+            'tbAnuncio.Inlines.Add(mensaje)
         End If
 
-        EstadoControles(True)
-
-    End Sub
+    End Function
 
     Private Async Sub MovimientoFichero(carpeta As StorageFolder, path As String, carpetaFinal As StorageFolder)
 
@@ -223,3 +273,4 @@ Module Descarga
     End Sub
 
 End Module
+

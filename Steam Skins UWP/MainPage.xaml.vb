@@ -1,6 +1,5 @@
 ﻿Imports FontAwesome.UWP
 Imports Microsoft.Toolkit.Uwp.UI.Controls
-Imports Windows.ApplicationModel.Store
 Imports Windows.Services.Store
 Imports Windows.UI
 Imports Windows.UI.Core
@@ -60,24 +59,6 @@ Public NotInheritable Class MainPage
 
         '--------------------------------------------------------
 
-        Dim licencia As LicenseInformation = Nothing
-
-        Try
-            licencia = CurrentApp.LicenseInformation
-        Catch ex As Exception
-
-        End Try
-
-        If Not licencia Is Nothing Then
-            If Not licencia.ProductLicenses("NoAds").IsActive Then
-                spAnuncio.Visibility = Visibility.Visible
-            End If
-        Else
-            spAnuncio.Visibility = Visibility.Visible
-        End If
-
-        '--------------------------------------------------------
-
         Dim transpariencia As New UISettings
         TransparienciaEfectosFinal(transpariencia.AdvancedEffectsEnabled)
         AddHandler transpariencia.AdvancedEffectsEnabledChanged, AddressOf TransparienciaEfectosCambia
@@ -95,11 +76,13 @@ Public NotInheritable Class MainPage
         Await Dispatcher.RunAsync(CoreDispatcherPriority.High, Sub()
                                                                    If estado = True Then
                                                                        gridAparienciaElegida.Background = App.Current.Resources("GridAcrilico")
+                                                                       gridAnuncio.Background = App.Current.Resources("GridAcrilico")
                                                                        gridCaptura.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfig.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfigSkins.Background = App.Current.Resources("GridTituloBackground")
                                                                    Else
                                                                        gridAparienciaElegida.Background = New SolidColorBrush(Colors.LightGray)
+                                                                       gridAnuncio.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridCaptura.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfig.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
@@ -113,6 +96,7 @@ Public NotInheritable Class MainPage
         tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + tag
 
         gridAparienciaElegida.Visibility = Visibility.Collapsed
+        gridAnuncio.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
         gridTutorial.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
@@ -150,6 +134,7 @@ Public NotInheritable Class MainPage
 
         Dim boton As Button = sender
         Dim aparienciaElegida As Apariencia = boton.Tag
+
         Descarga.Iniciar(aparienciaElegida)
 
     End Sub

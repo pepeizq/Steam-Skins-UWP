@@ -183,6 +183,15 @@
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
   </data>
+  <data name="RegistryAds" xml:space="preserve">
+    <value>seconds showing ad</value>
+  </data>
+  <data name="RegistryFolderSteam1" xml:space="preserve">
+    <value>Steam folder detected: </value>
+  </data>
+  <data name="RegistryFolderSteam2" xml:space="preserve">
+    <value>Steam folder not detected</value>
+  </data>
   <data name="Screenshot" xml:space="preserve">
     <value>Screenshot</value>
   </data>
