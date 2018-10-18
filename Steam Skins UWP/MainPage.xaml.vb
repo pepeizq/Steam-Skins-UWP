@@ -1,6 +1,5 @@
 ﻿Imports FontAwesome.UWP
 Imports Microsoft.Toolkit.Uwp.UI.Controls
-Imports Windows.Services.Store
 Imports Windows.UI
 Imports Windows.UI.Core
 
@@ -76,13 +75,11 @@ Public NotInheritable Class MainPage
         Await Dispatcher.RunAsync(CoreDispatcherPriority.High, Sub()
                                                                    If estado = True Then
                                                                        gridAparienciaElegida.Background = App.Current.Resources("GridAcrilico")
-                                                                       gridAnuncio.Background = App.Current.Resources("GridAcrilico")
                                                                        gridCaptura.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfig.Background = App.Current.Resources("GridAcrilico")
                                                                        gridConfigSkins.Background = App.Current.Resources("GridTituloBackground")
                                                                    Else
                                                                        gridAparienciaElegida.Background = New SolidColorBrush(Colors.LightGray)
-                                                                       gridAnuncio.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridCaptura.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfig.Background = New SolidColorBrush(Colors.LightGray)
                                                                        gridConfigSkins.Background = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
@@ -96,7 +93,6 @@ Public NotInheritable Class MainPage
         tbTitulo.Text = Package.Current.DisplayName + " (" + Package.Current.Id.Version.Major.ToString + "." + Package.Current.Id.Version.Minor.ToString + "." + Package.Current.Id.Version.Build.ToString + "." + Package.Current.Id.Version.Revision.ToString + ") - " + tag
 
         gridAparienciaElegida.Visibility = Visibility.Collapsed
-        gridAnuncio.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
         gridTutorial.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
@@ -114,13 +110,6 @@ Public NotInheritable Class MainPage
     Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
-
-    End Sub
-
-    Private Async Sub BotonQuitarAnuncios_Click(sender As Object, e As RoutedEventArgs) Handles botonQuitarAnuncios.Click
-
-        Dim contexto As StoreContext = StoreContext.GetDefault
-        Await contexto.RequestPurchaseAsync("9P87865B8ZSD")
 
     End Sub
 

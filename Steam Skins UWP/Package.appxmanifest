@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="1.2.13.0" />
+  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="1.2.14.0" />
   <mp:PhoneIdentity PhoneProductId="6ccf754a-5d18-47bf-8444-fc6dd41cee00" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Steam Skins</DisplayName>

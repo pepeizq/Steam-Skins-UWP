@@ -19,11 +19,11 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="gridTitulo" Grid.Row="0" Background="{StaticResource GridTituloBackground}">
-            <TextBlock x:Name="tbTitulo" Margin="50,0,0,0" FontSize="13" Foreground="White" VerticalAlignment="Center"/>
+            <TextBlock x:Name="tbTitulo" Margin="15,0,0,0" FontSize="13" Foreground="White" VerticalAlignment="Center"/>
         </Grid>
 
         <NavigationView x:Name="nvPrincipal" Grid.Row="1" Loaded="Nv_Loaded" ItemInvoked="Nv_ItemInvoked"
-                        OpenPaneLength="200" AlwaysShowHeader="False" IsSettingsVisible="False">
+                        AlwaysShowHeader="False" IsSettingsVisible="False" PaneDisplayMode="Top" IsBackButtonVisible="Collapsed">
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Vertical">
                     <NavigationViewItem x:Name="itemMasCosas" Tapped="Nv_ItemFlyout" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
@@ -153,49 +153,6 @@
                                     </Button>
                                 </StackPanel>
                             </ScrollViewer>
-                        </StackPanel> 
-                    </ScrollViewer> 
-                </Grid>
-
-                <Grid x:Name="gridAnuncio" Visibility="Collapsed">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1" Padding="20" Width="450">
-                            <StackPanel.Background>
-                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                                    <GradientStop Color="#FFBFBFBF" Offset="1.0" />
-                                </LinearGradientBrush>
-                            </StackPanel.Background>
-
-                            <StackPanel x:Name="spAnuncio" Orientation="Vertical">
-                                <ads:AdControl AdUnitId="1100018753" Width="300" Height="250" HorizontalAlignment="Center"/>
-
-                                <Grid Margin="0,20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <fa:FontAwesome Icon="InfoCircle" Grid.Column="0" Foreground="{StaticResource BrushSecundario}" Margin="0,0,15,0"/>
-                                    <TextBlock x:Uid="NoAdsMessage" Grid.Column="1" TextWrapping="Wrap"/>
-                                </Grid>
-
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Button x:Name="botonQuitarAnuncios" Grid.Column="0" Padding="15,10" Background="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
-                                        <Button.Content>
-                                            <TextBlock x:Uid="NoAdsButton" Foreground="White"/>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <TextBlock x:Name="tbAnuncioContadorSegundos" Grid.Column="2" VerticalAlignment="Center" Padding="10,0"/>
-                                </Grid>
-                            </StackPanel>
                         </StackPanel> 
                     </ScrollViewer> 
                 </Grid>

@@ -45,13 +45,13 @@ Module Interfaz
 
         '------------------------------------------------
 
-        Dim blueSteel As New Apariencia("Blue Steel", "https://gamebanana.com/dl/20283", "Blue Steel",
-                                        "https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gU9Q_xoI6qn8m_-QTAMVYqZk9Mn24pPmf_JMeWbpBB7tB1lJ9voLT3ewCF8&dispatch=5885d80a13c0db1f8e263663d3faee8dc3f308debf7330dd8d0b0a9f21afd7d3&rapidsState=Donation__DonationFlow___StateDonationLogin&rapidsStateSignature=99f4d0df56b1d7c5f803efd0556e52c65ab59680",
-                                        Nothing, "http://steamcommunity.com/groups/bluesteelskin",
-                                        Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
-                                        "Assets\Skins\blue1.PNG", "Assets\Skins\blue2.PNG", "Assets\Skins\blue3.PNG", "Assets\Skins\blue4.PNG")
+        'Dim blueSteel As New Apariencia("Blue Steel", "https://gamebanana.com/dl/20283", "Blue Steel",
+        '                                "https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=gU9Q_xoI6qn8m_-QTAMVYqZk9Mn24pPmf_JMeWbpBB7tB1lJ9voLT3ewCF8&dispatch=5885d80a13c0db1f8e263663d3faee8dc3f308debf7330dd8d0b0a9f21afd7d3&rapidsState=Donation__DonationFlow___StateDonationLogin&rapidsStateSignature=99f4d0df56b1d7c5f803efd0556e52c65ab59680",
+        '                                Nothing, "http://steamcommunity.com/groups/bluesteelskin",
+        '                                Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
+        '                                "Assets\Skins\blue1.PNG", "Assets\Skins\blue2.PNG", "Assets\Skins\blue3.PNG", "Assets\Skins\blue4.PNG")
 
-        gv.Items.Add(GenerarListadoItem(blueSteel))
+        'gv.Items.Add(GenerarListadoItem(blueSteel))
 
         '------------------------------------------------
 
@@ -64,7 +64,7 @@ Module Interfaz
 
         '------------------------------------------------
 
-        Dim invert As New Apariencia("Invert", "https://gamebanana.com/dl/22503", "Invert",
+        Dim invert As New Apariencia("Invert", "http://steamskins.org/download/invert-skin/", "Invert",
                                      "https://www.paypal.com/sk/cgi-bin/webscr?cmd=_flow&SESSION=XyLR0yV_beniveGJ0ONtunwPaUfnuwR7BtktA-E2xhApEH_8hG8e2s_Frm0&dispatch=5885d80a13c0db1f8e263663d3faee8d4fe1dd75ca3bd4f11d72275b28239088",
                                      Nothing, "http://gamebanana.com/guis/28814",
                                      Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
@@ -123,13 +123,13 @@ Module Interfaz
 
         '------------------------------------------------
 
-        Dim steam2013 As New Apariencia("Steam 2013", "https://gamebanana.com/dl/21134", "Steam2013",
-                                        "https://www.paypal.com/donate/?token=nyrcJMkXG5jZDPMwZoL3NalPOEbjFtBtCpMEHd3Dz4lRKcBs8VimWtppKQRpNwlJSvH_U0&country.x=FI&locale.x=",
-                                        Nothing, "https://gamebanana.com/guis/30190",
-                                        Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
-                                        "Assets\Skins\20131.PNG", "Assets\Skins\20132.PNG", "Assets\Skins\20133.PNG", "Assets\Skins\20134.PNG")
+        'Dim steam2013 As New Apariencia("Steam 2013", "https://gamebanana.com/dl/21134", "Steam2013",
+        '                                "https://www.paypal.com/donate/?token=nyrcJMkXG5jZDPMwZoL3NalPOEbjFtBtCpMEHd3Dz4lRKcBs8VimWtppKQRpNwlJSvH_U0&country.x=FI&locale.x=",
+        '                                Nothing, "https://gamebanana.com/guis/30190",
+        '                                Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
+        '                                "Assets\Skins\20131.PNG", "Assets\Skins\20132.PNG", "Assets\Skins\20133.PNG", "Assets\Skins\20134.PNG")
 
-        gv.Items.Add(GenerarListadoItem(steam2013))
+        'gv.Items.Add(GenerarListadoItem(steam2013))
 
         '------------------------------------------------
 
