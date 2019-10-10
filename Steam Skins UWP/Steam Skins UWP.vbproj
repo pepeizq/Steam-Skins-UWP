@@ -20,12 +20,16 @@
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>5C59C9F40EC88B7058E0DA2E53FA2874C96E8A1F</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -110,11 +114,15 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clases\Apariencia.vb" />
+    <Compile Include="Clases\EditorColores.vb" />
     <Compile Include="MainPage.xaml.vb">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Datos.vb" />
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\Descarga.vb" />
+    <Compile Include="Editor\Editor.vb" />
+    <Compile Include="Editor\EditorBBDD.vb" />
     <Compile Include="Modulos\Interfaz.vb" />
     <Compile Include="Modulos\MasCosas.vb" />
     <Compile Include="Modulos\NavigationViewItems.vb" />
@@ -297,25 +305,25 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DotNetZip">
-      <Version>1.11.0</Version>
+      <Version>1.13.4</Version>
     </PackageReference>
     <PackageReference Include="FontAwesome.UWP">
       <Version>4.7.0.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.9</Version>
+      <Version>6.2.9</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Services.Store.SDK">
       <Version>10.1705.16001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>4.0.0</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>4.0.0</Version>
+      <Version>5.1.1</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.5.0</Version>
+      <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

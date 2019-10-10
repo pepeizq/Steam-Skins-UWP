@@ -17,7 +17,7 @@ Module Interfaz
             "Rose", "Cinnabar", "Lavender", "Lilac", "Deeppurple", "Steamblue", "Youtubered"
         }
 
-        Dim air As New Apariencia("Air", "https://github.com/Outsetini/Air-for-Steam/archive/master.zip", "Air-for-Steam-master",
+        Dim air As New Apariencia("Air", "https://github.com/airforsteam/Air-for-Steam/archive/master.zip", "Air-for-Steam-master",
                                    Nothing, "https://www.patreon.com/inhibitor", "http://airforsteam.com",
                                    "Theme", airListado1, "Color", airListado2, Nothing, Nothing, Nothing, Nothing,
                                    "Assets\Skins\air1.PNG", "Assets\Skins\air2.PNG", "Assets\Skins\air3.PNG", "Assets\Skins\air4.PNG")
@@ -36,7 +36,7 @@ Module Interfaz
         Dim airClassicListado3 As New List(Of String) From {
             "None", "Noise", "Dots", "Ribbon"}
 
-        Dim airClassic As New Apariencia("Air Classic", "https://github.com/Outsetini/Air-Classic/archive/master.zip", "Air-Classic-master",
+        Dim airClassic As New Apariencia("Air Classic", "https://github.com/airforsteam/Air-Classic/archive/master.zip", "Air-Classic-master",
                                           Nothing, "https://www.patreon.com/inhibitor", "http://airforsteam.com",
                                           "Color", airClassicListado1, "Games Details", airClassicListado2, "Background", airClassicListado3, Nothing, Nothing,
                                           "Assets\Skins\airclassic1.PNG", "Assets\Skins\airclassic2.PNG", "Assets\Skins\airclassic3.PNG", "Assets\Skins\airclassic4.PNG")
@@ -87,7 +87,7 @@ Module Interfaz
             "Blue", "Cyan", "Dark Blue", "Dark Cyan", "Dark Green", "Green", "Orange", "Pink", "Purple", "Red"
         }
 
-        Dim metro As New Apariencia("Metro", "http://www.metroforsteam.com", Nothing,
+        Dim metro As New Apariencia("Metro", "https://github.com/minischetti/metro-for-steam/archive/master.zip", "metro-for-steam-master",
                                     "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BDL2J3MEETZ3J&lc=US&item_name=Metro%20for%20Steam&item_number=metroforsteam&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted",
                                     "http://www.patreon.com/dommini", "http://www.metroforsteam.com",
                                     "Color", metroListado1, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing,
@@ -164,7 +164,7 @@ Module Interfaz
             .Padding = New Thickness(0, 0, 0, 0),
             .Width = 350,
             .Height = 250,
-            .Background = New SolidColorBrush(App.Current.Resources("ColorSecundario")),
+            .Background = New SolidColorBrush(App.Current.Resources("ColorPrimario")),
             .BorderBrush = New SolidColorBrush(App.Current.Resources("ColorSecundario")),
             .BorderThickness = New Thickness(1, 1, 1, 1),
             .Margin = New Thickness(10, 10, 10, 10)

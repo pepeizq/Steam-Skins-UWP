@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="1.2.15.0" />
+  <Identity Name="5078pepeizq.SteamSkins" Publisher="CN=C91088FC-231C-4E13-86D1-5F9658173DA7" Version="1.3.0.0" />
   <mp:PhoneIdentity PhoneProductId="6ccf754a-5d18-47bf-8444-fc6dd41cee00" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Steam Skins</DisplayName>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Steam_Skins_UWP.App">
-      <uap:VisualElements DisplayName="Steam Skins" Square150x150Logo="assets\Logos\Medium150x150Logo.png" Square44x44Logo="assets\Logos\AppList.png" Description="https://pepeizqapps.com" BackgroundColor="darkCyan">
+      <uap:VisualElements DisplayName="Steam Skins" Square150x150Logo="assets\Logos\Medium150x150Logo.png" Square44x44Logo="assets\Logos\AppList.png" Description="https://pepeizqapps.com" BackgroundColor="#506a69">
         <uap:DefaultTile Wide310x150Logo="assets\Logos\Wide310x150Logo.png" Square310x310Logo="assets\Logos\Large310x310Logo.png" Square71x71Logo="assets\Logos\Small71x71Logo.png" ShortName="Steam Skins">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -23,7 +23,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="assets\Logos\SplashScreen.png" BackgroundColor="darkCyan" />
+        <uap:SplashScreen Image="assets\Logos\SplashScreen.png" BackgroundColor="#506a69" />
         <uap:LockScreen BadgeLogo="assets\Logos\Badge.png" Notification="badge" />
       </uap:VisualElements>
     </Application>

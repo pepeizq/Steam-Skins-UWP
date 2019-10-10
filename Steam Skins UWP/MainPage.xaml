@@ -6,7 +6,6 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations" 
     xmlns:fa="using:FontAwesome.UWP"
-    xmlns:ads="using:Microsoft.Advertising.WinRT.UI"
     
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -44,8 +43,8 @@
                 <Grid x:Name="gridApariencias" Visibility="Collapsed" Padding="10">
                     <Grid.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                            <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                            <GradientStop Color="#505e6a" Offset="0.5" />
+                            <GradientStop Color="#2a3a49" Offset="1.0" />
                         </LinearGradientBrush>
                     </Grid.Background>
 
@@ -54,7 +53,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Padding="10" Margin="10" Background="IndianRed" HorizontalAlignment="Center">
+                    <Grid Grid.Row="0" Padding="10" Margin="10" Background="IndianRed" HorizontalAlignment="Center" CornerRadius="5">
                         <TextBlock x:Name="tbMensajeApariencias" x:Uid="MessageSkins" TextWrapping="Wrap" Foreground="White"/>
                     </Grid>
 
@@ -69,8 +68,8 @@
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1">
                             <StackPanel.Background>
                                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                    <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                                    <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                                    <GradientStop Color="#505e6a" Offset="0.5" />
+                                    <GradientStop Color="#2a3a49" Offset="1.0" />
                                 </LinearGradientBrush>
                             </StackPanel.Background>
 
@@ -81,20 +80,20 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock x:Name="tbAparienciaSeleccionada" Grid.Column="0" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="tbAparienciaSeleccionada" Grid.Column="0" VerticalAlignment="Center" FontSize="18" TextWrapping="Wrap" Foreground="White"/>
 
                                 <StackPanel x:Name="spDonacion" Grid.Column="1" Orientation="Horizontal" Visibility="Collapsed" Margin="10,0,0,0">
-                                    <TextBlock x:Uid="Donate" VerticalAlignment="Center"/>
-                                    <HyperlinkButton x:Name="hlBotonDonacionPaypal" Content="Paypal" Visibility="Collapsed" Margin="5,0,0,0" Foreground="{StaticResource BrushPrimero}" VerticalAlignment="Center"/>
-                                    <HyperlinkButton x:Name="hlBotonDonacionPatreon" Content="Patreon" Visibility="Collapsed" Margin="5,0,0,0" Foreground="{StaticResource BrushPrimero}" VerticalAlignment="Center"/>
+                                    <TextBlock x:Uid="Donate" VerticalAlignment="Center" Foreground="White"/>
+                                    <HyperlinkButton x:Name="hlBotonDonacionPaypal" Content="Paypal" Visibility="Collapsed" Margin="5,0,0,0" Foreground="White" VerticalAlignment="Center"/>
+                                    <HyperlinkButton x:Name="hlBotonDonacionPatreon" Content="Patreon" Visibility="Collapsed" Margin="5,0,0,0" Foreground="White" VerticalAlignment="Center"/>
                                 </StackPanel>
 
                                 <HyperlinkButton x:Name="hlBotonWebCreador" Grid.Column="2" Margin="15,0,0,0" Visibility="Collapsed" VerticalAlignment="Center">
-                                    <SymbolIcon Symbol="World" Foreground="{StaticResource BrushSecundario}"/>
+                                    <SymbolIcon Symbol="World" Foreground="White"/>
                                 </HyperlinkButton> 
                             </Grid>
 
-                            <Grid Padding="20,10" Background="{StaticResource BrushCuarto}">
+                            <Grid Padding="20,10" Background="{StaticResource BrushTerciario}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -103,23 +102,23 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Button x:Name="botonDescargaApariencia" Grid.Column="0" Background="{StaticResource BrushSecundario}" Padding="15" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0">
+                                <Button x:Name="botonDescargaApariencia" Grid.Column="0" Background="{StaticResource BrushPrimario}" Padding="15" CornerRadius="10" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" BorderBrush="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal">
                                         <fa:FontAwesome Icon="Download" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                         <TextBlock x:Uid="DownloadAndInstall" Foreground="White"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Button x:Name="botonPersonalizacion" Grid.Column="1" Background="{StaticResource BrushSecundario}" Padding="15" Margin="25,0,0,0" Visibility="Collapsed" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0">
+                                <Button x:Name="botonPersonalizacion" Grid.Column="1" Background="{StaticResource BrushPrimario}" Padding="15" CornerRadius="10" Margin="25,0,0,0" Visibility="Collapsed" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" BorderBrush="{StaticResource BrushSecundario}">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#58033;" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                         <TextBlock x:Uid="Personalization" Foreground="White"/>
                                     </StackPanel>
                                 </Button>
 
-                                <ProgressRing x:Name="prProgreso" Grid.Column="3" Foreground="{StaticResource BrushSecundario}" IsActive="True" Width="30" Height="30" Margin="15,0" Visibility="Collapsed"/>
+                                <ProgressRing x:Name="prProgreso" Grid.Column="3" Foreground="{StaticResource BrushPrimario}" IsActive="True" Width="30" Height="30" Margin="15,0" Visibility="Collapsed"/>
 
-                                <Button x:Name="botonRegistro" Grid.Column="4" Background="{StaticResource BrushSecundario}" Padding="15" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Visibility="Collapsed" Style="{StaticResource ButtonRevealStyle}" BorderThickness="0">
+                                <Button x:Name="botonRegistro" Grid.Column="4" Background="{StaticResource BrushPrimario}" Padding="15" CornerRadius="10" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton" Visibility="Collapsed" Style="{StaticResource ButtonRevealStyle}" BorderThickness="1" BorderBrush="{StaticResource BrushSecundario}">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal">
                                             <fa:FontAwesome Icon="AngleDoubleLeft" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
@@ -135,7 +134,7 @@
                                 </Button>
                             </Grid>
 
-                            <TextBlock x:Uid="Screenshots" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20"/>
+                            <TextBlock x:Uid="Screenshots" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20" Foreground="White"/>
 
                             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" MinWidth="100" MaxWidth="1000" Padding="0,0,0,20" Margin="20,0">
                                 <StackPanel Orientation="Horizontal">
@@ -163,7 +162,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Button x:Name="botonVolver" Grid.Row="0" Padding="15,10" Background="{StaticResource BrushSecundario}" Margin="0,0,0,10" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
+                    <Button x:Name="botonVolver" Grid.Row="0" Padding="15,10" CornerRadius="10" Background="{StaticResource BrushPrimario}" Margin="0,0,0,10" BorderThickness="1" BorderBrush="{StaticResource BrushSecundario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
                         <StackPanel Orientation="Horizontal">
                             <fa:FontAwesome Icon="ArrowLeft" Margin="0,0,10,0" Foreground="White"/>
                             <TextBlock x:Uid="Back" Foreground="White" VerticalAlignment="Center"/>
@@ -184,8 +183,8 @@
                 <Grid x:Name="gridTutorial" Visibility="Collapsed" Padding="10">
                     <Grid.Background>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                            <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                            <GradientStop Color="#FFBFBFBF" Offset="1.0" />
+                            <GradientStop Color="#505e6a" Offset="0.5" />
+                            <GradientStop Color="#2a3a49" Offset="1.0" />
                         </LinearGradientBrush>
                     </Grid.Background>
 
@@ -194,52 +193,106 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Padding="10" Margin="10" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="0,0,0,2" HorizontalAlignment="Center">
-                        <TextBlock x:Uid="Tutorial" TextWrapping="Wrap"/>
-                    </Grid>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,20,0,30" HorizontalAlignment="Center">
+                        <fa:FontAwesome Icon="InfoCircle" Foreground="White"/>
+                        <TextBlock x:Uid="Tutorial" TextWrapping="Wrap" Foreground="White" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
 
                     <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
                         <controls:ImageEx Source="Assets\tutorial.gif" Stretch="None" IsCacheEnabled="True"/>
                     </ScrollViewer>
                 </Grid>
 
+                <Grid x:Name="gridEditor" Visibility="Collapsed" Padding="10">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#505e6a" Offset="0.5" />
+                            <GradientStop Color="#2a3a49" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Padding="10" Margin="10" Background="IndianRed" HorizontalAlignment="Center" CornerRadius="5">
+                        <TextBlock x:Name="tbMensajeEditor" x:Uid="MessageEditor" TextWrapping="Wrap" Foreground="White"/>
+                    </Grid>
+
+                    <Grid x:Name="gridEditor2" Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Padding="20">
+                            <ComboBox x:Name="cbEditor"/>
+                        </StackPanel>
+                        
+                        <Grid Grid.Row="1" Padding="20">
+                            <GridView x:Name="gvEditorColores" IsHitTestVisible="False"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <Grid x:Name="gridDatos" Visibility="Collapsed" Padding="10">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#505e6a" Offset="0.5" />
+                            <GradientStop Color="#2a3a49" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <Button x:Name="botonDatosGenerar" Content="Generar" Margin="0,0,30,0"/>
+
+                        <Button x:Name="botonDatosGenerar2" Content="Generar2"/>
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="1">
+                        <TextBox x:Name="tbDatosResultados" AcceptsReturn="True" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Grid>
+
                 <Grid x:Name="gridConfig" Visibility="Collapsed">
                     <ScrollViewer>
-                        <StackPanel Orientation="Vertical" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <StackPanel Orientation="Vertical" Margin="40,20" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1">
-                                <StackPanel.Background>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <GradientStop Color="#FFE4E4E4" Offset="0.5" />
-                                        <GradientStop Color="#FFBFBFBF" Offset="1.0" />
-                                    </LinearGradientBrush>
-                                </StackPanel.Background>
+                        <StackPanel Orientation="Vertical" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{StaticResource BrushSecundario}" BorderThickness="1">
+                            <StackPanel.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#505e6a" Offset="0.5" />
+                                    <GradientStop Color="#2a3a49" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
 
-                                <Grid x:Name="gridConfigSkins" HorizontalAlignment="Stretch" Padding="10" Background="{StaticResource GridTituloBackground}">
-                                    <TextBlock x:Uid="Skins2" FontSize="16" Foreground="White" Margin="5,0,0,0"/>
+                            <Grid x:Name="gridConfigSkins" HorizontalAlignment="Stretch" Padding="20,15" Background="{StaticResource GridTituloBackground}" BorderThickness="0,0,0,1" BorderBrush="{StaticResource BrushSecundario}">
+                                <TextBlock x:Uid="Skins2" FontSize="16" Foreground="White"/>
+                            </Grid>
+
+                            <StackPanel Orientation="Vertical" Padding="20">
+                                <TextBlock x:Uid="ConfigSkinsMessage" TextWrapping="Wrap" Foreground="White"/>
+
+                                <Grid Margin="0,25,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:Name="botonSteamRuta" Grid.Column="0" Padding="15,10" Background="{StaticResource BrushPrimario}" CornerRadius="5" BorderThickness="1" BorderBrush="{StaticResource BrushTerciario}" PointerEntered="UsuarioEntraBoton" PointerExited="UsuarioSaleBoton">
+                                        <StackPanel Orientation="Horizontal">
+                                            <fa:FontAwesome Icon="Folder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
+                                            <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <TextBlock x:Name="tbSteamRuta" Grid.Column="1" Margin="20,0,10,0" VerticalAlignment="Center" Foreground="White"/>
                                 </Grid>
-
-                                <StackPanel Orientation="Vertical" Padding="15">
-                                    <TextBlock x:Uid="ConfigSkinsMessage" TextWrapping="Wrap"/>
-
-                                    <Grid Margin="0,15,0,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Button x:Name="botonSteamRuta" Grid.Column="0" Padding="15,10" Background="{StaticResource BrushSecundario}">
-                                            <StackPanel Orientation="Horizontal" >
-                                                <fa:FontAwesome Icon="Folder" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White"/>
-                                                <TextBlock x:Name="botonSteamRutaTexto" x:Uid="Add" Foreground="White"/>
-                                            </StackPanel>
-                                        </Button>
-
-                                        <AppBarSeparator Grid.Column="1" VerticalAlignment="Center"/>
-                                        <TextBlock x:Name="tbSteamRuta" Grid.Column="2" Margin="0,0,10,0" VerticalAlignment="Center"/>
-                                    </Grid>
-                                </StackPanel> 
-                            </StackPanel>                           
+                            </StackPanel>
                         </StackPanel> 
                     </ScrollViewer> 
                 </Grid>

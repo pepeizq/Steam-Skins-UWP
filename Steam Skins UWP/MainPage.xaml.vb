@@ -1,5 +1,6 @@
 ﻿Imports FontAwesome.UWP
 Imports Microsoft.Toolkit.Uwp.UI.Controls
+Imports Windows.Storage
 Imports Windows.UI
 Imports Windows.UI.Core
 
@@ -12,8 +13,10 @@ Public NotInheritable Class MainPage
 
         nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Skins"), FontAwesomeIcon.Home, 0))
         nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Tutorial2"), FontAwesomeIcon.InfoCircle, 1))
+        'nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Editor"), FontAwesomeIcon.PaintBrush, 2))
+        'nvPrincipal.MenuItems.Add(NavigationViewItems.Generar("Datos", FontAwesomeIcon.Info, 3))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
-        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesomeIcon.Cog, 2))
+        nvPrincipal.MenuItems.Add(NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesomeIcon.Cog, 4))
 
     End Sub
 
@@ -28,6 +31,10 @@ Public NotInheritable Class MainPage
                 GridVisibilidad(gridApariencias, item.Text)
             ElseIf item.Text = recursos.GetString("Tutorial2") Then
                 GridVisibilidad(gridTutorial, item.Text)
+            ElseIf item.Text = recursos.GetString("Editor") Then
+                GridVisibilidad(gridEditor, item.Text)
+            ElseIf item.Text = "Datos" Then
+                GridVisibilidad(gridDatos, item.Text)
             ElseIf item.Text = recursos.GetString("Config") Then
                 GridVisibilidad(gridConfig, item.Text)
             End If
@@ -55,6 +62,7 @@ Public NotInheritable Class MainPage
 
         Interfaz.GenerarListado(gvApariencias)
         Detector.Steam(False)
+        Editor.Cargar()
 
         '--------------------------------------------------------
 
@@ -94,6 +102,8 @@ Public NotInheritable Class MainPage
 
         gridAparienciaElegida.Visibility = Visibility.Collapsed
         gridCaptura.Visibility = Visibility.Collapsed
+        gridEditor.Visibility = Visibility.Collapsed
+        gridDatos.Visibility = Visibility.Collapsed
         gridTutorial.Visibility = Visibility.Collapsed
         gridConfig.Visibility = Visibility.Collapsed
 
@@ -160,6 +170,26 @@ Public NotInheritable Class MainPage
     Private Sub BotonVolver_Click(sender As Object, e As RoutedEventArgs) Handles botonVolver.Click
 
         gridCaptura.Visibility = Visibility.Collapsed
+
+    End Sub
+
+    'EDITOR-----------------------------------------------------------------------------
+
+    Private Sub CbEditor_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cbEditor.SelectionChanged
+
+        Editor.Cambiar(cbEditor.SelectedIndex)
+
+    End Sub
+
+    Private Sub BotonDatosGenerar_Click(sender As Object, e As RoutedEventArgs) Handles botonDatosGenerar.Click
+
+        Datos.Generar()
+
+    End Sub
+
+    Private Sub BotonDatosGenerar2_Click(sender As Object, e As RoutedEventArgs) Handles botonDatosGenerar2.Click
+
+        Datos.Generar2()
 
     End Sub
 

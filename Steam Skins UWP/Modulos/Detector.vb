@@ -12,12 +12,12 @@ Module Detector
         Dim tbRuta As TextBlock = pagina.FindName("tbSteamRuta")
         Dim botonRutaTexto As TextBlock = pagina.FindName("botonSteamRutaTexto")
 
-        Dim recursos As Resources.ResourceLoader = New Resources.ResourceLoader()
+        Dim recursos As New Resources.ResourceLoader()
         Dim carpeta As StorageFolder = Nothing
 
         Try
             If picker = True Then
-                Dim carpetapicker As FolderPicker = New FolderPicker()
+                Dim carpetapicker As New FolderPicker()
 
                 carpetapicker.FileTypeFilter.Add("*")
                 carpetapicker.ViewMode = PickerViewMode.List
@@ -46,6 +46,16 @@ Module Detector
 
                     Dim tbMensaje As TextBlock = pagina.FindName("tbMensajeApariencias")
                     tbMensaje.Text = recursos.GetString("MessageSkinsReady")
+                End If
+
+                Dim carpetaUI As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(carpeta.Path + "\steamui\css")
+
+                If Not carpetaUI Is Nothing Then
+                    Dim gridEditor As Grid = pagina.FindName("gridEditor2")
+                    gridEditor.IsHitTestVisible = True
+
+                    Dim tbMensajeEditor As TextBlock = pagina.FindName("tbMensajeEditor")
+                    tbMensajeEditor.Text = recursos.GetString("MessageEditorReady")
                 End If
             End If
         Catch ex As Exception

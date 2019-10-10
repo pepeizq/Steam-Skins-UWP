@@ -1,5 +1,4 @@
 ﻿Imports System.Text
-Imports Windows.ApplicationModel.Store
 Imports Windows.Networking.BackgroundTransfer
 Imports Windows.Storage
 Imports Windows.Storage.AccessCache
@@ -46,30 +45,6 @@ Module Descarga
 
         Dim botonRegistro As Button = pagina.FindName("botonRegistro")
         botonRegistro.Visibility = Visibility.Visible
-
-        If apariencia.Titulo = "Metro" Then
-            Dim html As String = Await Decompiladores.HttpClient(New Uri(apariencia.EnlaceDescarga))
-
-            Dim temp, temp2 As String
-            Dim int, int2 As Integer
-
-            If Not html = Nothing Then
-                int = html.IndexOf(".zip")
-                temp = html.Remove(int + 4, html.Length - (int + 4))
-
-                int2 = temp.LastIndexOf("<a href=")
-                temp2 = temp.Remove(0, int2 + 9)
-
-                apariencia.EnlaceDescarga = "http://www.metroforsteam.com/" + temp2.Trim
-
-                Dim carpeta As String = apariencia.Titulo + " " + temp2.Trim
-
-                carpeta = carpeta.Replace("downloads/", Nothing)
-                carpeta = carpeta.Replace(".zip", Nothing)
-
-                apariencia.CarpetaDescarga = carpeta
-            End If
-        End If
 
         Dim carpetaSteam As StorageFolder = Nothing
         Dim ficheroDescargado As StorageFile = Nothing
@@ -191,18 +166,9 @@ Module Descarga
 
                                 End Try
 
-                                If apariencia.CarpetaDescarga.Contains("Metro") Then
-                                    apariencia.CarpetaDescarga = "Metro"
-                                End If
-
                                 Dim zip As New Ionic.Zip.ZipFile
                                 zip = Ionic.Zip.ZipFile.Read(ficheroDescargado2.Path)
-
-                                If apariencia.CarpetaDescarga = "Metro" Then
-                                    zip.ExtractAll(ApplicationData.Current.LocalFolder.Path + "\Metro", Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
-                                Else
-                                    zip.ExtractAll(ApplicationData.Current.LocalFolder.Path, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
-                                End If
+                                zip.ExtractAll(ApplicationData.Current.LocalFolder.Path, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
 
                                 Dim carpetaDescomprimida As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga)
 

@@ -141,6 +141,9 @@
   <data name="Downloading" xml:space="preserve">
     <value>Descargando</value>
   </data>
+  <data name="Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
   <data name="Extracting" xml:space="preserve">
     <value>Extrayendo</value>
   </data>
@@ -170,6 +173,12 @@
   </data>
   <data name="LogStartDownload" xml:space="preserve">
     <value>Iniciada descarga</value>
+  </data>
+  <data name="MessageEditor.Text" xml:space="preserve">
+    <value>El editor solo se podrá usar si utilizas la librería de Steam introducida en septiembre de 2019</value>
+  </data>
+  <data name="MessageEditorReady" xml:space="preserve">
+    <value>Puedes seleccionar un set o cambiar color por color</value>
   </data>
   <data name="MessageSkins.Text" xml:space="preserve">
     <value>Añade tu carpeta de Steam en Configuración antes de poder añadir apariencias</value>
