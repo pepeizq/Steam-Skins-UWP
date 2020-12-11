@@ -19,13 +19,13 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>
     </PackageCertificateThumbprint>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerUpdateFrequency>0</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -136,15 +136,6 @@
     </AppxManifest>
     <None Include="Steam Skins UWP_StoreKey.pfx" />
     <None Include="Steam Skins UWP_TemporaryKey.pfx" />
-    <PRIResource Include="Strings\id\Resources.resw" />
-    <PRIResource Include="Strings\de-DE\Resources.resw" />
-    <PRIResource Include="Strings\zh-TW\Resources.resw" />
-    <PRIResource Include="Strings\zh-CN\Resources.resw" />
-    <PRIResource Include="Strings\pl-PL\Resources.resw" />
-    <PRIResource Include="Strings\ru-RU\Resources.resw" />
-    <PRIResource Include="Strings\fr-FR\Resources.resw" />
-    <PRIResource Include="Strings\tr-TR\Resources.resw" />
-    <PRIResource Include="Strings\pt-BR\Resources.resw" />
     <PRIResource Include="Strings\es-ES\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>

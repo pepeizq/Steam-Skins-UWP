@@ -138,17 +138,11 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Select the folder where Steam is installed so the app can download and install skins (example: C:\Steam).</value>
   </data>
-  <data name="Donate.Text" xml:space="preserve">
-    <value>Donate to its creator:</value>
-  </data>
   <data name="DownloadAndInstall.Text" xml:space="preserve">
     <value>Download and Install</value>
   </data>
   <data name="Downloading" xml:space="preserve">
     <value>Downloading</value>
-  </data>
-  <data name="Editor" xml:space="preserve">
-    <value>Editor</value>
   </data>
   <data name="Extracting" xml:space="preserve">
     <value>Extracting</value>
@@ -188,6 +182,15 @@
   </data>
   <data name="MoreSteam" xml:space="preserve">
     <value>More Steam</value>
+  </data>
+  <data name="MoreSteamError" xml:space="preserve">
+    <value>The list of applications could not be loaded, but you can visit my website to see them.</value>
+  </data>
+  <data name="MoreSteamOpen" xml:space="preserve">
+    <value>Open App in Store</value>
+  </data>
+  <data name="MoreSteamOpenWeb" xml:space="preserve">
+    <value>Open Web</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>More Things</value>
@@ -259,10 +262,13 @@
     <value>Source Code</value>
   </data>
   <data name="StoreDescription" xml:space="preserve">
-    <value>Change the appearance of Steam in a comfortable way.</value>
+    <value>Change the appearance of Steam with a click of the mouse.</value>
   </data>
   <data name="StoreTags" xml:space="preserve">
     <value>Steam;Skins</value>
+  </data>
+  <data name="StoreVideo" xml:space="preserve">
+    <value>How to use the app</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Steam Skins</value>

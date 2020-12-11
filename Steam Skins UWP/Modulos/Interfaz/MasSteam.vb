@@ -34,10 +34,10 @@ Namespace Interfaz
                 grid.Children.Add(sv)
 
                 Dim idsConsultar As New List(Of String) From {
+                    "9NBLGGH51SB3", 'Tiles
                     "9nsd0jrnlmb7", 'Achievements
                     "9p7836m1tw15", 'Deals
-                    "9nblggh55b7f", 'Skins
-                    "9NBLGGH51SB3" 'Tiles
+                    "9nblggh55b7f" 'Skins
                 }
 
                 Dim i As Integer = 0
@@ -81,13 +81,21 @@ Namespace Interfaz
                                         .Color = App.Current.Resources("ColorCuarto")
                                     }
 
-                                    Dim spApp As New StackPanel With {
-                                        .Orientation = Orientation.Horizontal,
+                                    Dim gridApp As New Grid With {
                                         .BorderBrush = New SolidColorBrush(App.Current.Resources("ColorPrimario")),
                                         .BorderThickness = New Thickness(1, 1, 1, 1),
                                         .Background = fondo,
                                         .Padding = New Thickness(25, 25, 25, 25)
                                     }
+
+                                    Dim col1 As New ColumnDefinition
+                                    Dim col2 As New ColumnDefinition
+
+                                    col1.Width = New GridLength(1, GridUnitType.Auto)
+                                    col2.Width = New GridLength(1, GridUnitType.Star)
+
+                                    gridApp.ColumnDefinitions.Add(col1)
+                                    gridApp.ColumnDefinitions.Add(col2)
 
                                     Dim imagenS As String = app2.Detalles(0).Imagenes(0).Enlace
 
@@ -103,7 +111,8 @@ Namespace Interfaz
                                         .Opacity = 0.9
                                     }
 
-                                    spApp.Children.Add(imagen)
+                                    imagen.SetValue(Grid.ColumnProperty, 0)
+                                    gridApp.Children.Add(imagen)
 
                                     Dim spDatos As New StackPanel With {
                                         .Orientation = Orientation.Vertical,
@@ -163,11 +172,12 @@ Namespace Interfaz
 
                                     spDatos.Children.Add(tbDescripcion)
 
-                                    spApp.Children.Add(spDatos)
+                                    spDatos.SetValue(Grid.ColumnProperty, 1)
+                                    gridApp.Children.Add(spDatos)
 
                                     Dim boton As New Button With {
                                         .Tag = app2.ID,
-                                        .Content = spApp,
+                                        .Content = gridApp,
                                         .Padding = New Thickness(0, 0, 0, 0),
                                         .BorderBrush = New SolidColorBrush(Colors.Transparent),
                                         .BorderThickness = New Thickness(0, 0, 0, 0),
@@ -290,15 +300,15 @@ Namespace Interfaz
         Private Sub Entra_Boton(sender As Object, e As PointerRoutedEventArgs)
 
             Dim boton As Button = sender
-            Dim sp As StackPanel = boton.Content
+            Dim grid As Grid = boton.Content
 
             Dim fondo As New SolidColorBrush With {
                 .Opacity = 0.7,
                 .Color = App.Current.Resources("ColorCuarto")
             }
 
-            sp.Background = fondo
-            sp.Saturation(1).Scale(1.01, 1.01, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
+            grid.Background = fondo
+            grid.Saturation(1).Scale(1.01, 1.01, grid.ActualWidth / 2, grid.ActualHeight / 2).Start()
 
             Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
@@ -307,15 +317,15 @@ Namespace Interfaz
         Private Sub Sale_Boton(sender As Object, e As PointerRoutedEventArgs)
 
             Dim boton As Button = sender
-            Dim sp As StackPanel = boton.Content
+            Dim grid As Grid = boton.Content
 
             Dim fondo As New SolidColorBrush With {
                 .Opacity = 0.5,
                 .Color = App.Current.Resources("ColorCuarto")
             }
 
-            sp.Background = fondo
-            sp.Saturation(1).Scale(1, 1, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
+            grid.Background = fondo
+            grid.Saturation(1).Scale(1, 1, grid.ActualWidth / 2, grid.ActualHeight / 2).Start()
 
             Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
 

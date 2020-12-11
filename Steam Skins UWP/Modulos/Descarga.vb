@@ -209,7 +209,8 @@ Module Descarga
                                                                                                                                       tbRegistro.Inlines.Add(mensaje)
                                                                                                                                   End Sub)
 
-                                Toast(recursos.GetString("InstallCompleted"), Nothing)
+                                Notificaciones.Toast(recursos.GetString("InstallCompleted"), Nothing)
+                                MasCosas.CalificarApp(True)
                             End If
                         End If
                     End If

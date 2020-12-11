@@ -138,17 +138,11 @@
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
     <value>Selecciona la carpeta donde Steam está instalado para que la app pueda descargar e instalar las apariencias (ejemplo: C:\Steam).</value>
   </data>
-  <data name="Donate.Text" xml:space="preserve">
-    <value>Dona a su creador:</value>
-  </data>
   <data name="DownloadAndInstall.Text" xml:space="preserve">
     <value>Descargar e Instalar</value>
   </data>
   <data name="Downloading" xml:space="preserve">
     <value>Descargando</value>
-  </data>
-  <data name="Editor" xml:space="preserve">
-    <value>Editor</value>
   </data>
   <data name="Extracting" xml:space="preserve">
     <value>Extrayendo</value>
@@ -188,6 +182,15 @@
   </data>
   <data name="MoreSteam" xml:space="preserve">
     <value>Más Steam</value>
+  </data>
+  <data name="MoreSteamError" xml:space="preserve">
+    <value>No se ha podido cargar el listado de aplicaciones, pero puedes visitar mi web para verlas.</value>
+  </data>
+  <data name="MoreSteamOpen" xml:space="preserve">
+    <value>Abrir App en la Tienda</value>
+  </data>
+  <data name="MoreSteamOpenWeb" xml:space="preserve">
+    <value>Abrir Web</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>Más Cosas</value>
@@ -259,10 +262,13 @@
     <value>Código Fuente</value>
   </data>
   <data name="StoreDescription" xml:space="preserve">
-    <value>Cambia fácilmente la apariencia de Steam.</value>
+    <value>Cambia la apariencia de Steam con un click de ratón.</value>
   </data>
   <data name="StoreTags" xml:space="preserve">
     <value>Steam;Skins;Apariencias</value>
+  </data>
+  <data name="StoreVideo" xml:space="preserve">
+    <value>Como usar la app</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Steam Apariencias</value>

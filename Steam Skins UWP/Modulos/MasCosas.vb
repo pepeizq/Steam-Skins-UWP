@@ -10,7 +10,7 @@ Module MasCosas
     Dim codigoFuente As String = "https://github.com/pepeizq/Steam-Skins-UWP"
     Dim traduccion As String = "https://poeditor.com/join/project/LcYHFvuAzA"
     Dim calificar As Boolean = True
-    Dim youtube As String = "https://www.youtube.com/watch?v=lcegaZB0ZYw"
+    Dim youtube As String = Nothing
     Dim pepeizqapps As Boolean = True
     Dim pepeizqdeals As Boolean = True
     Dim twitter As String = "https://twitter.com/pepeizqu"
