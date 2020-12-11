@@ -117,20 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="Back.Text" xml:space="preserve">
     <value>Back</value>
-  </data>
-  <data name="Change" xml:space="preserve">
-    <value>Change</value>
   </data>
   <data name="Config" xml:space="preserve">
     <value>Configuration</value>
   </data>
+  <data name="ConfigChange" xml:space="preserve">
+    <value>Change Folder</value>
+  </data>
+  <data name="ConfigMessage.Text" xml:space="preserve">
+    <value>You must configure the application before you can change the appearance of Steam.</value>
+  </data>
+  <data name="ConfigOpen.Text" xml:space="preserve">
+    <value>Open Configuration</value>
+  </data>
+  <data name="ConfigSearch" xml:space="preserve">
+    <value>Search Folder</value>
+  </data>
   <data name="ConfigSkinsMessage.Text" xml:space="preserve">
-    <value>Add the folder where Steam is installed so the app can download and install skins (example: C:\Steam)</value>
+    <value>Select the folder where Steam is installed so the app can download and install skins (example: C:\Steam).</value>
   </data>
   <data name="Donate.Text" xml:space="preserve">
     <value>Donate to its creator:</value>
@@ -180,41 +186,56 @@
   <data name="MessageEditorReady" xml:space="preserve">
     <value>You can select a preset or change color by color</value>
   </data>
-  <data name="MessageSkins.Text" xml:space="preserve">
-    <value>Add your Steam folder in Configuration before you can add skins</value>
-  </data>
-  <data name="MessageSkinsReady" xml:space="preserve">
-    <value>Select an skin</value>
+  <data name="MoreSteam" xml:space="preserve">
+    <value>More Steam</value>
   </data>
   <data name="MoreThings" xml:space="preserve">
     <value>More Things</value>
   </data>
-  <data name="MoreThings_Back" xml:space="preserve">
-    <value>Back</value>
-  </data>
-  <data name="MoreThings_Contact" xml:space="preserve">
+  <data name="MoreThingsContact" xml:space="preserve">
     <value>Contact</value>
   </data>
-  <data name="MoreThings_HelpTranslate" xml:space="preserve">
+  <data name="MoreThingsHelpTranslate" xml:space="preserve">
     <value>Help to Translate</value>
   </data>
-  <data name="MoreThings_MoreApps" xml:space="preserve">
-    <value>More Apps</value>
+  <data name="MoreThingsHelpTranslateDescription" xml:space="preserve">
+    <value>If the application is not in your language, you can help me translate it into your language using the Poeditor platform.</value>
   </data>
-  <data name="MoreThings_ReportBug" xml:space="preserve">
-    <value>Report a Bug</value>
+  <data name="MoreThingsMyTwitterDescription" xml:space="preserve">
+    <value>In my Twitter account I will comment on the progress that I make in my applications and games, but I will also post things related to PC video game platforms.</value>
   </data>
-  <data name="MoreThings_SourceCode" xml:space="preserve">
+  <data name="MoreThingsOpen" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="MoreThingspepeizqappsDescription" xml:space="preserve">
+    <value>If you want to contact me or see other applications and games that I have created, you can visit my website.</value>
+  </data>
+  <data name="MoreThingspepeizqdealsDescription" xml:space="preserve">
+    <value>I have also created a web of video game deals for PC, I encourage you to visit it.</value>
+  </data>
+  <data name="MoreThingsRate" xml:space="preserve">
+    <value>Rate</value>
+  </data>
+  <data name="MoreThingsRateApp" xml:space="preserve">
+    <value>Rate the App</value>
+  </data>
+  <data name="MoreThingsRateAppDescription" xml:space="preserve">
+    <value>You can rate the application with the rating that you think it deserves.</value>
+  </data>
+  <data name="MoreThingsRateAppThanks" xml:space="preserve">
+    <value>Thanks for rating the app</value>
+  </data>
+  <data name="MoreThingsSourceCode" xml:space="preserve">
     <value>Source Code</value>
   </data>
-  <data name="MoreThings_VoteApp" xml:space="preserve">
-    <value>Vote the App</value>
+  <data name="MoreThingsSourceCodeDescription" xml:space="preserve">
+    <value>You can see the source code of the application on Github, if you have an account you can put a star on it.</value>
   </data>
-  <data name="NoAdsButton.Text" xml:space="preserve">
-    <value>Buy No Ads</value>
+  <data name="MoreThingsVideo" xml:space="preserve">
+    <value>Video on Youtube</value>
   </data>
-  <data name="NoAdsMessage.Text" xml:space="preserve">
-    <value>Buying the No Ads plugin will not show this screen and you can immediately start the installation of the appearance</value>
+  <data name="MoreThingsVideoDescription" xml:space="preserve">
+    <value>In case you have questions about how to use the application, I have uploaded a video to Youtube.</value>
   </data>
   <data name="Personalization.Text" xml:space="preserve">
     <value>Personalization</value>
@@ -225,17 +246,26 @@
   <data name="Screenshots.Text" xml:space="preserve">
     <value>Screenshots (click to expand)</value>
   </data>
+  <data name="SelectSkin.Text" xml:space="preserve">
+    <value>Select an skin</value>
+  </data>
   <data name="Skins" xml:space="preserve">
     <value>Skins</value>
   </data>
   <data name="Skins2.Text" xml:space="preserve">
     <value>Skins</value>
   </data>
+  <data name="SourceCode.Text" xml:space="preserve">
+    <value>Source Code</value>
+  </data>
   <data name="StoreDescription" xml:space="preserve">
     <value>Change the appearance of Steam in a comfortable way.</value>
   </data>
   <data name="StoreTags" xml:space="preserve">
     <value>Steam;Skins</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Steam Skins</value>
   </data>
   <data name="Tutorial.Text" xml:space="preserve">
     <value>How to change the skin on Steam</value>

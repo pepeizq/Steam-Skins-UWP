@@ -1,224 +1,271 @@
-﻿Imports FontAwesome.UWP
-Imports Microsoft.Services.Store.Engagement
-Imports Windows.ApplicationModel.Core
+﻿Imports Microsoft.Toolkit.Uwp.UI.Animations
+Imports Windows.Services.Store
+Imports Windows.Storage
 Imports Windows.System
 Imports Windows.UI
 Imports Windows.UI.Core
 
 Module MasCosas
 
-    Dim traduccion As String = "https://poeditor.com/join/project/LcYHFvuAzA"
     Dim codigoFuente As String = "https://github.com/pepeizq/Steam-Skins-UWP"
+    Dim traduccion As String = "https://poeditor.com/join/project/LcYHFvuAzA"
+    Dim calificar As Boolean = True
+    Dim youtube As String = "https://www.youtube.com/watch?v=lcegaZB0ZYw"
+    Dim pepeizqapps As Boolean = True
+    Dim pepeizqdeals As Boolean = True
+    Dim twitter As String = "https://twitter.com/pepeizqu"
 
-    Public Sub Generar()
+    Public Sub Cargar()
 
-        Dim recursos As New Resources.ResourceLoader()
+        Dim recursos As New Resources.ResourceLoader
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
 
-        Dim tbTitulo As TextBlock = pagina.FindName("tbTitulo")
-        tbTitulo.Text = Package.Current.DisplayName
+        Dim grid As Grid = pagina.FindName("gridMasCosas")
 
-        Dim coreBarra As CoreApplicationViewTitleBar = CoreApplication.GetCurrentView.TitleBar
-        coreBarra.ExtendViewIntoTitleBar = True
-
-        Dim barra As ApplicationViewTitleBar = ApplicationView.GetForCurrentView().TitleBar
-        barra.ButtonBackgroundColor = Colors.Transparent
-        barra.ButtonForegroundColor = Colors.White
-        barra.ButtonInactiveBackgroundColor = Colors.Transparent
-
-        Dim iconoMasCosas As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.Cube,
-            .Foreground = New SolidColorBrush(App.Current.Resources("ColorPrimario"))
+        Dim sv As New ScrollViewer With {
+            .VerticalScrollBarVisibility = ScrollBarVisibility.Auto
         }
 
-        Dim tbMasCosas As New TextBlock With {
-            .Text = recursos.GetString("MoreThings"),
-            .Foreground = New SolidColorBrush(App.Current.Resources("ColorPrimario")),
-            .Margin = New Thickness(-5, 0, 10, 0)
+        Dim sp As New StackPanel With {
+            .Orientation = Orientation.Vertical,
+            .Padding = New Thickness(10, 10, 30, 10)
         }
-
-        Dim itemMasCosas As NavigationViewItem = pagina.FindName("itemMasCosas")
-        itemMasCosas.Icon = iconoMasCosas
-        itemMasCosas.Content = tbMasCosas
-        itemMasCosas.Margin = New Thickness(0, 0, 4, 0)
-
-        Dim menu As MenuFlyout = pagina.FindName("botonMasCosasMenu")
-        menu.Placement = FlyoutPlacementMode.Top
-
-        Dim iconoMasApps As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.Cube
-        }
-
-        Dim menuItemMasApps As New MenuFlyoutItem With {
-            .Text = "pepeizqapps.com",
-            .Icon = iconoMasApps
-        }
-
-        AddHandler menuItemMasApps.Click, AddressOf MenuItemMasAppsClick
-        AddHandler menuItemMasApps.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemMasApps.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemMasApps)
-
-        Dim iconoDeals As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.Cube
-        }
-
-        Dim menuItemDeals As New MenuFlyoutItem With {
-            .Text = "pepeizqdeals.com",
-            .Icon = iconoDeals
-        }
-
-        AddHandler menuItemDeals.Click, AddressOf MenuItemDealsClick
-        AddHandler menuItemDeals.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemDeals.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemDeals)
-
-        menu.Items.Add(New MenuFlyoutSeparator)
-
-        Dim iconoVotar As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.ThumbsOutlineUp
-        }
-
-        Dim menuItemVotar As New MenuFlyoutItem With {
-            .Text = recursos.GetString("MoreThings_VoteApp"),
-            .Icon = iconoVotar
-        }
-
-        AddHandler menuItemVotar.Click, AddressOf MenuItemVotarClick
-        AddHandler menuItemVotar.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemVotar.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemVotar)
-
-        Dim iconoContacto As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.CommentOutline
-        }
-
-        Dim menuItemContacto As New MenuFlyoutItem With {
-            .Text = recursos.GetString("MoreThings_Contact"),
-            .Icon = iconoContacto
-        }
-
-        AddHandler menuItemContacto.Click, AddressOf MenuItemContactoClick
-        AddHandler menuItemContacto.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemContacto.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemContacto)
-
-        Dim iconoReportar As New FontAwesome.UWP.FontAwesome With {
-            .Icon = FontAwesomeIcon.Bug
-        }
-
-        Dim menuItemReportar As New MenuFlyoutItem With {
-            .Text = recursos.GetString("MoreThings_ReportBug"),
-            .Icon = iconoReportar
-        }
-
-        AddHandler menuItemReportar.Click, AddressOf MenuItemReportarClick
-        AddHandler menuItemReportar.PointerEntered, AddressOf UsuarioEntraBoton
-        AddHandler menuItemReportar.PointerExited, AddressOf UsuarioSaleBoton
-
-        menu.Items.Add(menuItemReportar)
-
-        If Not traduccion = Nothing Then
-            Dim iconoTraducir As New FontAwesome.UWP.FontAwesome With {
-                .Icon = FontAwesomeIcon.Globe
-            }
-
-            Dim menuItemTraducir As New MenuFlyoutItem With {
-                .Text = recursos.GetString("MoreThings_HelpTranslate"),
-                .Icon = iconoTraducir
-            }
-
-            AddHandler menuItemTraducir.Click, AddressOf MenuItemTraducirClick
-            AddHandler menuItemTraducir.PointerEntered, AddressOf UsuarioEntraBoton
-            AddHandler menuItemTraducir.PointerExited, AddressOf UsuarioSaleBoton
-
-            menu.Items.Add(New MenuFlyoutSeparator)
-            menu.Items.Add(menuItemTraducir)
-        End If
 
         If Not codigoFuente = Nothing Then
-            If traduccion = Nothing Then
-                menu.Items.Add(New MenuFlyoutSeparator)
-            End If
-
-            Dim iconoCodigoFuente As New FontAwesome.UWP.FontAwesome With {
-                .Icon = FontAwesomeIcon.Github
-            }
-
-            Dim menuItemCodigoFuente As New MenuFlyoutItem With {
-                .Text = recursos.GetString("MoreThings_SourceCode"),
-                .Icon = iconoCodigoFuente
-            }
-
-            AddHandler menuItemCodigoFuente.Click, AddressOf MenuItemCodigoFuenteClick
-            AddHandler menuItemCodigoFuente.PointerEntered, AddressOf UsuarioEntraBoton
-            AddHandler menuItemCodigoFuente.PointerExited, AddressOf UsuarioSaleBoton
-
-            menu.Items.Add(menuItemCodigoFuente)
+            sp.Children.Add(GenerarCaja(recursos.GetString("MoreThingsSourceCode"), recursos.GetString("MoreThingsSourceCodeDescription"),
+                                        codigoFuente, FontAwesome5.EFontAwesomeIcon.Brands_Github, False, "github.png"))
         End If
 
+        If Not traduccion = Nothing Then
+            sp.Children.Add(GenerarCaja(recursos.GetString("MoreThingsHelpTranslate"), recursos.GetString("MoreThingsHelpTranslateDescription"),
+                                        traduccion, FontAwesome5.EFontAwesomeIcon.Solid_GlobeEurope, False, "traducir.png"))
+        End If
+
+        If calificar = True Then
+            sp.Children.Add(GenerarCaja(recursos.GetString("MoreThingsRateApp"), recursos.GetString("MoreThingsRateAppDescription"),
+                                        Nothing, FontAwesome5.EFontAwesomeIcon.Solid_ThumbsUp, True, Nothing))
+        End If
+
+        If Not youtube = Nothing Then
+            sp.Children.Add(GenerarCaja(recursos.GetString("MoreThingsVideo"), recursos.GetString("MoreThingsVideoDescription"),
+                                        youtube, FontAwesome5.EFontAwesomeIcon.Brands_Youtube, False, "youtube.png"))
+        End If
+
+        If pepeizqapps = True Then
+            sp.Children.Add(GenerarCaja("pepeizqapps.com", recursos.GetString("MoreThingspepeizqappsDescription"),
+                                        "https://pepeizqapps.com/", FontAwesome5.EFontAwesomeIcon.Solid_Cube, False, "pepeizqapps.png"))
+        End If
+
+        If pepeizqdeals = True Then
+            sp.Children.Add(GenerarCaja("pepeizqdeals.com", recursos.GetString("MoreThingspepeizqdealsDescription"),
+                                        "https://pepeizqdeals.com/", FontAwesome5.EFontAwesomeIcon.Solid_Cube, False, "pepeizqdeals.png"))
+        End If
+
+        If Not twitter = Nothing Then
+            sp.Children.Add(GenerarCaja("@pepeizqu", recursos.GetString("MoreThingsMyTwitterDescription"),
+                                        twitter, FontAwesome5.EFontAwesomeIcon.Brands_Twitter, False, "twitter.png"))
+        End If
+
+        If sp.Children.Count > 1 Then
+            Dim botonUltimo As Button = sp.Children(sp.Children.Count - 1)
+            botonUltimo.Margin = New Thickness(0, 0, 0, 0)
+        End If
+
+        sv.Content = sp
+        grid.Children.Add(sv)
+
     End Sub
 
-    Private Async Sub MenuItemVotarClick(sender As Object, e As RoutedEventArgs)
+    Private Function GenerarCaja(titulo As String, descripcion As String, enlace As String, icono2 As FontAwesome5.EFontAwesomeIcon, calificar As Boolean, imagenFondo As String)
 
-        Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
+        Dim recursos As New Resources.ResourceLoader
 
-    End Sub
+        Dim colorFondo As New SolidColorBrush With {
+            .Color = App.Current.Resources("ColorCuarto"),
+            .Opacity = 0.5
+        }
 
-    Private Async Sub MenuItemMasAppsClick(sender As Object, e As RoutedEventArgs)
+        Dim spBoton As New StackPanel With {
+            .Orientation = Orientation.Vertical,
+            .Padding = New Thickness(30, 30, 30, 30),
+            .BorderBrush = New SolidColorBrush(App.Current.Resources("ColorPrimario")),
+            .BorderThickness = New Thickness(1, 1, 1, 1),
+            .Background = colorFondo
+        }
 
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/"))
+        Dim spTitulo As New StackPanel With {
+            .Orientation = Orientation.Horizontal
+        }
 
-    End Sub
+        Dim icono As New FontAwesome5.FontAwesome With {
+            .Icon = icono2,
+            .Foreground = New SolidColorBrush(Colors.White),
+            .VerticalAlignment = VerticalAlignment.Center
+        }
 
-    Private Async Sub MenuItemDealsClick(sender As Object, e As RoutedEventArgs)
+        spTitulo.Children.Add(icono)
 
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqdeals.com/"))
+        Dim tbTitulo As New TextBlock With {
+            .Text = titulo,
+            .Margin = New Thickness(15, 0, 0, 0),
+            .Foreground = New SolidColorBrush(Colors.White),
+            .FontSize = 17,
+            .VerticalAlignment = VerticalAlignment.Center
+        }
 
-    End Sub
+        spTitulo.Children.Add(tbTitulo)
 
-    Private Async Sub MenuItemContactoClick(sender As Object, e As RoutedEventArgs)
+        spBoton.Children.Add(spTitulo)
 
-        Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/contact/"))
+        Dim tbDescripcion As New TextBlock With {
+            .Text = descripcion,
+            .Margin = New Thickness(0, 15, 0, 0),
+            .Foreground = New SolidColorBrush(Colors.White),
+            .FontSize = 15,
+            .VerticalAlignment = VerticalAlignment.Center,
+            .TextWrapping = TextWrapping.Wrap
+        }
 
-    End Sub
+        spBoton.Children.Add(tbDescripcion)
 
-    Private Async Sub MenuItemReportarClick(sender As Object, e As RoutedEventArgs)
+        Dim boton As New Button With {
+            .Content = spBoton,
+            .Padding = New Thickness(0, 0, 0, 0),
+            .BorderBrush = New SolidColorBrush(Colors.Transparent),
+            .BorderThickness = New Thickness(0, 0, 0, 0),
+            .Style = App.Current.Resources("ButtonRevealStyle"),
+            .Margin = New Thickness(0, 0, 0, 30),
+            .HorizontalAlignment = HorizontalAlignment.Stretch,
+            .HorizontalContentAlignment = HorizontalAlignment.Stretch
+        }
 
-        If StoreServicesFeedbackLauncher.IsSupported = True Then
-            Dim ejecutador As StoreServicesFeedbackLauncher = StoreServicesFeedbackLauncher.GetDefault()
-            Await ejecutador.LaunchAsync()
+        AddHandler boton.PointerEntered, AddressOf Entra_Boton
+        AddHandler boton.PointerExited, AddressOf Sale_Boton
+
+        If calificar = False Then
+            AddHandler boton.Click, AddressOf AbrirClick
         Else
-            Await Launcher.LaunchUriAsync(New Uri("https://pepeizqapps.com/contact/"))
+            AddHandler boton.Click, AddressOf CalificarClick
+        End If
+
+        Dim tbToolTip As TextBlock = New TextBlock With {
+            .FontSize = 16,
+            .TextWrapping = TextWrapping.Wrap
+        }
+
+        If calificar = False Then
+            tbToolTip.Text = recursos.GetString("MoreThingsOpen")
+        Else
+            tbToolTip.Text = recursos.GetString("MoreThingsRate")
+        End If
+
+        ToolTipService.SetToolTip(boton, tbToolTip)
+        ToolTipService.SetPlacement(boton, PlacementMode.Mouse)
+
+        If Not imagenFondo = Nothing Then
+            Dim fondoBoton As New ImageBrush With {
+                .ImageSource = New BitmapImage(New Uri("ms-appx:///Assets/MasCosas/" + imagenFondo)),
+                .Stretch = Stretch.UniformToFill,
+                .Opacity = 0.1,
+                .AlignmentY = AlignmentY.Top
+            }
+
+            boton.Background = fondoBoton
+        End If
+
+        Return boton
+
+    End Function
+
+    Private Async Sub AbrirClick(sender As Object, e As RoutedEventArgs)
+
+        Dim boton As Button = sender
+        Dim enlace As String = boton.Tag
+
+        Try
+            Await Launcher.LaunchUriAsync(New Uri(enlace))
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub CalificarClick(sender As Object, e As RoutedEventArgs)
+
+        CalificarApp(False)
+
+    End Sub
+
+    Public Async Sub CalificarApp(primeraVez As Boolean)
+
+        Dim recursos As New Resources.ResourceLoader()
+
+        Dim usuarios As IReadOnlyList(Of User) = Await User.FindAllAsync
+
+        If Not usuarios Is Nothing Then
+            If usuarios.Count > 0 Then
+                Dim usuario As User = usuarios(0)
+
+                Dim contexto As StoreContext = StoreContext.GetForUser(usuario)
+                Dim config As ApplicationDataContainer = ApplicationData.Current.LocalSettings
+
+                Dim sacarVentana As Boolean = True
+
+                If primeraVez = True Then
+                    If config.Values("Calificar_App") = 1 Then
+                        sacarVentana = False
+                    End If
+                End If
+
+                If sacarVentana = True Then
+                    Dim review As StoreRateAndReviewResult = Await contexto.RequestRateAndReviewAppAsync
+
+                    If review.Status = StoreRateAndReviewStatus.Succeeded Then
+                        Notificaciones.Toast(recursos.GetString("MoreThingsRateAppThanks"), Nothing)
+                        config.Values("Calificar_App") = 1
+                    ElseIf review.Status = StoreRateAndReviewStatus.Error Then
+                        Await Launcher.LaunchUriAsync(New Uri("ms-windows-store:REVIEW?PFN=" + Package.Current.Id.FamilyName))
+                        config.Values("Calificar_App") = 1
+                    Else
+                        config.Values("Calificar_App") = 0
+                    End If
+                End If
+            End If
         End If
 
     End Sub
 
-    Private Async Sub MenuItemTraducirClick(sender As Object, e As RoutedEventArgs)
+    Private Sub Entra_Boton(sender As Object, e As PointerRoutedEventArgs)
 
-        Await Launcher.LaunchUriAsync(New Uri(traduccion))
+        Dim boton As Button = sender
+        Dim sp As StackPanel = boton.Content
 
-    End Sub
+        Dim fondo As New SolidColorBrush With {
+            .Opacity = 0.7,
+            .Color = App.Current.Resources("ColorCuarto")
+        }
 
-    Private Async Sub MenuItemCodigoFuenteClick(sender As Object, e As RoutedEventArgs)
-
-        Await Launcher.LaunchUriAsync(New Uri(codigoFuente))
-
-    End Sub
-
-    Private Sub UsuarioEntraBoton(sender As Object, e As PointerRoutedEventArgs)
+        sp.Background = fondo
+        sp.Saturation(1).Scale(1.01, 1.01, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
     End Sub
 
-    Private Sub UsuarioSaleBoton(sender As Object, e As PointerRoutedEventArgs)
+    Private Sub Sale_Boton(sender As Object, e As PointerRoutedEventArgs)
+
+        Dim boton As Button = sender
+        Dim sp As StackPanel = boton.Content
+
+        Dim fondo As New SolidColorBrush With {
+            .Opacity = 0.5,
+            .Color = App.Current.Resources("ColorCuarto")
+        }
+
+        sp.Background = fondo
+        sp.Saturation(1).Scale(1, 1, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Arrow, 1)
 

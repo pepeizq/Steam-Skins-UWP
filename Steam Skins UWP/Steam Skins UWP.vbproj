@@ -114,20 +114,19 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Clases\Apariencia.vb" />
-    <Compile Include="Clases\EditorColores.vb" />
     <Compile Include="MainPage.xaml.vb">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Editor\Datos.vb" />
+    <Compile Include="Modulos\Configuracion.vb" />
     <Compile Include="Modulos\Decompiladores.vb" />
     <Compile Include="Modulos\Descarga.vb" />
-    <Compile Include="Editor\Editor.vb" />
-    <Compile Include="Editor\EditorBBDD.vb" />
-    <Compile Include="Modulos\Interfaz.vb" />
+    <Compile Include="Modulos\Apariencias.vb" />
+    <Compile Include="Modulos\Interfaz\EfectosHover.vb" />
+    <Compile Include="Modulos\Interfaz\MasSteam.vb" />
+    <Compile Include="Modulos\Interfaz\NavigationViewItems.vb" />
+    <Compile Include="Modulos\Interfaz\Pestañas.vb" />
     <Compile Include="Modulos\MasCosas.vb" />
-    <Compile Include="Modulos\NavigationViewItems.vb" />
     <Compile Include="Modulos\Notificaciones.vb" />
-    <Compile Include="Modulos\Opciones.vb" />
     <Compile Include="Modulos\Detector.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
@@ -150,6 +149,30 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Apariencias\air1.png" />
+    <Content Include="Assets\Apariencias\air2.png" />
+    <Content Include="Assets\Apariencias\air3.png" />
+    <Content Include="Assets\Apariencias\airc1.png" />
+    <Content Include="Assets\Apariencias\airc2.png" />
+    <Content Include="Assets\Apariencias\airc3.png" />
+    <Content Include="Assets\Apariencias\comp1.png" />
+    <Content Include="Assets\Apariencias\comp2.png" />
+    <Content Include="Assets\Apariencias\comp3.png" />
+    <Content Include="Assets\Apariencias\metrou1.png" />
+    <Content Include="Assets\Apariencias\metrou2.png" />
+    <Content Include="Assets\Apariencias\metrou3.png" />
+    <Content Include="Assets\Apariencias\miku1.png" />
+    <Content Include="Assets\Apariencias\miku2.png" />
+    <Content Include="Assets\Apariencias\miku3.png" />
+    <Content Include="Assets\Apariencias\ori1.png" />
+    <Content Include="Assets\Apariencias\ori2.png" />
+    <Content Include="Assets\Apariencias\ori3.png" />
+    <Content Include="Assets\Apariencias\pixe1.png" />
+    <Content Include="Assets\Apariencias\pixe2.png" />
+    <Content Include="Assets\Apariencias\pixe3.png" />
+    <Content Include="Assets\Apariencias\thre1.png" />
+    <Content Include="Assets\Apariencias\thre2.png" />
+    <Content Include="Assets\Apariencias\thre3.png" />
     <Content Include="Assets\Logos\AppList.altform-unplated_targetsize-16.png" />
     <Content Include="Assets\Logos\AppList.altform-unplated_targetsize-24.png" />
     <Content Include="Assets\Logos\AppList.altform-unplated_targetsize-256.png" />
@@ -200,54 +223,14 @@
     <Content Include="Assets\Logos\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Logos\Wide310x150Logo.scale-400.png" />
-    <Content Include="Assets\patreon.png" />
-    <Content Include="Assets\paypal.png" />
-    <Content Include="Assets\Skins\20131.PNG" />
-    <Content Include="Assets\Skins\20132.PNG" />
-    <Content Include="Assets\Skins\20133.PNG" />
-    <Content Include="Assets\Skins\20134.PNG" />
-    <Content Include="Assets\Skins\air1.PNG" />
-    <Content Include="Assets\Skins\air2.PNG" />
-    <Content Include="Assets\Skins\air3.PNG" />
-    <Content Include="Assets\Skins\air4.PNG" />
-    <Content Include="Assets\Skins\airclassic1.PNG" />
-    <Content Include="Assets\Skins\airclassic2.PNG" />
-    <Content Include="Assets\Skins\airclassic3.PNG" />
-    <Content Include="Assets\Skins\airclassic4.PNG" />
-    <Content Include="Assets\Skins\blue1.PNG" />
-    <Content Include="Assets\Skins\blue2.PNG" />
-    <Content Include="Assets\Skins\blue3.PNG" />
-    <Content Include="Assets\Skins\blue4.PNG" />
-    <Content Include="Assets\Skins\compact1.PNG" />
-    <Content Include="Assets\Skins\compact2.PNG" />
-    <Content Include="Assets\Skins\compact3.PNG" />
-    <Content Include="Assets\Skins\compact4.PNG" />
-    <Content Include="Assets\Skins\flat1.PNG" />
-    <Content Include="Assets\Skins\flat2.PNG" />
-    <Content Include="Assets\Skins\flat3.PNG" />
-    <Content Include="Assets\Skins\flat4.PNG" />
-    <Content Include="Assets\Skins\invert1.PNG" />
-    <Content Include="Assets\Skins\invert2.PNG" />
-    <Content Include="Assets\Skins\invert3.PNG" />
-    <Content Include="Assets\Skins\invert4.PNG" />
-    <Content Include="Assets\Skins\metro1.PNG" />
-    <Content Include="Assets\Skins\metro2.PNG" />
-    <Content Include="Assets\Skins\metro3.PNG" />
-    <Content Include="Assets\Skins\metro4.PNG" />
-    <Content Include="Assets\Skins\pixel1.png" />
-    <Content Include="Assets\Skins\pixel2.PNG" />
-    <Content Include="Assets\Skins\pixel3.png" />
-    <Content Include="Assets\Skins\pixel4.png" />
-    <Content Include="Assets\Skins\pre1.PNG" />
-    <Content Include="Assets\Skins\pre2.PNG" />
-    <Content Include="Assets\Skins\pre3.PNG" />
-    <Content Include="Assets\Skins\pre4.PNG" />
-    <Content Include="Assets\Skins\thr1.PNG" />
-    <Content Include="Assets\Skins\thr2.PNG" />
-    <Content Include="Assets\Skins\thr3.PNG" />
-    <Content Include="Assets\Skins\thr4.PNG" />
+    <Content Include="Assets\MasCosas\github.png" />
+    <Content Include="Assets\MasCosas\pepeizqapps.png" />
+    <Content Include="Assets\MasCosas\pepeizqdeals.png" />
+    <Content Include="Assets\MasCosas\traducir.png" />
+    <Content Include="Assets\MasCosas\twitter.png" />
+    <Content Include="Assets\MasCosas\youtube.png" />
     <Content Include="Assets\steam_logo.png" />
-    <Content Include="Assets\tutorial.gif" />
+    <Content Include="Assets\tutorial.mkv" />
     <Content Include="My Project\Default.rd.xml" />
     <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
@@ -305,25 +288,25 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DotNetZip">
-      <Version>1.13.4</Version>
+      <Version>1.15.0</Version>
     </PackageReference>
-    <PackageReference Include="FontAwesome.UWP">
-      <Version>4.7.0.9</Version>
+    <PackageReference Include="FontAwesome5">
+      <Version>2.0.8</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.9</Version>
+      <Version>6.2.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Services.Store.SDK">
       <Version>10.1705.16001</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
-      <Version>5.1.1</Version>
+      <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>5.1.1</Version>
+      <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Encoding.CodePages">
-      <Version>4.6.0</Version>
+      <Version>5.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

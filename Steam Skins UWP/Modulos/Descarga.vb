@@ -21,8 +21,8 @@ Module Descarga
         Dim botonDescarga As Button = pagina.FindName("botonDescargaApariencia")
         botonDescarga.IsEnabled = estado
 
-        Dim botonPersonalizacion As Button = pagina.FindName("botonPersonalizacion")
-        botonPersonalizacion.IsEnabled = estado
+        Dim botonCodigoFuente As Button = pagina.FindName("botonCodigoFuente")
+        botonCodigoFuente.IsEnabled = estado
 
         Dim prProgreso As ProgressRing = pagina.FindName("prProgreso")
 
@@ -42,9 +42,6 @@ Module Descarga
 
         Dim frame As Frame = Window.Current.Content
         Dim pagina As Page = frame.Content
-
-        Dim botonRegistro As Button = pagina.FindName("botonRegistro")
-        botonRegistro.Visibility = Visibility.Visible
 
         Dim carpetaSteam As StorageFolder = Nothing
         Dim ficheroDescargado As StorageFile = Nothing
@@ -81,8 +78,8 @@ Module Descarga
 
                     Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
                                                                                                                           Dim mensaje As New Run With {
-                                                                                                                        .Text = recursos.GetString("LogFolderSteam1") + " " + carpetaSteamSkins.Path + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                    }
+                                                                                                                                .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogFolderSteam1") + " " + carpetaSteamSkins.Path
+                                                                                                                            }
                                                                                                                           tbRegistro.Inlines.Add(mensaje)
                                                                                                                       End Sub)
 
@@ -103,8 +100,8 @@ Module Descarga
                                                                                                                                   tbRegistro.Inlines.Add(New LineBreak)
 
                                                                                                                                   Dim mensaje As New Run With {
-                                                                                                                                .Text = recursos.GetString("LogFolderDelete") + " " + carpetaBorrar.Path + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                            }
+                                                                                                                                        .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogFolderDelete") + " " + carpetaBorrar.Path
+                                                                                                                                    }
                                                                                                                                   tbRegistro.Inlines.Add(mensaje)
                                                                                                                               End Sub)
                         Catch ex As Exception
@@ -132,8 +129,8 @@ Module Descarga
                                                                                                                               tbRegistro.Inlines.Add(New LineBreak)
 
                                                                                                                               Dim mensaje As New Run With {
-                                                                                                                          .Text = recursos.GetString("LogStartDownload") + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                      }
+                                                                                                                                  .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogStartDownload")
+                                                                                                                              }
                                                                                                                               tbRegistro.Inlines.Add(mensaje)
                                                                                                                           End Sub)
 
@@ -146,15 +143,15 @@ Module Descarga
                                                                                                                                       tbRegistro.Inlines.Add(New LineBreak)
 
                                                                                                                                       Dim mensaje As New Run With {
-                                                                                                                                  .Text = recursos.GetString("LogFinishDownload") + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                              }
+                                                                                                                                         .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogFinishDownload")
+                                                                                                                                      }
                                                                                                                                       tbRegistro.Inlines.Add(mensaje)
 
                                                                                                                                       tbRegistro.Inlines.Add(New LineBreak)
 
                                                                                                                                       Dim mensaje2 As New Run With {
-                                                                                                                                  .Text = recursos.GetString("LogStartDecompression") + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                              }
+                                                                                                                                         .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogStartDecompression")
+                                                                                                                                      }
                                                                                                                                       tbRegistro.Inlines.Add(mensaje2)
                                                                                                                                   End Sub)
 
@@ -171,19 +168,6 @@ Module Descarga
                                 zip.ExtractAll(ApplicationData.Current.LocalFolder.Path, Ionic.Zip.ExtractExistingFileAction.OverwriteSilently)
 
                                 Dim carpetaDescomprimida As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(ApplicationData.Current.LocalFolder.Path + "\" + apariencia.CarpetaDescarga)
-
-                                If apariencia.Titulo = "Air" Then
-                                    Opciones.Air(carpetaDescomprimida.Path)
-                                ElseIf apariencia.Titulo = "Air Classic" Then
-                                    Opciones.AirClassic(carpetaDescomprimida.Path)
-                                ElseIf apariencia.Titulo = "Metro" Then
-                                    Opciones.Metro(carpetaDescomprimida.Path)
-                                ElseIf apariencia.Titulo = "Pressure2" Then
-                                    Opciones.Pressure2(carpetaDescomprimida.Path)
-                                ElseIf apariencia.Titulo = "Threshold" Then
-                                    Opciones.Threshold(carpetaDescomprimida.Path)
-                                End If
-
                                 Dim carpetaFinal As StorageFolder = Await carpetaSteamSkins.CreateFolderAsync(apariencia.Titulo, CreationCollisionOption.ReplaceExisting)
 
                                 Dim listaArchivos As IReadOnlyList(Of StorageFile) = Await carpetaDescomprimida.GetFilesAsync()
@@ -220,8 +204,8 @@ Module Descarga
                                                                                                                                       tbRegistro.Inlines.Add(New LineBreak)
 
                                                                                                                                       Dim mensaje As New Run With {
-                                                                                                                                      .Text = recursos.GetString("LogFinishDecompression") + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                                  }
+                                                                                                                                          .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogFinishDecompression")
+                                                                                                                                      }
                                                                                                                                       tbRegistro.Inlines.Add(mensaje)
                                                                                                                                   End Sub)
 
@@ -232,8 +216,8 @@ Module Descarga
                 Else
                     Await Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, Sub()
                                                                                                                           Dim mensaje As New Run With {
-                                                                                                                      .Text = recursos.GetString("LogFolderSteam2") + " - " + DateTime.Now.ToString("hh:mm:ss")
-                                                                                                                  }
+                                                                                                                              .Text = DateTime.Now.ToString("hh:mm:ss") + " • " + recursos.GetString("LogFolderSteam2")
+                                                                                                                          }
                                                                                                                           tbRegistro.Inlines.Add(mensaje)
                                                                                                                       End Sub)
                 End If

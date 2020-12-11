@@ -26,41 +26,34 @@ Module Detector
             Else
                 carpeta = Await StorageApplicationPermissions.FutureAccessList.GetFolderAsync("rutaSteam")
             End If
-
-            If Not carpeta Is Nothing Then
-                Dim ejecutable As StorageFile = Nothing
-
-                Try
-                    ejecutable = Await carpeta.GetFileAsync("Steam.exe")
-                Catch ex As Exception
-
-                End Try
-
-                If Not ejecutable Is Nothing Then
-                    StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteam", carpeta)
-                    tbRuta.Text = carpeta.Path
-                    botonRutaTexto.Text = recursos.GetString("Change")
-
-                    Dim gvApariencias As GridView = pagina.FindName("gvApariencias")
-                    gvApariencias.IsEnabled = True
-
-                    Dim tbMensaje As TextBlock = pagina.FindName("tbMensajeApariencias")
-                    tbMensaje.Text = recursos.GetString("MessageSkinsReady")
-                End If
-
-                Dim carpetaUI As StorageFolder = Await StorageFolder.GetFolderFromPathAsync(carpeta.Path + "\steamui\css")
-
-                If Not carpetaUI Is Nothing Then
-                    Dim gridEditor As Grid = pagina.FindName("gridEditor2")
-                    gridEditor.IsHitTestVisible = True
-
-                    Dim tbMensajeEditor As TextBlock = pagina.FindName("tbMensajeEditor")
-                    tbMensajeEditor.Text = recursos.GetString("MessageEditorReady")
-                End If
-            End If
         Catch ex As Exception
 
         End Try
+
+        If Not carpeta Is Nothing Then
+            Dim ejecutable As StorageFile = Nothing
+
+            Try
+                ejecutable = Await carpeta.GetFileAsync("Steam.exe")
+            Catch ex As Exception
+
+            End Try
+
+            If Not ejecutable Is Nothing Then
+                StorageApplicationPermissions.FutureAccessList.AddOrReplace("rutaSteam", carpeta)
+                tbRuta.Text = carpeta.Path
+                botonRutaTexto.Text = recursos.GetString("ConfigChange")
+
+                Dim gridApariencias As Grid = pagina.FindName("gridApariencias")
+                Interfaz.Pestañas.Visibilidad_Pestañas(gridApariencias, recursos.GetString("Skins"))
+            Else
+                Dim gridConfig As Grid = pagina.FindName("gridConfig")
+                Interfaz.Pestañas.Visibilidad_Pestañas(gridConfig, recursos.GetString("Config"))
+            End If
+        Else
+            Dim gridAviso As Grid = pagina.FindName("gridAviso")
+            Interfaz.Pestañas.Visibilidad_Pestañas(gridAviso, Nothing)
+        End If
     End Sub
 
 End Module
