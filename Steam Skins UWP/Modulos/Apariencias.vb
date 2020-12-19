@@ -90,7 +90,8 @@ Module Apariencias
             .Stretch = Stretch.UniformToFill,
             .HorizontalAlignment = HorizontalAlignment.Stretch,
             .VerticalAlignment = VerticalAlignment.Stretch,
-            .Source = apariencia.Imagen1
+            .Source = apariencia.Imagen1,
+            .EnableLazyLoading = True
         }
 
         imagen.SetValue(Grid.RowProperty, 0)
