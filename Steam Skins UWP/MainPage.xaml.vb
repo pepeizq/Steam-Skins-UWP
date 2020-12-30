@@ -9,8 +9,6 @@
         nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("Tutorial2"), FontAwesome5.EFontAwesomeIcon.Solid_InfoCircle))
         nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("Config"), FontAwesome5.EFontAwesomeIcon.Solid_Cog))
         nvPrincipal.MenuItems.Add(New NavigationViewItemSeparator)
-        nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("MoreSteam"), FontAwesome5.EFontAwesomeIcon.Brands_Steam))
-        nvPrincipal.MenuItems.Add(Interfaz.NavigationViewItems.Generar(recursos.GetString("MoreThings"), FontAwesome5.EFontAwesomeIcon.Solid_Cube))
 
     End Sub
 
@@ -22,15 +20,11 @@
 
         If Not item Is Nothing Then
             If item.Text = recursos.GetString("Skins") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridApariencias, item.Text)
+                Interfaz.Pestañas.Visibilidad(gridApariencias, item.Text, item)
             ElseIf item.Text = recursos.GetString("Tutorial2") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridTutorial, item.Text)
+                Interfaz.Pestañas.Visibilidad(gridTutorial, item.Text, item)
             ElseIf item.Text = recursos.GetString("Config") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridConfig, item.Text)
-            ElseIf item.Text = recursos.GetString("MoreSteam") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridMasSteam, item.Text)
-            ElseIf item.Text = recursos.GetString("MoreThings") Then
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridMasCosas, item.Text)
+                Interfaz.Pestañas.Visibilidad(gridConfig, item.Text, item)
             End If
         End If
 
@@ -44,7 +38,7 @@
         Detector.Steam(False)
         Configuracion.Cargar()
         Apariencias.Cargar()
-        Interfaz.MasSteam.Cargar()
+        MasSteam.Cargar()
         MasCosas.Cargar()
 
     End Sub

@@ -152,7 +152,7 @@ Module Apariencias
         Dim apariencia As Apariencia = boton.Tag
 
         Dim gridAparienciaElegida As Grid = pagina.FindName("gridAparienciaElegida")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridAparienciaElegida, apariencia.Titulo)
+        Interfaz.Pestañas.Visibilidad(gridAparienciaElegida, apariencia.Titulo, sender)
 
         Dim tbRegistro As TextBlock = pagina.FindName("tbRegistro")
         tbRegistro.Text = String.Empty
@@ -265,7 +265,7 @@ Module Apariencias
         Dim pagina As Page = frame.Content
 
         Dim gridCaptura As Grid = pagina.FindName("gridCaptura")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridCaptura, Nothing)
+        Interfaz.Pestañas.Visibilidad(gridCaptura, Nothing, sender)
 
         Dim imagenExpandida As ImageEx = pagina.FindName("imagenExpandida")
         imagenExpandida.Source = imagen.Source
@@ -278,7 +278,7 @@ Module Apariencias
         Dim pagina As Page = frame.Content
 
         Dim gridApariencia As Grid = pagina.FindName("gridAparienciaElegida")
-        Interfaz.Pestañas.Visibilidad_Pestañas(gridApariencia, Nothing)
+        Interfaz.Pestañas.Visibilidad(gridApariencia, Nothing, Nothing)
 
     End Sub
 

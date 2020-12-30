@@ -45,14 +45,14 @@ Module Detector
                 botonRutaTexto.Text = recursos.GetString("ConfigChange")
 
                 Dim gridApariencias As Grid = pagina.FindName("gridApariencias")
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridApariencias, recursos.GetString("Skins"))
+                Interfaz.Pestañas.Visibilidad(gridApariencias, recursos.GetString("Skins"), Nothing)
             Else
                 Dim gridConfig As Grid = pagina.FindName("gridConfig")
-                Interfaz.Pestañas.Visibilidad_Pestañas(gridConfig, recursos.GetString("Config"))
+                Interfaz.Pestañas.Visibilidad(gridConfig, recursos.GetString("Config"), Nothing)
             End If
         Else
             Dim gridAviso As Grid = pagina.FindName("gridAviso")
-            Interfaz.Pestañas.Visibilidad_Pestañas(gridAviso, Nothing)
+            Interfaz.Pestañas.Visibilidad(gridAviso, Nothing, Nothing)
         End If
     End Sub
 
