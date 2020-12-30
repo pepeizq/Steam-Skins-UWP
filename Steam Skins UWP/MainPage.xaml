@@ -37,6 +37,7 @@
                                     <Style TargetType="FlyoutPresenter">
                                         <Setter Property="Background" Value="Transparent"/>
                                         <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
                                     </Style>
                                 </Flyout.FlyoutPresenterStyle>
 
@@ -59,6 +60,7 @@
                                     <Style TargetType="FlyoutPresenter">
                                         <Setter Property="Background" Value="Transparent"/>
                                         <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
                                     </Style>
                                 </Flyout.FlyoutPresenterStyle>
 
