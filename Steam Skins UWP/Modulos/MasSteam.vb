@@ -96,7 +96,7 @@ Module MasSteam
                         If apps.Apps.Count > 0 Then
                             For Each app2 In apps.Apps
                                 Dim fondo As New SolidColorBrush With {
-                                    .Opacity = 0.9,
+                                    .Opacity = 0.8,
                                     .Color = App.Current.Resources("ColorCuarto")
                                 }
 
@@ -247,7 +247,7 @@ Module MasSteam
         }
 
         sp.Background = fondo
-        sp.Saturation(1).Scale(1.005, 1.005, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
+        sp.Saturation(1).Scale(1.01, 1.01, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
