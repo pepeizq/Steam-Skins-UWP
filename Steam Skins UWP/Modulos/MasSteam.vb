@@ -130,10 +130,9 @@ Module MasSteam
 
                                 Dim imagen As New ImageEx With {
                                     .IsCacheEnabled = True,
-                                    .Width = 40,
-                                    .Height = 40,
+                                    .Width = 60,
+                                    .Height = 60,
                                     .Source = imagenS,
-                                    .Opacity = 0.9,
                                     .EnableLazyLoading = True
                                 }
 
@@ -143,7 +142,6 @@ Module MasSteam
                                 Dim tbTitulo As New TextBlock With {
                                     .Foreground = New SolidColorBrush(Colors.White),
                                     .Text = app2.Detalles(0).Titulo,
-                                    .FontSize = 14,
                                     .TextWrapping = TextWrapping.Wrap,
                                     .Margin = New Thickness(10, 0, 15, 0),
                                     .VerticalAlignment = VerticalAlignment.Center
@@ -172,7 +170,6 @@ Module MasSteam
                                     Dim tbPrecio As New TextBlock With {
                                         .Foreground = New SolidColorBrush(Colors.White),
                                         .Text = precio,
-                                        .FontSize = 13,
                                         .VerticalAlignment = VerticalAlignment.Center
                                     }
 
@@ -185,7 +182,7 @@ Module MasSteam
                                 Dim tbDescripcion As New TextBlock With {
                                     .Text = app2.Detalles(0).Descripcion.Trim,
                                     .Foreground = New SolidColorBrush(Colors.White),
-                                    .FontSize = 13,
+                                    .FontSize = 14,
                                     .VerticalAlignment = VerticalAlignment.Center,
                                     .HorizontalAlignment = HorizontalAlignment.Left,
                                     .Margin = New Thickness(0, 15, 0, 0),
@@ -247,7 +244,7 @@ Module MasSteam
         }
 
         sp.Background = fondo
-        sp.Saturation(1).Scale(1.01, 1.01, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
+        sp.Saturation(1).Scale(1.02, 1.02, sp.ActualWidth / 2, sp.ActualHeight / 2).Start()
 
         Window.Current.CoreWindow.PointerCursor = New CoreCursor(CoreCursorType.Hand, 1)
 
