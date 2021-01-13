@@ -267,7 +267,7 @@ Module MasCosas
         Dim sp As StackPanel = boton.Content
 
         Dim fondo As New SolidColorBrush With {
-            .Opacity = 0.9,
+            .Opacity = 0.8,
             .Color = App.Current.Resources("ColorCuarto")
         }
 

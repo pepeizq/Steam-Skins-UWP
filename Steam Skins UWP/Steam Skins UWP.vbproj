@@ -136,6 +136,7 @@
     </AppxManifest>
     <None Include="Steam Skins UWP_StoreKey.pfx" />
     <None Include="Steam Skins UWP_TemporaryKey.pfx" />
+    <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <PRIResource Include="Strings\es-ES\Resources.resw" />
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
@@ -217,7 +218,6 @@
     <Content Include="Assets\steam_logo.png" />
     <Content Include="Assets\tutorial.mkv" />
     <Content Include="My Project\Default.rd.xml" />
-    <None Include="Package.xml" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
