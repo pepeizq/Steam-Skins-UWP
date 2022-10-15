@@ -2,6 +2,7 @@
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
   <Publisher>CN=C91088FC-231C-4E13-86D1-5F9658173DA7</Publisher>
   <PublisherDisplayName>pepeizq's apps</PublisherDisplayName>
+  <DeveloperAccountType>MSA</DeveloperAccountType>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
@@ -240,6 +241,8 @@
     <Language Code="no-no" InMinimumRequirementSet="true" />
     <Language Code="nso" InMinimumRequirementSet="true" />
     <Language Code="nso-za" InMinimumRequirementSet="true" />
+    <Language Code="om" InMinimumRequirementSet="false" />
+    <Language Code="om-et" InMinimumRequirementSet="false" />
     <Language Code="or" InMinimumRequirementSet="true" />
     <Language Code="or-in" InMinimumRequirementSet="true" />
     <Language Code="pa" InMinimumRequirementSet="true" />
@@ -361,6 +364,9 @@
     <MainPackageIdentityName>5078pepeizq.SteamSkins</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>Steam Skins</ReservedName>
+      <ReservedName>Steam Apariencias</ReservedName>
+      <ReservedName>Steam 皮肤</ReservedName>
+      <ReservedName>pepeizq's Skins</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
@@ -368,20 +374,36 @@
     <MainPackageIdentityName>5078pepeizq.SteamTilesinWindows10</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.SteamTilesforWindows10</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.OfertasenAmazon</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.AmazonGamesTiles</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.RedditGameDeals</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.BethesdaTiles</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.Battle.netTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.DiscordTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.EpicGamesTiles</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.GamersGate</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.GOGTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.1793360F2073C</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.OfertasdeunPanda-AplicacinOficial</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.HoriginTiles</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.OriginTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.pepeizqsCities</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.pepeizqsCities-Windows10</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.20054F14ADAAA</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.pepeizqsWallpapers</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.SteamBridge</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.SteamCategories</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.SteamDeals</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.SteamAchievementsEnhanced</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.19563A9081E52</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforAmazonMoviesandSeries</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforDiscordGames</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.DiscordPinTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforNetflixMoviesandSeries</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforSpotifyAlbums</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforStadiaGames</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.TilesforWebs</MainPackageIdentityName>
     <MainPackageIdentityName>5078pepeizq.TwitchTiles</MainPackageIdentityName>
+    <MainPackageIdentityName>5078pepeizq.UplayTiles</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH55B7F" />
 </StoreAssociation>
