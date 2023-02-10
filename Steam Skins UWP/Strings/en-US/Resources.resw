@@ -250,7 +250,7 @@
     <value>Screenshots (click to expand)</value>
   </data>
   <data name="SelectSkin.Text" xml:space="preserve">
-    <value>Select an skin</value>
+    <value>Select a skin</value>
   </data>
   <data name="Skins" xml:space="preserve">
     <value>Skins</value>
